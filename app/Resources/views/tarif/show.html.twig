@@ -1,0 +1,48 @@
+{% include 'nav.html.twig' %}
+
+{% block body %}
+    <h1>Tarif</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ tarif.id }}</td>
+            </tr>
+            <tr>
+                <th>Uneheure</th>
+                <td>{{ tarif.uneHeure }}</td>
+            </tr>
+            <tr>
+                <th>Cinqheures</th>
+                <td>{{ tarif.cinqHeures }}</td>
+            </tr>
+            <tr>
+                <th>Dixheures</th>
+                <td>{{ tarif.dixHeures }}</td>
+            </tr>
+            <tr>
+                <th>Trimestre</th>
+                <td>{{ tarif.trimestre }}</td>
+            </tr>
+            <tr>
+                <th>Annee</th>
+                <td>{{ tarif.annee }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_tarif_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('admin_tarif_edit', { 'id': tarif.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

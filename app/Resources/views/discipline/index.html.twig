@@ -1,0 +1,54 @@
+{% include 'nav.html.twig' %}
+
+{% block body %}
+    <h1>Liste de Disciplines</h1>
+
+    <table style="border: 1px solid black; border-collapse: collpase;">
+        
+            <tr>
+                <th style="border: 1px solid black; border-collapse: collpase;">Id</th>
+                <th style="border: 1px solid black; border-collapse: collpase;">Nom de discipline</th>
+                <th style="border: 1px solid black; border-collapse: collpase;">Sessions</th>
+            </tr>
+        
+        {% for discipline in disciplines %}
+            <tr>
+                <td style="border: 1px solid black; border-collapse: collpase;"><a href="{{ path('admin_discipline_show', { 'id': discipline.id }) }}">{{ discipline.id }}</a></td>
+           
+            
+                <td style="border: 1px solid black; border-collapse: collpase;">{{ discipline.nomDiscipline }}</td>
+            
+                <td style="border: 1px solid black; border-collapse: collpase;">
+                {% for session in discipline.sessions %} 
+                   
+                    <ul><li>{{ session.titreSession }}</ul></li>
+                      
+                {% endfor %}
+                </td>
+            
+               
+                
+                <td style="border: 1px solid black; border-collapse: collpase;">
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_discipline_show', { 'id': discipline.id }) }}">Détails</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_discipline_edit', { 'id': discipline.id }) }}">Modifier</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_discipline_delete', { 'id': discipline.id }) }}">Supprimer</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_discipline_new') }}">Créer une nouvelle discipline</a>
+        </li>
+    </ul>
+{% endblock %}

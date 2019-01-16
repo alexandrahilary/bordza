@@ -1,0 +1,57 @@
+{% include 'nav.html.twig' %}
+
+{% block body %}
+<div class="container-fluid identifiant justify-content-center">
+
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <div class="row justify-content-center">
+                <h1>Catalogue creation</h1>
+            </div>
+        </div>
+        <div class="col-5 border border-dark" style="padding:20px">
+
+    {{ form_start(form) }}
+        <!-- titre -->
+                <div class="form">
+                    <div class="input-group ">
+                        {{ form_label(form.titre, 'Titre de la page', {'label_attr' : {'class' : 'input-group-text bg-dark text-light'}} ) }}
+                        {{ form_errors(form.titre) }}
+                        {{ form_widget(form.titre, {'attr': {'class':'form-control '}}) }}
+                    </div>
+                </div>
+        <!-- image -->
+                <!-- pathimage -->
+                <div class="form">
+                    <div class="input-group ">
+                        {{ form_label(form.image.pathimage, 'Choisir une image', {'label_attr' : {'class' : 'custom-file-label '}} ) }}
+                        {{ form_errors(form.image.pathimage) }}
+                        {{ form_widget(form.image.pathimage, {'attr': {'class':''}}) }}
+                    </div>
+                </div>
+                <!-- alt -->
+                <div class="form">
+                    <div class="input-group ">
+                        {{ form_label(form.image.alt, '', {'label_attr' : {'class' : 'input-group-text bg-dark text-light'}} ) }}
+                        {{ form_errors(form.image.alt) }}
+                        {{ form_widget(form.image.alt, {'attr': {'class':'form-control'}}) }}
+                    </div>
+                </div>
+                <!-- credit photo -->
+                        <div class="form">
+                            <div class="input-group ">
+                                {{ form_label(form.image.creditPhoto, '', {'label_attr' : {'class' : 'input-group-text bg-dark text-light'}} ) }}
+                                {{ form_errors(form.image.creditPhoto) }}
+                                {{ form_widget(form.image.creditPhoto, {'attr': {'class':'form-control'}}) }}
+                            </div>
+                        </div>
+        <div class="form bouton">
+            <div class="row justify-content-center">
+                <button type="submit" class="btn btn-dark">Enregistrer cette page de Catalogue</button>
+            </div>
+            <div class="row justify-content-center">
+                <a href="{{ path('admin_catalogue_index') }}"><- Revenir aux Pages</a>
+            </div>
+        </div>
+    {{ form_end(form) }}
+{% endblock %}

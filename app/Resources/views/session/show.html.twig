@@ -1,0 +1,55 @@
+{% include 'nav.html.twig' %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <h1>DÉTAIL</h1>
+    </div>
+    <div class="row justify-content-center ligne">
+                
+                
+                <div class="col-4"><img class="img-fluid" src="{{ asset('uploads/images/' ~ session.image.pathImage) }}"></div>
+                <div class="col-7">
+                    <div class="row justify-content-center">
+                        <div class="col-11">
+                             / {{ session.formules }} / {{ session.disciplines }} / 
+                            <h3>{{ session.titreSession | upper }}</h3>
+                            <div>Dates : {{ session.dateSession }}</div>
+                            <div>{{ session.prix }}</div>
+                            <div class="description">"{{ session.descriptionSession }}"</div>
+                            <p>NOMBRE D'INSCRITS : <span class="nombreInscrits">{{ session.inscriptionCollection.snapshot | length }}</span></p>
+                            {% for inscription in session.inscriptionCollection.snapshot %} 
+                            <p><img src="{{ asset('assets/images/glyph/glyphicons-635-teenager.png') }}">
+                            : {{ inscription.prenom | capitalize }} / {{ inscription.age }} / {{ inscription.userId.email }} / tel : {{ inscription.tel }} </p>{% endfor %}
+                            <div>{{ session.nbPlace }} places / Reste : {{ (session.nbPlace)-(session.inscriptionCollection.snapshot | length) }} places</span></div>
+                            
+                            <div class="bouton">
+                                <button type="submit" class="btn btn-small col-2">
+                                    <a href="{{ path('admin_session_edit', { 'id': session.id }) }}">Modifier</a>
+                                </button>
+                            </div>
+                            <div class="bouton">
+                                {{ form_start(delete_form) }}
+                                    <button class="btn btn-small col-2" type="submit">Supprimer</button>
+                                {{ form_end(delete_form) }}
+                            </div>
+                            <div>
+                            <a href="{{ path('admin_session_index') }}"><- Revenir aux Sessions</a>
+                            </div>
+                        </div>
+                        <div class="col-11">
+                            
+                                    
+                                    
+                                        
+                            
+                        </div>
+                                    
+                        
+                        
+                    </div>
+                </div>   
+                <hr> 
+                
+    
+{% endblock %}

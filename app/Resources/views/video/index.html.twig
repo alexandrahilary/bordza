@@ -1,0 +1,49 @@
+{% include 'nav.html.twig' %}
+
+{% block body %}
+    <h1>Videos list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Contenu</th>
+                <th>Resume</th>
+                <th>Iframe</th>
+                <th>Auteur</th>
+                <th>Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for video in videos %}
+            <tr>
+                <td><a href="{{ path('admin_video_show', { 'id': video.id }) }}">{{ video.id }}</a></td>
+                <td>{{ video.titre }}</td>
+                <td>{{ video.contenu }}</td>
+                <td>{{ video.resume }}</td>
+                <td><iframe width="560" height="315" src="{{ video.iframe }}"  frameborder="0" ></iframe></td>
+                <td>{{ video.auteur }}</td>
+                <td>{% if video.date %}{{ video.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_video_show', { 'id': video.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_video_edit', { 'id': video.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_video_new') }}">Create a new video</a>
+        </li>
+    </ul>
+{% endblock %}

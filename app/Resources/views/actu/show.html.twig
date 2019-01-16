@@ -1,0 +1,40 @@
+{% include 'nav.html.twig' %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <h1>DÉTAIL</h1>
+    </div>
+    <div class="row justify-content-center ligne">        
+        <div><h3>{{ actu.titre | upper }}</h3></div>
+        <div class="w-100"></div>
+        <div class="col-4"><img class="img-fluid" src="{{ asset('uploads/images/' ~ actu.imageId) }}"></div>
+        <div class="w-100"></div>
+        <div>{% if actu.date %}{{ actu.date|date('d-m-Y') }}{% endif %}</div>
+        <div class="w-100"></div>
+        <div class="col-3">
+            <div class="article">Contenu de l'article : {{ actu.contenu }}</div>
+            <div class="w-100"></div>
+            <div class="article">Résumé de l'article : {{ actu.resume }}</div>    
+        </div>
+    </div>
+        
+    <div class="row justify-content-center">
+        <div class="bouton">
+            <button type="submit" class="btn btn-small">
+                <a href="{{ path('admin_actu_edit', { 'id': actu.id }) }}">Modifier</a>
+                    </button>
+        </div>
+        <div class="bouton">
+            {{ form_start(delete_form) }}
+                <button class="btn btn-small" type="submit">Supprimer</button>
+            {{ form_end(delete_form) }}
+        </div>
+    </div>
+    <div class="w-100"></div>
+
+    <div class="row justify-content-center">
+        <a href="{{ path('admin_actu_index') }}"><- Revenir aux News</a>
+    </div>
+</div>
+{% endblock %}

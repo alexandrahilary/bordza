@@ -1,0 +1,18 @@
+{% include 'nav.html.twig' %}
+{% block body %}
+
+{% for video in videos %}
+
+            <tr>
+                <td><a href="{{ path('admin_video_show', { 'id': video.id }) }}">{{ video.id }}</a></td>
+                <td>{{ video.titre }}</td>
+                <td>{{ video.contenu }}</td>
+                <td>{{ video.resume }}</td>
+                <td><iframe width="560" height="315" src="{{ video.iframe }}"  frameborder="0" ></iframe></td>
+                <td>{{ video.auteur }}</td>
+                <td>{% if video.date %}{{ video.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+            </td>
+{% endfor %}
+
+{% endblock %}

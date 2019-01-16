@@ -1,0 +1,108 @@
+{% include 'nav.html.twig' %}
+
+{% block body %}
+<div class="container-fluid identifiant justify-content-center">
+
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <div class="row justify-content-center">
+                <h1>Nouvelle Formule</h1>
+            </div>
+        </div>
+        <div class="col-5 border border-dark" style="padding:20px">
+
+            
+    {{ form_start(form) }}
+    <!-- formules -->
+        <div class="form">
+            <div class="input-group ">
+                {{ form_label(form.nomFormule, 'Nom de la formule', {'label_attr' : {'class' : 'input-group-text bg-dark text-light'}} ) }}
+                {{ form_errors(form.nomFormule) }}
+                {{ form_widget(form.nomFormule, {'attr': {'class':'form-control'}}) }}
+            </div>
+        </div>
+        <div class="form bouton">
+            <div class="row justify-content-center">
+                <button class="btn btn-dark" type="submit" value="Create">Enregistrer la Formule</button>
+            </div>
+        </div>
+    {{ form_end(form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('admin/formule_index') }}">Retour vers les Formules</a>
+        </li>
+    </ul>
+
+<script>
+    var $collectionHolder;
+
+// setup an "add a tag" link
+var $addTagButton = $('<button type="button" class="add_tag_link">Ajoute une session</button>');
+var $newLinkLi = $('<li></li>').append($addTagButton);
+function addTagForm($collectionHolder, $newLinkLi) {
+    // Get the data-prototype explained earlier
+    var prototype = $collectionHolder.data('prototype');
+
+    // get the new index qui permet de compter les formulaires rajoutés
+    var index = $collectionHolder.data('index');
+
+    var newForm = prototype;
+    // You need this only if you didn't set 'label' => false in your tags field in TaskType
+    // Replace '__name__label__' in the prototype's HTML to
+    // instead be a number based on how many items we have
+    // newForm = newForm.replace(/__name__label__/g, index);
+
+    // Replace '__name__' in the prototype's HTML to
+    // instead be a number based on how many items we have
+    // expression reguliere
+    newForm = newForm.replace(/__name__/g, index);
+
+    // increase the index with one for the next item
+    $collectionHolder.data('index', index + 1);
+
+    // Display the form in the page in an li, before the "Add a tag" link li
+    var $newFormLi = $('<li></li>').append(newForm);
+    $newLinkLi.before($newFormLi);
+    // add a delete link to the new form
+    addTagFormDeleteLink($newFormLi);
+};
+
+function addTagFormDeleteLink($tagFormLi) {
+    var $removeFormButton = $('<button type="button">Supprimer une session</button>');
+    $tagFormLi.append($removeFormButton);
+
+    $removeFormButton.on('click', function(e){
+        // remove the li for the tag form
+        $tagFormLi.remove();
+    });
+}
+
+jQuery(document).ready(function() {
+    // Get the ul that holds the collection of tags
+    $collectionHolder = $('#appbundle_formule_sessions');
+    //add a delete link to all of the existing tag form li elements
+    $collectionHolder.find('li').each(function(){
+        addTagFormDeleteLink($(this));
+    })
+
+    $collectionHolder.find('>div').each(function(){
+        addTagFormDeleteLink($(this));
+    })
+
+    // add the "add a tag" anchor and li to the tags ul
+    $collectionHolder.append($newLinkLi);
+
+    // count the current form inputs we have (e.g. 2), use that as the new
+    // index when inserting a new item (e.g. 2)
+    // dit qu'il faut garder le numero d'index pour le numerotage des collections qui se rajoutent
+    $collectionHolder.data('index', $collectionHolder.find(':input').length);
+
+    $addTagButton.on('click', function(e) {
+        // add a new tag form (see next code block)
+        addTagForm($collectionHolder, $newLinkLi);
+    });
+});
+
+</script>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% include 'nav.html.twig' %}
+
+{% block body %}
+    <h1>Inscription</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ inscription.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ inscription.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ inscription.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Age</th>
+                <td>{{ inscription.age }}</td>
+            </tr>
+            <tr>
+                <th>Tel</th>
+                <td>{{ inscription.tel }}</td>
+            </tr>
+            <tr>
+                <th>Valide</th>
+                <td>{% if inscription.valide %}VALIDÉE{% else %}EN ATTENTE{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_inscription_index') }}">Revenir à la liste d'inscriptions</a>
+        </li>
+        <li>
+            <a href="{{ path('admin_inscription_edit', { 'id': inscription.id }) }}">Modifier</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Supprimer">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

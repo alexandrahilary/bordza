@@ -1,0 +1,11 @@
+{% block subject %}Confirmation d'inscription{% endblock subject %}
+{% block body_text %}
+    
+        Bonjour {{ user.username }}
+        Ceci est un email afin de confirmer ton inscription : 
+        cliques sur le lien suivant : 
+        {{ confirmationUrl }}
+
+        Cordialement.
+{% endblock body_text %}
+   

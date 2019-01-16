@@ -1,0 +1,47 @@
+{% include 'nav.html.twig' %}
+
+{% block body %}
+
+<div class="container-fluid">
+    <div class="row justify-content-center retour-categories">
+        <p>retour vers <a href="{{ path('admin_session_index') }}">{{ 'les Sessions' | upper }}</a>
+         , vers <a href="{{ path('admin_catalogue_index') }}">{{ 'le Catalogue' | upper }}</a>
+          , vers <a href="{{ path('admin_actu_index') }}">{{ 'les News' | upper }}</a>
+        </p>
+    </div>
+    <div class="row justify-content-center">
+        <h1>MES IMAGES</h1>
+    </div>
+      
+        {% for image in images %}
+        <div class="row justify-content-center ligne">
+            <div><a href="{{ path('admin_image_show', { 'id': image.id }) }}">{{ image.id }}</a></div>
+            <div class="col-4"><img class="img-fluid" src="{{ asset('uploads/images/' ~ image.pathImage) }}"></div>
+            <div class="col-3">
+                <div>balise alt : {{ image.alt }}</div>
+                <div>crédit photo : {{ image.creditPhoto }}</div>
+            </div>
+            <div class="col-3">
+                <ul>
+                    <li >
+                        <button type="submit" class="col-6 btn btn-small">
+                            <a href="{{ path('admin_image_show', { 'id': image.id }) }}">Détails</a>
+                        </button>
+                    </li>
+                    <li>
+                        <button type="submit" class="col-6 btn btn-small">
+                            <a href="{{ path('admin_image_edit', { 'id': image.id }) }}">Modifier les attibuts</a>
+                        </button>
+                    </li>
+                    <li>
+                        <button type="submit" class="col-6 btn btn-small">
+                            <a href="{{ path('admin_image_edit_image', { 'id': image.id }) }}">Modifier l'Image</a>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>   
+        {% endfor %}
+</div>
+
+{% endblock %}

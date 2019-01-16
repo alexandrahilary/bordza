@@ -1,0 +1,55 @@
+{% include 'nav.html.twig' %}
+
+{% block body %}
+    <h1>Liste d'Inscriptions </h1>
+    
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Age</th>
+                <th>Tel</th>
+                <th>Utilisateur</th>
+                <th>Session</th>
+                <th>Statut</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for inscription in inscriptions %}
+            <tr>
+                <td><a href="{{ path('admin_inscription_show', { 'id': inscription.id }) }}">{{ inscription.id }}</a></td>
+                <td>{{ inscription.nom }}</td>
+                <td>{{ inscription.prenom }}</td>
+                <td>{{ inscription.age }}</td>
+                <td>{{ inscription.tel }}</td>
+                <td>{{ inscription.userId }} , {{ inscription.userId.email }}</td>
+                <td>{{ inscription.sessionId }}</td>
+                <td>{% if inscription.valide %}VALIDÉE{% else %}EN ATTENTE{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_inscription_show', { 'id': inscription.id }) }}">Détails</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_inscription_edit', { 'id': inscription.id }) }}">Modifier</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_inscription_delete', { 'id': inscription.id }) }}">Supprimer</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_inscription_new') }}">Créer une nouvelle inscription</a>
+        </li>
+    </ul>
+{% endblock %}

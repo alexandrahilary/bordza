@@ -1,0 +1,48 @@
+{% include 'nav.html.twig' %}
+{% block body %}
+
+{{ form_start(form) }}
+        
+
+
+    <div >
+    {{ form_label(form.nom, 'Nom de l\'élève' ) }}
+    {{ form_errors(form.nom) }}
+    {{ form_widget(form.nom) }}
+    </div>
+    <div >
+    {{ form_label(form.prenom, 'Prénom de l\'élève' ) }}
+    {{ form_errors(form.prenom) }}
+    {{ form_widget(form.prenom) }}
+    </div>
+    <div >
+    {{ form_label(form.age, 'Confirmer le mot de passe' ) }}
+    {{ form_errors(form.age) }}
+    {{ form_widget(form.age) }}
+    </div>
+    <div >
+    {{ form_label(form.tel, 'Numéro de téléphone' ) }}
+    {{ form_errors(form.tel) }}
+    {{ form_widget(form.tel) }}
+    </div>
+    <div >
+    {{ form_label(form.sessionId, 'Choissisez votre session' ) }}
+    {{ form_errors(form.sessionId) }}
+    {{ form_widget(form.sessionId) }}
+    </div>
+    <div >
+    
+    {{ app.user.id }}
+    
+    
+    </div>}}
+    <div style="display:none">
+    {{ form_label(form.valide, 'status' ) }}
+    {{ form_errors(form.valide) }}
+    {{ form_widget(form.valide) }}
+    </div>
+    <div>
+        <input type="submit" value="{{ 'Réserver'|trans }}" />
+    </div>
+{{ form_end(form) }}
+{% endblock %}

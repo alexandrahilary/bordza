@@ -1,0 +1,58 @@
+{% include 'nav.html.twig' %}
+
+{% block body %}
+<div class="container-fluid identifiant justify-content-center">
+
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <div class="row justify-content-center">
+                <h1>Nouvelle Image</h1>
+            </div>
+        </div>
+        <div class="col-5 border border-dark" style="padding:20px">
+            
+    
+        {{ form_start(form, {'method': 'post', 'enctype' : 'multipart/form-data', 'action': path('admin_image_new') }) }}
+
+        <!-- alt -->
+                <div class="form">
+                    <div class="input-group ">
+                        {{ form_label(form.alt, '', {'label_attr' : {'class' : 'input-group-text bg-dark text-light'}} ) }}
+                        {{ form_errors(form.alt) }}
+                        {{ form_widget(form.alt, {'attr': {'class':'form-control'}}) }}
+                    </div>
+                </div>
+
+        <!-- credit photo -->
+                <div class="form">
+                    <div class="input-group ">
+                        {{ form_label(form.creditPhoto, '', {'label_attr' : {'class' : 'input-group-text bg-dark text-light'}} ) }}
+                        {{ form_errors(form.creditPhoto) }}
+                        {{ form_widget(form.creditPhoto, {'attr': {'class':'form-control'}}) }}
+                    </div>
+                </div>
+
+        <!-- pathimage -->
+        <div class="form">
+            <div class="input-group ">
+                {{ form_label(form.pathimage, 'Choisir une image', {'label_attr' : {'class' : 'custom-file-label '}} ) }}
+                {{ form_errors(form.pathimage) }}
+                {{ form_widget(form.pathimage, {'attr': {'class':''}}) }}
+            </div>
+        </div>
+
+        <!-- boutton -->
+        <div class="form bouton">
+            <div class="row justify-content-center">
+                <button type="submit" class="btn btn-dark">Créer nouvelle Image</button>
+            </div>
+        </div>
+    {{ form_end(form) }}
+        
+    </div>
+    <ul>
+        <li>
+            <a href="{{ path('admin_image_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}

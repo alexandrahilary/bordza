@@ -1,0 +1,81 @@
+{% include 'nav.html.twig' %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="row justify-content-center retour-categories">
+        <p>retour vers <a href="{{ path('admin_session_index') }}">{{ 'les Sessions' | upper }}</a>
+         , vers <a href="{{ path('admin_catalogue_index') }}">{{ 'le Catalogue' | upper }}</a>
+          , vers <a href="{{ path('admin_actu_index') }}">{{ 'les News' | upper }}</a>
+        </p>
+    </div>
+    <div class="row justify-content-center">
+        <h1>Formules</h1>
+    </div>
+    <div class="row justify-content-center">
+            <a href="{{ path('admin/formule_new') }}">
+                <img class="img-class" src="{{ asset('assets/images/glyph/glyphicons-191-plus-sign.png') }}" style="margin-right:10px;">
+                <button class="btn btn-dark" type="button">Ajouter une nouvelle Formule</button>
+            </a>
+    </div>   
+    
+        {% for formule in formules %}
+            <div class="row justify-content-center">
+                <div><a href="{{ path('admin/formule_show', { 'id': formule.id }) }}">{{ formule.id }}</a></div>
+                <div class="col-1">{{ formule.nomFormule }}</div>
+                <div class="col-8">
+                
+                    <div class="row">
+                
+                        {% for session in formule.sessions %}
+                        <div class="col-3">
+                            <div class="col-12">{{ session.titreSession }}</div>
+                            {% if formule.nomFormule != "COURS" %}
+                            <div class="col-12"><img class="img-fluid"src="{{ asset('uploads/images/' ~ session.image.pathImage) }}"></div>
+                            {% endif %}
+                        </div>    
+                            
+                        {% endfor %}
+                    </div>
+                </div>
+            
+                            
+                <div class="col-2 bouton">
+                <ul>
+                <li >
+                    <button type="submit" class="col-12 btn btn-small">
+                        <a href="{{ path('admin/formule_show', { 'id': formule.id }) }}">Détails</a>
+                    </button>
+                </li >
+                <li >                
+                    <button type="submit" class="col-12 btn btn-small">
+                        <a href="{{ path('admin/formule_edit', { 'id': formule.id }) }}">Modifier</a>
+                    </button>
+                </li >
+                <li >
+                    <form action="{{ path('admin/formule_delete', { 'id':formule.id }) }}" method="post">
+                      <input type="hidden" name="_method" value="DELETE" />
+                      {{ form_widget(deleteForms[formule.id]) }}
+                      <button type="submit" class="col-12 btn btn-small">
+                          Supprimer
+                      </button>
+                    </form>
+                </li >
+                </ul> 
+                </div>
+                   
+                            
+            </div>
+                
+
+<hr>   
+        {% endfor %}
+        </div>
+    
+      
+
+    <ul>
+        <div class="col-2">
+            <a href="{{ path('admin/formule_new') }}">Create a new formule</a>
+        </div class="col-2">
+    </ul>
+{% endblock %}

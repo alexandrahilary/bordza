@@ -1,0 +1,35 @@
+{% include 'nav.html.twig' %}
+
+{% block body %}
+    <h1>Formule</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ formule.id }}</td>
+            </tr>
+            <tr>
+                <th>Nomformule</th>
+                <td>{{ formule.nomFormule }}</td>
+                {% for session in formule.sessions %}
+                <td>{{ session.titreSession }}</td>
+                {% endfor %}
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin/formule_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('admin/formule_edit', { 'id': formule.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

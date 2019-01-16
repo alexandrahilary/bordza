@@ -1,0 +1,52 @@
+{% include 'nav.html.twig' %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <h1>MES NEWS</h1>
+    </div>
+    <div class="row justify-content-center">
+            <a href="{{ path('admin_actu_new') }}">
+                <img class="img-class" src="{{ asset('assets/images/glyph/glyphicons-191-plus-sign.png') }}" style="margin-right:10px;">
+                <button class="btn btn-dark" type="button">Ajouter une nouvelle News</button>
+            </a>
+    </div>   
+    
+
+    
+        {% for actu in actus %}
+            <div class="row justify-content-center ligne">
+                <div><a href="{{ path('admin_actu_show', { 'id': actu.id }) }}">{{ actu.id }}</a></div>
+                <div class="col-3"><img class="img-fluid" src="{{ asset('uploads/images/' ~ actu.imageId) }}"></div>
+                <div class="col-3">
+                    <div><h3>{{ actu.titre | upper }}</h3></div>
+                    <div class="w-100"></div>
+                    <div>{% if actu.date %}{{ actu.date|date('d-m-Y') }}{% endif %}</div>
+                    <div class="w-100"></div>
+                    <div>{{ actu.resume }}</div>
+                </div>
+                <div class="col-3">
+                    
+                    <div>{{ actu.contenu }}</div>
+                    
+                </div>
+                
+                
+                <div class="col-2">
+                    <div class="row">
+                        <button class="btn btn-small bouton">
+                            <a href="{{ path('admin_actu_show', { 'id': actu.id }) }}">Détails</a>
+                        </button>
+                        <button class="btn btn-small bouton">
+                            <a href="{{ path('admin_actu_edit', { 'id': actu.id }) }}">Modifier</a>
+                        </button>   
+                            <form action="{{ path('admin_actu_delete', { 'id': actu.id }) }}" method="post">
+                                <input type="hidden" name="_method" value="DELETE" />
+                                {{ form_widget(deleteForms[actu.id]) }}
+                                <button type="submit" class=" btn btn-small bouton">Supprimer</button>
+                            </form>            
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+{% endblock %}

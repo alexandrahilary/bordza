@@ -1,0 +1,62 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+
+<div id="container">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-2 border border-dark" style="padding:20px;margin-right:10px">
+            {% if app.user %}
+                BIENVENU SUR VOTRE COMPTE !
+                <div class="fos_user_user_show" style="margin-top:10px">
+                    <p>{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
+                    <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
+                    <a href="{{ path('fos_user_change_password') }}">Changer le mot de passe</a>
+                </div>
+                {% if app.user.hasRole('ROLE_ADMIN') %}
+                <div style="margin-top:50px">
+                    <p>VOUS POUVEZ ADMINISTRER VOTRE SITE :</p>
+                    <div>
+                        <a href="{{ path ('fos_user_registration_register') }}"> -> Gérer les Utilisateurs</a>
+                    </div>
+                    <div>
+                        <a href="{{ path ('admin_session_index') }}"> -> Gérer les Sessions</a>
+                    </div>
+                    <div>
+                        <a href="{{ path ('admin_inscription_index') }}"> -> Gérer les Inscriptions</a>
+                    </div>
+                    <div>
+                        <a href="{{ path ('admin_actu_index') }}"> -> Gérer les News</a>
+                    </div>
+                    <div>
+                        <a href="{{ path ('admin_catalogue_index') }}"> -> Gérer le Catalogue</a>
+                    </div>
+                    <div>
+                        <a href="{{ path ('admin_video_index') }}"> -> Gérer les Vidéos</a>
+                    </div>
+                    <div>
+                        <a href="{{ path ('admin_contact_index') }}"> -> Gérer les Messages</a>
+                    </div>
+                </div>
+                {% endif %}
+                
+            </div>
+            <div class="col-6">
+                <div class="row justify-content-center" style="background-image:url('{{ asset('assets/images/skateschool/skateschool_darwin_diy.jpg') }}');height:27vh;background-repeat: no-repeat;background-size:cover;background-position: center;" >
+                <h3 class="align-self-center text-light" style="font-size:4em;font-weight:bolder">MES INSCRIPTIONS : </h3>
+                </div>
+                
+                {% for inscription in user.inscriptions %} 
+                <div class="row align-items-center" style="margin-top:20px">
+                    <div class="col-2">
+                        <img class="img-fluid col-12" src="{{ asset('assets/images/logo/logo-bordza.png') }}">
+                    </div>
+                    <div class="col-6">
+                        <h3>Nom de l'élève inscrit : {{ inscription.nom | title }} {{ inscription.prenom | title }}.</h3>
+                        <p>inscrit pour : {{ inscription.sessionId }}, Inscription {% if inscription.valide %}VALIDÉE{% else %}EN ATTENTE{% endif %}</p>
+                    </div>
+                </div>
+                {% endfor %}
+                
+            {% endif %}
+            </div>
+        </div>

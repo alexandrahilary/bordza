@@ -1,0 +1,109 @@
+{% include 'nav.html.twig' %}
+
+{% block body %}
+<div class="container-fluid identifiant justify-content-center">
+
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <div class="row justify-content-center">
+                <h1>Modifier la Session</h1>
+            </div>
+        </div>
+        <div class="col-5 border border-dark" style="padding:20px">
+            <div class="col">
+                <img class="img-fluid" src="{{ asset('uploads/images/' ~ session.image ) }}">
+                <a href="{{ path('admin_image_edit_image', { 'id': session.image.id })}}">-> changer l'image : </a>
+            </div>
+            {{ form_start(edit_form)}}
+
+            <!-- formules -->
+                <div class="form">
+                    <div class="input-group ">
+                        {{ form_label(edit_form.formules, 'Choisir une formule', {'label_attr' : {'class' : 'input-group-text bg-dark text-light'}} ) }}
+                        {{ form_errors(edit_form.formules) }}
+                        {{ form_widget(edit_form.formules, {'attr': {'class':'custom-select btn-dark'}}) }}
+                    </div>
+                </div>
+                <a href="{{ path('admin/formule_new') }}">-> Ajouter une formule</a>
+
+            <!-- disciplines -->
+                <div class="form">
+                    <div class="input-group ">
+                        {{ form_label(edit_form.disciplines, 'Choisir une discipline : ', {'label_attr' : {'class' : 'input-group-text bg-dark text-light'}}) }}
+                        {{ form_errors(edit_form.disciplines) }}
+                        {{ form_widget(edit_form.disciplines, {'attr': {'class':'custom-select btn-dark'}}) }}
+                    </div>
+                </div>
+                <a href="{{ path('admin_discipline_new') }}">-> Ajouter une discipline</a>
+
+            <!-- titre -->
+                <div class="form">
+                    <div class="input-group">
+                        {{ form_label(edit_form.titreSession, 'Titre de la Session : ',{'label_attr' : {'class' : 'input-group-text bg-dark text-light'}}) }}
+                        {{ form_errors(edit_form.titreSession) }}
+                        {{ form_widget(edit_form.titreSession, {'attr': {'class':'form-control '}}) }}
+                    </div>
+                </div>
+
+            <!-- dates -->
+                <div class="form">
+                    <div class="input-group">
+                        {{ form_label(edit_form.dateSession, 'Dates de la Session : ',{'label_attr' : {'class' : 'input-group-text bg-dark text-light'}}) }}
+                        {{ form_errors(edit_form.dateSession) }}
+                        {{ form_widget(edit_form.dateSession, {'attr': {'class':'form-control '}}) }}
+                    </div>
+                </div>
+
+            <!-- description -->
+                <div class="form">
+                    <div class="input-group">
+                        {{ form_label(edit_form.descriptionSession, 'Description de la session : ',{'label_attr' : {'class' : 'input-group-text bg-dark text-light'}}) }}
+                        {{ form_errors(edit_form.descriptionSession) }}
+                        {{ form_widget(edit_form.descriptionSession, {'attr': {'class':'form-control textarea'}}) }}
+                    </div>
+                </div>
+
+            <!-- nbPlace -->
+                <div class="form">
+                    <div class="input-group">
+                        {{ form_label(edit_form.nbPlace, 'Nombre de place : ',{'label_attr' : {'class' : 'input-group-text bg-dark text-light'}}) }}
+                        {{ form_errors(edit_form.nbPlace) }}
+                        {{ form_widget(edit_form.nbPlace, {'attr': {'class':'form-control'}}) }}
+                    </div>
+                </div>
+
+            <!-- prix -->
+                <div class="form">
+                    <div class="input-group">
+                        {{ form_label(edit_form.prix, 'Prix : ',{'label_attr' : {'class' : 'input-group-text bg-dark text-light'}}) }}
+                        {{ form_errors(edit_form.prix) }}
+                        {{ form_widget(edit_form.prix, {'attr': {'class':'form-control'}}) }}
+                    </div>
+                </div>
+
+            <div class="form bouton">
+                <div class="row justify-content-center">
+                    {{ form_widget(edit_form) }}
+                    <button class="btn btn-dark" type="submit" value="Edit">Enregistrer les modifications</button>
+                    {{ form_end(edit_form) }}
+                </div>
+            <div class="row justify-content-center">
+                <a href="{{ path('admin_session_index') }}"><- Revenir aux Sessions</a>
+            </div>
+            <div class="form bouton">
+                <div class="row justify-content-center">
+                    {{ form_start(delete_form) }}
+                        <button type="submit" class="btn btn-small">Supprimer</button>
+                    {{ form_end(delete_form) }}
+                </div>
+            </div>
+        </div>
+            
+    
+
+   
+            
+        
+
+
+{% endblock %}

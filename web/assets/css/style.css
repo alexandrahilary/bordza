@@ -1,0 +1,100 @@
+body{
+    background-color: rgb(255, 255, 255) !important;
+    color: rgb(70, 70, 70) !important;
+}
+#menu, #nav{
+    background-color: black;
+}
+h1{
+    margin-top:50px !important;
+}
+
+a{
+   color: rgb(158, 158, 158) !important; 
+}
+
+a:hover{
+    color:rgb(240, 142, 142) !important;
+    text-decoration-line: none !important;
+}
+.admin{
+    color:rgb(240, 142, 142) !important;
+}
+li{
+    list-style-type: none;
+}
+#login img{
+    margin-top: 50px;
+}
+.pages{
+    font-size: 2.5em;
+    font-weight: bolder;
+    color:rgb(255, 255, 255) !important;
+    
+}
+.en-tete{
+    border: 1px solid grey;
+    height: 50px;
+}
+.ligne{
+    margin: 50px;
+}
+.bg-ligne{
+    background-color: rgb(243, 243, 243);
+    padding:20px;
+}
+.retour-categories{
+    margin: 20px;
+}
+.description{
+    color: rgb(158, 158, 158);
+}
+.img-carousel{
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-position: center;
+    height:600px;
+}
+.identifiant{
+    margin-top:50px;
+}
+.form{
+    margin-top:10px;
+}
+::-webkit-input-placeholder{
+    font-style: italic;
+    color: rgb(158, 158, 158);
+    font-size: 0.9em;
+}
+.flash-success{
+    text-align: center;
+}
+hr{
+    width: 70%;
+    padding: 1px;
+    background-color: rgb(204, 204, 204);
+}
+.titre-stage{
+    text-decoration: black;
+    text-decoration-line: underline;
+    font-weight: bold;
+    padding:20px;
+    font-size: 1.5em;
+}
+.textarea{
+    
+    min-height: 200px;
+}
+.custom-file-label::after{
+    content: "Parcourir" !important;
+}
+.bouton{
+    margin:20px;
+}
+#appbundle_actu_date_time{
+    display:none;
+}
+.article{
+    margin-top: 20px;
+}
+  
