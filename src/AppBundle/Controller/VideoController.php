@@ -25,9 +25,15 @@ class VideoController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $videos = $em->getRepository('AppBundle:Video')->findAll();
+        $deleteForms = array();
+
+        foreach ($videos as $video){
+            $deleteForms[$video->getId()] = $this->createDeleteForm($video)->createView();
+        }
 
         return $this->render('video/index.html.twig', array(
             'videos' => $videos,
+            'deleteForms' => $deleteForms,
         ));
     }
 
@@ -57,21 +63,7 @@ class VideoController extends Controller
         ));
     }
 
-    /**
-     * Finds and displays a video entity.
-     *
-     * @Route("/{id}", name="admin_video_show")
-     * @Method("GET")
-     */
-    public function showAction(Video $video)
-    {
-        $deleteForm = $this->createDeleteForm($video);
-
-        return $this->render('video/show.html.twig', array(
-            'video' => $video,
-            'delete_form' => $deleteForm->createView(),
-        ));
-    }
+    
 
     /**
      * Displays a form to edit an existing video entity.
@@ -88,7 +80,7 @@ class VideoController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('admin_video_edit', array('id' => $video->getId()));
+            return $this->redirectToRoute('admin_video_index');
         }
 
         return $this->render('video/edit.html.twig', array(

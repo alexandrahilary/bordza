@@ -1,54 +1,47 @@
 {% include 'nav.html.twig' %}
 
 {% block body %}
-    <h1>Liste de Disciplines</h1>
-
-    <table style="border: 1px solid black; border-collapse: collpase;">
-        
-            <tr>
-                <th style="border: 1px solid black; border-collapse: collpase;">Id</th>
-                <th style="border: 1px solid black; border-collapse: collpase;">Nom de discipline</th>
-                <th style="border: 1px solid black; border-collapse: collpase;">Sessions</th>
-            </tr>
-        
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <h1>Mes Disciplines</h1>
+        <div class="w-100"></div> 
+            <a href="{{ path('admin_discipline_new') }}">
+                <img class="img-class top" src="{{ asset('assets/images/glyph/glyphicons-191-plus-sign.png') }}" style="margin-right:10px;">
+                <button class="btn btn-dark top" type="button">Ajouter une nouvelle discipline</button>
+            </a>
+    <div class="col-10">  
+        <div class="row justify-content-center">
         {% for discipline in disciplines %}
-            <tr>
-                <td style="border: 1px solid black; border-collapse: collpase;"><a href="{{ path('admin_discipline_show', { 'id': discipline.id }) }}">{{ discipline.id }}</a></td>
-           
-            
-                <td style="border: 1px solid black; border-collapse: collpase;">{{ discipline.nomDiscipline }}</td>
-            
-                <td style="border: 1px solid black; border-collapse: collpase;">
+            <div class="card col-4 top">
+                <div class="card-body">
+                <h5 class="card-title">{{ discipline.nomDiscipline }}</h5>
+                <h6 class="card-subtitle text-muted">Les sessions :</h6>
+                    <div class="top">
                 {% for session in discipline.sessions %} 
                    
-                    <ul><li>{{ session.titreSession }}</ul></li>
+                    <p>- {{ session.titreSession }}</p>
                       
                 {% endfor %}
-                </td>
-            
-               
+                    </div>
+                <div class="row">
                 
-                <td style="border: 1px solid black; border-collapse: collpase;">
-                    <ul>
-                        <li>
-                            <a href="{{ path('admin_discipline_show', { 'id': discipline.id }) }}">Détails</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('admin_discipline_edit', { 'id': discipline.id }) }}">Modifier</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('admin_discipline_delete', { 'id': discipline.id }) }}">Supprimer</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
+                    <a href="{{ path('admin_discipline_show', { 'id': discipline.id }) }}">
+                        <button type="submit" class="btn btn-small bouton">Détails</button>
+                    </a>
+                        
+                        
+                    <a href="{{ path('admin_discipline_edit', { 'id': discipline.id }) }}">
+                        <button type="submit" class="btn btn-small bouton">Modifier</button>
+                    </a>
+                       
+                    <form action="{{ path('admin_discipline_delete', { 'id': discipline.id }) }}" method="post">
+                        <input type="hidden" name="_method" value="DELETE" />
+                        {{ form_widget(deleteForms[discipline.id]) }}
+                        <button type="submit" class="btn btn-small bouton">Supprimer</button>
+                    </form>
+                </div>
+                </div>
+            </div>
         {% endfor %}
-        
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('admin_discipline_new') }}">Créer une nouvelle discipline</a>
-        </li>
-    </ul>
+        </div>
 {% endblock %}

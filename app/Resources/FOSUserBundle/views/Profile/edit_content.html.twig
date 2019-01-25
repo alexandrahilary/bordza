@@ -1,8 +1,26 @@
 {% trans_default_domain 'FOSUserBundle' %}
-
-{{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
-    {{ form_widget(form) }}
-    <div>
-        <input type="submit" value="{{ 'profile.edit.submit'|trans }}" />
+<div class="container-fluid identifiant">
+    <div class="row justify-content-center">
+        <div class="col-4 border border-dark border" style="padding:20px">
+            {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
+            <div class="form">
+            {{ form_label(form.email, 'Email',{'label_attr' : {'class' : ''}} ) }}
+            {{ form_errors(form.email) }}
+            {{ form_widget(form.email, {'attr': {'class':'form-control'}}) }}
+            </div>
+            <div class="form">
+            {{ form_label(form.username, 'Nom d\'utilisateur' ,{'label_attr' : {'class' : ''}}) }}
+            {{ form_errors(form.username) }}
+            {{ form_widget(form.username, {'attr': {'class':'form-control'}}) }}
+            </div>
+            <div class="form">
+            {{ form_label(form.current_password, 'Mot de passe' ,{'label_attr' : {'class' : ''}}) }}
+            {{ form_errors(form.current_password) }}
+            {{ form_widget(form.current_password, {'attr': {'class':'form-control'}}) }}
+            </div>
+                <button type="submit" value="{{ 'profile.edit.submit'|trans }}" class="btn btn-dark bouton">Enregistrer les modifications</button>
+            </div>
+            {{ form_end(form) }}
+        </div>
     </div>
-{{ form_end(form) }}
+</div>

@@ -38,38 +38,7 @@ class ImageController extends Controller
         ));
     }
 
-    /**
-     * Creates a new image entity.
-     *
-     * @Route("/new", name="admin_image_new")
-     * @Method({"GET", "POST"})
-     */
-    public function newAction(Request $request, FileUploader $fileUploader)
-    {
-        $image = new Image();
-        $form = $this->createForm('AppBundle\Form\ImageType', $image);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $file = $image->getPathImage();
-            $fileName = $fileUploader->upload($file);
-
-            $image->setPathImage($fileName);
-           
-
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($image);
-            $em->flush();
-
-            return $this->render('image/show.html.twig',array('image'=>$image));
-        }
-
-        return $this->render('image/new.html.twig', array(
-            'image' => $image,
-            'form' => $form->createView(),
-        ));
-    }
-
+    
     /**
      * Finds and displays a image entity.
      *

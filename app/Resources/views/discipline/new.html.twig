@@ -1,16 +1,27 @@
 {% include 'nav.html.twig' %}
 
 {% block body %}
-    <h1>Discipline creation</h1>
+<div class="container-fluid">
+    <div class="row justify-content-center">
+    <h1>NOUVELLE DISCIPLINE</h1>
+    </div>
+    <div class="row justify-content-center">
+    <div class="col-4 border border-dark top"> 
+        <div class="row justify-content-center"> 
+        
 
     {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
+        <div class="form">
+                    <div class="">
+                        {{ form_label(form.nomDiscipline, 'Nom de la Discipline : ') }}
+                        {{ form_errors(form.nomDiscipline) }}
+                        {{ form_widget(form.nomDiscipline, {'attr': {'class':'form-control '}}) }}
+                    </div>
+                </div>
+        <button class="btn btn-dark bouton" type="submit" value="Create" >Enregistrer la nouvelle discipline</button>
     {{ form_end(form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('admin_discipline_index') }}">Back to the list</a>
-        </li>
-    </ul>
+            <a class="text" href="{{ path('admin_discipline_index') }}"><- Retour à la liste des disciplines</a>
+    </div> 
+    </div> 
+    </div>
 {% endblock %}

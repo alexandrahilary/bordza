@@ -1,5 +1,5 @@
 body{
-    background-color: rgb(255, 255, 255) !important;
+    background-color: rgb(226, 226, 226) !important;
     color: rgb(70, 70, 70) !important;
 }
 #menu, #nav{
@@ -10,7 +10,7 @@ h1{
 }
 
 a{
-   color: rgb(158, 158, 158) !important; 
+   color: rgb(128, 128, 128) !important; 
 }
 
 a:hover{
@@ -68,6 +68,10 @@ li{
 }
 .flash-success{
     text-align: center;
+    margin:30px;
+    color:rgb(255, 255, 255);
+    background-color: black;
+    font-size:1.3em;
 }
 hr{
     width: 70%;
@@ -89,12 +93,77 @@ hr{
     content: "Parcourir" !important;
 }
 .bouton{
-    margin:20px;
+    margin:10px;
 }
-#appbundle_actu_date_time{
+#appbundle_actu_date_time, #appbundle_video_date_time{
     display:none;
 }
 .article{
     margin-top: 20px;
 }
-  
+.message{
+    margin-right: 10px;
+}
+.message-contenu{
+    margin-top: 30px;
+}
+.top{
+    margin-top: 30px;
+}
+.left{
+    margin-left:20px;
+}
+.contact{
+    border-radius: 20px;
+    background-color: rgb(241, 241, 241);
+    height: 10vh;
+    align-items: center;
+}
+.contact-edit{
+    border-radius: 20px;
+    background-color: rgb(241, 241, 241);
+    align-items: center;
+}
+.contact-show{
+    border-radius: 20px;
+    background-color: rgb(241, 241, 241);
+    padding: 20px;
+}
+.article{
+    border-radius: 20px;
+    background-color: rgb(255, 255, 255);
+    padding: 20px;
+}
+.text{
+    margin: 20px;
+}
+#appbundle_contact_traite, #appbundle_inscription_valide{
+    height: 25px;
+    width: 25px;
+    margin-left: 15px;
+}
+#remember_me{
+    height: 25px !important;
+    width: 25px !important;
+    margin-left: 15px !important;
+}
+.cache{
+    display:none;
+}
+.show{
+    display:block;
+}
+.hidden{
+    display:none;
+}
+.border{
+    border-radius:15px;
+    padding:20px;
+}
+iframe{
+    width: 640px !important;
+    height: 360px !important;
+}
+iframe p a{
+    display:none !important;
+}

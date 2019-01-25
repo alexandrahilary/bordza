@@ -9,7 +9,7 @@
                 <h1>Modifier la page de Catalogue</h1>
             </div>
         </div>
-    <div class="col-5 border border-dark" style="padding:20px">
+    <div class="col-5 border bg-white" style="padding:20px">
             <div class="row justify-content-center">
                 <img class="img-fluid" src="{{ asset('uploads/images/' ~ catalogue.image ) }}">
                 <div class="w-100"></div>
@@ -18,8 +18,8 @@
     {{ form_start(edit_form) }}
         <!-- titre -->
             <div class="form">
-                <div class="input-group ">
-                    {{ form_label(edit_form.titre, 'Titre de la page', {'label_attr' : {'class' : 'input-group-text bg-dark text-light'}} ) }}
+                <div class="">
+                    {{ form_label(edit_form.titre, 'Titre de la page') }}
                     {{ form_errors(edit_form.titre) }}
                     {{ form_widget(edit_form.titre, {'attr': {'class':'form-control '}}) }}
                 </div>

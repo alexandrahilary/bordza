@@ -1,16 +1,123 @@
 {% include 'nav.html.twig' %}
 
 {% block body %}
-    <h1>Contact creation</h1>
+<div class="container-fluid identifiant justify-content-center">
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <div class="row justify-content-center">
+                <h1>Envoyer un message</h1>
+            </div>
+        </div>
+        <div class="col-5">
+            <div class="row justify-content-center">
+    {{ form_start(form, {'attr': {'class':'col-12 '}}) }}
+            <!-- nom -->
+                <div class="form">
+                    <div class="">
+                        {{ form_label(form.nom, 'Nom :') }}
+                        {{ form_errors(form.nom) }}
+                        {{ form_widget(form.nom, {'attr': {'class':'form-control '}}) }}
+                    </div>
+                </div>
+            
+            <!-- prenom -->
+                <div class="form">
+                    <div class="">
+                        {{ form_label(form.prenom, 'Prénom : ') }}
+                        {{ form_errors(form.prenom) }}
+                        {{ form_widget(form.prenom, {'attr': {'class':'form-control '}}) }}
+                    </div>
+                </div>
 
-    <ul>
-        <li>
-            <a href="{{ path('admin_contact_index') }}">Back to the list</a>
-        </li>
-    </ul>
+            <!-- mail -->
+                <div class="form">
+                    <div class="">
+                        {{ form_label(form.mail, 'E-mail : ') }}
+                        {{ form_errors(form.mail) }}
+                        {{ form_widget(form.mail, {'attr': {'class':'form-control '}}) }}
+                    </div>
+                </div>
+            
+            <!-- objet -->
+                <div class="form">
+                    <div class="">
+                        {{ form_label(form.objet, 'Objet : ') }}
+                        {{ form_errors(form.objet) }}
+                        {{ form_widget(form.objet, {'attr': {'class':'form-control '}}) }}
+                    </div>
+                </div>
+
+            <!-- message -->
+                <div class="form">
+                    <div class="">
+                        {{ form_label(form.message, 'Message : ') }}
+                        {{ form_errors(form.message) }}
+                        {{ form_widget(form.message, {'attr': {'class':'form-control textarea'}}) }}
+                    </div>
+                </div>
+                <button class="btn btn-light bouton" id="ajouter" type="button">Joindre une image</button>
+                <!-- image -->
+                <!-- pathimage -->
+                <div class="form upload">
+                    <div class="input-group ">
+                        {{ form_label(form.image.pathimage, 'Choisir une image') }}
+                        {{ form_errors(form.image.pathimage) }}
+                        <div class="w-100"></div>
+                        {{ form_widget(form.image.pathimage, {'attr': {'class':'form-control-file"'}}) }}
+                    </div>
+                </div>
+                <!-- alt -->
+                <div class="form cache">
+                    <div class="">
+                        {{ form_label(form.image.alt, 'Description de l\'image / Référencement' ) }}
+                        {{ form_errors(form.image.alt) }}
+                        {{ form_widget(form.image.alt, {'attr': {'class':'form-control'}}) }}
+                    </div>
+                </div>
+                <!-- credit photo -->
+                    <div class="form cache">
+                        <div class="">
+                            {{ form_label(form.image.creditPhoto, 'Crédit Photo') }}
+                            {{ form_errors(form.image.creditPhoto) }}
+                            {{ form_widget(form.image.creditPhoto, {'attr': {'class':'form-control'}}) }}
+                        </div>
+                    </div>
+
+            <!-- traite -->
+                <div class="form text cache">
+                    <div class="">
+                        {{ form_label(form.traite, 'Marquer le message comme Traité') }}
+                        {{ form_errors(form.traite) }}
+                        {{ form_widget(form.traite) }}
+                    </div>
+                </div>
+        <div class="form bouton">
+                <div class="row justify-content-center">
+                    {{ form_widget(form) }}
+                    <button class="btn btn-dark" type="submit" value="Edit">Envoyer le Message</button>
+                    {{ form_end(form) }}
+                </div>
+            <div class="row justify-content-center text">
+                <a href="{{ path('admin_contact_index') }}"><- Revenir aux Messages</a>
+            </div>
+            
+{% endblock %}
+{% block javascripts %}
+<script>
+var imageUpload = document.getElementsByClassName('upload');
+var ajouter = document.getElementById('ajouter');
+
+for (var i=0; i<imageUpload.length; i++){
+    imageUpload[i].setAttribute("style","display:none");
+}
+
+
+ajouter.onclick = function (){
+    for (var i=0; i<imageUpload.length; i++){
+    imageUpload[i].setAttribute("style","display:block");
+    }
+    ajouter.setAttribute("style","display:none");
+}
+</script>
 {% endblock %}

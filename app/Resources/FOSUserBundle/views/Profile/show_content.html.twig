@@ -4,7 +4,7 @@
 <div id="container">
     <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-2 border border-dark" style="padding:20px;margin-right:10px">
+            <div class="col-2 border" style="padding:20px;margin-right:10px;background-color:white;border-radius:20px;">
             {% if app.user %}
                 BIENVENU SUR VOTRE COMPTE !
                 <div class="fos_user_user_show" style="margin-top:10px">
@@ -19,13 +19,16 @@
                         <a href="{{ path ('fos_user_registration_register') }}"> -> Gérer les Utilisateurs</a>
                     </div>
                     <div>
+                        <a href="{{ path ('admin_tarif_index') }}"> -> Gérer les Tarifs</a>
+                    </div>
+                    <div>
                         <a href="{{ path ('admin_session_index') }}"> -> Gérer les Sessions</a>
                     </div>
                     <div>
                         <a href="{{ path ('admin_inscription_index') }}"> -> Gérer les Inscriptions</a>
                     </div>
                     <div>
-                        <a href="{{ path ('admin_actu_index') }}"> -> Gérer les News</a>
+                        <a href="{{ path ('admin_actu_index') }}"> -> Gérer les Articles</a>
                     </div>
                     <div>
                         <a href="{{ path ('admin_catalogue_index') }}"> -> Gérer le Catalogue</a>

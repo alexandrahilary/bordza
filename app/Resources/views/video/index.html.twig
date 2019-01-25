@@ -1,49 +1,43 @@
 {% include 'nav.html.twig' %}
 
 {% block body %}
-    <h1>Videos list</h1>
-
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Titre</th>
-                <th>Contenu</th>
-                <th>Resume</th>
-                <th>Iframe</th>
-                <th>Auteur</th>
-                <th>Date</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <h1>MES VIDÉOS</h1>
+    </div>
+    <div class="row justify-content-center bouton">
+            <a href="{{ path('admin_video_new') }}">
+                <img class="img-class" src="{{ asset('assets/images/glyph/glyphicons-191-plus-sign.png') }}" style="margin-right:10px;">
+                <button class="btn btn-dark" type="button">Ajouter une nouvelle Vidéo</button>
+            </a>
+    </div>  
+    
         {% for video in videos %}
-            <tr>
-                <td><a href="{{ path('admin_video_show', { 'id': video.id }) }}">{{ video.id }}</a></td>
-                <td>{{ video.titre }}</td>
-                <td>{{ video.contenu }}</td>
-                <td>{{ video.resume }}</td>
-                <td><iframe width="560" height="315" src="{{ video.iframe }}"  frameborder="0" ></iframe></td>
-                <td>{{ video.auteur }}</td>
-                <td>{% if video.date %}{{ video.date|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('admin_video_show', { 'id': video.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('admin_video_edit', { 'id': video.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
+    <div class="row justify-content-center"> 
+        <div class="col-6 border bg-light top">  
+            <div class="row justify-content-center">
+                
+                <div>{{ video.titre }}</div>
+                <div class="top iframe">{{ video.iframe | raw }}</div>
+                <div class="col-12">{{ video.resume }}</div>
+                <div class="col-12">{{ video.contenu }}</div>
+                <div class="col-12">{{ video.auteur }}</div>
+                <div class="col-12">{% if video.date %}{{ video.date|date('d-m-Y') }}{% endif %}</div>
+                <div class="col-12">
+                    <div class="row">
+                        <a href="{{ path('admin_video_edit', { 'id': video.id }) }}">
+                            <button class="btn btn-small bouton" type="submit" value="Edit">Modifier</button>
+                        </a>
+                        <form action="{{ path('admin_video_delete', { 'id': video.id }) }}" method="post">
+                            <input type="hidden" name="_method" value="DELETE" />
+                            {{ form_widget(deleteForms[video.id]) }}
+                            <button type="submit" class="btn btn-small bouton">Supprimer</button>
+                        </form> 
+                    </div>
+                </div>
+           
+            </div>
+        </div>
+    </div>                    
         {% endfor %}
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('admin_video_new') }}">Create a new video</a>
-        </li>
-    </ul>
 {% endblock %}

@@ -1,21 +1,94 @@
 {% include 'nav.html.twig' %}
 
 {% block body %}
-    <h1>Modifier les Inscriptions</h1>
+ <div class="container-fluid identifiant justify-content-center">
 
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <div class="row justify-content-center">
+                <h1>NOUVELLE INSCRIPTION</h1>
+            </div>
+        </div>
+        <div class="col-3 border border-dark top">
+            <div class="row justify-content-center">
+                <div class="col-11">
     {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Modifier" />
-    {{ form_end(edit_form) }}
+            <!-- sessionId -->
+                <div class="form">
+                    <div class="">
+                        {{ form_label(edit_form.sessionId, ' Choisir une session ') }}
+                        {{ form_errors(edit_form.sessionId) }}
+                        {{ form_widget(edit_form.sessionId, {'attr': {'class':'custom-select'}}) }}
+                    </div>
+                </div>
+            <!-- nom -->
+                <div class="form">
+                    <div class="">
+                        {{ form_label(edit_form.nom, 'Nom de l\'élève  ') }}
+                        {{ form_errors(edit_form.nom) }}
+                        {{ form_widget(edit_form.nom, {'attr': {'class':'form-control '}}) }}
+                    </div>
+                </div>
 
-    <ul>
-        <li>
-            <a href="{{ path('admin_inscription_index') }}">Retourne à la liste d'inscription</a>
-        </li>
-        <li>
+            <!-- prenom -->
+                <div class="form">
+                    <div class="">
+                        {{ form_label(edit_form.prenom, ' Prénom de l\'élève ') }}
+                        {{ form_errors(edit_form.prenom) }}
+                        {{ form_widget(edit_form.prenom, {'attr': {'class':'form-control'}}) }}
+                    </div>
+                </div>
+
+            <!-- age -->
+                <div class="form">
+                    <div class="">
+                        {{ form_label(edit_form.age, ' Age de l\'élève ') }}
+                        {{ form_errors(edit_form.age) }}
+                        {{ form_widget(edit_form.age, {'attr': {'class':'form-control'}}) }}
+                    </div>
+                </div>
+
+            <!-- tel -->
+                <div class="form">
+                    <div class="">
+                        {{ form_label(edit_form.tel, ' Téléphone de l\'élève ou du responsable légal ') }}
+                        {{ form_errors(edit_form.tel) }}
+                        {{ form_widget(edit_form.tel, {'attr': {'class':'form-control'}}) }}
+                    </div>
+                </div>
+            
+            <!-- userId -->
+                <div class="text">Inscrit par : {{ inscription.userId }}</div>
+        <div class="row justify-content-center">
+            <!-- valide -->
+                <div class="form text">
+                    <div class="">
+                        {{ form_label(edit_form.valide, ' Résérvation Validée ') }}
+                        {{ form_errors(edit_form.valide) }}
+                        {{ form_widget(edit_form.valide) }}
+                    </div>
+                </div>
+        </div>
+        <div class="w-100"></div>
+        <div class="row justify-content-center">
+        <button class="btn btn-dark bouton" type="submit" value="Créer" >Enregistrer les modifications</button>
+        <div class="w-100"></div>
+    {{ form_end(edit_form) }}
+            <div class="w-100"></div>
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+            <button class="btn btn-light bouton" type="submit" value="Delete">Supprimer</button>
             {{ form_end(delete_form) }}
-        </li>
-    </ul>
+        </div>
+        <div class="w-100"></div>
+        <div class="row justify-content-center">
+            <a href="{{ path('admin_inscription_index') }}" class="text"><- Retour aux d'Inscriptions</a>
+        
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+            
+        
 {% endblock %}

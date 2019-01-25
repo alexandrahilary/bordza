@@ -1,21 +1,34 @@
 {% include 'nav.html.twig' %}
 
 {% block body %}
-    <h1>Discipline edit</h1>
+<div class="container-fluid">
+    <div class="row justify-content-center">
+    <h1>MODIFIER LA DISCIPLINE</h1>
+    </div>
+    <div class="row justify-content-center">
+    <div class="col-4 border border-dark top"> 
+        <div class="row justify-content-center"> 
+        
 
     {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
+        <div class="form">
+                    <div class="">
+                        {{ form_label(edit_form.nomDiscipline, 'Nom de la Discipline : ') }}
+                        {{ form_errors(edit_form.nomDiscipline) }}
+                        {{ form_widget(edit_form.nomDiscipline, {'attr': {'class':'form-control '}}) }}
+                    </div>
+                </div>
+        <button class="btn btn-dark bouton" type="submit" value="Edit" >Enregistrer les modifications</button>
     {{ form_end(edit_form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('admin_discipline_index') }}">Back to the list</a>
-        </li>
-        <li>
+            <div class="w-100"></div>
+    
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+                <button class="btn btn-light boutton" type="submit" value="Delete">Supprimer</button>
             {{ form_end(delete_form) }}
-        </li>
-    </ul>
+            <div class="w-100"></div>
+        
+            <a class="text" href="{{ path('admin_discipline_index') }}"><- Retour à la liste des disciplines</a>
+    </div> 
+    </div> 
+    </div>
 {% endblock %}

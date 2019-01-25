@@ -6,14 +6,10 @@
 {% endblock %}
 
 {% block body_text %}
-<div class="container-fluid">
-<div class="row justify-content-center">
-<div class="col-10 border border-dark">
+
 {% autoescape false %}
 {{ 'registration.email.message'|trans({'%username%': user.username, '%confirmationUrl%': confirmationUrl}) }}
 {% endautoescape %}
-</div>
-</div>
-</div>
+
 {% endblock %}
 {% block body_html %}{% endblock %}

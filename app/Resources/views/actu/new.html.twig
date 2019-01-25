@@ -15,8 +15,8 @@
 
     <!-- titre -->
         <div class="form">
-            <div class="input-group ">
-                {{ form_label(form.titre, 'Titre de la news', {'label_attr' : {'class' : 'input-group-text bg-dark text-light'}} ) }}
+            <div class="">
+                {{ form_label(form.titre, 'Titre de la news') }}
                 {{ form_errors(form.titre) }}
                 {{ form_widget(form.titre, {'attr': {'class':'form-control'}}) }}
             </div>
@@ -24,8 +24,8 @@
     
     <!-- contenu -->
         <div class="form">
-            <div class="input-group ">
-                {{ form_label(form.contenu, 'Contenu de la news', {'label_attr' : {'class' : 'input-group-text bg-dark text-light'}} ) }}
+            <div class="">
+                {{ form_label(form.contenu, 'Contenu de la news') }}
                 {{ form_errors(form.contenu) }}
                 {{ form_widget(form.contenu, {'attr': {'class':'form-control textarea'}}) }}
             </div>
@@ -33,8 +33,8 @@
 
     <!-- resume -->
         <div class="form">
-            <div class="input-group ">
-                {{ form_label(form.resume, 'Résumé de la news', {'label_attr' : {'class' : 'input-group-text bg-dark text-light'}} ) }}
+            <div class="">
+                {{ form_label(form.resume, 'Résumé de la news' ) }}
                 {{ form_errors(form.resume) }}
                 {{ form_widget(form.resume, {'attr': {'class':'form-control textarea'}}) }}
             </div>
@@ -43,24 +43,24 @@
     <!-- image -->
                 <!-- pathimage -->
                 <div class="form">
-                    <div class="input-group ">
-                        {{ form_label(form.imageId.pathimage, 'Choisir une image', {'label_attr' : {'class' : 'custom-file-label '}} ) }}
+                    <div class="">
+                        {{ form_label(form.imageId.pathimage, 'Choisir une image') }}
                         {{ form_errors(form.imageId.pathimage) }}
-                        {{ form_widget(form.imageId.pathimage, {'attr': {'class':''}}) }}
+                        {{ form_widget(form.imageId.pathimage ) }}
                     </div>
                 </div>
                 <!-- alt -->
                 <div class="form">
-                    <div class="input-group ">
-                        {{ form_label(form.imageId.alt, '', {'label_attr' : {'class' : 'input-group-text bg-dark text-light'}} ) }}
+                    <div class="">
+                        {{ form_label(form.imageId.alt, 'Description de l\'image / référencement' ) }}
                         {{ form_errors(form.imageId.alt) }}
                         {{ form_widget(form.imageId.alt, {'attr': {'class':'form-control'}}) }}
                     </div>
                 </div>
                 <!-- credit photo -->
                         <div class="form">
-                            <div class="input-group ">
-                                {{ form_label(form.imageId.creditPhoto, '', {'label_attr' : {'class' : 'input-group-text bg-dark text-light'}} ) }}
+                            <div class=" ">
+                                {{ form_label(form.imageId.creditPhoto, 'Credit Photo' ) }}
                                 {{ form_errors(form.imageId.creditPhoto) }}
                                 {{ form_widget(form.imageId.creditPhoto, {'attr': {'class':'form-control'}}) }}
                             </div>
@@ -68,8 +68,8 @@
 
     <!-- date -->
         <div class="form">
-            <div class="input-group ">
-                {{ form_label(form.date, 'Date', {'label_attr' : {'class' : 'input-group-text bg-dark text-light'}} ) }}
+            <div class="">
+                {{ form_label(form.date, 'Date' ) }}
                 {{ form_errors(form.date) }}
                 {{ form_widget(form.date) }}
             </div>
@@ -79,7 +79,7 @@
             <div class="row justify-content-center">
                 <button type="submit" class="btn btn-dark">Enregistrer cette News</button>
             </div>
-            <div class="row justify-content-center">
+            <div class="row justify-content-center text">
                 <a href="{{ path('admin_actu_index') }}"><- Revenir aux News</a>
             </div>
         </div>

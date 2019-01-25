@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
     <h1>Pages du Catalogue</h1>
     </div>
-    <div class="row justify-content-center">
+    <div class="row justify-content-center bouton">
             <a href="{{ path('admin_catalogue_new') }}">
                 <img class="img-class" src="{{ asset('assets/images/glyph/glyphicons-191-plus-sign.png') }}" style="margin-right:10px;">
                 <button class="btn btn-dark" type="button">Ajouter une nouvelle page au Catalogue</button>
@@ -15,13 +15,10 @@
         <div class="row justify-content-center text-center ligne">
                 <div class="col-4"><h4>{{ catalogue.titre | upper }}</h4></div>
                 <div class="w-100"></div>
-                <div class="col-5"><img class="img-fluid" src="{{ asset('uploads/images/' ~ catalogue.image ) }}"></div>
+                <div class="col-5"><img class="img-fluid col-12" src="{{ asset('uploads/images/' ~ catalogue.image ) }}"></div>
                 <div class="w-100"></div>
                 <div class="bouton">
-                    <button class="btn btn-small">
-                        <a href="{{ path('admin_catalogue_show', { 'id': catalogue.id }) }}">Détails</a>
-                    </button>
-                    <button class="btn btn-small">
+                    <button class="btn btn-light">
                         <a href="{{ path('admin_catalogue_edit', { 'id': catalogue.id }) }}">Modifier</a>
                     </button>
                 </div>

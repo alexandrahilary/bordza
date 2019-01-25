@@ -57,10 +57,10 @@ class Contact
     private $message;
 
     /**
-     * @var string
+     * @var \AppBundle\Entity\Image
      *
      * @ORM\OneToOne(targetEntity=\AppBundle\Entity\Image::class, cascade= {"persist", "remove"})
-     * @ORM\Column(name="image", type="string", length=255)
+     * @ORM\JoinColumn(name="image", referencedColumnName="id", nullable=true)
      */
     private $image;
 
@@ -205,8 +205,8 @@ class Contact
     /**
      * Set image
      *
-     * @param string $image
-     *
+     * @param \AppBundle\Entity\Image $image
+     * 
      * @return Contact
      */
     public function setImage($image)
@@ -219,7 +219,7 @@ class Contact
     /**
      * Get image
      *
-     * @return string
+     * @return \AppBundle\Entity\Image
      */
     public function getImage()
     {

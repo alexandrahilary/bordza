@@ -71,21 +71,7 @@ class CatalogueController extends Controller
         ));
     }
 
-    /**
-     * Finds and displays a catalogue entity.
-     *
-     * @Route("/{id}", name="admin_catalogue_show")
-     * @Method("GET")
-     */
-    public function showAction(Catalogue $catalogue)
-    {
-        $deleteForm = $this->createDeleteForm($catalogue);
-
-        return $this->render('catalogue/show.html.twig', array(
-            'catalogue' => $catalogue,
-            'delete_form' => $deleteForm->createView(),
-        ));
-    }
+    
 
     /**
      * Displays a form to edit an existing catalogue entity.

@@ -5,25 +5,23 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use AppBundle\Form\ImageType;
-use AppBundle\Entity\Image;
 
-class ActuType extends AbstractType
+
+class ContactType2 extends AbstractType
 {
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('titre')->add('contenu')->add('resume')->add('date')->add('imageId', ImageType::class);
+        $builder->add('traite');
     }/**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Actu',
-            'image' => 'AppBundle\Entity\Image'
+            'data_class' => 'AppBundle\Entity\Contact'
         ));
     }
 
@@ -32,7 +30,7 @@ class ActuType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'appbundle_actu';
+        return 'appbundle_contact';
     }
 
 

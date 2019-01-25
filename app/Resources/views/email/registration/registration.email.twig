@@ -1,11 +1,27 @@
 {% block subject %}Confirmation d'inscription{% endblock subject %}
 {% block body_text %}
-    
-        Bonjour {{ user.username }}
-        Ceci est un email afin de confirmer ton inscription : 
-        cliques sur le lien suivant : 
-        {{ confirmationUrl }}
 
-        Cordialement.
 {% endblock body_text %}
+{% block body_html %}
+
+<div style="background-color:black;color:white;border-radius:20px;justify-content:center;width:50vw">
+        <div style="width:100%;padding:30px;text-align:center;font-size:1.2em;justify-content:center;">
+        <div style="margin:10px;">Bonjour {{ user.username | capitalize }}.</div><br/>
+        <div style="margin:10px;">Ceci est un email de confirmation de ton inscription.</div> <br/>
+        <div style="margin:10px;">Afin de valider la création de ton compte, clique sur le lien suivant : </div><br/>
+        
+        </div>
+        <div style="width:100%;padding:30px;text-align:center;justify-content:center;">
+        <a style="color:white;font-size:1.3em;"href="{{ confirmationUrl }}">-> Confirmer mon compte</a><br/>
+        </div>
+        <div style="width:100%;padding:30px;text-align:center;justify-content:center;">
+        Cordialement.<br/>
+        L'équipe Bordza.
+        </div>
+        <div style="width:100%;padding:30px;text-align:center;justify-content:center;">
+        <img src="http://127.0.0.1:8000/assets/images/logo/bordza-blanc.png">
+        </div>
+        
+</div>
+{% endblock body_html %}
    

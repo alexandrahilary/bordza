@@ -11,15 +11,15 @@
         </div>
         <div class="col-5 border border-dark" style="padding:20px">
             <div class="col">
-                <img class="img-fluid" src="{{ asset('uploads/images/' ~ session.image ) }}">
-                <a href="{{ path('admin_image_edit_image', { 'id': session.image.id })}}">-> changer l'image : </a>
+                <img class="img-fluid col-12" src="{{ asset('uploads/images/' ~ session.image ) }}">
+                <a href="{{ path('admin_image_edit_image', { 'id': session.image.id })}}">-> changer l'image </a>
             </div>
             {{ form_start(edit_form)}}
 
             <!-- formules -->
                 <div class="form">
-                    <div class="input-group ">
-                        {{ form_label(edit_form.formules, 'Choisir une formule', {'label_attr' : {'class' : 'input-group-text bg-dark text-light'}} ) }}
+                    <div class="">
+                        {{ form_label(edit_form.formules, 'Choisir une formule') }}
                         {{ form_errors(edit_form.formules) }}
                         {{ form_widget(edit_form.formules, {'attr': {'class':'custom-select btn-dark'}}) }}
                     </div>
@@ -28,8 +28,8 @@
 
             <!-- disciplines -->
                 <div class="form">
-                    <div class="input-group ">
-                        {{ form_label(edit_form.disciplines, 'Choisir une discipline : ', {'label_attr' : {'class' : 'input-group-text bg-dark text-light'}}) }}
+                    <div class="">
+                        {{ form_label(edit_form.disciplines, 'Choisir une discipline  ') }}
                         {{ form_errors(edit_form.disciplines) }}
                         {{ form_widget(edit_form.disciplines, {'attr': {'class':'custom-select btn-dark'}}) }}
                     </div>
@@ -38,8 +38,8 @@
 
             <!-- titre -->
                 <div class="form">
-                    <div class="input-group">
-                        {{ form_label(edit_form.titreSession, 'Titre de la Session : ',{'label_attr' : {'class' : 'input-group-text bg-dark text-light'}}) }}
+                    <div class="">
+                        {{ form_label(edit_form.titreSession, 'Titre de la Session  ') }}
                         {{ form_errors(edit_form.titreSession) }}
                         {{ form_widget(edit_form.titreSession, {'attr': {'class':'form-control '}}) }}
                     </div>
@@ -56,8 +56,8 @@
 
             <!-- description -->
                 <div class="form">
-                    <div class="input-group">
-                        {{ form_label(edit_form.descriptionSession, 'Description de la session : ',{'label_attr' : {'class' : 'input-group-text bg-dark text-light'}}) }}
+                    <div class="">
+                        {{ form_label(edit_form.descriptionSession, 'Description de la session  ') }}
                         {{ form_errors(edit_form.descriptionSession) }}
                         {{ form_widget(edit_form.descriptionSession, {'attr': {'class':'form-control textarea'}}) }}
                     </div>
@@ -65,8 +65,8 @@
 
             <!-- nbPlace -->
                 <div class="form">
-                    <div class="input-group">
-                        {{ form_label(edit_form.nbPlace, 'Nombre de place : ',{'label_attr' : {'class' : 'input-group-text bg-dark text-light'}}) }}
+                    <div class="">
+                        {{ form_label(edit_form.nbPlace, 'Nombre de place ') }}
                         {{ form_errors(edit_form.nbPlace) }}
                         {{ form_widget(edit_form.nbPlace, {'attr': {'class':'form-control'}}) }}
                     </div>
@@ -74,8 +74,8 @@
 
             <!-- prix -->
                 <div class="form">
-                    <div class="input-group">
-                        {{ form_label(edit_form.prix, 'Prix : ',{'label_attr' : {'class' : 'input-group-text bg-dark text-light'}}) }}
+                    <div class="">
+                        {{ form_label(edit_form.prix, 'Prix ') }}
                         {{ form_errors(edit_form.prix) }}
                         {{ form_widget(edit_form.prix, {'attr': {'class':'form-control'}}) }}
                     </div>
@@ -84,16 +84,16 @@
             <div class="form bouton">
                 <div class="row justify-content-center">
                     {{ form_widget(edit_form) }}
-                    <button class="btn btn-dark" type="submit" value="Edit">Enregistrer les modifications</button>
+                    <button class="btn btn-dark bouton" type="submit" value="Edit">Enregistrer les modifications</button>
                     {{ form_end(edit_form) }}
                 </div>
-            <div class="row justify-content-center">
+            <div class="row justify-content-center text">
                 <a href="{{ path('admin_session_index') }}"><- Revenir aux Sessions</a>
             </div>
             <div class="form bouton">
                 <div class="row justify-content-center">
                     {{ form_start(delete_form) }}
-                        <button type="submit" class="btn btn-small">Supprimer</button>
+                        <button type="submit" class="btn btn-light bouton">Supprimer</button>
                     {{ form_end(delete_form) }}
                 </div>
             </div>

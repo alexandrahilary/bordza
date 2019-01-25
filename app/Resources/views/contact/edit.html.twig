@@ -1,21 +1,39 @@
 {% include 'nav.html.twig' %}
 
 {% block body %}
-    <h1>Contact edit</h1>
+<div class="container-fluid identifiant justify-content-center">
 
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <div class="row justify-content-center">
+                <h1>Traiter le message</h1>
+            </div>
+        </div>
+        <div class="col-6 contact-edit">
+            <div class="row justify-content-center">
     {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('admin_contact_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+            <!-- traite -->
+                <div class="form text">
+                    <div class="input-group">
+                        {{ form_label(edit_form.traite, 'Marquer le message comme Traité') }}
+                        {{ form_errors(edit_form.traite) }}
+                        {{ form_widget(edit_form.traite) }}
+                    </div>
+                </div>
+        <div class="form bouton">
+                <div class="row justify-content-center">
+                    {{ form_widget(edit_form) }}
+                    <button class="btn btn-dark" type="submit" value="Edit">Enregistrer les modifications</button>
+                    {{ form_end(edit_form) }}
+                </div>
+            <div class="row justify-content-center text">
+                <a href="{{ path('admin_contact_index') }}"><- Revenir aux Messages</a>
+            </div>
+            <div class="form bouton">
+                <div class="row justify-content-center">
+                    {{ form_start(delete_form) }}
+                        <button type="submit" class="btn btn-small">Supprimer</button>
+                    {{ form_end(delete_form) }}
+                </div>
+            </div>
 {% endblock %}

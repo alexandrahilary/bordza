@@ -1,51 +1,44 @@
 {% include 'nav.html.twig' %}
 
 {% block body %}
-    <h1>Contacts list</h1>
-
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>Prenom</th>
-                <th>Mail</th>
-                <th>Objet</th>
-                <th>Message</th>
-                <th>Image</th>
-                <th>Traite</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <h1>MES MESSAGES</h1>
+        <div class="w-100"></div>  
+    <div class="col-10">    
         {% for contact in contacts %}
-            <tr>
-                <td><a href="{{ path('admin_contact_show', { 'id': contact.id }) }}">{{ contact.id }}</a></td>
-                <td>{{ contact.nom }}</td>
-                <td>{{ contact.prenom }}</td>
-                <td>{{ contact.mail }}</td>
-                <td>{{ contact.objet }}</td>
-                <td>{{ contact.message }}</td>
-                <td><a href="" ><img src="{{ asset('uploads/images/' ~ contact.image) }}">{{ contact.image }}</a></td>
-                <td>{% if contact.traite %}Yes{% else %}No{% endif %}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('admin_contact_show', { 'id': contact.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('admin_contact_edit', { 'id': contact.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
+    <div class="row contact top justify-content-center">
+        <div class="col-8">
+            <div class="row justify-content-start">
+                
+                <div class="message">De : {{ contact.nom | upper}}  {{ contact.prenom | capitalize}} </div>
+                <div class="message"> / {{ contact.mail }} </div>
+                <div class="message"> / Objet du message : {{ contact.objet }}</div>
+                
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="row justify-content-start contact">
+                <button class="btn btn-small bouton">
+                    <a href="{{ path('admin_contact_show', { 'id': contact.id }) }}">Lire</a>
+                </button>
+                <button class="btn btn-small bouton">
+                    <a href="{{ path('admin_contact_edit', { 'id': contact.id }) }}">Traiter</a>
+                </button>
+                <form action="{{ path('admin_contact_delete', { 'id': contact.id }) }}" method="post">
+                  <input type="hidden" name="_method" value="DELETE" />
+                  {{ form_widget(deleteForms[contact.id]) }}
+                  <button type="submit" class="btn btn-small bouton">
+                      Supprimer
+                  </button>
+                </form>
+                <div class="message">{% if contact.traite %}<span>TRAITÉ</span>{% else %}<span style="color:red">EN ATTENTE</span>{% endif %}</div>             
+            </div>
+        </div>
+    </div>
+        <div class="w-100"></div>
         {% endfor %}
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('admin_contact_new') }}">Create a new contact</a>
-        </li>
-    </ul>
+     </div>   
+    </div>
+</div>
 {% endblock %}

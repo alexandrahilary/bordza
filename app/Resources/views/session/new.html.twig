@@ -10,14 +10,14 @@
                 <h1>Nouvelle Session Bordza</h1>
             </div>
         </div>
-        <div class="col-5 border border-dark" style="padding:20px">
+        <div class="col-4 border border-dark top" style="padding:20px">
 
             {{ form_start(form, {'method': 'post', 'enctype' : 'multipart/form-data', 'action': path('admin_session_new') })}}
 
             <!-- formules -->
                 <div class="form">
-                    <div class="input-group ">
-                        {{ form_label(form.formules, 'Choisir une formule', {'label_attr' : {'class' : 'input-group-text bg-dark text-light'}} ) }}
+                    <div class="">
+                        {{ form_label(form.formules, 'Choisir une formule' ) }}
                         {{ form_errors(form.formules) }}
                         {{ form_widget(form.formules, {'attr': {'class':'custom-select btn-dark'}}) }}
                     </div>
@@ -26,8 +26,8 @@
 
             <!-- disciplines -->
                 <div class="form">
-                    <div class="input-group ">
-                        {{ form_label(form.disciplines, 'Choisir une discipline : ', {'label_attr' : {'class' : 'input-group-text bg-dark text-light'}}) }}
+                    <div class="">
+                        {{ form_label(form.disciplines, 'Choisir une discipline  ') }}
                         {{ form_errors(form.disciplines) }}
                         {{ form_widget(form.disciplines, {'attr': {'class':'custom-select btn-dark'}}) }}
                     </div>
@@ -36,8 +36,8 @@
 
             <!-- titre -->
                 <div class="form">
-                    <div class="input-group">
-                        {{ form_label(form.titreSession, 'Titre de la Session : ',{'label_attr' : {'class' : 'input-group-text bg-dark text-light'}}) }}
+                    <div class="">
+                        {{ form_label(form.titreSession, 'Titre de la Session  ') }}
                         {{ form_errors(form.titreSession) }}
                         {{ form_widget(form.titreSession, {'attr': {'class':'form-control '}}) }}
                     </div>
@@ -45,8 +45,8 @@
 
             <!-- dates -->
                 <div class="form">
-                    <div class="input-group">
-                        {{ form_label(form.dateSession, 'Dates de la Session : ',{'label_attr' : {'class' : 'input-group-text bg-dark text-light'}}) }}
+                    <div class="">
+                        {{ form_label(form.dateSession, 'Dates de la Session  ') }}
                         {{ form_errors(form.dateSession) }}
                         {{ form_widget(form.dateSession, {'attr': {'class':'form-control '}}) }}
                     </div>
@@ -54,8 +54,8 @@
 
             <!-- description -->
                 <div class="form">
-                    <div class="input-group">
-                        {{ form_label(form.descriptionSession, 'Description de la session : ',{'label_attr' : {'class' : 'input-group-text bg-dark text-light'}}) }}
+                    <div class="">
+                        {{ form_label(form.descriptionSession, 'Description de la session ') }}
                         {{ form_errors(form.descriptionSession) }}
                         {{ form_widget(form.descriptionSession, {'attr': {'class':'form-control textarea'}}) }}
                     </div>
@@ -63,17 +63,17 @@
 
             <!-- nbPlace -->
                 <div class="form">
-                    <div class="input-group">
-                        {{ form_label(form.nbPlace, 'Nombre de place : ',{'label_attr' : {'class' : 'input-group-text bg-dark text-light'}}) }}
+                    <div class="">
+                        {{ form_label(form.nbPlace, 'Nombre de place  ') }}
                         {{ form_errors(form.nbPlace) }}
-                        {{ form_widget(form.nbPlace, {'attr': {'class':'custom-select'}}) }}
+                        {{ form_widget(form.nbPlace, {'attr': {'class':'form-control'}}) }}
                     </div>
                 </div>
 
             <!-- prix -->
                 <div class="form">
-                    <div class="input-group">
-                        {{ form_label(form.prix, 'Prix : ',{'label_attr' : {'class' : 'input-group-text bg-dark text-light'}}) }}
+                    <div class="">
+                        {{ form_label(form.prix, 'Prix ') }}
                         {{ form_errors(form.prix) }}
                         {{ form_widget(form.prix, {'attr': {'class':'form-control'}}) }}
                     </div>
@@ -90,26 +90,26 @@
                 </div>
                 <!-- alt -->
                 <div class="form">
-                    <div class="input-group ">
-                        {{ form_label(form.image.alt, '', {'label_attr' : {'class' : 'input-group-text bg-dark text-light'}} ) }}
+                    <div class="">
+                        {{ form_label(form.image.alt, 'Description de l\'image / Référencement ') }}
                         {{ form_errors(form.image.alt) }}
                         {{ form_widget(form.image.alt, {'attr': {'class':'form-control'}}) }}
                     </div>
                 </div>
                 <!-- credit photo -->
-                        <div class="form">
-                            <div class="input-group ">
-                                {{ form_label(form.image.creditPhoto, '', {'label_attr' : {'class' : 'input-group-text bg-dark text-light'}} ) }}
-                                {{ form_errors(form.image.creditPhoto) }}
-                                {{ form_widget(form.image.creditPhoto, {'attr': {'class':'form-control'}}) }}
-                            </div>
-                        </div>
+                <div class="form">
+                    <div class="">
+                        {{ form_label(form.image.creditPhoto, 'Crédit Photo') }}
+                        {{ form_errors(form.image.creditPhoto) }}
+                        {{ form_widget(form.image.creditPhoto, {'attr': {'class':'form-control'}}) }}
+                    </div>
+                </div>
 
         <div class="form bouton">
             <div class="row justify-content-center">
-                <button type="submit" class="btn btn-dark">Enregistrer cette Session</button>
+                <button type="submit" class="btn btn-dark bouton">Enregistrer cette Session</button>
             </div>
-            <div class="row justify-content-center">
+            <div class="row justify-content-center texte">
                 <a href="{{ path('admin_session_index') }}"><- Revenir aux Sessions</a>
             </div>
         </div>

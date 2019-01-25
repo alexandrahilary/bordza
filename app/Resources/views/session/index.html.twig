@@ -5,16 +5,17 @@
     <div class="row justify-content-center">
         <h1>MES SESSIONS</h1>
     </div>
-    <div class="row justify-content-center">
+    <div class="row justify-content-center bouton">
             <a href="{{ path('admin_session_new') }}">
                 <img class="img-class" src="{{ asset('assets/images/glyph/glyphicons-191-plus-sign.png') }}" style="margin-right:10px;">
                 <button class="btn btn-dark" type="button">Ajouter une nouvelle Session</button>
             </a>
-    </div>   
+    </div>  
+
         {% for session in sessions %}
-            <div class="row justify-content-center ligne">
-                <div><a href="{{ path('admin_session_show', { 'id': session.id }) }}">{{ session.id }}</a></div>
-                
+        <div class="col-12 top">
+        <div class="row justify-content-center border bg-light">
+        
                 <div class="col-2"><img class="img-fluid" src="{{ asset('uploads/images/' ~ session.image.pathImage) }}"></div>
                 <div class="col-8">
                     <div class="row justify-content-start">
@@ -30,40 +31,34 @@
                                 <div class="col-7">
                                     <p>NOMBRE D'INSCRITS : <span class="nombreInscrits">{{ session.inscriptionCollection.snapshot | length }}</span></p>
                                     {% for inscription in session.inscriptionCollection.snapshot %} 
-                                    <p><img src="{{ asset('assets/images/glyph/glyphicons-635-teenager.png') }}"> : {{ inscription.prenom | capitalize }} / tel : {{ inscription.tel }}</p>{% endfor %}
+                                    <p class="border"><img src="{{ asset('assets/images/glyph/glyphicons-635-teenager.png') }}"> : {{ inscription.prenom | title }} / {{ inscription.age }}
+                                     
+                                     <div class="w-100"></div>Tel : {{ inscription.tel }} / email : {{ inscription.userId.email }}
+                                    </p>{% endfor %}
                                 </div>
                                 <div class="col-5">
-                                    <ul>
-                                    <li >
-                                        <button type="submit" class="col-6 btn btn-small">
-                                            <a href="{{ path('admin_session_show', { 'id': session.id }) }}">Détails</a>
-                                        </button>
-                                    </li>
-                                    <li>
-                                        <button type="submit" class="col-6 btn btn-small">
-                                            <a href="{{ path('admin_session_edit', { 'id': session.id }) }}">Modifier</a>
-                                        </button>
-                                    </li>
-                                    <li>    
+                                        <a href="{{ path('admin_session_edit', { 'id': session.id }) }}">
+                                            <button type="submit" class="btn btn-small bouton">Modifier</button>
+                                        </a>
                                         <form action="{{ path('admin_session_delete', { 'id': session.id }) }}" method="post">
                                           <input type="hidden" name="_method" value="DELETE" />
                                           {{ form_widget(deleteForms[session.id]) }}
-                                          <button type="submit" class="col-6 btn btn-small">
+                                          <button type="submit" class="btn btn-small bouton">
                                               Supprimer
                                           </button>
                                         </form>          
-                                    </li>    
-                                    </ul>
+                                    
                                 </div>
                             </div>
                             <div>{{ session.nbPlace }} places / Reste : {{ (session.nbPlace)-(session.inscriptionCollection.snapshot | length) }} places</span></div>
                             </div>
                         </div>
                     </div>
-                </div>   
+                </div> 
+                </div>  
                 <hr> 
         {% endfor %}
-    
+</div>   
 {% endblock %}
 {% block javascripts %}
 

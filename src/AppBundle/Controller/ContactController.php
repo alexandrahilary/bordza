@@ -29,16 +29,22 @@ class ContactController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-
+        $deleteForms = array();
         $contacts = $em->getRepository('AppBundle:Contact')->findAll();
+        foreach ($contacts as $contact){
+            $deleteForms[$contact->getId()] = $this->createDeleteForm($contact)->createView();
+        }
+
+        
 
         return $this->render('contact/index.html.twig', array(
             'contacts' => $contacts,
+            'deleteForms' => $deleteForms
         ));
     }
 
     /**
-     * Creates a new contact entity.
+     * Creates a new contact entity with upload image.
      *
      * @Route("/new", name="admin_contact_new")
      * @Method({"GET", "POST"})
@@ -50,11 +56,19 @@ class ContactController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $file = $contact->getImage();
-            $fileName = $fileUploader->upload($file);
-            $contact->setImage($fileName);
-
             $em = $this->getDoctrine()->getManager();
+            $filePath = $contact->getImage()->getPathImage();
+            if ($filePath){
+                $fileName = $fileUploader->upload($filePath);
+                $contact->getImage()->setPathImage($fileName);
+            }else{
+                $file = $contact->getImage();
+                $em->remove($file);
+                $contact->setImage(null);
+            }
+            
+
+            
             $em->persist($contact);
             $em->flush();
 
@@ -92,7 +106,7 @@ class ContactController extends Controller
     public function editAction(Request $request, Contact $contact)
     {
         $deleteForm = $this->createDeleteForm($contact);
-        $editForm = $this->createForm('AppBundle\Form\ContactType', $contact);
+        $editForm = $this->createForm('AppBundle\Form\ContactType2', $contact);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {

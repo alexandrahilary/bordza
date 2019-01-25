@@ -1,40 +1,52 @@
 {% include 'nav.html.twig' %}
 
 {% block body %}
-    <h1>Image edit</h1>
+    <div class="container-fluid identifiant justify-content-center">
 
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <div class="row justify-content-center">
+                <h1>MODIFIER L'IMAGE</h1>
+            </div>
+        </div>
+        <div class="col-4 border border-dark top" style="padding:20px">
+            
     {{ form_start(edit_form) }}
-    <div >
-    {{ form_label(edit_form.alt, 'alt' ) }}
-    {{ form_errors(edit_form.alt) }}
-    {{ form_widget(edit_form.alt) }}
-    </div>
-    <div >
-    {{ form_label(edit_form.creditPhoto, 'credit photo' ) }}
-    {{ form_errors(edit_form.creditPhoto) }}
-    {{ form_widget(edit_form.creditPhoto) }}
-    </div>
-    <div >
-    {{ form_label(edit_form.pathimage, 'choisir une image' ) }}
-    {{ form_errors(edit_form.pathimage) }}
-    {{ form_widget(edit_form.pathimage) }}
-    </div>
-    
-    
-    
-   
-        
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('admin_image_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+                <!-- pathimage -->
+                <div class="form">
+                    <div class="">
+                        {{ form_label(edit_form.pathimage, 'Choisir une image') }}
+                        {{ form_errors(edit_form.pathimage) }}
+                        {{ form_widget(edit_form.pathimage ) }}
+                    </div>
+                </div>
+                <!-- alt -->
+                <div class="form">
+                    <div class="">
+                        {{ form_label(edit_form.alt, 'Description de l\'image / référencement' ) }}
+                        {{ form_errors(edit_form.alt) }}
+                        {{ form_widget(edit_form.alt, {'attr': {'class':'form-control'}}) }}
+                    </div>
+                </div>
+                <!-- credit photo -->
+                        <div class="form">
+                            <div class=" ">
+                                {{ form_label(edit_form.creditPhoto, 'Credit Photo' ) }}
+                                {{ form_errors(edit_form.creditPhoto) }}
+                                {{ form_widget(edit_form.creditPhoto, {'attr': {'class':'form-control'}}) }}
+                            </div>
+                        </div>
+                <div class="form bouton">
+                    <div class="row justify-content-center">
+                        <div class="text">Attention à ne pas oublier de choisir une nouvelle image avant de valider le formulaire.</div>
+                        <div class="w-100"></div>
+                        <button class="btn btn-dark bouton"type="submit" value="Edit">Enregistrer les modifications</button>
+                        {{ form_end(edit_form) }}
+                    </div>
+                    <div class="row justify-content-center">
+                        {{ form_start(delete_form) }}
+                            <button class="btn btn-light bouton" type="submit" value="Delete">Supprimer</button>
+                        {{ form_end(delete_form) }}
+                    </div>
+                </div
 {% endblock %}

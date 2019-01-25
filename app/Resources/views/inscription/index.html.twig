@@ -1,55 +1,63 @@
 {% include 'nav.html.twig' %}
 
 {% block body %}
-    <h1>Liste d'Inscriptions </h1>
-    
-
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>Prenom</th>
-                <th>Age</th>
-                <th>Tel</th>
-                <th>Utilisateur</th>
-                <th>Session</th>
-                <th>Statut</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <h1>LES INSCRIPTIONS</h1>
+    </div>
+    <div class="row justify-content-center">
+            <a href="{{ path('admin_inscription_new') }}">
+                <img class="img-class" src="{{ asset('assets/images/glyph/glyphicons-191-plus-sign.png') }}" style="margin-right:10px;">
+                <button class="btn btn-dark bouton" type="button">Ajouter une nouvelle Inscription</button>
+            </a>
+    </div>   
+    <div class="row justify-content-center">
+    <div class=" col-11 top">
+        <div class="row justify-content-center">
         {% for inscription in inscriptions %}
-            <tr>
-                <td><a href="{{ path('admin_inscription_show', { 'id': inscription.id }) }}">{{ inscription.id }}</a></td>
-                <td>{{ inscription.nom }}</td>
-                <td>{{ inscription.prenom }}</td>
-                <td>{{ inscription.age }}</td>
-                <td>{{ inscription.tel }}</td>
-                <td>{{ inscription.userId }} , {{ inscription.userId.email }}</td>
-                <td>{{ inscription.sessionId }}</td>
-                <td>{% if inscription.valide %}VALIDÉE{% else %}EN ATTENTE{% endif %}</td>
-                <td>
+        
+            <div class="border bg-light col-3">
+            <div class="card-body text-center">
+                <div class="border bg-secondary text-light "><img src="{{ asset('/assets/images/glyph/glyphicons-635-teenager.png')}}"><span class="left"> {{ inscription.nom | upper }} {{ inscription.prenom | title }}</span></div>
+                <div class="text">{{ inscription.age }}</div>
+                <div class="text">{{ inscription.tel }}</div>
+                
+                <div class="w-100"></div>
+                <div class="text">{{ inscription.sessionId.formules }} / {{ inscription.sessionId.disciplines }}</div>
+                <div class="w-100"></div>
+                <div class="text text-success">{{ inscription.sessionId.titreSession }}</div>
+                <div class="w-100"></div>
+                <div class="text text-success">{{ inscription.sessionId.dateSession }}</div>
+                <div class="w-100"></div>
+                <div class="text">{{ inscription.sessionId.prix }}</div>
+                <div class="w-100"></div>
+                <div class="text">Inscrit par : {{ inscription.userId }}</div>
+                <div class="w-100"></div>
+                <div class="text">E-mail : {{ inscription.userId.email }}</div>
+                <div class="text">Inscription : {% if inscription.valide %}VALIDÉE{% else %}<span style="color:red">EN ATTENTE</span>{% endif %}</div>
+                <div>
                     <ul>
                         <li>
-                            <a href="{{ path('admin_inscription_show', { 'id': inscription.id }) }}">Détails</a>
+                            <a href="{{ path('admin_inscription_edit', { 'id': inscription.id }) }}">
+                            <button class="btn btn-small bouton">Modifier</button>
+                            </a>
                         </li>
                         <li>
-                            <a href="{{ path('admin_inscription_edit', { 'id': inscription.id }) }}">Modifier</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('admin_inscription_delete', { 'id': inscription.id }) }}">Supprimer</a>
+                            <form action="{{ path('admin_inscription_delete', { 'id': inscription.id }) }}" method="post">
+                              <input type="hidden" name="_method" value="DELETE" />
+                              {{ form_widget(deleteForms[inscription.id]) }}
+                              <button type="submit" class="btn btn-small bouton">
+                                  Supprimer
+                              </button>
+                            </form>
                         </li>
                     </ul>
-                </td>
-            </tr>
+                </div>
+            </div>
+            </div>
+            
         {% endfor %}
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('admin_inscription_new') }}">Créer une nouvelle inscription</a>
-        </li>
-    </ul>
+        </div>
+    </div>
+    </div>
 {% endblock %}

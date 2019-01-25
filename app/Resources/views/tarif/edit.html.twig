@@ -1,21 +1,68 @@
 {% include 'nav.html.twig' %}
 
 {% block body %}
-    <h1>Tarif edit</h1>
+<div class="container-fluid">
+    <div class="row justify-content-center">
+    <h1>MODIFIER MES TARIFS </h1>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-3 border bg-light top">
+    
 
     {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
+        <!-- prix -->
+                <div class="form">
+                    <div class="">
+                        {{ form_label(edit_form.uneHeure, 'Forfait 1 heure ') }}
+                        {{ form_errors(edit_form.uneHeure) }}
+                        {{ form_widget(edit_form.uneHeure, {'attr': {'class':'form-control'}}) }}
+                    </div>
+                </div>
+        <!-- prix -->
+                <div class="form">
+                    <div class="">
+                        {{ form_label(edit_form.cinqHeures, 'Forfait 5 heures ') }}
+                        {{ form_errors(edit_form.cinqHeures) }}
+                        {{ form_widget(edit_form.cinqHeures, {'attr': {'class':'form-control'}}) }}
+                    </div>
+                </div>
+        <!-- prix -->
+                <div class="form">
+                    <div class="">
+                        {{ form_label(edit_form.dixHeures, 'Forfait 10 heures ') }}
+                        {{ form_errors(edit_form.dixHeures) }}
+                        {{ form_widget(edit_form.dixHeures, {'attr': {'class':'form-control'}}) }}
+                    </div>
+                </div>
+        <!-- prix -->
+                <div class="form">
+                    <div class="">
+                        {{ form_label(edit_form.trimestre, 'Forfait trimestre ') }}
+                        {{ form_errors(edit_form.trimestre) }}
+                        {{ form_widget(edit_form.trimestre, {'attr': {'class':'form-control'}}) }}
+                    </div>
+                </div>
+        <!-- prix -->
+                <div class="form">
+                    <div class="">
+                        {{ form_label(edit_form.annee, 'Forfait annuel ') }}
+                        {{ form_errors(edit_form.annee) }}
+                        {{ form_widget(edit_form.annee, {'attr': {'class':'form-control'}}) }}
+                    </div>
+                </div>
+                <div class="row justify-content-center bouton">
+                    <button class="btn btn-dark bouton" type="submit" value="Edit">Enregistrer les modifications</button>
+                    <div class="w-100"></div>
+                
     {{ form_end(edit_form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('admin_tarif_index') }}">Back to the list</a>
-        </li>
-        <li>
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+                <button class="btn btn-small bouton" type="submit" value="Delete">Supprimer</button>
             {{ form_end(delete_form) }}
-        </li>
-    </ul>
+            <div class="w-100"></div>
+            <a href="{{ path('admin_tarif_index') }}" class="text"><- Retour vers mes Tarifs</a>
+            
+    </div>
+    </div>
+    </div>
+    </div>
 {% endblock %}

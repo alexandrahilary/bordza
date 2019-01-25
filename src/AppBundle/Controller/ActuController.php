@@ -78,22 +78,7 @@ class ActuController extends Controller
         ));
     }
 
-    /**
-     * Finds and displays a actu entity.
-     *
-     * @Route("/{id}", name="admin_actu_show")
-     * @Method("GET")
-     */
-    public function showAction(Actu $actu)
-    {
-        $deleteForm = $this->createDeleteForm($actu);
-
-        return $this->render('actu/show.html.twig', array(
-            'actu' => $actu,
-            'delete_form' => $deleteForm->createView(),
-        ));
-    }
-
+    
     /**
      * Displays a form to edit an existing actu entity.
      *

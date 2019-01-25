@@ -25,9 +25,15 @@ class DisciplineController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $disciplines = $em->getRepository('AppBundle:Discipline')->findAll();
+        $deleteForms = array();
+
+        foreach ($disciplines as $discipline){
+            $deleteForms[$discipline->getId()] = $this->createDeleteForm($discipline)->createView();
+        }
 
         return $this->render('discipline/index.html.twig', array(
             'disciplines' => $disciplines,
+            'deleteForms' => $deleteForms
         ));
     }
 

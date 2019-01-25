@@ -9,31 +9,33 @@
         </p>
     </div>
     <div class="row justify-content-center">
-        <h1>Formules</h1>
+        <h1>LES FORMULES</h1>
     </div>
-    <div class="row justify-content-center">
+    <div class="row justify-content-center bouton">
             <a href="{{ path('admin/formule_new') }}">
                 <img class="img-class" src="{{ asset('assets/images/glyph/glyphicons-191-plus-sign.png') }}" style="margin-right:10px;">
                 <button class="btn btn-dark" type="button">Ajouter une nouvelle Formule</button>
             </a>
-    </div>   
-    
+    </div> 
+    <div class="row justify-content-center">  
+    <div class="col-10">
         {% for formule in formules %}
-            <div class="row justify-content-center">
-                <div><a href="{{ path('admin/formule_show', { 'id': formule.id }) }}">{{ formule.id }}</a></div>
-                <div class="col-1">{{ formule.nomFormule }}</div>
-                <div class="col-8">
+            <div class="row justify-content-center border bg-white top">
+                <div class="col-2"><h2>{{ formule.nomFormule | upper }}</h2></div>
+                <div class="col-7">
                 
                     <div class="row">
                 
                         {% for session in formule.sessions %}
-                        <div class="col-3">
+                        <div class="border bg-light col-4">
+                        <div class="card-body">
                             <div class="col-12">{{ session.titreSession }}</div>
                             {% if formule.nomFormule != "COURS" %}
                             <div class="col-12"><img class="img-fluid"src="{{ asset('uploads/images/' ~ session.image.pathImage) }}"></div>
                             {% endif %}
+                            <div class="col-12">{{ session.dateSession }}</div>
                         </div>    
-                            
+                        </div>    
                         {% endfor %}
                     </div>
                 </div>
@@ -42,20 +44,24 @@
                 <div class="col-2 bouton">
                 <ul>
                 <li >
-                    <button type="submit" class="col-12 btn btn-small">
-                        <a href="{{ path('admin/formule_show', { 'id': formule.id }) }}">Détails</a>
-                    </button>
+                    
+                        <a href="{{ path('admin/formule_show', { 'id': formule.id }) }}">
+                        <button type="submit" class="col-12 btn btn-small bouton">Détails</button>
+                        </a>
+                    
                 </li >
                 <li >                
-                    <button type="submit" class="col-12 btn btn-small">
-                        <a href="{{ path('admin/formule_edit', { 'id': formule.id }) }}">Modifier</a>
-                    </button>
+                    
+                        <a href="{{ path('admin/formule_edit', { 'id': formule.id }) }}">
+                        <button type="submit" class="col-12 btn btn-small bouton">Modifier</button>
+                        </a>
+                    
                 </li >
                 <li >
                     <form action="{{ path('admin/formule_delete', { 'id':formule.id }) }}" method="post">
                       <input type="hidden" name="_method" value="DELETE" />
                       {{ form_widget(deleteForms[formule.id]) }}
-                      <button type="submit" class="col-12 btn btn-small">
+                      <button type="submit" class="col-12 btn btn-small bouton">
                           Supprimer
                       </button>
                     </form>
@@ -69,6 +75,8 @@
 
 <hr>   
         {% endfor %}
+        </div>
+        </div>
         </div>
     
       

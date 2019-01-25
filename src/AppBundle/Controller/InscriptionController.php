@@ -26,13 +26,16 @@ class InscriptionController extends Controller
         $em = $this->getDoctrine()->getManager();
         $repository = $em->getRepository('AppBundle:Inscription');
         $inscriptions = $repository->findAll();
-        
-        
-        
-        
 
+        $deleteForms = array();
+
+        foreach ($inscriptions as $inscription){
+            $deleteForms[$inscription->getId()] = $this->createDeleteForm($inscription)->createView();
+        }
+        
         return $this->render('inscription/index.html.twig', array(
-            'inscriptions' => $inscriptions
+            'inscriptions' => $inscriptions,
+            'deleteForms' => $deleteForms
             
             
             
@@ -65,22 +68,7 @@ class InscriptionController extends Controller
         ));
     }
 
-    /**
-     * Finds and displays a inscription entity.
-     *
-     * @Route("/{id}", name="admin_inscription_show")
-     * @Method("GET")
-     */
-    public function showAction(Inscription $inscription)
-    {
-        $deleteForm = $this->createDeleteForm($inscription);
-
-        return $this->render('inscription/show.html.twig', array(
-            'inscription' => $inscription,
-            'delete_form' => $deleteForm->createView(),
-        ));
-    }
-
+    
     /**
      * Displays a form to edit an existing inscription entity.
      *

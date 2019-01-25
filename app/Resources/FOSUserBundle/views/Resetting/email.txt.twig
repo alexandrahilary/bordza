@@ -6,8 +6,29 @@
 {% endblock %}
 
 {% block body_text %}
+
 {% autoescape false %}
 {{ 'resetting.email.message'|trans({'%username%': user.username, '%confirmationUrl%': confirmationUrl}) }}
 {% endautoescape %}
+
 {% endblock %}
-{% block body_html %}{% endblock %}
+{% block body_html %}
+<div style="background-color:black;color:white;border-radius:20px;justify-content:center;width:50vw">
+        <div style="width:100%;padding:30px;text-align:center;font-size:1.2em;justify-content:center;">
+        <div style="margin:10px;">Bonjour {{ user.username | capitalize }}.</div><br/>
+        <div style="margin:10px;">Pour réinitialiser votre mot de passe, veuillez cliquer sur ce lien :</div><br/>
+        
+        </div>
+        <div style="width:100%;padding:30px;text-align:center;justify-content:center;">
+        <a style="color:white;font-size:1.3em;"href="{{ confirmationUrl }}">-> Changer mon mot de passe</a><br/>
+        </div>
+        <div style="width:100%;padding:30px;text-align:center;justify-content:center;">
+        Cordialement.<br/>
+        L'équipe Bordza.
+        </div>
+        <div style="width:100%;padding:30px;text-align:center;justify-content:center;">
+        <img src="http://127.0.0.1:8000/assets/images/logo/bordza-blanc.png">
+        </div>
+        
+</div>
+{% endblock %}

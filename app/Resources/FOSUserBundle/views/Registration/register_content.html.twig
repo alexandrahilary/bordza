@@ -8,23 +8,24 @@
 
 {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
 
+    
     <div class="form">
-    {{ form_label(form.email, 'Email',{'label_attr' : {'class' : 'input-group-text bg-dark text-light'}} ) }}
-    {{ form_errors(form.email) }}
-    {{ form_widget(form.email, {'attr': {'class':'form-control'}}) }}
-    </div>
-    <div class="form">
-    {{ form_label(form.username, 'Nom d\'utilisateur' ,{'label_attr' : {'class' : 'input-group-text bg-dark text-light'}}) }}
+    {{ form_label(form.username, 'Nom d\'utilisateur' ) }}
     {{ form_errors(form.username) }}
     {{ form_widget(form.username, {'attr': {'class':'form-control'}}) }}
     </div>
     <div class="form">
-    {{ form_label(form.plainPassword.first, 'Choisissez le mot de passe',{'label_attr' : {'class' : 'input-group-text bg-dark text-light'}} ) }}
+    {{ form_label(form.email, 'Email') }}
+    {{ form_errors(form.email) }}
+    {{ form_widget(form.email, {'attr': {'class':'form-control'}}) }}
+    </div>
+    <div class="form">
+    {{ form_label(form.plainPassword.first, 'Choisissez le mot de passe') }}
     {{ form_errors(form.plainPassword.first) }}
     {{ form_widget(form.plainPassword.first, {'attr': {'class':'form-control'}}) }}
     </div>
     <div class="form">
-    {{ form_label(form.plainPassword.second, 'Confirmer le mot de passe' ,{'label_attr' : {'class' : 'input-group-text bg-dark text-light'}}) }}
+    {{ form_label(form.plainPassword.second, 'Confirmer le mot de passe' ) }}
     {{ form_errors(form.plainPassword.second) }}
     {{ form_widget(form.plainPassword.second, {'attr': {'class':'form-control'}}) }}
     </div>

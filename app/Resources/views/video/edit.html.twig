@@ -1,21 +1,71 @@
 {% include 'nav.html.twig' %}
 
 {% block body %}
-    <h1>Video edit</h1>
-
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <h1>MODIFIER LA VIDÉO</h1>
+    </div>
+    
+    <div class="row justify-content-center">
+        <div class="col-5 top border border-dark">
     {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
+        <!-- titre -->
+                <div class="form">
+                    <div class="">
+                        {{ form_label(edit_form.titre, 'Titre de la vidéo  ') }}
+                        {{ form_errors(edit_form.titre) }}
+                        {{ form_widget(edit_form.titre, {'attr': {'class':'form-control '}}) }}
+                    </div>
+                </div>
+        <!-- contenu -->
+                <div class="form">
+                    <div class="">
+                        {{ form_label(edit_form.contenu, 'Description de la vidéo ') }}
+                        {{ form_errors(edit_form.contenu) }}
+                        {{ form_widget(edit_form.contenu, {'attr': {'class':'form-control textarea'}}) }}
+                    </div>
+                </div>
+        <!-- resume -->
+                <div class="form">
+                    <div class="">
+                        {{ form_label(edit_form.resume, 'Résumé de la vidéo ') }}
+                        {{ form_errors(edit_form.resume) }}
+                        {{ form_widget(edit_form.resume, {'attr': {'class':'form-control textarea'}}) }}
+                    </div>
+                </div>
+        <!-- iframe -->
+                <div class="form">
+                    <div class="">
+                        {{ form_label(edit_form.iframe, 'Iframe de la Vidéo  ') }}
+                        {{ form_errors(edit_form.iframe) }}
+                        {{ form_widget(edit_form.iframe, {'attr': {'class':'form-control '}}) }}
+                    </div>
+                    <div>Attention si la vidéo provient de Viméo, penser à décocher les options spéciales de l'iframe !</div>
+                </div>
+        <!-- auteur -->
+                <div class="form">
+                    <div class="">
+                        {{ form_label(edit_form.auteur, 'Auteur de la vidéo') }}
+                        {{ form_errors(edit_form.auteur) }}
+                        {{ form_widget(edit_form.auteur, {'attr': {'class':'form-control '}}) }}
+                    </div>
+                </div>
+        <!-- date -->
+                <div class="form">
+                    <div class="">
+                        {{ form_label(edit_form.date, 'Date' ) }}
+                        {{ form_errors(edit_form.date) }}
+                        {{ form_widget(edit_form.date) }}
+                    </div>
+        
+                </div>
+    <div class="row justify-content-center top">
+        <button class="btn btn-dark bouton" type="submit" value="Edit">Modifier la Vidéo</button>
     {{ form_end(edit_form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('admin_video_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+        <div class="w-100"></div>
+            <a href="{{ path('admin_video_index') }}" class="text"><- Retour vers les Vidéos</a>
+    </div>
+    </div>
+    </div>
+</div>
 {% endblock %}

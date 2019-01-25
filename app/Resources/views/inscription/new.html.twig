@@ -1,16 +1,88 @@
 {% include 'nav.html.twig' %}
 
 {% block body %}
-    <h1>Nouvelle Inscription</h1>
+ <div class="container-fluid identifiant justify-content-center">
 
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <div class="row justify-content-center">
+                <h1>NOUVELLE INSCRIPTION</h1>
+            </div>
+        </div>
+        <div class="col-3 border border-dark top">
+            <div class="row justify-content-center">
+                <div class="col-11">
     {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Créer" />
-    {{ form_end(form) }}
+            <!-- sessionId -->
+                <div class="form">
+                    <div class="">
+                        {{ form_label(form.sessionId, ' Choisir une session ') }}
+                        {{ form_errors(form.sessionId) }}
+                        {{ form_widget(form.sessionId, {'attr': {'class':'custom-select'}}) }}
+                    </div>
+                </div>
+            <!-- nom -->
+                <div class="form">
+                    <div class="">
+                        {{ form_label(form.nom, 'Nom de l\'élève  ') }}
+                        {{ form_errors(form.nom) }}
+                        {{ form_widget(form.nom, {'attr': {'class':'form-control '}}) }}
+                    </div>
+                </div>
 
-    <ul>
-        <li>
-            <a href="{{ path('admin_inscription_index') }}">Revenir à la liste d'inscriptions</a>
-        </li>
-    </ul>
+            <!-- prenom -->
+                <div class="form">
+                    <div class="">
+                        {{ form_label(form.prenom, ' Prénom de l\'élève ') }}
+                        {{ form_errors(form.prenom) }}
+                        {{ form_widget(form.prenom, {'attr': {'class':'form-control'}}) }}
+                    </div>
+                </div>
+
+            <!-- age -->
+                <div class="form">
+                    <div class="">
+                        {{ form_label(form.age, ' Age de l\'élève ') }}
+                        {{ form_errors(form.age) }}
+                        {{ form_widget(form.age, {'attr': {'class':'form-control'}}) }}
+                    </div>
+                </div>
+
+            <!-- tel -->
+                <div class="form">
+                    <div class="">
+                        {{ form_label(form.tel, ' Téléphone de l\'élève ou du responsable légal ') }}
+                        {{ form_errors(form.tel) }}
+                        {{ form_widget(form.tel, {'attr': {'class':'form-control'}}) }}
+                    </div>
+                </div>
+            
+            <!-- userId -->
+                <div class="form">
+                    <div class="">
+                        {{ form_label(form.userId, ' Téléphone de l\'élève ou du responsable légal ') }}
+                        {{ form_errors(form.userId) }}
+                        {{ form_widget(form.userId, {'attr': {'class':'custom-select'}}) }}
+                    </div>
+                </div>
+        <div class="row justify-content-center">
+            <!-- valide -->
+                <div class="form text">
+                    <div class="">
+                        {{ form_label(form.valide, ' Résérvation Validée ') }}
+                        {{ form_errors(form.valide) }}
+                        {{ form_widget(form.valide) }}
+                    </div>
+                </div>
+        </div>
+        <div class="w-100"></div>
+        <div class="row justify-content-center">
+        <button class="btn btn-dark bouton" type="submit" value="Créer" >Ajouter une Inscription</button>
+        <div class="w-100"></div>
+    {{ form_end(form) }}
+            <a href="{{ path('admin_inscription_index') }}" class="text"><- Retour aux d'Inscriptions</a>
+        
+    </div>
+    </div>
+    </div>
 {% endblock %}

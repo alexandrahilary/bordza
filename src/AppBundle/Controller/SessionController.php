@@ -84,22 +84,6 @@ class SessionController extends Controller
     }
 
     /**
-     * Finds and displays a session entity.
-     *
-     * @Route("/{id}", name="admin_session_show")
-     * @Method("GET")
-     */
-    public function showAction(Session $session)
-    {
-        $deleteForm = $this->createDeleteForm($session);
-
-        return $this->render('session/show.html.twig', array(
-            'session' => $session,
-            'delete_form' => $deleteForm->createView(),
-        ));
-    }
-
-    /**
      * Displays a form to edit an existing session entity.
      *
      * @Route("/{id}/edit", name="admin_session_edit")

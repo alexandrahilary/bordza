@@ -1,35 +1,52 @@
 {% include 'nav.html.twig' %}
 
 {% block body %}
-    <h1>Formule</h1>
-
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ formule.id }}</td>
-            </tr>
-            <tr>
-                <th>Nomformule</th>
-                <td>{{ formule.nomFormule }}</td>
+<div class="container-fluid">
+    <div class="row justify-content-center">
+    <h1>DÉTAILS</h1>
+    </div>
+    <div class="row justify-content-center">
+    <div class="card col-5 top">
+                <div class="card-body">
+                <h5 class="card-title">{{ formule.nomFormule | upper}}</h5>
+                <h6 class="card-subtitle text-muted">Les sessions :</h6>
+                    <div class="top">
                 {% for session in formule.sessions %}
-                <td>{{ session.titreSession }}</td>
+                <div class="top" style="padding:20px;">
+                    {% for session in formule.sessions %}
+                        <div class="border bg-light top" style="padding:20px;">
+                            <div class="col-12"></div>
+                            <p class="text">- {{ session.titreSession | upper }} / {{ session.disciplines | upper }} / dates : {{ session.dateSession }}</p>
+                            {% if formule.nomFormule != "COURS" %}
+                            <div class="col-12"><img style="margin-bottom:20px" class="img-fluid"src="{{ asset('uploads/images/' ~ session.image.pathImage) }}"></div>
+                            {% endif %}
+                            
+                            <p>{{ session.descriptionSession }}</p>
+                            <p>Élèves inscrits :</p>
+                            {% for inscription in session.inscriptionCollection %}
+                                <p><img src="{{ asset('/assets/images/glyph/glyphicons-635-teenager.png')}}"> {{ inscription.nom | upper }} {{ inscription.prenom | title }} {{ inscription.age }}</p>
+                            {% endfor %}
+                            
+                            
+                        </div>    
+                            
+                        {% endfor %}
                 {% endfor %}
-            </tr>
-        </tbody>
-    </table>
+                </div>
 
-    <ul>
-        <li>
-            <a href="{{ path('admin/formule_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('admin/formule_edit', { 'id': formule.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+                <div class="row justify-content-center">
+                    <a href="{{ path('admin/formule_edit', { 'id': formule.id }) }}">
+                        <button type="submit" class="btn btn-small bouton">Modifier</button>
+                    </a>
+                    <li>
+                        {{ form_start(delete_form) }}
+                            <button class="btn btn-small bouton" type="submit" value="Delete">Supprimer</button>
+                        {{ form_end(delete_form) }}
+                    </li> 
+                    <div class="w-100"></div>
+                    <a href="{{ path('admin/formule_index') }}"><- Retour vers les Formules</a>
+                    
+                     
+                    
+                </div>
 {% endblock %}

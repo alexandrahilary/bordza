@@ -17,7 +17,7 @@ class ImageType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('pathimage', FileType::class, array('data_class'=> null))
+        $builder->add('pathimage', FileType::class, array('data_class'=> null, 'required' => false))
         ->add('alt')->add('creditPhoto');
         
         

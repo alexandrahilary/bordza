@@ -1,56 +1,41 @@
 {% include 'nav.html.twig' %}
 
 {% block body %}
-    <h1>Contact</h1>
-
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ contact.id }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ contact.nom }}</td>
-            </tr>
-            <tr>
-                <th>Prenom</th>
-                <td>{{ contact.prenom }}</td>
-            </tr>
-            <tr>
-                <th>Mail</th>
-                <td>{{ contact.mail }}</td>
-            </tr>
-            <tr>
-                <th>Objet</th>
-                <td>{{ contact.objet }}</td>
-            </tr>
-            <tr>
-                <th>Message</th>
-                <td>{{ contact.message }}</td>
-            </tr>
-            <tr>
-                <th>Image</th>
-                <td><img src="{{ asset('uploads/images/' ~ contact.image) }}"></td>
-            </tr>
-            <tr>
-                <th>Traite</th>
-                <td>{% if contact.traite %}Yes{% else %}No{% endif %}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('admin_contact_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('admin_contact_edit', { 'id': contact.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+<div class="container-fluid">
+    <div class="row justify-content-center">
+    <h1>MESSAGE DE {{ contact.nom | upper }} {{ contact.prenom | title }}</h1>
+    <div class="w-100"></div>          
+    <div class="text">{{ contact.mail }}</div>
+    <div class="w-100"></div>
+    <div class="text">Objet : {{ contact.objet }}</div>
+    <div class="w-100"></div>
+    <div class="col-10 contact-show ">
+        <div class="row justify-content-center">
+            <div class="col-10">    
+                <div class="row justify-content-start">
+                    
+                    <div class="message-contenu">{{ contact.message }}</div>
+                    <div class="w-100"></div>
+                     {% if contact.image != null %}
+                         <div class="col-8 message-contenu"><img class="img-fluid" src="{{ asset('uploads/images/' ~ contact.image) }}"></div>
+                     {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="w-100"></div>
+    <div class="message-contenu" >Message {% if contact.traite %}Traité{% else %}<span style="color:red">en attente de traiement</span>{% endif %}</div>
+    
+    <div class="w-100"></div>
+    <a class="text" href="{{ path('admin_contact_index') }}"><- Retour vers les messages</a>
+    <div class="w-100"></div>    
+    <button class="btn btn-light bouton">
+        <a href="{{ path('admin_contact_edit', { 'id': contact.id }) }}">Traiter</a>
+    </button>
+        {{ form_start(delete_form) }}
+            <button class="btn btn-light bouton" type="submit" value="Delete">Supprimer</button>
+        {{ form_end(delete_form) }}
+    
+    </div>
+</div>
 {% endblock %}
