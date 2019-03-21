@@ -1,15 +1,17 @@
-{% include 'nav.html.twig' %}
+{% extends 'base.html.twig' %}
+{% block connexion %}{% include 'connexion.html.twig' %}{% endblock %}
+{% block nav %}{% include 'nav.html.twig' %}{% endblock %}
 
 {% block body %}
-<div class="container-fluid identifiant justify-content-center">
+<div class="container-fluid identifiant justify-content-center bottom">
 
     <div class="row justify-content-center">
         <div class="col-12">
             <div class="row justify-content-center">
-                <h1>Ajouter une page au Catalogue</h1>
+                <h1 class="text-center">AJOUTER UNE NOUVELLE PAGE</h1>
             </div>
         </div>
-        <div class="col-5 border border-dark" style="padding:20px">
+        <div class="col-11 col-sm-11 col-md-11 col-lg-5 col-xl-5 border border-light" style="padding:20px">
 
     {{ form_start(form) }}
         <!-- titre -->
@@ -47,11 +49,15 @@
                         </div>
         <div class="form bouton">
             <div class="row justify-content-center">
-                <button type="submit" class="btn btn-dark bouton">Ajouter cette page au Catalogue</button>
+                <button type="submit" class="btn btn-secondary btn-lg bouton">Ajouter cette page au Catalogue</button>
             </div>
             <div class="row justify-content-center text">
                 <a href="{{ path('admin_catalogue_index') }}"><- Revenir aux Pages</a>
             </div>
         </div>
     {{ form_end(form) }}
+    </div>
+    </div>
+    </div>
 {% endblock %}
+{% block footer %}{% include 'footer.html.twig' %}{% endblock %}

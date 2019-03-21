@@ -1,5 +1,18 @@
-{% include 'nav.html.twig' %}
+{% extends 'base.html.twig' %}
+{% block connexion %}{% include 'connexion.html.twig' %}{% endblock %}
+{% block nav %}{% include 'nav.html.twig' %}{% endblock %}
 {% block body %}
-Message bien envoyé merci !
-Nous répondrons dans les meilleurs délais.
+
+<div class="container-fluid top">
+    <div class="row justify-content-center top">
+        <p class="text-center top">
+            <h2 class="Titillium top text-green">Message bien envoyé merci !</h2>
+            <div class="w-100"></div>
+            <h4 class="text-green top">Nous répondrons dans les meilleurs délais.</h4>
+            <div class="w-100"></div>
+            <h3 class="text-green categories top"><i>- Bordza -</i></h3>
+        </p>
+    </div>
+</div>
 {% endblock %}
+{% block footer %}{% include 'footer.html.twig' %}{% endblock %}

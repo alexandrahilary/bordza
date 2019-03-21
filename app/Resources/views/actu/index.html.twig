@@ -1,14 +1,16 @@
-{% include 'nav.html.twig' %}
+{% extends 'base.html.twig' %}
+{% block connexion %}{% include 'connexion.html.twig' %}{% endblock %}
+{% block nav %}{% include 'nav.html.twig' %}{% endblock %}
 
 {% block body %}
-<div class="container-fluid">
+<div class="container-fluid bottom">
     <div class="row justify-content-center">
         <h1>MES ARTICLES</h1>
     </div>
     <div class="row justify-content-center bouton">
             <a href="{{ path('admin_actu_new') }}">
-                <img class="img-class" src="{{ asset('assets/images/glyph/glyphicons-191-plus-sign.png') }}" style="margin-right:10px;">
-                <button class="btn btn-dark" type="button">Ajouter un nouvel Article</button>
+                <img class="img-class" src="{{ asset('assets/images/glyph/ajoute-rond.png') }}" style="margin-right:10px;">
+                <button class="btn btn-secondary btn-lg" type="button">Ajouter un nouvel Article</button>
             </a>
     </div>   
     
@@ -16,39 +18,41 @@
     
         {% for actu in actus %}
         <div class="row justify-content-center">
-        <div class="col-10">
-            <div class="row justify-content-center ligne article">
-                <div class="col-4">
-                <div><h3>{{ actu.titre | upper }}</h3></div>
+        <div class="col-11">
+            <div class="row justify-content-center rounded grey padding">
+                <div class="col-11 col-sm-11 col-md-11 col-lg-4 col-xl-4">
+                <div><h3 style="color:#1abc9c;font-weight:bold">{{ actu.titre | upper }}</h3></div>
                     <div class="w-100"></div>
                     <div>{% if actu.date %}{{ actu.date|date('d-m-Y') }}{% endif %}</div>
                     <div class="w-100"></div>
                     <img class="img-fluid" src="{{ asset('uploads/images/' ~ actu.imageId) }}">
                     <div class="w-100"></div>
-                    <div>RÉSUMÉ : <br/>{{ actu.resume }}</div>
+                    <div>Aperçu : <br/>{{ actu.resume | raw }}</div>
                 </div>
-                <div class="col-5">
+                <div class="col-11 col-sm-11 col-md-11 col-lg-5 col-xl-5">
                     
-                    <div>CONTENU ARTICLE : <br/>{{ actu.contenu }}</div>
+                    <div>CONTENU ARTICLE : <br/>{{ actu.contenu | raw }}</div>
                     
                 </div>
                 
                 
-                <div class="col-3">
+                <div class="col-11 col-sm-11 col-md-11 col-lg-3 col-xl-3">
                     <div class="row">
-                        <button class="btn btn-small bouton">
-                            <a href="{{ path('admin_actu_edit', { 'id': actu.id }) }}">Modifier</a>
-                        </button>   
+                        <a href="{{ path('admin_actu_edit', { 'id': actu.id }) }}">
+                            <button class="btn btn-small btn-lg bouton">Modifier</button>
+                        </a>
+                           
                             <form action="{{ path('admin_actu_delete', { 'id': actu.id }) }}" method="post">
                                 <input type="hidden" name="_method" value="DELETE" />
                                 {{ form_widget(deleteForms[actu.id]) }}
-                                <button type="submit" class=" btn btn-small bouton">Supprimer</button>
+                                <button type="submit" class=" btn btn-small btn-lg bouton">Supprimer</button>
                             </form>            
                     </div>
                 </div>
             </div>
             </div>
             </div>
-            <hr>
+            
         {% endfor %}
 {% endblock %}
+{% block footer %}{% include 'footer.html.twig' %}{% endblock %}

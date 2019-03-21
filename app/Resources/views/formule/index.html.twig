@@ -1,12 +1,11 @@
-{% include 'nav.html.twig' %}
+{% extends 'base.html.twig' %}
+{% block connexion %}{% include 'connexion.html.twig' %}{% endblock %}
+{% block nav %}{% include 'nav.html.twig' %}{% endblock %}
 
 {% block body %}
 <div class="container-fluid">
     <div class="row justify-content-center retour-categories">
-        <p>retour vers <a href="{{ path('admin_session_index') }}">{{ 'les Sessions' | upper }}</a>
-         , vers <a href="{{ path('admin_catalogue_index') }}">{{ 'le Catalogue' | upper }}</a>
-          , vers <a href="{{ path('admin_actu_index') }}">{{ 'les News' | upper }}</a>
-        </p>
+        <p>retour vers <a href="{{ path('admin_session_index') }}">{{ 'les Sessions' | upper }}</a></p>
     </div>
     <div class="row justify-content-center">
         <h1>LES FORMULES</h1>
@@ -87,3 +86,4 @@
         </div class="col-2">
     </ul>
 {% endblock %}
+{% block footer %}{% include 'footer.html.twig' %}{% endblock %}

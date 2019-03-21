@@ -1,15 +1,17 @@
-{% include 'nav.html.twig' %}
+{% extends 'base.html.twig' %}
+{% block connexion %}{% include 'connexion.html.twig' %}{% endblock %}
+{% block nav %}{% include 'nav.html.twig' %}{% endblock %}
 
 {% block body %}
-<div class="container-fluid identifiant justify-content-center">
+<div class="container-fluid identifiant justify-content-center bottom">
 
     <div class="row justify-content-center">
         <div class="col-12">
             <div class="row justify-content-center">
-                <h1>Nouvelle News</h1>
+                <h1>NOUVEL ARTICLE</h1>
             </div>
         </div>
-        <div class="col-5 border border-dark" style="padding:20px">
+        <div class="col-11 col-sm-11 col-md-11 col-lg-9 col-xl-9 border border-light" style="padding:20px">
 
     {{ form_start(form) }}
 
@@ -28,15 +30,6 @@
                 {{ form_label(form.contenu, 'Contenu de la news') }}
                 {{ form_errors(form.contenu) }}
                 {{ form_widget(form.contenu, {'attr': {'class':'form-control textarea'}}) }}
-            </div>
-        </div>
-
-    <!-- resume -->
-        <div class="form">
-            <div class="">
-                {{ form_label(form.resume, 'Résumé de la news' ) }}
-                {{ form_errors(form.resume) }}
-                {{ form_widget(form.resume, {'attr': {'class':'form-control textarea'}}) }}
             </div>
         </div>
 
@@ -77,11 +70,16 @@
         
         <div class="form bouton">
             <div class="row justify-content-center">
-                <button type="submit" class="btn btn-dark">Enregistrer cette News</button>
+                <button type="submit" class="btn btn-secondary btn-lg">Enregistrer cet Article</button>
             </div>
             <div class="row justify-content-center text">
                 <a href="{{ path('admin_actu_index') }}"><- Revenir aux News</a>
             </div>
         </div>
     {{ form_end(form) }}
+</div>
+    </div>
+    </div>
+    
 {% endblock %}
+{% block footer %}{% include 'footer.html.twig' %}{% endblock %}

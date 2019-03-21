@@ -1,4 +1,6 @@
-{% include 'nav.html.twig' %}
+{% extends 'base.html.twig' %}
+{% block connexion %}{% include 'connexion.html.twig' %}{% endblock %}
+{% block nav %}{% include 'nav.html.twig' %}{% endblock %}
 
 {% block body %}
 <div class="container-fluid identifiant justify-content-center">
@@ -38,7 +40,9 @@
         </div>
         
     </div>
-
+{% endblock %}
+{% block footer %}{% include 'footer.html.twig' %}{% endblock %}
+{% block javascripts %}
 <script>
     var $collectionHolder;
 

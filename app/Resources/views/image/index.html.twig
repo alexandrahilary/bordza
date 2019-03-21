@@ -1,12 +1,14 @@
-{% include 'nav.html.twig' %}
+{% extends 'base.html.twig' %}
+{% block connexion %}{% include 'connexion.html.twig' %}{% endblock %}
+{% block nav %}{% include 'nav.html.twig' %}{% endblock %}
 
 {% block body %}
 
 <div class="container-fluid">
-    <div class="row justify-content-center retour-categories">
-        <p>retour vers <a href="{{ path('admin_session_index') }}">{{ 'les Sessions' | upper }}</a>
-         , vers <a href="{{ path('admin_catalogue_index') }}">{{ 'le Catalogue' | upper }}</a>
-          , vers <a href="{{ path('admin_actu_index') }}">{{ 'les News' | upper }}</a>
+    <div class="row justify-content-center retour-categories text-green">
+        <p>retour -> <a href="{{ path('admin_session_index') }}">{{ 'les Sessions' | upper }}</a>
+          -> <a href="{{ path('admin_catalogue_index') }}">{{ 'le Catalogue' | upper }}</a>
+          -> <a href="{{ path('admin_actu_index') }}">{{ 'les News' | upper }}</a>
         </p>
     </div>
     <div class="row justify-content-center">
@@ -15,29 +17,24 @@
       
         {% for image in images %}
         <div class="row justify-content-center ligne">
-        <div class="border bg-white col-10">
+        <div class="rounded grey padding col-10">
         <div class="row justify-content-center">
             <div class="col-4"><img class="img-fluid col-12" src="{{ asset('uploads/images/' ~ image.pathImage) }}"></div>
             <div class="col-3">
-                <div class="text">Description de l'image / Référencement : <br/>{{ image.alt }}</div>
-                <div class="text">Crédit Photo : <br/>{{ image.creditPhoto }}</div>
+                <div class="text text-green">ATTRIBUTS : </div>
+                <div class="text">Description de l'image / Référencement : <br/><span class="text-green">{{ image.alt }}</span></div>
+                <div class="text">Crédit Photo : <br/><span class="text-green">{{ image.creditPhoto }}</span></div>
             </div>
             <div class="col-3">
                 <ul>
-                    <li >
-                        <a href="{{ path('admin_image_show', { 'id': image.id }) }}">
-                        <button type="submit" class="btn btn-small bouton">Détails</button>
-                        </a>
-                        
-                    </li>
                     <li>
                         <a href="{{ path('admin_image_edit', { 'id': image.id }) }}">
-                        <button type="submit" class="btn btn-small bouton">Modifier les attibuts</button>
+                        <button type="submit" class="btn btn-small btn-lg bouton">Modifier les attibuts</button>
                         </a>
                     </li>
                     <li>
                         <a href="{{ path('admin_image_edit_image', { 'id': image.id }) }}">
-                        <button type="submit" class="btn btn-small bouton">Modifier l'Image</button>   
+                        <button type="submit" class="btn btn-small btn-lg bouton">Modifier l'Image</button>   
                         </a>
                     </li>
                 </ul>
@@ -49,3 +46,4 @@
 </div>
 
 {% endblock %}
+{% block footer %}{% include 'footer.html.twig' %}{% endblock %}

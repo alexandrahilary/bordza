@@ -38,13 +38,6 @@ class Video
     /**
      * @var string
      *
-     * @ORM\Column(name="resume", type="text")
-     */
-    private $resume;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(name="iframe", type="string", length=255)
      */
     private $iframe;
@@ -120,30 +113,6 @@ class Video
     public function getContenu()
     {
         return $this->contenu;
-    }
-
-    /**
-     * Set resume
-     *
-     * @param string $resume
-     *
-     * @return Video
-     */
-    public function setResume($resume)
-    {
-        $this->resume = $resume;
-
-        return $this;
-    }
-
-    /**
-     * Get resume
-     *
-     * @return string
-     */
-    public function getResume()
-    {
-        return $this->resume;
     }
 
     /**

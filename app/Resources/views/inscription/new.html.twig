@@ -1,15 +1,17 @@
-{% include 'nav.html.twig' %}
+{% extends 'base.html.twig' %}
+{% block connexion %}{% include 'connexion.html.twig' %}{% endblock %}
+{% block nav %}{% include 'nav.html.twig' %}{% endblock %}
 
 {% block body %}
- <div class="container-fluid identifiant justify-content-center">
+ <div class="container-fluid identifiant justify-content-center bottom">
 
     <div class="row justify-content-center">
         <div class="col-12">
             <div class="row justify-content-center">
-                <h1>NOUVELLE INSCRIPTION</h1>
+                <h1 class="text-center">NOUVELLE INSCRIPTION</h1>
             </div>
         </div>
-        <div class="col-3 border border-dark top">
+        <div class="col-11 col-sm-11 col-md-11 col-lg-11 col-xl-3 border border-light top">
             <div class="row justify-content-center">
                 <div class="col-11">
     {{ form_start(form) }}
@@ -60,16 +62,35 @@
             <!-- userId -->
                 <div class="form">
                     <div class="">
-                        {{ form_label(form.userId, ' Téléphone de l\'élève ou du responsable légal ') }}
+                        {{ form_label(form.userId, ' Utilisateur ') }}
                         {{ form_errors(form.userId) }}
                         {{ form_widget(form.userId, {'attr': {'class':'custom-select'}}) }}
                     </div>
                 </div>
+                 
         <div class="row justify-content-center">
+            <!-- prêt de planche -->
+                <div class="form text">
+                    <div class="">
+                        {{ form_label(form.planche, ' Prêt de planche ') }}
+                        {{ form_errors(form.planche) }}
+                        {{ form_widget(form.planche) }}
+                    </div>
+                </div>
+
+            <!-- prêt de matériel de protection -->
+                <div class="form text">
+                    <div class="">
+                        {{ form_label(form.materiel, ' Prêt de protections ') }}
+                        {{ form_errors(form.materiel) }}
+                        {{ form_widget(form.materiel) }}
+                    </div>
+                </div>
+
             <!-- valide -->
                 <div class="form text">
                     <div class="">
-                        {{ form_label(form.valide, ' Résérvation Validée ') }}
+                        {{ form_label(form.valide, ' Valider la réservation ') }}
                         {{ form_errors(form.valide) }}
                         {{ form_widget(form.valide) }}
                     </div>
@@ -77,7 +98,7 @@
         </div>
         <div class="w-100"></div>
         <div class="row justify-content-center">
-        <button class="btn btn-dark bouton" type="submit" value="Créer" >Ajouter une Inscription</button>
+        <button class="btn btn-secondary btn-lg bouton" type="submit" value="Créer" >Ajouter une Inscription</button>
         <div class="w-100"></div>
     {{ form_end(form) }}
             <a href="{{ path('admin_inscription_index') }}" class="text"><- Retour aux d'Inscriptions</a>
@@ -85,4 +106,7 @@
     </div>
     </div>
     </div>
+    </div>
+    </div>
 {% endblock %}
+{% block footer %}{% include 'footer.html.twig' %}{% endblock %}

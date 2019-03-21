@@ -33,9 +33,16 @@ class CatalogueController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $catalogues = $em->getRepository('AppBundle:Catalogue')->findAll();
+        $deleteForms = array();
+
+        krsort($catalogues);
+        foreach ($catalogues as $catalogue){
+            $deleteForms[$catalogue->getId()] = $this->createDeleteForm($catalogue)->createView();
+        }
 
         return $this->render('catalogue/index.html.twig', array(
             'catalogues' => $catalogues,
+            'deleteForms' => $deleteForms
         ));
     }
 
@@ -62,7 +69,7 @@ class CatalogueController extends Controller
             $em->persist($catalogue);
             $em->flush();
 
-            return $this->redirectToRoute('admin_catalogue_show', array('id' => $catalogue->getId()));
+            return $this->redirectToRoute('admin_catalogue_index');
         }
 
         return $this->render('catalogue/new.html.twig', array(

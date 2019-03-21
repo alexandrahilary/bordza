@@ -1,18 +1,39 @@
-{% include 'nav.html.twig' %}
+{% extends 'base.html.twig' %}
+{% block connexion %}{% include 'connexion.html.twig' %}{% endblock %}
+{% block nav %}{% include 'nav.html.twig' %}{% endblock %}
 {% block body %}
+<div class="container-fluid bg-light text-dark bottom">
+    <div class="row justify-content-center">
+        <h1 class="categories"><b>- LES VIDÉOS -</b></h1>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-11 col-xl-11">
+            <div class="row justify-content-center text-dark bottom">
+                {% for video in videos %}
 
-{% for video in videos %}
+    
+                <div class="col-11 col-sm-11 col-md-11 col-lg-10 col-xl-10 top">  
+                    <div class="row justify-content-start">
+                
+                        
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-7 col-xl-7 top iframe">{{ video.iframe | raw }}</div>
+                        <div class="col-11 col-sm-11 col-md-11 col-lg-4 col-xl-4">
+                            <div class="row justify-content-start">
+                                <div class="col-12 top"><h3><b>{{ video.titre | upper }}</b></h3></div>
+                                <div class="col-12 top">{{ video.contenu | raw }}</div>
+                                <div class="col-12"><i>Vidéo réalisée par : {{ video.auteur }}</i></div>
+                                <div class="col-12 align-self-end"><i>{% if video.date %}{{ video.date|date('d-m-Y') }}{% endif %}</i></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
 
-            <tr>
-                <td><a href="{{ path('admin_video_show', { 'id': video.id }) }}">{{ video.id }}</a></td>
-                <td>{{ video.titre }}</td>
-                <td>{{ video.contenu }}</td>
-                <td>{{ video.resume }}</td>
-                <td><iframe width="560" height="315" src="{{ video.iframe }}"  frameborder="0" ></iframe></td>
-                <td>{{ video.auteur }}</td>
-                <td>{% if video.date %}{{ video.date|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>
-            </td>
-{% endfor %}
 
 {% endblock %}
+{% block footer %}{% include 'footer.html.twig' %}{% endblock %}

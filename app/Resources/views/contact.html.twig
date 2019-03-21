@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+{% block connexion %}{% include 'connexion.html.twig' %}{% endblock %}
+{% block nav %}{% include 'nav.html.twig' %}{% endblock %}
+
+{% block body %}
+<div class="container-fluid identifiant justify-content-center">
+
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <div class="row justify-content-center">
+                <h1 class="categories"><b>- CONTACT -</b></h1>
+            </div>
+        </div>
+        <div class ="col-11 col-sm-11 col-md-11 col-lg-10 col-xl-10 top bottom">
+            <div class="row justify-content-center align-items-end">
+                <div class="col-11 col-sm-11 col-md-11 col-lg-2 col-xl-2 text-right">
+                    <h2 class="Titillium"><b>ÉRIC MOTARD</b></h2>
+                    <h4 class="text-green">Moniteur diplômé</h4>
+                    <h3 class="categories top"><b>06 10 66 02 46</b></h3>
+                    <a href="mailto:contact@bordza.fr"><h4 class="top">contact@bordza.fr</h4></a>
+                    <p class="">14A chemin de lescaussade,<br> 33450 St Loubès.</p>
+                </div>
+                <div class="col-11 col-sm-11 col-md-11 col-lg-8 col-xl-8 image-contact"></div>
+            </div>
+        </div>
+        <hr class="top">
+        <div class ="col-11 col-sm-11 col-md-11 col-lg-6 col-xl-6 top bottom">
+            <p class="text-center">Pratiquant de longue date en skateboard et longboard, Éric obtient d'abord son diplôme du BIF 
+            ( Brevet d'initiateur Fédéral ) pour commencer à former bénévolement la nouvelle génération. 
+            Fort de cette expérience il décide d'en faire son métier et obtient alors le diplôme du CQP en skateboard 
+            ( Certificat de Qualification Professionelle ) et se lance dans l'aventure. Depuis il forme des enfants et des
+            adultes, selon leur niveau, en cours particuliers ou groupés. À chacun son rythme, les cours sont adaptés à tous. 
+            Possibilité de prendre des cours de skate en park, bowl, rampe, flat, mais aussi en longboard descente, cruising ou 
+            dancing. Il développe également sa propre marque de skateboard, avec l'aide précieuse et bénévole de ses amis Alexandra 
+            Mathieu & Andrix ! Bon bricoleur et aidé de son papa il se fabrique ses propres machines pour presser, découper, 
+            et imprimer ses planches. Tout est fait maison !</p>
+        </div>
+        <hr class="bottom">
+    </div>
+
+
+
+        <!-- formulaire de contact -->
+    <div class="row justify-content-center">
+        <div class="col-11 col-sm-11 col-md-11 col-lg-10 col-xl-10 top">
+            <div class="row justify-content-center">
+            {% include 'formulaire_contact.html.twig' %}
+            </div>
+        </div>
+    </div>
+        <!-- end formulaire de contact -->
+
+
+    
+</div>
+        
+        
+            
+{% endblock %}
+{% block footer %}{% include 'footer.html.twig' %}{% endblock %}

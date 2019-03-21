@@ -1,65 +1,132 @@
 {% extends 'base.html.twig' %}
-
+{% block connexion %}{% include 'connexion.html.twig' %}{% endblock %}
 {% block body %}
+              
+    <div class="container-fluid col-12 col-sm-12 col-md-11 col-lg-10 col-xl-10" style="height:90vh;" id="container-accueil">
+    <span id="login"><img src="{{ asset('/assets/images/glyph/tete-de-mort.png') }}"></span>
+    
+    <div class="row justify-content-center align-items-center" style="height:80vh">
+        <div class="row col-12" style="height:70%">
+            <div class="col-12 col-sm-9 col-md-9 col-lg-9 col-xl-9">
+                <div class="row" style="height:40%">
+                    <a class="pages col-12" href="{{ path('catalogue') }}">
+                        <div class="col-12 catalogue-accueil">
+                            <p class="liens Titillium">|Notre Catalogue</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="row" style="height:60%">
+                    <a class="pages col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4" href="{{ path('video') }}">
+                    <div class="col-12 video-accueil">
+                        <p class="liens Titillium">|Nos Vidéos</p>
+                    </div>
+                    </a>
+                    <a class="pages col-12 col-sm-8 col-md-8 col-lg-8 col-xl-8" href="{{ path('skateschool') }}">
+                    <div class="col-12 skateschool-accueil">
+                        <p class="liens Titillium">|La Skateschool</p>
+                    </div>
+                    </a>
+                </div>
+            </div>
+            <a class="pages col-12 col-sm-3 col-md-3 col-lg-3 col-xl-3" href="{{ path('actu') }}">
+            <div class="col-12 news-accueil">
                 
-    <div class="container-fluid" style="width:85vw; height:100vh">
-    <span id="login"><img src="{{ asset('/assets/images/logo/glyphicons-291-skull.png') }}"></span>
-    <div class="row">
-            <div class="col-9">
-                <div class="row">
-                    
-                    <div class="col-12" style="border:solid rgb(226, 226, 226) 10px;height:27vh;background-image: url('{{ asset("/assets/images/catalogue/longcruiser-bordza.png")}}');background-repeat: no-repeat;background-size:cover;">
-                        <a class="pages" href="">|LA SÉRIGRAPHIE</a>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-4" style="border:solid rgb(226, 226, 226) 10px;height:35vh;background-color:rgb(226, 226, 226);background-image: url('{{ asset("/assets/images/video/logo.png")}}');background-repeat: no-repeat;background-size:cover;">
-                        <a class="pages" href="">|NOS VIDÉOS</a>
-                    </div>
-                    <div class="col-8" style="border:solid rgb(226, 226, 226) 10px;height:35vh;background-image: url('{{ asset("/assets/images/skateschool/_ALX1406.jpg") }}');background-repeat: no-repeat;background-size:cover;background-position: center;">
-                        <a class="pages" href="{{ path('skateschool') }}">|LA SKATESCOOL</a>
-                    </div>
-                </div>
+                <p class="liens Titillium">|Les News</p>
             </div>
-            
-            <div class="col-3 " style="border:solid rgb(226, 226, 226) 10px;background-image: url('{{ asset("assets/images/news/festival_du_jeu2017.jpg") }}');background-repeat: no-repeat;background-size:cover;background-position:right">
-            <a class="pages" href="">|LES NEWS</a>
-            </div>
+            </a>
             
         </div>
     
-        <div class="row">
-            <div class="col-8" style="border:solid rgb(226, 226, 226) 10px;height:27vh;background-image: url('{{ asset("/assets/images/catalogue/bowl_peter.jpg")}}');background-repeat: no-repeat;background-size:cover;">
-                <a class="pages" href="">|NOTRE CATALOGUE</a>
+        <div class="row col-12" style="height:30%">
+            <a class="pages col-12 col-sm-8 col-md-8 col-lg-8 col-xl-8" href="{{ path('serigraphie') }}">
+                <div class="col-12 serigraphie-accueil">
+                    <p class="liens Titillium">|La Sérigraphie</p>
+                </div>
+            </a>
+            <a class="pages col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4" href="{{ path('concept') }}">
+            <div class="col-12 valeur-accueil" style="">
+                <p class="liens Titillium">|Le Concepte</p>
             </div>
-            <div class="col-4" style="border:solid rgb(226, 226, 226) 10px;height:27vh;background-image: url('{{ asset("/assets/images/valeur/bandeau-partenaire.png") }}');background-repeat: no-repeat;background-size:cover;">
-                <a class="pages" href="">|NOS VALEURS</a>
-            </div>
+            </a>
         </div>
+    </div>
     
     </div>
 {% endblock %}
-
-{% block stylesheets %}
-
-{% endblock %}
-
-{% block bootstrap %} 
+{% block footer %}{% include 'footer.html.twig' %}{% endblock %}
     
-{% endblock %}
+
+
 {% block javascripts %}
 <script>
 var navLogin = document.getElementById('identifiants');
 var login = document.getElementById('login');
+var liens = document.getElementsByClassName('liens');
 function cacheNavLogin(){
     navLogin.setAttribute('style','display:none');
 }
-
+function policeResponsive(){
+    
+    for ( var i = 0 ; i < liens.length ; i ++){
+        liens[i].setAttribute('style','font-size:24px')
+    }
+}
 login.onclick = function(){
     navLogin.setAttribute('style','display:block');
+    login.setAttribute('style','display:none');
 }
 
-cacheNavLogin();
 
+cacheNavLogin();
+policeResponsive();
+
+
+       
+        console.log(window.innerWidth);
+        var fenetre = window.innerWidth;
+        if (fenetre < 900) {
+            for ( var i = 0 ; i < liens.length ; i ++){
+            liens[i].setAttribute('style','font-size:55px')
+            }
+        }
+        
+        if (fenetre > 900) {
+            if (fenetre < 1200){
+                for ( var i = 0 ; i < liens.length ; i ++){
+                    liens[i].setAttribute('style','font-size:65px')
+                }
+            }
+            if (fenetre > 1200){
+                for ( var i = 0 ; i < liens.length ; i ++){
+                    liens[i].setAttribute('style','font-size:70px')
+                }
+            }
+            
+        }
+
+        window.onresize = function () {
+            var tailleFenetre = window.innerWidth;
+            if (tailleFenetre < 900) {
+                for ( var i = 0 ; i < liens.length ; i ++){
+                liens[i].setAttribute('style','font-size:55px')
+                }
+                
+            }
+            if (tailleFenetre > 900) {
+                if (tailleFenetre < 1200){
+                    for ( var i = 0 ; i < liens.length ; i ++){
+                    liens[i].setAttribute('style','font-size:65px')
+                    }
+                    
+                }
+                if (tailleFenetre > 1200){
+                    for ( var i = 0 ; i < liens.length ; i ++){
+                    liens[i].setAttribute('style','font-size:70px')
+                    }
+                    
+                }
+            }
+        }
+    
 </script>
 {% endblock %}

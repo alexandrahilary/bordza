@@ -1,41 +1,49 @@
-{% include 'nav.html.twig' %}
+{% extends 'base.html.twig' %}
+{% block connexion %}{% include 'connexion.html.twig' %}{% endblock %}
+{% block nav %}{% include 'nav.html.twig' %}{% endblock %}
 
 {% block body %}
 <div class="container-fluid">
     <div class="row justify-content-center">
-    <h1>MESSAGE DE {{ contact.nom | upper }} {{ contact.prenom | title }}</h1>
+    <h1 class="text-green">MESSAGE DE {{ contact.nom | upper }} {{ contact.prenom | title }}</h1>
     <div class="w-100"></div>          
     <div class="text">{{ contact.mail }}</div>
     <div class="w-100"></div>
     <div class="text">Objet : {{ contact.objet }}</div>
     <div class="w-100"></div>
-    <div class="col-10 contact-show ">
+    <div class="col-10 rounded grey padding ">
         <div class="row justify-content-center">
             <div class="col-10">    
                 <div class="row justify-content-start">
                     
-                    <div class="message-contenu">{{ contact.message }}</div>
+                    <div class="message-contenu">{{ contact.message | raw }}</div>
                     <div class="w-100"></div>
                      {% if contact.image != null %}
                          <div class="col-8 message-contenu"><img class="img-fluid" src="{{ asset('uploads/images/' ~ contact.image) }}"></div>
                      {% endif %}
+                    <div class="w-100"></div>
+                    <div class="message">Message envoyé le : {{ contact.createdAt | date('d/m/Y H:i') }}</div>
                 </div>
             </div>
         </div>
     </div>
     <div class="w-100"></div>
-    <div class="message-contenu" >Message {% if contact.traite %}Traité{% else %}<span style="color:red">en attente de traiement</span>{% endif %}</div>
-    
+    <div class="message-contenu" >MESSAGE {% if contact.traite %}TRAITÉ <img src="{{ asset('assets/images/glyph/valide.png')}}">{% else %}<span style="font-weight:bold">EN ATTENTE DE TRAITEMENT</span>{% endif %}</div>
+    {% if contact.traite %}
+        <div class="w-100"></div>
+        <div class="message">Message traité le : {{ contact.updatedAt | date('d/m/Y H:i') }}</div>
+    {% endif %}
     <div class="w-100"></div>
-    <a class="text" href="{{ path('admin_contact_index') }}"><- Retour vers les messages</a>
-    <div class="w-100"></div>    
-    <button class="btn btn-light bouton">
-        <a href="{{ path('admin_contact_edit', { 'id': contact.id }) }}">Traiter</a>
-    </button>
+        <a href="{{ path('admin_contact_edit', { 'id': contact.id }) }}">
+        <button class="btn btn-light btn-lg bouton">Traiter le message</button>
+        </a>
         {{ form_start(delete_form) }}
-            <button class="btn btn-light bouton" type="submit" value="Delete">Supprimer</button>
+            <button class="btn btn-light btn-lg bouton" type="submit" value="Delete">Supprimer</button>
         {{ form_end(delete_form) }}
-    
+        
+        <div class="w-100"></div>
+        <a class="text" href="{{ path('admin_contact_index') }}"><- Retour vers les messages</a>
     </div>
 </div>
 {% endblock %}
+{% block footer %}{% include 'footer.html.twig' %}{% endblock %}

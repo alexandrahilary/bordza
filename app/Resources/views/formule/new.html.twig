@@ -1,4 +1,6 @@
-{% include 'nav.html.twig' %}
+{% extends 'base.html.twig' %}
+{% block connexion %}{% include 'connexion.html.twig' %}{% endblock %}
+{% block nav %}{% include 'nav.html.twig' %}{% endblock %}
 
 {% block body %}
 <div class="container-fluid identifiant justify-content-center">
@@ -34,7 +36,9 @@
             <a href="{{ path('admin/formule_index') }}"><- Retour vers les Formules</a>
         </li>
     </div>
-
+{% endblock %}
+{% block footer %}{% include 'footer.html.twig' %}{% endblock %}
+{% block javascripts %}
 <script>
     var $collectionHolder;
 

@@ -1,38 +1,45 @@
-{% include 'nav.html.twig' %}
+{% extends 'base.html.twig' %}
+{% block connexion %}{% include 'connexion.html.twig' %}{% endblock %}
+{% block nav %}{% include 'nav.html.twig' %}{% endblock %}
 
 {% block body %}
-<div class="container-fluid">
+<div class="container-fluid bottom">
     <div class="row justify-content-center">
         <h1>MES MESSAGES</h1>
         <div class="w-100"></div>  
-    <div class="col-10">    
+    <div class="col-11 col-sm-11 col-md-11 col-lg-10 col-xl-10">    
         {% for contact in contacts %}
-    <div class="row contact top justify-content-center">
-        <div class="col-8">
+        
+    <div class="row rounded grey padding top justify-content-center">
+        <div class="col-11 col-sm-11 col-md-11 col-lg-8 col-xl-8">
             <div class="row justify-content-start">
-                
-                <div class="message">De : {{ contact.nom | upper}}  {{ contact.prenom | capitalize}} </div>
+                <div class="message text-green">De : {{ contact.nom | upper}}  {{ contact.prenom | capitalize}} </div>
                 <div class="message"> / {{ contact.mail }} </div>
                 <div class="message"> / Objet du message : {{ contact.objet }}</div>
+                <div class="w-100"></div>
+                <div class="message">Envoyé le : {{ contact.createdAt | date('d/m/Y H:i') }}</div>
                 
             </div>
         </div>
-        <div class="col-3">
-            <div class="row justify-content-start contact">
-                <button class="btn btn-small bouton">
-                    <a href="{{ path('admin_contact_show', { 'id': contact.id }) }}">Lire</a>
-                </button>
-                <button class="btn btn-small bouton">
-                    <a href="{{ path('admin_contact_edit', { 'id': contact.id }) }}">Traiter</a>
-                </button>
+        <div class="col-11 col-sm-11 col-md-11 col-lg-3 col-xl-3">
+            <div class="row justify-content-start rounded grey">
+                <a href="{{ path('admin_contact_show', { 'id': contact.id }) }}">
+                    <button class="btn btn-small btn-lg bouton">Lire</button>
+                </a>
+                <a href="{{ path('admin_contact_edit', { 'id': contact.id }) }}">
+                    <button class="btn btn-small btn-lg bouton">Traiter</button>
+                </a>
                 <form action="{{ path('admin_contact_delete', { 'id': contact.id }) }}" method="post">
                   <input type="hidden" name="_method" value="DELETE" />
                   {{ form_widget(deleteForms[contact.id]) }}
-                  <button type="submit" class="btn btn-small bouton">
+                  <button type="submit" class="btn btn-small btn-lg bouton">
                       Supprimer
                   </button>
                 </form>
-                <div class="message">{% if contact.traite %}<span>TRAITÉ</span>{% else %}<span style="color:red">EN ATTENTE</span>{% endif %}</div>             
+                <div class="w-100"></div>
+                <div class="message">{% if contact.traite %}<img src="{{ asset('assets/images/glyph/valide.png')}}">{% else %}<span class="text-green" style="font-weight:bold">EN ATTENTE</span>{% endif %}</div>             
+                
+                {% if contact.traite %}<div class="message">Message traité le : {{ contact.updatedAt | date('d/m/Y H:i') }}</div>{% endif %}
             </div>
         </div>
     </div>
@@ -42,3 +49,4 @@
     </div>
 </div>
 {% endblock %}
+{% block footer %}{% include 'footer.html.twig' %}{% endblock %}

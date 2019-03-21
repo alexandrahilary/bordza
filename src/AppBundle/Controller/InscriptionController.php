@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use FOS\UserBundle\Mailer;
 
 /**
  * Inscription controller.
@@ -28,6 +29,8 @@ class InscriptionController extends Controller
         $inscriptions = $repository->findAll();
 
         $deleteForms = array();
+
+        krsort($inscriptions);
 
         foreach ($inscriptions as $inscription){
             $deleteForms[$inscription->getId()] = $this->createDeleteForm($inscription)->createView();
@@ -58,8 +61,8 @@ class InscriptionController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($inscription);
             $em->flush();
-
-            return $this->redirectToRoute('admin_inscription_show', array('id' => $inscription->getId()));
+            
+            return $this->redirectToRoute('admin_inscription_index');
         }
 
         return $this->render('inscription/new.html.twig', array(
@@ -129,5 +132,7 @@ class InscriptionController extends Controller
             ->getForm()
         ;
     }
+
+    
     
 }

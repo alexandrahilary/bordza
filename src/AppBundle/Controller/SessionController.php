@@ -37,6 +37,9 @@ class SessionController extends Controller
 
         $deleteForms = array();
 
+        krsort($sessions);
+        
+
         foreach ($sessions as $session){
             $deleteForms[$session->getId()] = $this->createDeleteForm($session)->createView();
         }
@@ -64,17 +67,20 @@ class SessionController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            
-            $file = $session->getImage()->getPathImage();
-            $fileName = $fileUploader->upload($file);
-            
-            $session->getImage()->setPathImage($fileName);
-            
             $em = $this->getDoctrine()->getManager();
+            $filePath = $session->getImage()->getPathImage();
+            if ($filePath){
+                $fileName = $fileUploader->upload($filePath);
+                $session->getImage()->setPathImage($fileName);
+            }else{
+                $file = $session->getImage();
+                $em->remove($file);
+                $session->setImage(null);
+            }
             $em->persist($session);
             $em->flush();
 
-            return $this->redirectToRoute('admin_session_show', array('id' => $session->getId()));
+            return $this->redirectToRoute('admin_session_index');
         }
 
         return $this->render('session/new.html.twig', array(

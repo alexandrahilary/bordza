@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Contact
@@ -71,6 +72,17 @@ class Contact
      */
     private $traite;
 
+    /** 
+    * @Gedmo\Timestampable(on="create") 
+    * @ORM\Column(type="datetime") 
+    */ 
+    private  $createdAt;
+
+    /** 
+    * @Gedmo\Timestampable(on="update") 
+    * @ORM\Column(type="datetime") 
+    */ 
+    private  $updatedAt;
 
     /**
      * Get id
@@ -249,6 +261,22 @@ class Contact
     {
         return $this->traite;
     }
+
+    /** 
+    * @return \DateTime 
+    */ 
+    public function getCreatedAt () 
+    { 
+        return $this->createdAt; 
+    } 
+
+    /** 
+    * @return \DateTime 
+    */ 
+    public function getUpdatedAt () 
+    { 
+        return $this->updatedAt; 
+    } 
 
     public function __toString()
     {

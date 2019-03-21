@@ -1,0 +1,26 @@
+{% block subject %}{% endblock %}
+{% block body_html %}
+{% autoescape false %}
+Bonjour Bordza !
+
+Une nouvelle inscription de {{ inscription.userId.username | title }}, 
+pour {{ inscription.prenom | title }} {{ inscription.nom | upper }} est en ligne.
+
+{{ inscription.age }}
+{{ inscription.tel }}
+{{ inscription.sessionId.formules }}
+{{ inscription.sessionId.disciplines }}
+{{ inscription.sessionId.titreSession }}
+{{ inscription.sessionId.dateSession }}
+{{ inscription.sessionId.prix }}
+
+Prêt de matériel : 
+PLANCHE :  {{ inscription.planche }}
+PROTECTIONS : {{ inscription.materiel }}
+
+Inscription réalisée le : {{ "now" | date("d-m-Y H:i") }}.
+
+Répondre à : {{ inscription.userId.email }}.
+
+{% endautoescape %}
+{% endblock %}

@@ -82,7 +82,7 @@ class Session
      * @var \AppBundle\Entity\Image
      * 
      * @ORM\OneToOne(targetEntity=\AppBundle\Entity\Image::class, cascade= {"persist", "remove"})
-     * @ORM\JoinColumn(name="image", referencedColumnName="id")
+     * @ORM\JoinColumn(name="image", referencedColumnName="id", nullable=true)
      */
     private $image;
 
@@ -92,6 +92,13 @@ class Session
      * @ORM\Column(name="prix", type="string", length=255, nullable=true)
      */
     private $prix;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="orderNumber", type="string", length=255, nullable=true)
+     */
+    private $orderNumber;
 
     public function __construct()
     {
@@ -299,7 +306,7 @@ class Session
      *
      * @return Session
      */
-    public function setImage(Image $image)
+    public function setImage($image)
     {
         $this->image = $image;
 
@@ -338,6 +345,30 @@ class Session
     public function getPrix()
     {
         return $this->prix;
+    }
+
+     /**
+     * Set orderNumber
+     *
+     * @param integer $orderNumber
+     *
+     * @return Session
+     */
+    public function setOrderNumber($orderNumber)
+    {
+        $this->orderNumber = $orderNumber;
+
+        return $this;
+    }
+
+    /**
+     * Get orderNumber
+     *
+     * @return int
+     */
+    public function getOrderNumber()
+    {
+        return $this->orderNumber;
     }
 
     public function __toString()

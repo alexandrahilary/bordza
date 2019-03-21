@@ -31,6 +31,8 @@ class ContactController extends Controller
         $em = $this->getDoctrine()->getManager();
         $deleteForms = array();
         $contacts = $em->getRepository('AppBundle:Contact')->findAll();
+
+        krsort($contacts);
         foreach ($contacts as $contact){
             $deleteForms[$contact->getId()] = $this->createDeleteForm($contact)->createView();
         }
@@ -66,9 +68,6 @@ class ContactController extends Controller
                 $em->remove($file);
                 $contact->setImage(null);
             }
-            
-
-            
             $em->persist($contact);
             $em->flush();
 

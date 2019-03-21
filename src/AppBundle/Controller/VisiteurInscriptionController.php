@@ -35,6 +35,14 @@ class VisiteurInscriptionController extends Controller
             $em->persist($inscription);
             $em->flush();
 
+            $message = \Swift_Message::newInstance()
+                ->setSubject('Nouvelle Inscription Bordza')
+                ->setFrom('contact@bordza.fr')
+                ->setTo('bordza@hotmail.fr')
+                ->setBody($this->renderView('inscription_mail.txt.twig', array('inscription' => $inscription)));
+
+            $this->get('mailer')->send($message);
+
             return $this->redirectToRoute('fos_user_profile_show');
         }
 

@@ -1,14 +1,21 @@
-{% include 'nav.html.twig' %}
+{% extends 'base.html.twig' %}
+{% block connexion %}{% include 'connexion.html.twig' %}{% endblock %}
+{% block nav %}{% include 'nav.html.twig' %}{% endblock %}
 
 {% block body %}
 <div class="container-fluid">
+    <div class="row justify-content-center retour-categories">
+        <p>retour vers <a href="{{ path('admin_session_index') }}">{{ 'les Sessions' | upper }}</a></p>
+    </div>
     <div class="row justify-content-center">
-        <h1>Mes Disciplines</h1>
+        <h1>MES DISCIPLINES</h1>
         <div class="w-100"></div> 
             <a href="{{ path('admin_discipline_new') }}">
                 <img class="img-class top" src="{{ asset('assets/images/glyph/glyphicons-191-plus-sign.png') }}" style="margin-right:10px;">
                 <button class="btn btn-dark top" type="button">Ajouter une nouvelle discipline</button>
             </a>
+    </div>
+    <div class="row justify-content-center top">
     <div class="col-10">  
         <div class="row justify-content-center">
         {% for discipline in disciplines %}
@@ -45,3 +52,4 @@
         {% endfor %}
         </div>
 {% endblock %}
+{% block footer %}{% include 'footer.html.twig' %}{% endblock %}

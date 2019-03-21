@@ -12,6 +12,7 @@ use AppBundle\Entity\Image;
 use AppBundle\Form\ImageType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 
 
 class SessionType extends AbstractType
@@ -23,7 +24,7 @@ class SessionType extends AbstractType
     {
         
         $builder->add('formules')->add('titreSession')->add('dateSession')->add('nbPlace')
-        ->add('descriptionSession')->add('prix')->add('disciplines');
+        ->add('descriptionSession', CKEditorType::class )->add('prix')->add('disciplines')->add('orderNumber');
         $builder->add('image', ImageType::class);
     }/**
      * {@inheritdoc}

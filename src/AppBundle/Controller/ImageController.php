@@ -39,21 +39,7 @@ class ImageController extends Controller
     }
 
     
-    /**
-     * Finds and displays a image entity.
-     *
-     * @Route("/{id}", name="admin_image_show")
-     * @Method("GET")
-     */
-    public function showAction(Image $image)
-    {
-        $deleteForm = $this->createDeleteForm($image);
-
-        return $this->render('image/show.html.twig', array(
-            'image' => $image,
-            'delete_form' => $deleteForm->createView(),
-        ));
-    }
+   
 
     /**
      * Displays a form to edit an existing image entity.

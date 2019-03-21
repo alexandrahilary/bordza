@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+{% block connexion %}{% include 'connexion.html.twig' %}{% endblock %}
+{% block nav %}{% include 'nav.html.twig' %}{% endblock %}
+{% block body %}
+<div class="container-fluid identifiant justify-content-center">
+
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <div class="row justify-content-center">
+                <div class="col-12"><img class="img-fluid col-12" src="{{ asset('assets/images/serigraphie/bandeau-serigraphie.jpg') }}" 
+                alt="serigraphie artisanale bordeaux handmade skateboard longboard">
+                </div>
+                <h1 class="categories"><b>- LA SÉRIGRAPHIE -</b></h1>
+                <div class="w-100"></div>
+                <hr class="top bottom">
+                <div class="col-7 top bottom"><p class="text-center">Si vous étes sensibles à la fabrication française de skateboard et que vous souhaitez développer 
+                votre propre gamme, nous pouvons sérigraphier nos planches de skate avec vos propres visuels, que ce soit du modèle unique 
+                ou de la petite série, envoyez nous vos projets à l'adresse suivante : contact@bordza.fr
+                Nous imprimons avec le procédé de la sérigraphie. Cette technique est la plus respectueuse des propriétés techniques du bois 
+                et donc de la solidité de la planche car elle vient déposer une fine couche d'encre sur la feuille de bois de finition avant 
+                que celle-ci ne soit mise dans le moule et pressée avec les autres couches constituant la planche.
+                Nous utilisons du essences issues de fôrets maîtrisées et de l'encre à l'eau plus réspectueuse de l'environnement.
+                Pour l'impression sur textiles nous pouvons vous proposer plusieurs références et un large choix de couleurs, 
+                le plus dur sera de choisir !</p>
+                </div>
+                <hr class="top bottom">
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-10">
+            <div class="row justify-content-center">
+                
+                <h2 class="categories top"><b>- ILS NOUS ONT FAIT CONFIANCE -</b></h2>
+                <div class="w-100"></div>
+                <hr class="top bottom">
+                <div class="w-100"></div>
+                <div class="row justify-content-center top bottom">
+                    <div class="salles-gosses">"Les Salles Gosses"</div>
+                    <div class="villa-sunshine">"Villa Sunshine"</div>
+                    <div class="foodja">"Foodja Crew"</div>
+                    <div class="kraken">"Kraken"</div>
+                    <div class="low-level-crew">"Low Level Crew"</div>
+                    <div class="w-100"></div>
+                    <div class="pigne-dhuitre">"Pigne d'Huitre Tour"</div>
+                    <div class="feelethik">"Feelethik"</div>
+                    <div class="mira">"Mira"</div>
+                    <div class="skatopiak">"Skatopiak"</div>
+                </div>
+                <div class="w-100"></div>
+                <hr class="top bottom">
+            </div>
+        </div>
+    </div>
+
+    <!-- formulaire de contact -->
+    <div class="row justify-content-center">
+        <div class="col-7 text-center text-green text top bottom"><p class="top bottom">Si vous souhaitez nous envoyer une demande de devis,
+             pensez à préciser les quantités, les modèles de textiles ou de planches, le nombre de couleurs pour l’impression, le format
+            d’impression et toute autre information nécessaire pour établir un devis le plus précis possible. Si vous avez déjà 
+            l’image de votre projet d’impression vous pouvez la joindre afin que nous l'étudions. Nous rappelons qu’elle 
+            vous sera ensuite demandée en haute résolution afin de pouvoir mener à bien votre projet.</p>
+        </div>
+        <div class="col-10 top bottom">
+            <div class="row justify-content-center">
+            {% include 'formulaire_contact.html.twig' %}
+            </div>
+        </div>
+    </div>
+    <!-- end formulaire de contact -->
+</div>
+
+
+{% endblock %}
+{% block footer %}{% include 'footer.html.twig' %}{% endblock %}

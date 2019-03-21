@@ -1,20 +1,32 @@
-{% include 'nav.html.twig' %}
+{% extends 'base.html.twig' %}
+{% block connexion %}{% include 'connexion.html.twig' %}{% endblock %}
+{% block nav %}{% include 'nav.html.twig' %}{% endblock %}
 
 {% block body %}
-<div class="container-fluid identifiant justify-content-center">
+<div class="container-fluid identifiant justify-content-center bottom">
 
     <div class="row justify-content-center">
         <div class="col-12">
             <div class="row justify-content-center">
-                <h1>Modifier la Session</h1>
+                <h1 class="text-center">MODIFIER LA SESSION</h1>
             </div>
         </div>
-        <div class="col-5 border border-dark" style="padding:20px">
+        <div class="col-11 col-sm-11 col-md-11 col-lg-9 col-xl-9 border border-light top" style="padding:20px">
             <div class="col">
+            {% if session.image != null %}
                 <img class="img-fluid col-12" src="{{ asset('uploads/images/' ~ session.image ) }}">
                 <a href="{{ path('admin_image_edit_image', { 'id': session.image.id })}}">-> changer l'image </a>
+            {% endif %}
             </div>
             {{ form_start(edit_form)}}
+            <!-- ordre d'affichage -->
+                <div class="form">
+                    <div class="">
+                        {{ form_label(edit_form.orderNumber, 'Ordre d\'affichage ') }}
+                        {{ form_errors(edit_form.orderNumber) }}
+                        {{ form_widget(edit_form.orderNumber, {'attr': {'class':'form-control'}}) }}
+                    </div>
+                </div>
 
             <!-- formules -->
                 <div class="form">
@@ -47,8 +59,8 @@
 
             <!-- dates -->
                 <div class="form">
-                    <div class="input-group">
-                        {{ form_label(edit_form.dateSession, 'Dates de la Session : ',{'label_attr' : {'class' : 'input-group-text bg-dark text-light'}}) }}
+                    <div class="">
+                        {{ form_label(edit_form.dateSession, 'Dates de la Session : ') }}
                         {{ form_errors(edit_form.dateSession) }}
                         {{ form_widget(edit_form.dateSession, {'attr': {'class':'form-control '}}) }}
                     </div>
@@ -66,7 +78,7 @@
             <!-- nbPlace -->
                 <div class="form">
                     <div class="">
-                        {{ form_label(edit_form.nbPlace, 'Nombre de place ') }}
+                        {{ form_label(edit_form.nbPlace, 'Nombre de places ') }}
                         {{ form_errors(edit_form.nbPlace) }}
                         {{ form_widget(edit_form.nbPlace, {'attr': {'class':'form-control'}}) }}
                     </div>
@@ -84,7 +96,7 @@
             <div class="form bouton">
                 <div class="row justify-content-center">
                     {{ form_widget(edit_form) }}
-                    <button class="btn btn-dark bouton" type="submit" value="Edit">Enregistrer les modifications</button>
+                    <button class="btn btn-secondary btn-lg bouton" type="submit" value="Edit">Enregistrer les modifications</button>
                     {{ form_end(edit_form) }}
                 </div>
             <div class="row justify-content-center text">
@@ -93,17 +105,13 @@
             <div class="form bouton">
                 <div class="row justify-content-center">
                     {{ form_start(delete_form) }}
-                        <button type="submit" class="btn btn-light bouton">Supprimer</button>
+                        <button type="submit" class="btn btn-light btn-lg bouton">Supprimer</button>
                     {{ form_end(delete_form) }}
                 </div>
             </div>
         </div>
+    </div>
+    </div>
             
-    
-
-   
-            
-        
-
-
 {% endblock %}
+{% block footer %}{% include 'footer.html.twig' %}{% endblock %}

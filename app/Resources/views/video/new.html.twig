@@ -1,13 +1,15 @@
-{% include 'nav.html.twig' %}
+{% extends 'base.html.twig' %}
+{% block connexion %}{% include 'connexion.html.twig' %}{% endblock %}
+{% block nav %}{% include 'nav.html.twig' %}{% endblock %}
 
 {% block body %}
-<div class="container-fluid">
+<div class="container-fluid bottom">
     <div class="row justify-content-center">
-        <h1>AJOUTER UNE VIDÉOS</h1>
+        <h1 class="text-center">AJOUTER UNE VIDÉOS</h1>
     </div>
     
     <div class="row justify-content-center">
-        <div class="col-5 top border border-dark">
+        <div class="col-11 col-sm-11 col-md-11 col-lg-9 col-xl-9 top border border-light">
     {{ form_start(form) }}
         <!-- titre -->
                 <div class="form">
@@ -25,14 +27,7 @@
                         {{ form_widget(form.contenu, {'attr': {'class':'form-control textarea'}}) }}
                     </div>
                 </div>
-        <!-- resume -->
-                <div class="form">
-                    <div class="">
-                        {{ form_label(form.resume, 'Résumé de la vidéo ') }}
-                        {{ form_errors(form.resume) }}
-                        {{ form_widget(form.resume, {'attr': {'class':'form-control textarea'}}) }}
-                    </div>
-                </div>
+        
         <!-- iframe -->
                 <div class="form">
                     <div class="">
@@ -40,7 +35,7 @@
                         {{ form_errors(form.iframe) }}
                         {{ form_widget(form.iframe, {'attr': {'class':'form-control '}}) }}
                     </div>
-                    <div>Attention si la vidéo provient de Viméo, penser à décocher les options spéciales de l'iframe !</div>
+                    <div class="text text-green">Attention si la vidéo provient de Viméo, penser à décocher les options spéciales de l'iframe dans les options de Viméo avant de récupérer le code iframe à intégrer !</div>
                 </div>
         <!-- auteur -->
                 <div class="form">
@@ -60,7 +55,7 @@
         
                 </div>
     <div class="row justify-content-center top">
-        <button class="btn btn-dark bouton" type="submit" value="Create">Ajouter la Vidéo</button>
+        <button class="btn btn-secondary btn-lg bouton" type="submit" value="Create">Ajouter la Vidéo</button>
     {{ form_end(form) }}
         <div class="w-100"></div>
             <a href="{{ path('admin_video_index') }}" class="text"><- Retour vers les Vidéos</a>
@@ -69,3 +64,4 @@
     </div>
 </div>
 {% endblock %}
+{% block footer %}{% include 'footer.html.twig' %}{% endblock %}

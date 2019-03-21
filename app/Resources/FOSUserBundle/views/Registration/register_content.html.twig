@@ -1,10 +1,10 @@
 
 {% trans_default_domain 'FOSUserBundle' %}
 
-{% block body %}
+
 <div class="container-fluid identifiant">
     <div class="row justify-content-center">
-        <div class="col-3 border border-dark" style="padding:20px">
+        <div class="col-11 col-sm-11 col-md-11 col-lg-3 col-xl-3 border border-light" style="padding:20px">
 
 {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
 
@@ -32,8 +32,8 @@
 
     
     <div class="row justify-content-center">
-        <div class="col-4 identifiant">
-            <button type="submit" class="btn btn-dark">Enregistrer</button>
+        <div class="identifiant">
+            <button type="submit" class="btn btn-secondary btn-lg btn-block">Enregistrer</button>
         </div>
     </div>
 {{ form_end(form) }}
@@ -41,4 +41,3 @@
 </div>
 </div>
 
-{% endblock body %}

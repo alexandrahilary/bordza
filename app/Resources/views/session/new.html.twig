@@ -1,18 +1,28 @@
-{% include 'nav.html.twig' %}
+{% extends 'base.html.twig' %}
+{% block connexion %}{% include 'connexion.html.twig' %}{% endblock %}
+{% block nav %}{% include 'nav.html.twig' %}{% endblock %}
 
 {% block body %}
 
-<div class="container-fluid identifiant justify-content-center">
+<div class="container-fluid identifiant justify-content-center bottom">
 
     <div class="row justify-content-center">
         <div class="col-12">
             <div class="row justify-content-center">
-                <h1>Nouvelle Session Bordza</h1>
+                <h1>NOUVELLE SESSION</h1>
             </div>
         </div>
-        <div class="col-4 border border-dark top" style="padding:20px">
+        <div class="col-11 col-sm-11 col-md-11 col-lg-9 col-xl-9 border border-light top" style="padding:20px">
 
             {{ form_start(form, {'method': 'post', 'enctype' : 'multipart/form-data', 'action': path('admin_session_new') })}}
+            <!-- ordre d'affichage -->
+                <div class="form">
+                    <div class="">
+                        {{ form_label(form.orderNumber, 'Ordre d\'affichage ') }}
+                        {{ form_errors(form.orderNumber) }}
+                        {{ form_widget(form.orderNumber, {'attr': {'class':'form-control'}}) }}
+                    </div>
+                </div>
 
             <!-- formules -->
                 <div class="form">
@@ -64,7 +74,7 @@
             <!-- nbPlace -->
                 <div class="form">
                     <div class="">
-                        {{ form_label(form.nbPlace, 'Nombre de place  ') }}
+                        {{ form_label(form.nbPlace, 'Nombre de places  ') }}
                         {{ form_errors(form.nbPlace) }}
                         {{ form_widget(form.nbPlace, {'attr': {'class':'form-control'}}) }}
                     </div>
@@ -83,7 +93,7 @@
                 <!-- pathimage -->
                 <div class="form">
                     <div class="input-group ">
-                        {{ form_label(form.image.pathimage, 'Choisir une image', {'label_attr' : {'class' : 'custom-file-label '}} ) }}
+                        {{ form_label(form.image.pathimage, 'Choisir une image') }}
                         {{ form_errors(form.image.pathimage) }}
                         {{ form_widget(form.image.pathimage, {'attr': {'class':''}}) }}
                     </div>
@@ -107,14 +117,16 @@
 
         <div class="form bouton">
             <div class="row justify-content-center">
-                <button type="submit" class="btn btn-dark bouton">Enregistrer cette Session</button>
+                <button type="submit" class="btn btn-secondary btn-lg bouton">Enregistrer cette Session</button>
             </div>
-            <div class="row justify-content-center texte">
+            <div class="row justify-content-center text">
                 <a href="{{ path('admin_session_index') }}"><- Revenir aux Sessions</a>
             </div>
         </div>
         {{ form_end(form) }}
 
-    
+    </div>
+</div>
 
 {% endblock %}
+{% block footer %}{% include 'footer.html.twig' %}{% endblock %}

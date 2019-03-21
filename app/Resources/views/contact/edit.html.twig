@@ -1,39 +1,46 @@
-{% include 'nav.html.twig' %}
+{% extends 'base.html.twig' %}
+{% block connexion %}{% include 'connexion.html.twig' %}{% endblock %}
+{% block nav %}{% include 'nav.html.twig' %}{% endblock %}
 
 {% block body %}
-<div class="container-fluid identifiant justify-content-center">
+<div class="container-fluid identifiant justify-content-center bottom">
 
     <div class="row justify-content-center">
         <div class="col-12">
             <div class="row justify-content-center">
-                <h1>Traiter le message</h1>
+                <h1 class="text-center">Traiter le message</h1>
             </div>
         </div>
-        <div class="col-6 contact-edit">
+        <div class="col-11 col-sm-11 col-md-11 col-lg-6 col-xl-6 border border-light">
             <div class="row justify-content-center">
     {{ form_start(edit_form) }}
             <!-- traite -->
                 <div class="form text">
                     <div class="input-group">
-                        {{ form_label(edit_form.traite, 'Marquer le message comme Traité') }}
+                        {{ form_label(edit_form.traite, 'Message Traité') }}
                         {{ form_errors(edit_form.traite) }}
                         {{ form_widget(edit_form.traite) }}
                     </div>
                 </div>
-        <div class="form bouton">
-                <div class="row justify-content-center">
-                    {{ form_widget(edit_form) }}
-                    <button class="btn btn-dark" type="submit" value="Edit">Enregistrer les modifications</button>
+                <div class="form bouton">
+                    <div class="row justify-content-center">
+                        <button class="btn btn-secondary btn-lg" type="submit" value="Edit">Enregistrer les modifications</button>
                     {{ form_end(edit_form) }}
+                    </div>
+                    <div class="row justify-content-center text">
+                        <a href="{{ path('admin_contact_index') }}"><- Revenir aux Messages</a>
+                    </div>
+                    <div class="form bouton">
+                        <div class="row justify-content-center">
+                        {{ form_start(delete_form) }}
+                            <button type="submit" class="btn btn-small btn-lg">Supprimer</button>
+                        {{ form_end(delete_form) }}
+                        </div>
+                    </div>
                 </div>
-            <div class="row justify-content-center text">
-                <a href="{{ path('admin_contact_index') }}"><- Revenir aux Messages</a>
             </div>
-            <div class="form bouton">
-                <div class="row justify-content-center">
-                    {{ form_start(delete_form) }}
-                        <button type="submit" class="btn btn-small">Supprimer</button>
-                    {{ form_end(delete_form) }}
-                </div>
-            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
+{% block footer %}{% include 'footer.html.twig' %}{% endblock %}

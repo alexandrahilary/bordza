@@ -35,11 +35,6 @@ class Actu
      */
     private $contenu;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="resume", type="text")
-     */
     private $resume;
 
     /**
@@ -117,27 +112,14 @@ class Actu
     }
 
     /**
-     * Set resume
-     *
-     * @param string $resume
-     *
-     * @return Actu
-     */
-    public function setResume($resume)
-    {
-        $this->resume = $resume;
-
-        return $this;
-    }
-
-    /**
      * Get resume
      *
      * @return string
      */
     public function getResume()
     {
-        return $this->resume;
+        $contenu = $this->getContenu();
+        return $this->trunque($contenu,50); 
     }
 
     /**
@@ -210,6 +192,17 @@ class Actu
     public function getDate()
     {
         return $this->date;
+    }
+
+    public function trunque($str, $nb)
+    {
+        if( strlen($str)>$nb){
+            $str = substr($str,0,$nb);
+            $position_espace = strrpos($str," ");
+            $texte = substr($str,0,$position_espace);
+            $str = $texte."...";
+        }
+        return $str;
     }
 }
 

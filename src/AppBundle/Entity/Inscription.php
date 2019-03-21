@@ -73,12 +73,25 @@ class Inscription
     /**
      * @var bool
      *
+     * @ORM\Column(name="planche", type="boolean")
+     */
+    private $planche;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="materiel", type="boolean")
+     */
+    private $materiel;
+    
+    /**
+     * @var bool
+     *
      * @ORM\Column(name="valide", type="boolean")
      */
     private $valide;
 
     
-
     /**
      * Get id
      *
@@ -257,6 +270,54 @@ class Inscription
         return $this->valide;
     }
 
+    /**
+     * Set planche
+     *
+     * @param boolean $planche
+     *
+     * @return Inscription
+     */
+    public function setPlanche($planche)
+    {
+        $this->planche = $planche;
+
+        return $this;
+    }
+
+    /**
+     * Get planche
+     *
+     * @return bool
+     */
+    public function getPlanche()
+    {
+        return $this->planche;
+    }
+
+    /**
+     * Set materiel
+     *
+     * @param boolean $materiel
+     *
+     * @return Inscription
+     */
+    public function setMateriel($materiel)
+    {
+        $this->materiel = $materiel;
+
+        return $this;
+    }
+
+    /**
+     * Get materiel
+     *
+     * @return bool
+     */
+    public function getMateriel()
+    {
+        return $this->materiel;
+    }
+
     
 
     public function __toString()
@@ -264,5 +325,8 @@ class Inscription
         $format = "Inscription : Compte Utilisateur : %s, Session : %s, Nom de lélève : %s, Prénom de l'élève : %s, Age: %s, Numéro de téléphone : %s, Status de la réservation : %s";
         return sprintf($format, $this->userId, $this->sessionId, $this->nom, $this->prenom, $this->age, $this->tel, $this->valide);
     }
+
+    
+
 }
 

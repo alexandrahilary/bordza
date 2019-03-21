@@ -27,6 +27,9 @@ class VideoController extends Controller
         $videos = $em->getRepository('AppBundle:Video')->findAll();
         $deleteForms = array();
 
+        krsort($videos);
+
+
         foreach ($videos as $video){
             $deleteForms[$video->getId()] = $this->createDeleteForm($video)->createView();
         }
@@ -54,7 +57,7 @@ class VideoController extends Controller
             $em->persist($video);
             $em->flush();
 
-            return $this->redirectToRoute('admin_video_show', array('id' => $video->getId()));
+            return $this->redirectToRoute('admin_video_index');
         }
 
         return $this->render('video/new.html.twig', array(

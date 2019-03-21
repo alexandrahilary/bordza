@@ -1,37 +1,38 @@
-{% include 'nav.html.twig' %}
+{% extends 'base.html.twig' %}
+{% block connexion %}{% include 'connexion.html.twig' %}{% endblock %}
+{% block nav %}{% include 'nav.html.twig' %}{% endblock %}
 
 {% block body %}
 <div class="container-fluid">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center bottom">
         <h1>MES VIDÉOS</h1>
     </div>
     <div class="row justify-content-center bouton">
             <a href="{{ path('admin_video_new') }}">
-                <img class="img-class" src="{{ asset('assets/images/glyph/glyphicons-191-plus-sign.png') }}" style="margin-right:10px;">
-                <button class="btn btn-dark" type="button">Ajouter une nouvelle Vidéo</button>
+                <img class="img-class" src="{{ asset('assets/images/glyph/ajoute-rond.png') }}" style="margin-right:10px;">
+                <button class="btn btn-secondary btn-lg" type="button">Ajouter une nouvelle Vidéo</button>
             </a>
     </div>  
     
         {% for video in videos %}
     <div class="row justify-content-center"> 
-        <div class="col-6 border bg-light top">  
+        <div class="col-11 col-sm-11 col-md-11 col-lg-6 col-xl-6 rounded grey padding top">  
             <div class="row justify-content-center">
                 
-                <div>{{ video.titre }}</div>
+                <div class="col-11 text-center border-green" style="color:#1abc9c">{{ video.titre | upper }}</div>
                 <div class="top iframe">{{ video.iframe | raw }}</div>
-                <div class="col-12">{{ video.resume }}</div>
-                <div class="col-12">{{ video.contenu }}</div>
+                <div class="col-12">{{ video.contenu | raw }}</div>
                 <div class="col-12">{{ video.auteur }}</div>
                 <div class="col-12">{% if video.date %}{{ video.date|date('d-m-Y') }}{% endif %}</div>
                 <div class="col-12">
                     <div class="row">
                         <a href="{{ path('admin_video_edit', { 'id': video.id }) }}">
-                            <button class="btn btn-small bouton" type="submit" value="Edit">Modifier</button>
+                            <button class="btn btn-small btn-lg bouton" type="submit" value="Edit">Modifier</button>
                         </a>
                         <form action="{{ path('admin_video_delete', { 'id': video.id }) }}" method="post">
                             <input type="hidden" name="_method" value="DELETE" />
                             {{ form_widget(deleteForms[video.id]) }}
-                            <button type="submit" class="btn btn-small bouton">Supprimer</button>
+                            <button type="submit" class="btn btn-small btn-lg bouton">Supprimer</button>
                         </form> 
                     </div>
                 </div>
@@ -41,3 +42,4 @@
     </div>                    
         {% endfor %}
 {% endblock %}
+{% block footer %}{% include 'footer.html.twig' %}{% endblock %}

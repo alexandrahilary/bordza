@@ -5,6 +5,7 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 
 
 class ActuType2 extends AbstractType
@@ -14,7 +15,7 @@ class ActuType2 extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('titre')->add('contenu')->add('resume')->add('date');
+        $builder->add('titre')->add('contenu', CKEditorType::class )->add('date');
     }/**
      * {@inheritdoc}
      */

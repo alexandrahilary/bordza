@@ -1,147 +1,199 @@
-{% include 'nav.html.twig' %}
+{% extends 'base.html.twig' %}
+
+{% block connexion %}{% include 'connexion.html.twig' %}{% endblock %}
+{% block nav %}{% include 'nav.html.twig' %}{% endblock %}
+
+
 {% block body %}
-<div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-ride="carousel">
-  <ol class="carousel-indicators">
-    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="6"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="7"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="8"></li>
-  </ol>
-  <div class="carousel-inner">
-    <div class="carousel-item img-carousel active" style="background-image:url('{{ asset('assets/images/skateschool/_ALX1170.jpg')}}');">
-    </div>
-    <div class="carousel-item img-carousel" style="background-image:url('{{ asset('assets/images/skateschool/_ALX1187.jpg')}}');">
-    </div>
-    <div class="carousel-item img-carousel" style="background-image:url('{{ asset('assets/images/skateschool/_ALX1188.jpg')}}');">
-    </div>
-    <div class="carousel-item img-carousel" style="background-image:url('{{ asset('assets/images/skateschool/_ALX1406.jpg')}}');">
-    </div>
-    <div class="carousel-item img-carousel" style="background-image:url('{{ asset('assets/images/skateschool/_ALX1416.jpg')}}');">
-    </div>
-    <div class="carousel-item img-carousel" style="background-image:url('{{ asset('assets/images/skateschool/rigalet-skateboard-standup.jpg')}}');">
-    </div>
-    <div class="carousel-item img-carousel" style="background-image:url('{{ asset('assets/images/skateschool/slide-longboard-rigalet.jpg')}}');">
-    </div>
-    <div class="carousel-item img-carousel" style="background-image:url('{{ asset('assets/images/skateschool/perfectionnement-skateboard-buttboard-rigalet.JPG')}}');">
-    </div>
-    <div class="carousel-item img-carousel" style="background-image:url('{{ asset('assets/images/skateschool/skatesurfcamp_2.JPG')}}');">
-    </div>
-  </div>
-  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
 <div class="container-fluid">
-  <div class="row justify-content-center">
-    <div class="col-3">
-      {% for tarif in tarifs %}
-        <td>{{ tarif.uneHeure }}</td>
-        <td>{{ tarif.cinqHeures }}</td>
-        <td>{{ tarif.dixHeures }}</td>
-        <td>{{ tarif.trimestre }}</td>
-        <td>{{ tarif.annee }}</td>
-      {% endfor %}
-    </div>
-    <div class="col-8">
-      <div><p>Dans le but de partager notre passion dévorante pour la planche à roulette, la Bordzkool propose différentes formules d'enseignements.<p>
-        <p>Tous nos cours sonr encadrés par un moniteur diplômé.</p>
+  <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="6"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="7"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="8"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item img-carousel active" style="background-image:url('{{ asset('assets/images/skateschool/_ALX1170.jpg')}}');">
       </div>
-      <div>
-        <h3>Nos cours de Skateboard / STREET - RAMPE - BOWL</h3>
-          {% for formule in formules %}
-            {% if formule.nomFormule == "COURS" %}
-              {% for session in formule.sessions %}
-                <div>
-                  <td>{{ session.titreSession }}</td>
-                  <td>{{ session.disciplines }}</td>
-                  <td>{{ session.dateSession }}</td>
-                  <td>{{ session.nbPlace }}<span class="nombrePlacesRestantes">{% if (session.nbPlace)==(session.inscriptionCollection.snapshot | length) %}COMPLET{% else %}il reste de la place{% endif %}</span></td>
-                  <td>{{ session.descriptionSession }}</td>
-                  <td>{{ session.prix }}</td>
+      <div class="carousel-item img-carousel" style="background-image:url('{{ asset('assets/images/skateschool/_ALX1187.jpg')}}');">
+      </div>
+      <div class="carousel-item img-carousel" style="background-image:url('{{ asset('assets/images/skateschool/_ALX1188.jpg')}}');">
+      </div>
+      <div class="carousel-item img-carousel" style="background-image:url('{{ asset('assets/images/skateschool/_ALX1406.jpg')}}');">
+      </div>
+      <div class="carousel-item img-carousel" style="background-image:url('{{ asset('assets/images/skateschool/_ALX1416.jpg')}}');">
+      </div>
+      <div class="carousel-item img-carousel" style="background-image:url('{{ asset('assets/images/skateschool/rigalet-skateboard-standup.jpg')}}');">
+      </div>
+      <div class="carousel-item img-carousel" style="background-image:url('{{ asset('assets/images/skateschool/slide-longboard-rigalet.jpg')}}');">
+      </div>
+      <div class="carousel-item img-carousel" style="background-image:url('{{ asset('assets/images/skateschool/perfectionnement-skateboard-buttboard-rigalet.JPG')}}');">
+      </div>
+      <div class="carousel-item img-carousel" style="background-image:url('{{ asset('assets/images/skateschool/skatesurfcamp_2.JPG')}}');">
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</div>
+<div class="container-fluid bottom">
+  <div class="row justify-content-center top bottom">
+    <div class="col-11 col-sm-10 col-md-10 col-lg-6 col-xl-6 text-center">
+      <p class=" top">Dans le but de partager notre passion dévorante pour la planche à roulette, la Bordzkool propose différentes formules d'enseignements.<p>
+        <div class="w-100"></div>
+      <p class="">Tous nos cours sont encadrés par un moniteur diplômé.</p>
+        <div class="w-100"></div>
+        <hr class="top">
+    </div>
+  </div> 
+  
+  <div class="row justify-content-center top bottom">  
+    <div class="col-11 col-sm-10 col-md-6 col-lg-6 col-xl-6 text-center">   
+      <p><b><h3 class="categories">LES COURS BORDZA</h3></b></p>
+        <div class="row justify-content-center top">
+          {% for session in sessions | number('orderNumber') %}
+            {% if session.formules == "COURS" %}
+             
+                <div class="rounded black padding  col-11 col-sm-11 col-md-11 col-lg-5 col-xl-5">
+                  <div><b>- {{ session.disciplines | upper }} -</b></div>
+                  <div class="w-100"></div>
+                  <div class="Titillium"> {{ session.titreSession | upper }} </div>
+                  <div class="w-100"></div>
+                  <div class="text-green">{{ session.dateSession }}</div>
+                  <div class="w-100"></div>
+                  <hr class="top">
+                  <div>Groupe de {{ session.nbPlace }} élèves.</div>
+                  <span class="nombrePlacesRestantes text-green">
+                  {% if (session.nbPlace)==(session.inscriptionCollection.snapshot | length) %}<i> [ COMPLET ]</i>
+                  {% else %}<i> [ Il reste de la place ] </i>{% endif %}
+                  </span>
+                  
+                  <div class="w-100"></div>
+                  <p>{{ session.descriptionSession | raw }}</p>
+                  <div class="w-100"></div>
+                  <p class="top"><i>{{ session.prix }}</i></p>
                 </div>
-              {% endfor %}
             {% endif %}
           {% endfor %}
+          <div class="w-100"></div>
+          <hr class="top">
+        </div>
+    </div>      
+  </div> 
+  <div class="row justify-content-center top bottom">  
+    <div class="col-11 col-sm-10 col-md-6 col-lg-6 col-xl-6 text-center">
+      <p><b><h3 class="categories">- NOS TARIFS -</h3></b></p>
+      {% for tarif in tarifs %}
+      <p class="text text-green">1 H : {{ tarif.uneHeure }} €</p>
+      <p class="text text-green">5 H : {{ tarif.cinqHeures }} €</p>
+      <p class="text text-green">10 H : {{ tarif.dixHeures }} €</p>
+      <p class="text text-green">forfait au trimestre : {{ tarif.trimestre }} €</p>
+      <p class="text text-green">forfait à l'année : {{ tarif.annee }} €</p>
+      {% endfor %}
+    </div> 
+  </div> 
+</div>
+<div class="container-fluid bottom">
+  <div class="row justify-content-center">
+    <a href="{{ path('inscription') }}">
+      <button class="btn btn-secondary btn-lg bottom" type="submit">M'INSCRIRE</button>
+    </a>
+  </div>
+</div>
+  <hr class="top">
+<div class="container-fluid bottom">
+  <div class="row justify-content-center top bottom">
+    <div class="col-11">
+      <div class="text-center bottom">
+        <p class="text-green col-12 bottom"><b><h3 class="categories">- LES STAGES BORDZA -</h3></b>
       </div>
+      {% for session in sessions | number('orderNumber') %}
+        {% if session.formules == "STAGE" %}
+            <div class="row rounded black top padding justify-content-start">
+              <div class="titre-stage Titillium">- {{ session.titreSession | upper }} -</div>
+              <div class="w-100"></div>
+              <div class="col-11 col-sm-11 col-md-11 col-lg-5 col-xl-5">
+                <img class="img-fluid col-12 img-thumbnail" src ="{{ asset('uploads/images/' ~ session.image.pathImage)}}" 
+                alt="{{ session.image.alt }}">
+              </div>
+              <div class="col-11 col-sm-11 col-md-11 col-lg-6 col-xl-6">
+                <div class="text text-green"><i>STAGE DE {{ session.disciplines }}</i></div>
+                <div class="text">Dates : {{ session.dateSession }}</div>
+                <div class="text">Nombre d'élève maximum : {{ session.nbPlace }}
+                  <span class="nombrePlacesRestantes text-green">
+                  {% if (session.nbPlace)==(session.inscriptionCollection.snapshot | length) %}<i> [ COMPLET ]</i>
+                  {% else %}<i> [ Il reste de la place ] </i>{% endif %}
+                  </span>
+                </div>
+                <div class="text">{{ session.descriptionSession | raw }}</div>
+                <div class="text text-green">Prix du stage : {{ session.prix }}</div>
+              </div>
+            </div>
+      {% endif %}
+  {% endfor %}
     </div>
   </div>
 </div>
-  <hr/>
-<div class="container-fluid">
+<div class="container-fluid bottom">
   <div class="row justify-content-center">
-    <div class="text-center"><h3>LES STAGES</h3></div>
+    <a href="{{ path('inscription') }}">
+      <button class="btn btn-secondary btn-lg" type="submit">M'INSCRIRE</button>
+    </a>
   </div>
-  {% for formule in formules %}
-    
-      {% if formule.nomFormule == "STAGE" %}
-        {% for session in formule.sessions %}
-            <div class="row bg-ligne justify-content-center">
-
-              <div class="col-9 titre-stage">{{ session.titreSession | upper }}</div>
-            
-              <div class="row justify-content-around">
-                <div class="col-5"><img class="img-fluid" src ="{{ asset('uploads/images/' ~ session.image.pathImage)}}">
+</div>
+  <hr>
+<div class="container-fluid bottom">
+  <div class="row justify-content-center top bottom">
+    <div class="col-11">
+      <div class="text-center bottom">
+        <p class="text-green col-12 bottom"><b><h3 class="categories">- LES ÉVÉNEMENTS BORDZA -</h3></b>
+      </div>
+  {% for session in sessions | number('orderNumber')  %}
+      {% if (session.formules != "COURS") and (session.formules != "STAGE") %}
+        
+            <div class="row rounded black top padding justify-content-start">
+              <div class="titre-stage Titillium">- {{ session.titreSession | upper }} -</div>
+              <div class="w-100"></div>
+                <div class="col-11 col-sm-11 col-md-11 col-lg-5 col-xl-5">
+                  <img class="img-fluid col-12 img-thumbnail" src ="{{ asset('uploads/images/' ~ session.image.pathImage)}}"
+                   alt="{{ session.image.alt }}">
                 </div>
-                <div class="col-6">
-                  <div>{{ session.disciplines }}</div>
-                  <div>{{ session.dateSession }}</div>
-                  <div>{{ session.nbPlace }}<span class="nombrePlacesRestantes">Nombre de places restantes : {{ (session.nbPlace)-(session.inscriptionCollection.snapshot | length) }}</span></div>
-                  <div>{{ session.descriptionSession }}</div>
-                  <div>{{ session.prix }}</div>
+                <div class="col-11 col-sm-11 col-md-11 col-lg-6 col-xl-6">
+                  <div class="text text-green"><i>{{ session.disciplines }}</i></div>
+                  <div class="text">Dates de la Session : {{ session.dateSession }}</div>
+                  <div class="text">Nombre d'élève maximum : {{ session.nbPlace }}
+                    <span class="nombrePlacesRestantes text-green">
+                    {% if (session.nbPlace)==(session.inscriptionCollection.snapshot | length) %}<i> [ COMPLET ]</i>
+                    {% else %}<i> [ Il reste de la place ] </i>{% endif %}
+                    </span>
+                  </div>
+                  <div class="text">{{ session.descriptionSession | raw }}</div>
+                  <div class="text text-green">Prix de la session : {{ session.prix }}</div>
                 </div>
               </div>
-
-            </div>
-          
-        {% endfor %}
       {% endif %}
-    
   {% endfor %}
-  
-</div>
-<hr/>
-<div class="container-fluid">
-  <div class="row justify-content-center">
-    <div class="text-center"><h3>LES ÉVÉNEMENTS BORDZA</h3></div>
+    </div>
   </div>
-  {% for formule in formules %}
-    
-      {% if (formule.nomFormule != "COURS") and (formule.nomFormule != "STAGE") %}
-        {% for session in formule.sessions %}
-            <div class="row bg-ligne justify-content-center">
-
-              <div class="col-9 titre-stage">{{ session.titreSession | upper }}</div>
-            
-              <div class="row justify-content-around">
-                <div class="col-5"><img class="img-fluid" src ="{{ asset('uploads/images/' ~ session.image.pathImage)}}">
-                </div>
-                <div class="col-6">
-                  <div>{{ session.disciplines }}</div>
-                  <div>{{ session.dateSession }}</div>
-                  <div>{{ session.nbPlace }}<span class="nombrePlacesRestantes">Nombre de places restantes : {{ (session.nbPlace)-(session.inscriptionCollection.snapshot | length) }}</span></div>
-                  <div>{{ session.descriptionSession }}</div>
-                  <div>{{ session.prix }}</div>
-                </div>
-              </div>
-
-            </div>
-          
-        {% endfor %}
-      {% endif %}
-    
-  {% endfor %}
-  
 </div>
-
+<div class="container-fluid bottom">
+  <div class="row justify-content-center">
+    <a href="{{ path('inscription') }}">
+      <button class="btn btn-secondary btn-lg" type="submit">M'INSCRIRE</button>
+    </a>
+  </div>
 </div>
 {% endblock %}
+{% block footer %}{% include 'footer.html.twig' %}{% endblock %}

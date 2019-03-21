@@ -1,36 +1,105 @@
 body{
-    background-color: rgb(226, 226, 226) !important;
-    color: rgb(70, 70, 70) !important;
+    background-color: rgb(36, 36, 36) !important;
+    color: rgb(182, 182, 182) !important;
+    font-family: 'Quicksand',sans-serif !important;
+    font-size: 1.2em !important;
+    
+}
+.body{
+    min-height: 83vh;
+}
+#container-accueil{
+    display:flex;
+    align-items: center;
+    justify-content: center;
 }
 #menu, #nav{
     background-color: black;
+}
+#navbarNav{
+    padding: 20px;
+}
+.navbar-nav{
+    padding: 0 !important;
+}
+.identifiants{
+    margin-left:30px;
+    padding-top:10px !important;
+    padding-bottom:10px !important;
+    font-size: 1.3em;
+    
+}
+.compte{
+    margin-bottom:25px;
+}
+.nav-admin{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border : rgb(53, 53, 53) 1px solid;
+    padding: 5vh;
+    
+}
+
+.admin{
+    color:rgb(240, 142, 142) !important;
+    font-size: 1.5em;
+}
+.nav-admin:hover{
+    background-color: rgb(176, 255, 238);
+}
+.nav-visiteur{
+    padding:20px !important;
 }
 h1{
     margin-top:50px !important;
 }
 
 a{
-   color: rgb(128, 128, 128) !important; 
+   color: rgb(148, 148, 148) !important; 
+   padding: 0 !important;
 }
 
 a:hover{
-    color:rgb(240, 142, 142) !important;
+    color:#1abc9c !important;
     text-decoration-line: none !important;
 }
-.admin{
-    color:rgb(240, 142, 142) !important;
+.text-green{
+    color:#1abc9c;
 }
 li{
     list-style-type: none;
 }
+#navMenu a{
+    font-size:1.2em !important;
+    padding:10px;
+}
 #login img{
-    margin-top: 50px;
+    position: absolute;
+    top: 6%;
+    right: -1%;
+    width: 27px;
+    z-index:1;
 }
 .pages{
-    font-size: 2.5em;
+    font-size: 10em;
     font-weight: bolder;
-    color:rgb(255, 255, 255) !important;
-    
+    color:#1abc9c !important;
+}
+.pages:hover{
+    color:white !important;
+}
+#logo{
+    color:white;
+    font-weight:bold;
+    font-size:3em;
+    font-family: 'Shadows Into Light',cursive;
+}
+#user-name{
+    color:white;
+    font-weight:bold;
+    font-size:1.6em;
+    font-family: 'Titillium Web',sans-serif;
 }
 .en-tete{
     border: 1px solid grey;
@@ -74,20 +143,21 @@ li{
     font-size:1.3em;
 }
 hr{
-    width: 70%;
+    width: 50%;
     padding: 1px;
-    background-color: rgb(204, 204, 204);
+    background-color: rgb(158, 158, 158);
 }
 .titre-stage{
-    text-decoration: black;
-    text-decoration-line: underline;
     font-weight: bold;
     padding:20px;
     font-size: 1.5em;
 }
+.valide{
+    margin-left:5px;
+}
 .textarea{
     
-    min-height: 200px;
+    min-height: 400px;
 }
 .custom-file-label::after{
     content: "Parcourir" !important;
@@ -99,7 +169,18 @@ hr{
     display:none;
 }
 .article{
-    margin-top: 20px;
+    margin: 20px;   
+}
+.article-titre{
+}
+.resume p{
+    width:20vw;
+}
+.categories{
+    font-family: 'Shadows Into Light',cursive;
+}
+.Titillium{
+    font-family: 'Titillium Web',sans-serif;
 }
 .message{
     margin-right: 10px;
@@ -107,11 +188,31 @@ hr{
 .message-contenu{
     margin-top: 30px;
 }
+.image-contact{
+    background-image: url('../images/contact/neric_prof_de_skate.jpg');
+    height:45vh;
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-position: bottom;
+}
 .top{
     margin-top: 30px;
 }
+.bottom{
+    margin-bottom: 20px;
+}
 .left{
     margin-left:20px;
+}
+#admin-profil a{
+    color:#1abc9c !important;
+    font-size: 1.3em !important;
+
+}
+#admin-profil a:hover{
+    color:white !important;
+    
+
 }
 .contact{
     border-radius: 20px;
@@ -137,7 +238,7 @@ hr{
 .text{
     margin: 20px;
 }
-#appbundle_contact_traite, #appbundle_inscription_valide{
+#appbundle_contact_traite, #appbundle_inscription_valide, #appbundle_inscription_planche, #appbundle_inscription_materiel{
     height: 25px;
     width: 25px;
     margin-left: 15px;
@@ -160,10 +261,356 @@ hr{
     border-radius:15px;
     padding:20px;
 }
+.padding{
+    padding:20px;
+}
+.border-green{
+    border:#1abc9c solid 2px!important;
+    border-radius:15px;
+    padding:20px;
+    font-size:1.2em;
+    
+}
+.border-card{
+    border:#525252 solid 2px!important;
+    background-color:#6f6f6f;
+    border-radius:15px;
+    padding:20px;
+    font-size:1.3em;
+}
+.grey{
+    background-color: rgb(83, 83, 83);
+    margin:5px;
+}
+.black{
+    background-color: rgb(0, 0, 0);
+    margin:15px;
+}
 iframe{
     width: 640px !important;
     height: 360px !important;
 }
 iframe p a{
     display:none !important;
+}
+.serigraphie-accueil{
+    position:relative; 
+    display:flex; 
+    align-items:center;
+    justify-content: center;
+    border:solid  rgb(36, 36, 36) 5px;
+    height:100%;
+    background-image: url('../images/catalogue/longcruiser-bordza.png');
+    text-shadow: black 2px 2px 4px;
+    background-repeat: no-repeat;
+    background-size:cover;
+    text-transform: uppercase;
+}
+.news-accueil{
+    position:relative; 
+    display:flex; 
+    align-items:center;
+    justify-content: center;
+    border:solid rgb(36, 36, 36) 5px;
+    height:100%;
+    background-image: url('../images/news/festival_du_jeu2017.jpg');
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-position:right;
+    text-shadow: black 2px 2px 4px;
+    text-transform: uppercase;
+    
+}
+.skateschool-accueil{
+    position:relative; 
+    display:flex; 
+    align-items:center;
+    justify-content: center;
+    border:solid rgb(36, 36, 36) 5px;
+    height:100%;
+    background-image: url('../images/skateschool/_ALX1406.jpg');
+    text-shadow: black 2px 2px 4px;
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-position: center;
+    text-transform: uppercase;
+   
+}
+.video-accueil{
+    position:relative; 
+    display:flex; 
+    align-items:center;
+    justify-content: center;
+    border:solid  rgb(36, 36, 36) 5px;
+    height:100%;
+    background-image: url('../images/video/logo.png');
+    background-color:rgb(226, 226, 226);
+    text-shadow: black 2px 2px 4px;
+    background-repeat: no-repeat;
+    background-size:cover;
+    text-transform: uppercase;
+}
+.valeur-accueil{
+    position:relative; 
+    display:flex; 
+    align-items:center;
+    justify-content: center;
+    border:solid  rgb(36, 36, 36) 5px;
+    height:100%;
+    background-image: url('../images/valeur/bandeau-partenaire.png');
+    text-shadow: black 2px 2px 4px;
+    background-repeat: no-repeat;
+    background-size:cover;
+    text-transform: uppercase;
+   
+}
+.catalogue-accueil{
+    position:relative; 
+    display:flex; 
+    align-items:center;
+    justify-content: center;
+    border:solid  rgb(36, 36, 36) 5px;
+    height:100%;
+    background-image: url('../images/catalogue/bowl_peter.jpg');
+    background-repeat: no-repeat;
+    background-size:cover;
+    text-shadow: black 2px 2px 4px;
+    text-transform: uppercase;
+   
+}
+footer{
+    background-color: black;
+    padding:20px;
+    display:flex !important;
+    align-items: center;
+}
+.liens{
+    font-size:4em;
+}
+#reseaux-sociaux img{
+    padding-left: 20px;
+}
+.salles-gosses{
+    background-image: url('../images/serigraphie/casquette_les_salles_gosses.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border: 3px solid white;
+    margin:5px;
+    width: 20vh;
+    height: 20vh;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    color: white;
+    font-weight: bold;
+    text-shadow: 2px 2px 3px black;
+}
+.villa-sunshine{
+    background-image: url('../images/serigraphie/combi_villa_sunshine.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 20vh;
+    height: 20vh;
+    border: 3px solid white;
+    margin:5px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    color: white;
+    font-weight: bold;
+    text-shadow: 2px 2px 3px black;
+}
+.foodja{
+    background-image: url('../images/serigraphie/foodja_serigraphie.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 20vh;
+    height: 20vh;
+    border: 3px solid white;
+    margin:5px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    color: white;
+    font-weight: bold;
+    text-shadow: 2px 2px 3px black;
+}    
+.kraken{
+    background-image: url('../images/serigraphie/kraken_skateboard_serigraphie.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 20vh;
+    height: 20vh;
+    border: 3px solid white;
+    margin:5px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    color: white;
+    font-weight: bold;
+    text-shadow: 2px 2px 3px black;
+}    
+.low-level-crew{
+    background-image: url('../images/serigraphie/low_level_crew_serigraphie.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 20vh;
+    height: 20vh;
+    border: 3px solid white;
+    margin:5px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    color: white;
+    font-weight: bold;
+    text-shadow: 2px 2px 3px black;
+}
+.pigne-dhuitre{
+    background-image: url('../images/serigraphie/pigne_dhuitre_serigraphie.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 20vh;
+    height: 20vh;
+    border: 3px solid white;
+    margin:5px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    color: white;
+    font-weight: bold;
+    text-shadow: 2px 2px 3px black;
+} 
+.feelethik{
+    background-image: url('../images/serigraphie/serigraphie_feelethik.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 20vh;
+    height: 20vh;
+    border: 3px solid white;
+    margin:5px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    color: white;
+    font-weight: bold;
+    text-shadow: 2px 2px 3px black;
+}           
+.skatopiak{
+    background-image: url('../images/serigraphie/skatopiak_serigraphie.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 20vh;
+    height: 20vh;
+    border: 3px solid white;
+    margin:5px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    color: white;
+    font-weight: bold;
+    text-shadow: 2px 2px 3px black;
+} 
+.mira{
+    background-image: url('../images/serigraphie/serigraphie_mira_skateboard.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 20vh;
+    height: 20vh;
+    border: 3px solid white;
+    margin:5px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    color: white;
+    font-weight: bold;
+    text-shadow: 2px 2px 3px black;
+} 
+.img-partenaire{
+    max-height: 150px;
+}
+.inscriptions-titre{
+    font-size:4em;
+    font-weight:bolder;
+}
+.img-actu{
+    background-position:center;
+    background-size:cover;
+    height:20vw;
+    width:20vw;
+}
+@media screen and (max-width: 450px) {
+    .footer{
+        flex-direction: column;
+        text-align: center;
+    }
+    .nav-footer{
+        padding: 10px;
+    }
+    .liens{
+        font-size: 30px !important;
+    }
+    .serigraphie-accueil{
+        height:100%;
+    }
+    .news-accueil{
+        height:100%;
+    }
+    .skateschool-accueil{
+        height:100%;
+    }
+    .video-accueil{
+        height:100%;
+    }
+    .valeur-accueil{
+        height:100%;
+    }
+    .catalogue-accueil{
+        height:100%;
+    }
+    #logo{
+        font-size:2em;
+    }
+    .identifiant{
+        margin-top:0px;
+    }
+    .inscriptions-titre{
+        font-size:2em;
+        font-weight:bolder;
+    }
+    .profil-inscriptions{
+        font-size: 15px;
+    }
+    .profil-inscriptions h3{
+        font-size: 23px;
+    }
+    .hidden-mobile{
+        display: none;
+    }
+    #menu-admin{
+        color:red;
+        font-size: 1.5em;
+    }
+    .identifiants{
+        margin: 0;
+    }
+    iframe{
+        width: 320px !important;
+        height: 180px !important;
+    }
+    .img-actu{
+        height:80vw;
+        width:80vw
+    }
+    .resume p{
+        width:80vw;
+    }
 }

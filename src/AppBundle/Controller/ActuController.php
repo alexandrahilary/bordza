@@ -36,6 +36,8 @@ class ActuController extends Controller
         $actus = $em->getRepository('AppBundle:Actu')->findAll();
 
         $deleteForms = array();
+
+        krsort($actus);
         foreach ($actus as $actu){
             $deleteForms[$actu->getId()] = $this->createDeleteForm($actu)->createView();
         }
@@ -69,7 +71,7 @@ class ActuController extends Controller
             $em->persist($actu);
             $em->flush();
 
-            return $this->redirectToRoute('admin_actu_show', array('id' => $actu->getId()));
+            return $this->redirectToRoute('admin_actu_index');
         }
 
         return $this->render('actu/new.html.twig', array(

@@ -1,0 +1,195 @@
+{% extends 'base.html.twig' %}
+{% block connexion %}{% include 'connexion.html.twig' %}{% endblock %}
+{% block nav %}{% include 'nav.html.twig' %}{% endblock %}
+{% block body %}
+
+<div class="container-fluid identifiant justify-content-center">
+
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <div class="row justify-content-center">
+                <div class="col-12"><img class="img-fluid col-12" src="{{ asset('assets/images/valeur/bandeau-partenaire.jpg') }}" 
+                alt="skateschool bordeaux partenaire ensemble on est plus forts skateboard longboard">
+                </div>
+                <h1 class="categories top bottom"><b>- LE CONCEPT -</b></h1>
+                <div class="w-100"></div>
+                <hr class="top bottom">
+                <div class="w-100"></div>
+                <div class="text-center col-11 col-sm-11 col-md-11 col-lg-5 col-xl-5 top bottom">
+                <p class=" bottom">Bordza est un concept : les boards à pizza*.</p>
+
+                <p class="top bottom">Les riders les plus chevronnés tout comme les débutants engagés se font 
+                régulièrement des petites éraflures que l’on appelle : « pizzas » et ce en exploitant 
+                au maximum leurs capacités.<br>
+                Bordza rend hommage à ces héros du quotidien en créant des planches adaptées aux besoins 
+                de chacun et en formant ces riders par le biais de cours (initiation et perfectionnement) 
+                dans les multiples disciplines que propose la planche à roulettes : street, rampe, bowl, dancing, slalom, downhill.</p>
+
+                <p class="top bottom">Nos planches sont entièrement réalisées en bois provenant de forêts maitrisées et 
+                de manière artisanale, avec un impact faible sur l’environnement, dans notre atelier proche de Bordeaux.<br>
+                Nous utilisons le procédé de la sérigraphie pour imprimer nos produits. Cette technique est la plus respectueuse des propriétés techniques du bois et donc de la solidité de la planche car elle vient déposer une fine couche d’encre sur la feuille de bois de finition avant que celle-ci ne soit mise dans le moule et pressée avec les autres couches constituant la planche.
+                C’est de l’encre à l’eau donc la nature aussi est respectée et c’est l’une de nos priorités.</p>
+
+                <p class="top bottom">Le design et les graphismes en constante évolution sont soigneusement étudiés par nos soins, 
+                ce qui nous a permis de développer une gamme textile à l’image de notre marque. Nous les 
+                imprimons avec ce même savoir-faire artisanal de sérigraphie avec de l’encre à l’eau.</p>
+
+                <p class="top bottom">En bref, les planches Bordza sont surtout faites pour skater. On sort ses roulettes et on va rouler ! On emporte avec nous nos valeurs eco-citoyennes, on va se faire une pure session avec nos potes en ayant bonne conscience et on kiffe.
+                « Shake Your Skate ! » Bordza.</p>
+
+                <p class="top bottom">Pizza : n.f.<br>
+                1- mot Italien. Galette de pâte à pain garnie de tomate, olives, fromage, etc…<br>
+                2- terme de skateboard. Brûlure superficielle due aux chutes de skateboard, garnie d’hémoglobine, 
+                de cailloux, de bitume, etc…
+                </p></div>
+                <div class="w-100"></div>
+                <hr class="top bottom">
+                <div class="w-100"></div>
+            </div>
+            <div class="row justify-content-center">
+                <h2 class="categories top bottom"><b>- NOS ENGAGEMENTS -</b></h2>
+                <div class="w-100"></div>
+                <hr class="top bottom">
+                <div class="w-100"></div>
+                <div class="text-center row col-11 top bottom">
+                    <div class="col-11 col-sm-11 col-md-11 col-lg-3 col-xl-3 card bg-dark top">
+                        <img src="{{ asset('assets/images/valeur/bandeau-partenaire.jpg') }}" class="card-img-top top" alt="skateboard serigraphie artisanal savoir-faire">
+                        <div class="card-body">
+                            <h3 class="card-title text-green bg-dark categories top bottom">ARTISANAL</h3>
+                            <p class="card-text text-green bg-dark ">Marque de skateboard et de longboard, Bordza élabore ses 
+                            propres modèles. De l'idée à la réalisation de la planche, tout est fait dans notre atelier 
+                            de manière artisanale. Chaque "moule" servant à donner la forme précise à la planche est étudié 
+                            avec soin pour répondre aux attentes techniques des planches qu'il formera.</p>
+                            
+                        </div>
+                    </div> 
+                    <div class="col-11 col-sm-11 col-md-11 col-lg-3 col-xl-3 card bg-dark top">
+                        <img src="{{ asset('assets/images/valeur/bandeau-partenaire.jpg') }}" class="card-img-top top" alt="bois issue de forêt maitrisées">
+                        <div class="card-body">
+                            <h3 class="card-title text-green bg-dark categories top bottom">BOIS ISSUS DE FORÊTS MAÎTRISÉES</h3>
+                            <p class="card-text text-green bg-dark">Nos plis de bois sont soigneusement sélectionnés. 
+                            Ils proviennent de forêts maîtrisées et sont triés pour avoir les plus belles finitions. 
+                            Un assemblage d'essences précises assure les propriétés techniques de la planche et lui confère 
+                            une grande résistance.</p>
+                            
+                        </div>
+                    </div> 
+                    <div class="col-11 col-sm-11 col-md-11 col-lg-3 col-xl-3 card bg-dark top">
+                        <img src="{{ asset('assets/images/valeur/bandeau-partenaire.jpg') }}" class="card-img-top top" alt="skateboard ethik">
+                        <div class="card-body">
+                            <h3 class="card-title text-green bg-dark categories top bottom">ÉTHIQUE</h3>
+                            <p class="card-text text-green bg-dark">Dans une démarche écoresponsable, 
+                            nous étudions tous nos processus afin d'avoir l'impact sur l'environnement 
+                            le plus faible possible. Les encres de sérigraphie utilisées sont à base d'eau, 
+                            notre vernis protecteur est à l'eau également nous sommes équipés d'ampoules à basse
+                             consommation et nous pensons à éteindre nos interrupteurs lorsque nous partons de l'atelier 😉 
+                             Nous défendons nos valeurs auprès de nos élèves également et lors de nos interventions nous 
+                             rappelons les gestes qui nous semblent précieux.</p>
+                            
+                        </div>
+                    </div> 
+                    <div class="col-11 col-sm-11 col-md-11 col-lg-3 col-xl-3 card bg-dark top">
+                        <img src="{{ asset('assets/images/valeur/bandeau-partenaire.jpg') }}" class="card-img-top top" alt="skateschool transmission école de skate">
+                        <div class="card-body">
+                            <h3 class="card-title text-green bg-dark categories top bottom">ENSEIGNEMENT</h3>
+                            <p class="card-text text-green bg-dark">Les cours sont assurés par Éric Motard, professeur certifié. 
+                            Il base sa pédagogie sur la progression de chacun à son propre rythme. Nous sommes tous, adultes et 
+                            enfants confrontés au stress dans la vie quotidienne à l'école ou au travail. C'est dans une ambiance 
+                            plus détendue qu'Éric prodigue ses cours. Le challenge est là mais les élèves sont avant tout là pour 
+                            en profiter et se faire plaisir. La pratique régulière du sport est bonne pour la santé et la motivation 
+                            reste le facteur principal. Vous apprendrez la technique, les règles à tenir pour circuler sans danger 
+                            pour soi ni pour les autres usagers du skatepark et vous saurez "lire" les lignes pour ensuite vous 
+                            adapter quand vous serez seuls face à un skatepark.</p>
+                            
+                        </div>
+                    </div> 
+                </div>
+                <div class="w-100"></div>
+            </div>
+            <div class="row justify-content-center">
+                <h2 class="categories top bottom"><b>- NOS PARTENAIRES -</b></h2>
+                <div class="w-100"></div>
+                <hr class="top bottom">
+                <div class="w-100"></div>
+                <div class="text-center row justify-content-center col-9 top bottom ">
+                    <a href="https://www.surf-hebergement-biscarrosse.fr/" class="text-center row justify-content-center top bottom">
+                        <div class="col-11 col-sm-11 col-md-11 col-lg-3 col-xl-3"><img src="{{ asset('assets/images/partenaires/villa-sunshine.png') }}" class="img-partenaire img-fluid"></div>
+                        <div class="w-100"></div>
+                        <p class=" col-11 col-sm-11 col-md-11 col-lg-4 col-xl-4 top">
+                        Surf lodge à Biscarrosse Plage. Vous souhaitez passez vos vacances dans un cadre magnifique et en profiter pour paufiner votre technique 
+                        en surf et en skate, c'est la Villa idéale. Nelly vous accueille sur place, et vous guidera pour un séjour sur mesure. 
+                        Les cours de skate et de surf sont encadrés par deux moniteurs diplômés et passionés. Attention c'est très addictif... ;)
+                        </p>
+                        <div class="w-100"></div>
+                    </a>
+                    <a href="https://www.adrenaline-hunter.com/fr-FR/" class="text-center row justify-content-center top bottom">
+                        <div class="col-11 col-sm-11 col-md-11 col-lg-3 col-xl-3"><img src="{{ asset('assets/images/partenaires/adrenaline_hunter.png') }}" class="img-partenaire img-fluid"></div>
+                        <div class="w-100"></div>
+                        <p class=" col-11 col-sm-11 col-md-11 col-lg-4 col-xl-4 top">
+                        Gagnez du temps dans vos recherches d’activités avec ce premier site de réservation pour des initiations, stages, et 
+                        coaching de sports extreme et outdoor à travers le monde.
+                        </p>
+                        <div class="w-100"></div>
+                    </a>
+                    <a href="https://www.ariskateboard.com/" class="text-center row justify-content-center top bottom">
+                        <div class="col-11 col-sm-11 col-md-11 col-lg-3 col-xl-3"><img src="{{ asset('assets/images/partenaires/ARI.png') }}" class="img-partenaire img-fluid"></div>
+                        <div class="w-100"></div>
+                        <p class="col-11 col-sm-11 col-md-11 col-lg-4 col-xl-4 top">
+                        Association Illacaise qui se bouge pour les skateurs.
+                        </p>
+                        <div class="w-100"></div>
+                    </a>
+                    <a href="https://www.facebook.com/Bordeaux-Longskate-Club-Le-BLC-349277721882518/" class="text-center row justify-content-center top bottom">
+                        <div class="col-11 col-sm-11 col-md-11 col-lg-3 col-xl-3"><img src="{{ asset('assets/images/partenaires/BLC.png') }}" class="img-partenaire img-fluid"></div>
+                        <div class="w-100"></div>
+                        <p class="col-11 col-sm-11 col-md-11 col-lg-4 col-xl-4 top">
+                        Page Officielle du BLC où l'on vous partage la vie de l'asso, des assos des copains les events de 
+                        longboard dans la région les initiations et les sessions entre riders.
+                        </p>
+                        <div class="w-100"></div>
+                    </a>
+                    <a href="https://www.facebook.com/decathlonbordeauxlac/" class="text-center row justify-content-center top bottom">
+                        <div class="col-11 col-sm-11 col-md-11 col-lg-3 col-xl-3"><img src="{{ asset('assets/images/partenaires/Decathlon_Logo.jpg') }}" class="img-partenaire img-fluid"></div>
+                        <div class="w-100"></div>
+                        <p class="col-11 col-sm-11 col-md-11 col-lg-4 col-xl-4 top">
+                        Bienvenue sur la page officielle de votre Décathlon Bordeaux Lac ! L’équipe vous attend en magasin du lundi au samedi de 
+                        9h à 20h sans interruption pour partager leur passion du sport ! Au rayon skate vous serez accueillis par Alex qui pourra 
+                        vous conseiller sur le matériel sportif mis à disposition. 
+                        Et Bordza vous propose régulièrement de l'initiation au skateboard les samedis après midi devant le magasin !
+                        </p>
+                        <div class="w-100"></div>
+                    </a>
+                    <a href="https://www.facebook.com/Feelethik33/" class="text-center row justify-content-center top bottom">
+                        <div class="col-11 col-sm-11 col-md-11 col-lg-3 col-xl-3"><img src="{{ asset('assets/images/partenaires/feelethik.png') }}" class="img-partenaire img-fluid"></div>
+                        <div class="w-100"></div>
+                        <p class="col-11 col-sm-11 col-md-11 col-lg-4 col-xl-4 top">
+                        Association pluridisciplinaire, art circassien, slackline, et skateboard arcachonais. 
+                        De nombreux évènements et une éthik à découvrir.
+                        </p>
+                        <div class="w-100"></div>
+                    </a>
+                    <a href="https://www.mygreensport.com/" class="text-center row justify-content-center top bottom">
+                        <div class="col-11 col-sm-11 col-md-11 col-lg-3 col-xl-3"><img src="{{ asset('assets/images/partenaires/my-green-sport.png') }}" class="img-partenaire img-fluid"></div>
+                        <div class="w-100"></div>
+                        <p class="col-11 col-sm-11 col-md-11 col-lg-4 col-xl-4 top">
+                        My green sport valorise les marques qui s’engagent pour la planète afin de vous proposer une gamme unique de matériel 
+                        de sport qui préserve l’environnement tout en vous procurant sensations et performances.
+                        </p>
+                        <div class="w-100"></div>
+                    </a>
+                    <a href="https://lepereskateur.com/" class="text-center row justify-content-center top bottom">
+                        <div class="col-11 col-sm-11 col-md-11 col-lg-3 col-xl-3"><img src="{{ asset('assets/images/partenaires/le-pere-skater.png') }}" class="img-partenaire img-fluid"></div>
+                        <div class="w-100"></div>
+                        <p class="col-11 col-sm-11 col-md-11 col-lg-4 col-xl-4 top">
+                        Le Père Skateur : Nouvelle boutique au Barpe où vous trouverez tout le nécessaire pour skater ! 
+                        </p>
+                        <div class="w-100"></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+{% block footer %}{% include 'footer.html.twig' %}{% endblock %}
