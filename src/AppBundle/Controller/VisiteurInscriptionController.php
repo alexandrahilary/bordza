@@ -36,10 +36,11 @@ class VisiteurInscriptionController extends Controller
             $em->flush();
 
             $message = \Swift_Message::newInstance()
+                ->setContentType('text/html')
                 ->setSubject('Nouvelle Inscription Bordza')
                 ->setFrom('contact@bordza.fr')
-                ->setTo('bordza@hotmail.fr')
-                ->setBody($this->renderView('inscription_mail.txt.twig', array('inscription' => $inscription)));
+                ->setTo('a.hilary@wanadoo.fr')
+                ->setBody($this->renderView('inscription_mail.html.twig', array('inscription' => $inscription)));
 
             $this->get('mailer')->send($message);
 

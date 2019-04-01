@@ -26,7 +26,7 @@ body{
     margin-left:30px;
     padding-top:10px !important;
     padding-bottom:10px !important;
-    font-size: 1.3em;
+    font-size: 1.2em;
     
 }
 .compte{
@@ -43,7 +43,7 @@ body{
 
 .admin{
     color:rgb(240, 142, 142) !important;
-    font-size: 1.5em;
+    font-size: 1.4em;
 }
 .nav-admin:hover{
     background-color: rgb(176, 255, 238);
@@ -56,7 +56,7 @@ h1{
 }
 
 a{
-   color: rgb(148, 148, 148) !important; 
+   color: #FFF !important; 
    padding: 0 !important;
 }
 
@@ -67,11 +67,17 @@ a:hover{
 .text-green{
     color:#1abc9c;
 }
+.text-grey{
+    color:grey !important;
+}
+.text-grey:hover{
+    color:#1abc9c;
+}
 li{
     list-style-type: none;
 }
 #navMenu a{
-    font-size:1.2em !important;
+    font-size:1em !important;
     padding:10px;
 }
 #login img{
@@ -92,7 +98,7 @@ li{
 #logo{
     color:white;
     font-weight:bold;
-    font-size:3em;
+    font-size:2.3em;
     font-family: 'Shadows Into Light',cursive;
 }
 #user-name{
@@ -117,6 +123,9 @@ li{
 }
 .description{
     color: rgb(158, 158, 158);
+}
+.marginCard{
+    margin:10px;
 }
 .img-carousel{
     background-repeat: no-repeat;
@@ -155,10 +164,7 @@ hr{
 .valide{
     margin-left:5px;
 }
-.textarea{
-    
-    min-height: 400px;
-}
+
 .custom-file-label::after{
     content: "Parcourir" !important;
 }
@@ -172,6 +178,7 @@ hr{
     margin: 20px;   
 }
 .article-titre{
+    width: 100%;
 }
 .resume p{
     width:20vw;
@@ -206,7 +213,7 @@ hr{
 }
 #admin-profil a{
     color:#1abc9c !important;
-    font-size: 1.3em !important;
+    font-size: 1.1em !important;
 
 }
 #admin-profil a:hover{
@@ -271,6 +278,15 @@ hr{
     font-size:1.2em;
     
 }
+.bg-green{
+    background-color:#1abc9c ;
+    border-radius:5px;
+    margin-top: 10px;
+    padding:20px;
+    font-size:1.2em;
+    color:#FFF;
+    
+}
 .border-card{
     border:#525252 solid 2px!important;
     background-color:#6f6f6f;
@@ -286,6 +302,9 @@ hr{
     background-color: rgb(0, 0, 0);
     margin:15px;
 }
+.cke_reset_all *{
+    margin:2px !important;
+}
 iframe{
     width: 640px !important;
     height: 360px !important;
@@ -296,11 +315,11 @@ iframe p a{
 .serigraphie-accueil{
     position:relative; 
     display:flex; 
-    align-items:center;
-    justify-content: center;
+    align-items:flex-end;
+    justify-content: flex-end;
     border:solid  rgb(36, 36, 36) 5px;
     height:100%;
-    background-image: url('../images/catalogue/longcruiser-bordza.png');
+    background-image: url('../images/serigraphie/bandeau-serigraphie.png');
     text-shadow: black 2px 2px 4px;
     background-repeat: no-repeat;
     background-size:cover;
@@ -309,11 +328,11 @@ iframe p a{
 .news-accueil{
     position:relative; 
     display:flex; 
-    align-items:center;
-    justify-content: center;
+    align-items:flex-end;
+    justify-content: flex-end;
     border:solid rgb(36, 36, 36) 5px;
     height:100%;
-    background-image: url('../images/news/festival_du_jeu2017.jpg');
+    background-image: url('../images/news/actus.png');
     background-repeat: no-repeat;
     background-size:cover;
     background-position:right;
@@ -324,8 +343,8 @@ iframe p a{
 .skateschool-accueil{
     position:relative; 
     display:flex; 
-    align-items:center;
-    justify-content: center;
+    align-items:flex-end;
+    justify-content: flex-end;
     border:solid rgb(36, 36, 36) 5px;
     height:100%;
     background-image: url('../images/skateschool/_ALX1406.jpg');
@@ -339,11 +358,11 @@ iframe p a{
 .video-accueil{
     position:relative; 
     display:flex; 
-    align-items:center;
-    justify-content: center;
+    align-items:flex-end;
+    justify-content: flex-end;
     border:solid  rgb(36, 36, 36) 5px;
     height:100%;
-    background-image: url('../images/video/logo.png');
+    background-image: url('../images/video/stagedurigalet.png');
     background-color:rgb(226, 226, 226);
     text-shadow: black 2px 2px 4px;
     background-repeat: no-repeat;
@@ -353,8 +372,8 @@ iframe p a{
 .valeur-accueil{
     position:relative; 
     display:flex; 
-    align-items:center;
-    justify-content: center;
+    align-items:flex-end;
+    justify-content: flex-end;
     border:solid  rgb(36, 36, 36) 5px;
     height:100%;
     background-image: url('../images/valeur/bandeau-partenaire.png');
@@ -367,11 +386,11 @@ iframe p a{
 .catalogue-accueil{
     position:relative; 
     display:flex; 
-    align-items:center;
-    justify-content: center;
+    align-items:flex-end;
+    justify-content: flex-end;
     border:solid  rgb(36, 36, 36) 5px;
     height:100%;
-    background-image: url('../images/catalogue/bowl_peter.jpg');
+    background-image: url('../images/catalogue/catalogue.png');
     background-repeat: no-repeat;
     background-size:cover;
     text-shadow: black 2px 2px 4px;
@@ -385,7 +404,7 @@ footer{
     align-items: center;
 }
 .liens{
-    font-size:4em;
+    font-size:1em;
 }
 #reseaux-sociaux img{
     padding-left: 20px;
@@ -540,6 +559,8 @@ footer{
 .inscriptions-titre{
     font-size:4em;
     font-weight:bolder;
+    text-shadow: 2px 2px 3px black;
+    color: #1abc9c;
 }
 .img-actu{
     background-position:center;

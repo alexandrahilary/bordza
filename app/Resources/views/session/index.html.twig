@@ -20,8 +20,11 @@
         {% if session.formules == 'COURS' %}
         <div class="col-12 top">
         <div class="row justify-content-center rounded grey padding">
-                <div>{{ session.orderNumber }}</div>
-                <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2">{% if session.image != null %}<img class="img-fluid" src="{{ asset('uploads/images/' ~ session.image.pathImage) }}">{% endif %}</div>
+                
+                <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2">
+                <div>Ordre d'affichage : <span class="text-green">{{ session.orderNumber }}</span></div>
+                <div class="w-100"></div>
+                {% if session.image != null %}<img class="img-fluid top" src="{{ asset('uploads/images/' ~ session.image.pathImage) }}">{% endif %}</div>
                 <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8">
                     <div class="row justify-content-start">
                         <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> / {{ session.formules }} / {{ session.disciplines }} / 
@@ -36,7 +39,7 @@
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-7 col-xl-7">
                                     <p>NOMBRE D'INSCRITS : <span class="nombreInscrits">{{ session.inscriptionCollection.snapshot | length }}</span></p>
                                     {% for inscription in session.inscriptionCollection.snapshot %} 
-                                    <p class="border-green"><img src="{{ asset('assets/images/glyph/glyphicons-635-teenager.png') }}">
+                                    <p class="bg-green"><img src="{{ asset('assets/images/glyph/glyphicons-635-teenager.png') }}">
                                     {{ inscription.prenom | title }} / {{ inscription.age }}
                                      
                                      <div class="w-100"></div>Tel : {{ inscription.tel }} / email : {{ inscription.userId.email }}
@@ -71,8 +74,11 @@
         {% if session.formules == 'STAGE' %}
         <div class="col-12 top">
         <div class="row justify-content-center rounded grey padding">
-                <div>{{ session.orderNumber }}</div>
-                <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2">{% if session.image != null %}<img class="img-fluid" src="{{ asset('uploads/images/' ~ session.image.pathImage) }}">{% endif %}</div>
+                
+                <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2">
+                <div>Ordre d'affichage : <span class="text-green">{{ session.orderNumber }}</span></div>
+                <div class="w-100"></div>
+                {% if session.image != null %}<img class="img-fluid top" src="{{ asset('uploads/images/' ~ session.image.pathImage) }}">{% endif %}</div>
                 <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8">
                     <div class="row justify-content-start">
                         <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> / {{ session.formules }} / {{ session.disciplines }} / 
@@ -87,7 +93,7 @@
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-7 col-xl-7">
                                     <p>NOMBRE D'INSCRITS : <span class="nombreInscrits">{{ session.inscriptionCollection.snapshot | length }}</span></p>
                                     {% for inscription in session.inscriptionCollection.snapshot %} 
-                                    <p class="border-green"><img src="{{ asset('assets/images/glyph/glyphicons-635-teenager.png') }}">
+                                    <p class="bg-green"><img src="{{ asset('assets/images/glyph/glyphicons-635-teenager.png') }}">
                                     {{ inscription.prenom | title }} / {{ inscription.age }}
                                      
                                      <div class="w-100"></div>Tel : {{ inscription.tel }} / email : {{ inscription.userId.email }}
@@ -122,8 +128,11 @@
         {% if (session.formules != "COURS") and (session.formules != "STAGE") %}
         <div class="col-12 top">
         <div class="row justify-content-center rounded grey padding">
-                <div>{{ session.orderNumber }}</div>
-                <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2">{% if session.image != null %}<img class="img-fluid" src="{{ asset('uploads/images/' ~ session.image.pathImage) }}">{% endif %}</div>
+                
+                <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2">
+                <div>Ordre d'affichage : <span class="text-green">{{ session.orderNumber }}</span></div>
+                <div class="w-100"></div>
+                {% if session.image != null %}<img class="img-fluid top" src="{{ asset('uploads/images/' ~ session.image.pathImage) }}">{% endif %}</div>
                 <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8">
                     <div class="row justify-content-start">
                         <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> / {{ session.formules }} / {{ session.disciplines }} / 
@@ -138,7 +147,7 @@
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-7 col-xl-7">
                                     <p>NOMBRE D'INSCRITS : <span class="nombreInscrits">{{ session.inscriptionCollection.snapshot | length }}</span></p>
                                     {% for inscription in session.inscriptionCollection.snapshot %} 
-                                    <p class="border-green"><img src="{{ asset('assets/images/glyph/glyphicons-635-teenager.png') }}">
+                                    <p class="bg-green"><img src="{{ asset('assets/images/glyph/glyphicons-635-teenager.png') }}">
                                      {{ inscription.prenom | title }} / {{ inscription.age }}
                                      
                                      <div class="w-100"></div>Tel : {{ inscription.tel }} / email : {{ inscription.userId.email }}

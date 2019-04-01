@@ -1,0 +1,18 @@
+{% block subject %}{% endblock %}
+{% block body_html %}
+{% autoescape false %}
+<h2>Bonjour Bordza !</h2>
+
+<p>Un nouveau message de <b>{{ contact.nom | title }} {{ contact.prenom | title }}</b> est en ligne.</p>
+
+<p>Objet : {{ contact.objet }}</p>
+
+<p>Message : {{ contact.message }}</p>
+
+<p>envoyé le : {{ "now" | date("d-m-Y H:i") }}.</p>
+
+<p>Répondre à : <a href="mailto:{{ contact.mail }}">{{ contact.mail }} </a></p>
+
+<p><a href="https://www.bordza.fr">Aller voir les messages</a></p>
+{% endautoescape %}
+{% endblock %}

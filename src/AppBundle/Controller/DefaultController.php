@@ -171,8 +171,8 @@ class DefaultController extends Controller
                 ->setContentType('text/html')
                 ->setSubject('Nouveau message Bordza')
                 ->setFrom('contact@bordza.fr')
-                ->setTo('bordza@hotmail.fr')
-                ->setBody($this->renderView('contact_mail.html.twig', array('contact' => $contact)));
+                ->setTo('a.hilary@wanadoo.fr')
+                ->setBody($this->renderView('contact_mail.email.twig', array('contact' => $contact)));
 
             $this->get('mailer')->send($message);
 
