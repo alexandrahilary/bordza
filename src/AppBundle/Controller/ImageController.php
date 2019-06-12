@@ -80,16 +80,26 @@ class ImageController extends Controller
         $editForm = $this->createForm('AppBundle\Form\ImageType', $image);
         $editForm->handleRequest($request);
         $oldFile = $image->getPathImage();
-        $path=$this->getParameter('image_directory').'/'.$oldFile;
+        if($oldFile){
+            $path=$this->getParameter('image_directory').'/'.$oldFile;
             $fs= new Filesystem();
             $fs->remove(array($path));
+        }else{
+            return $this->redirectToRoute('admin_image_index', array('id' => $image->getId()));
+        }
+        
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             
             $file = $image->getPathImage();
-            $fileName = $fileUploader->upload($file);
-            $image->setPathImage($fileName);
-            $this->getDoctrine()->getManager()->flush();
+            if ($file){
+                $fileName = $fileUploader->upload($file);
+                $image->setPathImage($fileName);
+                $this->getDoctrine()->getManager()->flush();
+            }else{
+                echo 'fichier vide'; dump($file);die;
+            }
+            
 
             return $this->redirectToRoute('admin_image_index', array('id' => $image->getId()));
         }

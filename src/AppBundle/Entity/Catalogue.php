@@ -37,6 +37,12 @@ class Catalogue
      */
     private $image;
 
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="orderNumber", type="string", length=255, nullable=true)
+     */
+    private $orderNumber;
 
     /**
      * Get id
@@ -94,6 +100,30 @@ class Catalogue
     public function getImage()
     {
         return $this->image;
+    }
+
+     /**
+     * Set orderNumber
+     *
+     * @param integer $orderNumber
+     *
+     * @return Session
+     */
+    public function setOrderNumber($orderNumber)
+    {
+        $this->orderNumber = $orderNumber;
+
+        return $this;
+    }
+
+    /**
+     * Get orderNumber
+     *
+     * @return int
+     */
+    public function getOrderNumber()
+    {
+        return $this->orderNumber;
     }
 }
 

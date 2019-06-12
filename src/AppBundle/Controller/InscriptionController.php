@@ -54,13 +54,25 @@ class InscriptionController extends Controller
     public function newAction(Request $request)
     {
         $inscription = new Inscription();
-        $form = $this->createForm('AppBundle\Form\InscriptionType2', $inscription);
+        
+        $form = $this->createForm('AppBundle\Form\Inscription2Type', $inscription);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($inscription);
             $em->flush();
+
+            $adresseMail = $inscription->getUserId()->getEmail();
+            $messageVisiteur = \Swift_Message::newInstance()
+            
+            ->setSubject('Nouvelle Inscription Bordza')
+            ->setFrom('contact@bordza.fr')
+            ->setTo($adresseMail)
+            ->setBody($this->renderView('inscription_visiteur_mail.email.twig', array('inscription' => $inscription)),'text/html');
+
+
+            $this->get('mailer')->send($messageVisiteur);
             
             return $this->redirectToRoute('admin_inscription_index');
         }
@@ -81,11 +93,22 @@ class InscriptionController extends Controller
     public function editAction(Request $request, Inscription $inscription)
     {
         $deleteForm = $this->createDeleteForm($inscription);
+        $adresseMail = $inscription->getUserId()->getEmail();
         $editForm = $this->createForm('AppBundle\Form\InscriptionType', $inscription);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
+
+            $messageVisiteur = \Swift_Message::newInstance()
+            
+            ->setSubject('Inscription Bordza')
+            ->setFrom('contact@bordza.fr')
+            ->setTo($adresseMail)
+            ->setBody($this->renderView('modifier_inscription_visiteur_mail.email.twig', array('inscription' => $inscription)),'text/html');
+
+
+            $this->get('mailer')->send($messageVisiteur);
 
             return $this->redirectToRoute('admin_inscription_index', array('id' => $inscription->getId()));
         }

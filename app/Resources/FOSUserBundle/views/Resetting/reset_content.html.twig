@@ -2,23 +2,26 @@
 {% block body %}
 <div class="container-fluid identifiant">
     <div class="row justify-content-center">
-        <div class="col-11 col-sm-11 col-md-11 col-lg-3 col-xl-3 border border-dark" style="padding:20px">
+        <div class="col-11 col-sm-11 col-md-11 col-lg-3 col-xl-3" style="padding:20px">
 
-{{ form_start(form, { 'action': path('fos_user_resetting_reset', {'token': token}), 'attr': { 'class': 'fos_user_resetting_reset' } }) }}
-    <div class="form">
-    {{ form_label(form.plainPassword.first, 'Choisissez le mot de passe') }}
-    {{ form_errors(form.plainPassword.first) }}
-    {{ form_widget(form.plainPassword.first, {'attr': {'class':'form-control'}}) }}
-    </div>
-    <div class="form">
-    {{ form_label(form.plainPassword.second, 'Confirmer le mot de passe' ) }}
-    {{ form_errors(form.plainPassword.second) }}
-    {{ form_widget(form.plainPassword.second, {'attr': {'class':'form-control'}}) }}
-    </div>
-    <div class="row justify-content-center">
-        <div class="form bouton">
-           <button class="btn btn-secondary btn-lg" type="submit" value="{{ 'resetting.reset.submit'|trans }}">Enregistrer le nouveau mot de passe</button>
+        {{ form_start(form, { 'action': path('fos_user_resetting_reset', {'token': token}), 'attr': { 'class': 'fos_user_resetting_reset' } }) }}
+            <div class="form">
+            {{ form_label(form.plainPassword.first, 'Choisissez le mot de passe') }}
+            {{ form_errors(form.plainPassword.first) }}
+            {{ form_widget(form.plainPassword.first, {'attr': {'class':'form-control'}}) }}
+            </div>
+            <div class="form">
+            {{ form_label(form.plainPassword.second, 'Confirmer le mot de passe' ) }}
+            {{ form_errors(form.plainPassword.second) }}
+            {{ form_widget(form.plainPassword.second, {'attr': {'class':'form-control'}}) }}
+            </div>
+            <div class="row justify-content-center">
+                <div class="form bouton top">
+                   <button class="btn btn-secondary " type="submit" value="{{ 'resetting.reset.submit'|trans }}">Enregistrer le nouveau mot de passe</button>
+                </div>
+            </div>
+        {{ form_end(form) }}
         </div>
     </div>
-{{ form_end(form) }}
+</div>
 {% endblock %}

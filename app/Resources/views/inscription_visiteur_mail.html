@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:v="urn:schemas-microsoft-com:vml">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
+</head>
+{% block subject %}Activation du compte Bordza{% endblock %}
+{% block body_text %}{% endblock %}
+{% block body_html %}
+{% autoescape false %}
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" bgcolor="grey">
+        <table bgcolor="black" width="100%" border="0" cellpadding="0" cellspacing="0">
+                <tbody>
+                        <tr>
+                                <td height="30" style="font-size:30px; line-height:30px" >
+                                        &nbsp;
+                                </td>
+                        </tr>
+                        <tr>
+                                <td style="font-size:2em; line-height:30px" >
+                                        <div style="color:white">
+                                                <div style="width:100%;text-align:center;justify-content:center;margin-bottom:20px">
+                                                        <div>
+                                                                <p><b><h2>Bonjour {{ inscription.userId.username }} !</h2></b></p>
+                                                                <p><b>Nouvelle inscription en ligne</b></p>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </td>
+                        </tr>
+                </tbody>
+        </table>
+        
+        <table bgcolor="white" width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tbody>
+                <tr>
+                    <td height="30" style="font-size:30px; line-height:30px" >
+                            &nbsp;
+                    </td>
+                </tr>
+                <tr>
+                    <td style="font-size:1em; line-height:30px">
+                        <div style="color:black">
+                                <div style="width:100%;text-align:center;justify-content:center;margin-bottom:20px">
+                                        <div>
+                                            <p>Une nouvelle inscription pour {{ inscription.prenom | title }} {{ inscription.nom | upper }}
+                                                    a bien été prise en compte.</p>
+                                            <p>{{ inscription.age }}</p>
+                                            <p>{{ inscription.tel }}</p>
+                                            <p>{{ inscription.sessionId.formules }}</p>
+                                            <p>{{ inscription.sessionId.disciplines }}</p>
+                                            <p>{{ inscription.sessionId.titreSession }}</p>
+                                            <p>{{ inscription.sessionId.dateSession }}</p>
+                                            <p>{{ inscription.sessionId.prix }}</p>
+                                            
+                                            <p>Prêt de matériel : 
+                                            {% if inscription.planche != true and  inscription.materiel != true %}
+                                            NON
+                                            {% endif %}
+                                            {% if inscription.planche or inscription.materiel %}
+                                                {% if inscription.planche %}
+                                                    PLANCHE 
+                                                {% endif %}
+                                                {% if inscription.materiel %}
+                                                    PROTECTIONS 
+                                                {% endif %}
+                                            {% endif %}
+                                            </p>
+                                            <p>Inscription réalisée le : {{ "now" | date("d-m-Y H:i") }}.</p>
+                                            
+                                            <p>Nous vous répondons dans les plus brefs délais.</p>
+                                        </div>
+                                </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+            
+            
+           
+            
+        
+    </body>
+{% endautoescape %}
+{% endblock %}
+
+
+   
+
+
+
+</html>

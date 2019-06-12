@@ -1,4 +1,5 @@
 {% extends 'base.html.twig' %}
+{% block metadescription %}<meta name="Description" content="Bordza, marque de skateboards éthiques fabriqués à Bordeaux et école de skateboard, nos conditions générales">{% endblock %}
 {% block connexion %}{% include 'connexion.html.twig' %}{% endblock %}
 {% block nav %}{% include 'nav.html.twig' %}{% endblock %}
 {% block body %}
@@ -6,9 +7,9 @@
 <div class="container-fluid bg-light text-dark">
     <div class="row justify-content-center top">
         <div class="col-12 text-center categories">
-            <h1><b>- CONDITIONS GÉNÉRALES DE VENTE -</b></h1>
+            <h2 class="top"><b>- CONDITIONS GÉNÉRALES DE VENTE BORDZA-</b></h2>
         </div>
-        <div class="col-9 rounded padding">
+        <div class="col-9 rounded padding top">
         <p><U>ARTICLE 1. DESIGNATION DU VENDEUR</U><br/>
         Le présent site www.bordza.fr est édité par l’auto-entreprise Eric Motard dont le siège social est situé au 12A, chemin de Lescaussade, à St Loubès 33450.<br/>
         Auto-entreprise Eric Motard, 
@@ -52,6 +53,7 @@
 
 
         <p><U>ARTICLE 5 : PASSATION DE COMMANDE :</U><br/>
+        <!--
         Toute commande passée sur le site www.bordza.fr constitue la formation d’un contrat conclu à distance entre l’acheteur et la société Bordza.<br/>
         Il appartient au client de sélectionner sur le site les produits qu’il désire commander, selon les modalités suivantes :</p>
 
@@ -59,7 +61,12 @@
         Tout article sélectionné mais dont la commande n’a pas été validée par l’acheteur, reste disponible à la vente pour les autres acheteurs. La société Bordza ne donne aucune garantie quant au maintien du prix en vigueur au jour de la sélection non suivie de validation, le prix applicable étant celui en vigueur au moment de la validation par l’Acheteur de sa commande.<br/>
         Après validation de la commande, ’application Paypal vous enverra un e-mail pour accuser réception de la commande. Bordza enverra un e-mail en cas de rupture de stock, ou d’impossibilité de réaliser la commande. L’acheteur sera alors informé d’une proposition de délais supplémentaire, d’un choix de produits équivalent, ou sera remboursé s’il le souhaite. L’entreprise Bordza enverra un e-mail à l’acheteur pour le tenir informé de l’état d’avancement de la commande jusqu’à l’envoi de cette dernière. Le dernier e-mail comprendra les informations nécessaires au bon suivi de la livraison, à  savoir le numéro de commande ainsi que le numéro de suivi du colis.</p>
 
-
+        -->
+        L'onglet "catalogue" du site www.bordza.fr présente les produits disponibles à la vente. Le visiteur du site qui souhaite commander l'un de ces produits rentre alors en contact avec l'entreprise Bordza, par le biais du formulaire de contact, par téléphone ou par mail. Toutes ces informations sont disponibles à l'onglet "contact" du site internet. 
+        Il indique alors le ou les modèles qu'il souhaite acquérir. Nous lui faisont parvenir en réponse à ce mail une facture avec le montant exact de la transaction dont le client devra s'acquitter pour lancer la fabrication de sa marchandise.
+        Il lui sera également communiqué les moyens de paiement disponibles, à savoir : virement banquaire, espèces pour un montant inférieur à 1000€, chèque ou paypal. 
+        À la réception du paiement la commande sera alors réalisée puis remise au transporteur pour livraison. Bordza s'engage à communiquer l'état d'avancement de la commande pour chaque étape de fabrication jusqu'à la remise de la marchandise au transporteur.
+        Le numéro de suivi du colis sera alors transmit au client afin que celui-ci puisse suivre l'acheminement du produit commandé.
         <p><U>ARTICLE 6 : RABAIS ET RISTOURNES</U><br/>
         Les tarifs proposés comprennent les rabais et ristournes que la société Bordza serait amenée à octroyer compte tenu de ses résultats ou de la prise en charge par l'acheteur de certaines prestations.
         En cas de promotion par les prix, Bordza s’engage à appliquer le prix promotionnel à toute commande passée pendant la durée de la promotion.
@@ -71,21 +78,21 @@
 
         <p><U>ARTICLE 8 : MODALITÉS DE PAIEMENT</U><br/>
         Les produits sont fournis aux tarifs en vigueur figurant sur le site, lors de l’enregistrement de la commande par le Vendeur. Les prix sont exprimés en Euros sur le site www.bordza.fr et non soumis à la TVA.<br/>
-        Les prix sont toujours entendus hors frais de livraison ; les frais de livraison tels qu’affichés sur le site www.bordza.fr. et dont l’acheteur sera informé au court du processus de commande, sont à ajouter au prix total de la commande.<br/>
-        Le montant total dû par l’acheteur est indiqué sur la page de confirmation de commande.<br/>
+        
+        <!--Le montant total dû par l’acheteur est indiqué sur la page de confirmation de commande.<br/>-->
         Le prix est exigible en totalité après confirmation de la commande.<br/>
         Ces tarifs sont fermes et non révisables pendant leur période de validité, tels qu’indiqués sur le site www.bordza.fr.</p>
 
-        <p>Ils ne comprennent pas les frais de traitement, d’expédition, de transport et de livraison, qui sont facturés en supplément.<br/>
+        <p>Ils comprennent les frais de traitement, d’expédition, de transport et de livraison.<br/>
         L’entreprise Bordza se réserve le droit de modifier ses prix à tout moment, tout en garantissant au consommateur l’application du prix en vigueur au jour de la commande.<br/>
-        Lors de la commande, les acheteurs sont invités à s’assurer que le prix des articles auquel ils se réfèrent corresponde bien au prix figurant sur la page à jour du site www.bordza.fr et non sur une page périmée à laquelle ils auraient accédé par une recherche internet en mode dit « cache ».</p>
+        Lors de la commande, les acheteurs sont invités à s’assurer que le prix des articles auquel ils se réfèrent corresponde bien au prix figurant sur la page à jour du site www.bordza.fr et non sur une page périmée à laquelle ils auraient accédé par une recherche internet antérieure, en mode dit « cache ».</p>
 
         <p>Le règlement des commandes personnalisées nécessitant un devis s'effectue : <br/>
         		soit par chèque ;<br/>
         		soit par virement bancaire ;<br/>
-        		soit en espèces pour les commandes d’un montant inférieur 1000€.<br/>
-        Lors de l'enregistrement de la commande, l'acheteur devra verser un acompte de 30% du montant global de la facture, le solde devant être payé à réception des marchandises.<br/>
-        Pour toutes les commandes passées sur le site marchand www.bordza.fr, le paiement se fera par le biais de Paypal. Il se fera donc du montant global de la facture à la commande.</p>
+        		soit en espèces pour les commandes d’un montant inférieur à 1000€.<br/>
+        Pour valider la commande et commencer le processus de fabrication,l'acheteur devra verser un acompte de 30% minimum du montant global de la facture ou le montant total de la facture. Le solde devant être payé dans son intégralité avant l'envoie des marchandises.<br/>
+        <!--Pour toutes les commandes passées sur le site marchand www.bordza.fr, le paiement se fera par le biais de Paypal. Il se fera donc du montant global de la facture à la commande.</p>-->
 
         <p><U>ARTICLE 9 : RETARD DE PAIEMENT</U><br/>
         En cas de défaut de paiement total ou partiel des marchandises livrées au jour de la réception, l'acheteur doit verser à la société Bordza une pénalité de retard égale à trois fois le taux de l'intérêt légal.<br/> 
@@ -106,8 +113,8 @@
         La livraison sera effectuée :<br/>
         		soit par la remise directe de la marchandise à l'acheteur ;<br/>
         		soit par l'envoi d'un avis de mise à disposition du produit dans un établissement partenaire;<br/>
-        		soit au lieu indiqué par l'acheteur sur le bon de commande, par un transporteur.<br/>
-        Les produits acquis par l’acheteur seront livrés en France métropolitaine dans un délai maximum de 30 jours suivant l’encaissement du règlement de leur prix par Bordza à l’adresse indiquée par l’acheteur lors de sa commande sur le site internet. Sauf cas particulier ou indisponibilité d’un ou plusieurs produits, les produits commandés seront livrés en une seule fois.</p>
+        		soit au lieu indiqué par l'acheteur sur la commande, par un transporteur.<br/>
+        Les produits commandés par l’acheteur seront livrés en France métropolitaine dans un délai maximum de 30 jours suivant l’encaissement du règlement de leur prix par Bordza à l’adresse indiquée par l’acheteur lors de sa commande. Sauf cas particulier ou indisponibilité d’un ou plusieurs produits, les produits commandés seront livrés en une seule fois.</p>
 
         <p>Par voie de conséquence, tout retard raisonnable dans la livraison des produits ne pourra pas donner lieu au profit de l'acheteur à : <br/>
         		l'allocation de dommages et intérêts ;<br/>
@@ -117,9 +124,8 @@
 
         <p>Pour le coût de la livraison, le tarifs en vigueur du transporteur sera appliqué. L’entreprise Bordza s’engage à choisir un mode de livraison avec un suivi du colis pour plus de sécurité. Le tarif sera appliqué selon ce barème :<br/>
         tarif a : pour l’achat d’une planche avec ou sans le pack « complet »<br/>
-        tarif b : pour l’achat d’accessoires ou textile (hors trucks et roues)<br/>
-        tarif c : pour l’achat de lots de trucks ou de roues.<br/>
-        Les frais de livraison sont indiqués lors de la commande.<br/>
+        tarif b : pour l’achat de lots de trucks ou de roues.<br/>
+        Les frais de livraison sont indiqués sur les "fiches produits" et déductibles si le client récupère sa marchandise directement auprès de l'entreprise Bordza.<br/>
         La société Bordza se réserve le droit de modifier ces prix lors de commandes d’articles en grande quantité. Un devis sera alors envoyé et la commande ne sera validée qu’après l’acceptation et le paiement par le client du nouveau prix de livraison. <br/>
         La livraison des articles commandés n’interviendra qu’après l’encaissement de leur prix étant précisé qu’en toute hypothèse, Bordza conserve la propriété des articles commandés et livrés jusqu’au complet encaissement de leur prix (principal et intérêts).</p>
 

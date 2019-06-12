@@ -2,16 +2,23 @@ body{
     background-color: rgb(36, 36, 36) !important;
     color: rgb(182, 182, 182) !important;
     font-family: 'Quicksand',sans-serif !important;
-    font-size: 1.2em !important;
+    font-size: 1em !important;
     
 }
 .body{
     min-height: 83vh;
 }
+.container-fluid{
+    padding-right:0 !important;
+    padding-left:0 !important;
+}
 #container-accueil{
     display:flex;
     align-items: center;
     justify-content: center;
+}
+.age{
+    font-size:0.8em;
 }
 #menu, #nav{
     background-color: black;
@@ -26,33 +33,38 @@ body{
     margin-left:30px;
     padding-top:10px !important;
     padding-bottom:10px !important;
-    font-size: 1.2em;
+    font-size: 1em;
     
 }
-.compte{
-    margin-bottom:25px;
+.slogan{
+    text-shadow: black 2px 2px 4px;
+    font-size: 1.5em;
+    position: relative;
+    top: -15px;
 }
+
 .nav-admin{
     display: flex;
     justify-content: space-around;
     align-items: center;
     border : rgb(53, 53, 53) 1px solid;
     padding: 5vh;
+    height:10vh;
     
 }
 
 .admin{
     color:rgb(240, 142, 142) !important;
-    font-size: 1.4em;
+    font-size: 1em;
 }
 .nav-admin:hover{
     background-color: rgb(176, 255, 238);
 }
 .nav-visiteur{
-    padding:20px !important;
+    padding:10px !important;
 }
 h1{
-    margin-top:50px !important;
+   
 }
 
 a{
@@ -63,6 +75,9 @@ a{
 a:hover{
     color:#1abc9c !important;
     text-decoration-line: none !important;
+}
+.caseacocher{
+    align-items: baseline;
 }
 .text-green{
     color:#1abc9c;
@@ -80,15 +95,16 @@ li{
     font-size:1em !important;
     padding:10px;
 }
-#login img{
+#login{
     position: absolute;
-    top: 6%;
-    right: -1%;
-    width: 27px;
-    z-index:1;
+    right:3%;
+    top:25%;
+}
+#login img{
+    width: 40px;
+    z-index:1;    
 }
 .pages{
-    font-size: 10em;
     font-weight: bolder;
     color:#1abc9c !important;
 }
@@ -98,13 +114,14 @@ li{
 #logo{
     color:white;
     font-weight:bold;
-    font-size:2.3em;
+    font-size:1.4em;
     font-family: 'Shadows Into Light',cursive;
 }
+
 #user-name{
     color:white;
     font-weight:bold;
-    font-size:1.6em;
+    font-size:1.1em;
     font-family: 'Titillium Web',sans-serif;
 }
 .en-tete{
@@ -213,7 +230,7 @@ hr{
 }
 #admin-profil a{
     color:#1abc9c !important;
-    font-size: 1.1em !important;
+    font-size: 1em !important;
 
 }
 #admin-profil a:hover{
@@ -245,15 +262,38 @@ hr{
 .text{
     margin: 20px;
 }
-#appbundle_contact_traite, #appbundle_inscription_valide, #appbundle_inscription_planche, #appbundle_inscription_materiel{
-    height: 25px;
-    width: 25px;
+.eleve{
+    cursor: pointer;
+}
+.plus{
+    border:2px solid white;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    text-transform: uppercase;
+
+
+}
+#appbundle_contact_traite, #appbundle_inscription_valide, 
+#appbundle_inscription_planche, #appbundle_inscription_materiel,
+#appbundle_inscription_forfait1h, #appbundle_inscription_forfait5h,
+#appbundle_inscription_forfait10h, #appbundle_inscription_forfaitAnnuel{
+    
     margin-left: 15px;
+}
+#appbundle_inscription_planche, #appbundle_inscription_materiel,
+#appbundle_inscription_forfait1h, #appbundle_inscription_forfait5h,
+#appbundle_inscription_forfait10h, #appbundle_inscription_forfaitAnnuel,
+#appbundle_contact_traite{
+    margin-right:15px;
 }
 #remember_me{
     height: 25px !important;
     width: 25px !important;
-    margin-left: 15px !important;
 }
 .cache{
     display:none;
@@ -268,8 +308,11 @@ hr{
     border-radius:15px;
     padding:20px;
 }
-.padding{
+.border-form{
     padding:20px;
+}
+.padding{
+    padding:5px;
 }
 .border-green{
     border:#1abc9c solid 2px!important;
@@ -282,10 +325,23 @@ hr{
     background-color:#1abc9c ;
     border-radius:5px;
     margin-top: 10px;
-    padding:20px;
-    font-size:1.2em;
+    padding:5px;
+    /*font-size:1.2em;*/
     color:#FFF;
     
+}
+.img-catalogue{
+    padding:0 !important;    
+}
+.img-foret{
+    width:100vw;
+    height: 50vh; 
+    object-fit: cover; 
+}
+.img-cours{
+    width:100vw;
+    height: 60vh; 
+    object-fit: cover;
 }
 .border-card{
     border:#525252 solid 2px!important;
@@ -322,8 +378,15 @@ iframe p a{
     background-image: url('../images/serigraphie/bandeau-serigraphie.png');
     text-shadow: black 2px 2px 4px;
     background-repeat: no-repeat;
-    background-size:cover;
+    background-size:100%;
     text-transform: uppercase;
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    -o-transition: all .5s;
+    transition: all .5s;
+}
+.serigraphie-accueil:hover{
+    background-size:110%;
 }
 .news-accueil{
     position:relative; 
@@ -333,6 +396,26 @@ iframe p a{
     border:solid rgb(36, 36, 36) 5px;
     height:100%;
     background-image: url('../images/news/actus.png');
+    background-repeat: no-repeat;
+    background-size:180%;
+    background-position:right;
+    text-shadow: black 2px 2px 4px;
+    text-transform: uppercase;
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    -o-transition: all .5s;
+    transition: all .5s;
+}
+.news-accueil:hover{
+    background-size:190%;
+}
+.reseaux-accueil{
+    position:relative; 
+    display:flex; 
+    justify-content: center;
+    border:solid rgb(36, 36, 36) 5px;
+    height:100%;
+    background-color:rgb(36, 36, 36);
     background-repeat: no-repeat;
     background-size:cover;
     background-position:right;
@@ -350,10 +433,17 @@ iframe p a{
     background-image: url('../images/skateschool/_ALX1406.jpg');
     text-shadow: black 2px 2px 4px;
     background-repeat: no-repeat;
-    background-size:cover;
+    background-size:100%;
     background-position: center;
     text-transform: uppercase;
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    -o-transition: all .5s;
+    transition: all .5s;
    
+}
+.skateschool-accueil:hover {
+    background-size:110%;
 }
 .video-accueil{
     position:relative; 
@@ -366,9 +456,20 @@ iframe p a{
     background-color:rgb(226, 226, 226);
     text-shadow: black 2px 2px 4px;
     background-repeat: no-repeat;
-    background-size:cover;
+    background-size:100%;
     text-transform: uppercase;
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    -o-transition: all .5s;
+    transition: all .5s;
+    overflow: hidden;
+    
 }
+.video-accueil:hover{
+    background-size:110%;
+}
+
+
 .valeur-accueil{
     position:relative; 
     display:flex; 
@@ -379,9 +480,16 @@ iframe p a{
     background-image: url('../images/valeur/bandeau-partenaire.png');
     text-shadow: black 2px 2px 4px;
     background-repeat: no-repeat;
-    background-size:cover;
+    background-size:100%;
     text-transform: uppercase;
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    -o-transition: all .5s;
+    transition: all .5s;
    
+}
+.valeur-accueil:hover{
+    background-size:110%;
 }
 .catalogue-accueil{
     position:relative; 
@@ -392,11 +500,40 @@ iframe p a{
     height:100%;
     background-image: url('../images/catalogue/catalogue.png');
     background-repeat: no-repeat;
-    background-size:cover;
+    background-size:100%;
     text-shadow: black 2px 2px 4px;
     text-transform: uppercase;
-   
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    -o-transition: all .5s;
+    transition: all .5s;
 }
+.catalogue-accueil:hover{
+    background-size:110%;
+}
+.titre-accueil{  
+    border:solid  rgb(36, 36, 36) 5px;
+    height:100%;
+    background-image: url('../images/catalogue/skate-bordza-ethique.jpg');
+    background-repeat: no-repeat;
+    background-size:cover;
+    text-shadow: black 2px 2px 4px;
+    align-items:center;
+    height:100%;
+    filter: grayscale(100%);
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    -ms-filter: grayscale(100%);
+    -o-filter: grayscale(100%);
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    -o-transition: all .5s;
+    transition: all .5s;
+}
+.titre-accueil:hover{
+    font-size:1.3em;
+}
+
 footer{
     background-color: black;
     padding:20px;
@@ -406,64 +543,22 @@ footer{
 .liens{
     font-size:1em;
 }
+.textarea{
+    height: 20vh !important;
+}
 #reseaux-sociaux img{
-    padding-left: 20px;
+    
+    padding-left: 10px;
+    padding-right: 10px;
 }
-.salles-gosses{
-    background-image: url('../images/serigraphie/casquette_les_salles_gosses.jpg');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    border: 3px solid white;
-    margin:5px;
-    width: 20vh;
-    height: 20vh;
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-end;
-    color: white;
-    font-weight: bold;
-    text-shadow: 2px 2px 3px black;
-}
-.villa-sunshine{
-    background-image: url('../images/serigraphie/combi_villa_sunshine.jpg');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    width: 20vh;
-    height: 20vh;
-    border: 3px solid white;
-    margin:5px;
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-end;
-    color: white;
-    font-weight: bold;
-    text-shadow: 2px 2px 3px black;
-}
-.foodja{
-    background-image: url('../images/serigraphie/foodja_serigraphie.jpg');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    width: 20vh;
-    height: 20vh;
-    border: 3px solid white;
-    margin:5px;
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-end;
-    color: white;
-    font-weight: bold;
-    text-shadow: 2px 2px 3px black;
-}    
+   
 .kraken{
     background-image: url('../images/serigraphie/kraken_skateboard_serigraphie.jpg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
     width: 20vh;
-    height: 20vh;
+    height: 35vh;
     border: 3px solid white;
     margin:5px;
     display: flex;
@@ -473,45 +568,13 @@ footer{
     font-weight: bold;
     text-shadow: 2px 2px 3px black;
 }    
-.low-level-crew{
-    background-image: url('../images/serigraphie/low_level_crew_serigraphie.jpg');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    width: 20vh;
-    height: 20vh;
-    border: 3px solid white;
-    margin:5px;
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-end;
-    color: white;
-    font-weight: bold;
-    text-shadow: 2px 2px 3px black;
-}
-.pigne-dhuitre{
-    background-image: url('../images/serigraphie/pigne_dhuitre_serigraphie.jpg');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    width: 20vh;
-    height: 20vh;
-    border: 3px solid white;
-    margin:5px;
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-end;
-    color: white;
-    font-weight: bold;
-    text-shadow: 2px 2px 3px black;
-} 
 .feelethik{
-    background-image: url('../images/serigraphie/serigraphie_feelethik.jpg');
+    background-image: url('../images/serigraphie/personnalise_feelethik.jpg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
     width: 20vh;
-    height: 20vh;
+    height: 35vh;
     border: 3px solid white;
     margin:5px;
     display: flex;
@@ -521,13 +584,13 @@ footer{
     font-weight: bold;
     text-shadow: 2px 2px 3px black;
 }           
-.skatopiak{
-    background-image: url('../images/serigraphie/skatopiak_serigraphie.jpg');
+.mira{
+    background-image: url('../images/serigraphie/serigraphie_mira_skateboard.jpg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
     width: 20vh;
-    height: 20vh;
+    height: 35vh;
     border: 3px solid white;
     margin:5px;
     display: flex;
@@ -537,13 +600,13 @@ footer{
     font-weight: bold;
     text-shadow: 2px 2px 3px black;
 } 
-.mira{
-    background-image: url('../images/serigraphie/serigraphie_mira_skateboard.jpg');
+.axel{
+    background-image: url('../images/serigraphie/personnalisation_axel.jpg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
     width: 20vh;
-    height: 20vh;
+    height: 35vh;
     border: 3px solid white;
     margin:5px;
     display: flex;
@@ -557,7 +620,7 @@ footer{
     max-height: 150px;
 }
 .inscriptions-titre{
-    font-size:4em;
+    font-size:280%;
     font-weight:bolder;
     text-shadow: 2px 2px 3px black;
     color: #1abc9c;
@@ -567,6 +630,21 @@ footer{
     background-size:cover;
     height:20vw;
     width:20vw;
+}
+.nav-footer{
+    font-size: 15px;
+}
+.nav-footer a{
+    color: grey !important;
+}
+.nav-footer a:hover{
+    color:#1abc9c !important;
+}
+.nav-link, .nav-link a{
+    color: grey !important;
+}
+.nav-link a:hover{
+    color:#1abc9c !important;
 }
 @media screen and (max-width: 450px) {
     .footer{

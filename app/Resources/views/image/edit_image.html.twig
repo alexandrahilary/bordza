@@ -8,10 +8,10 @@
     <div class="row justify-content-center">
         <div class="col-12">
             <div class="row justify-content-center">
-                <h1>MODIFIER L'IMAGE</h1>
+                <h2 class="top">MODIFIER L'IMAGE</h2>
             </div>
         </div>
-        <div class="col-4 border border-light top" style="padding:20px">
+        <div class="col-4 top" style="padding:20px">
             
     {{ form_start(edit_form) }}
                 <!-- pathimage -->
@@ -42,12 +42,12 @@
                     <div class="row justify-content-center">
                         <div class="text">Attention à ne pas oublier de choisir une nouvelle image avant de valider le formulaire.</div>
                         <div class="w-100"></div>
-                        <button class="btn btn-secondary btn-lg bouton"type="submit" value="Edit">Enregistrer les modifications</button>
+                        <button class="btn btn-secondary bouton"type="submit" value="Edit">Enregistrer les modifications</button>
                         {{ form_end(edit_form) }}
                     </div>
                     <div class="row justify-content-center">
                         {{ form_start(delete_form) }}
-                            <button class="btn btn-light btn-lg  bouton" type="submit" value="Delete">Supprimer</button>
+                            <button class="btn btn-danger  bouton" type="submit" value="Delete">Supprimer</button>
                         {{ form_end(delete_form) }}
                     </div>
                 </div>

@@ -8,23 +8,23 @@
     <div class="row justify-content-center">
         <div class="col-12">
             <div class="row justify-content-center">
-                <h1 class="text-center">Traiter le message</h1>
+                <h2 class="text-center top">Traiter le message</h2>
             </div>
         </div>
-        <div class="col-11 col-sm-11 col-md-11 col-lg-6 col-xl-6 border border-light">
+        <div class="col-11 col-sm-11 col-md-11 col-lg-6 col-xl-6 ">
             <div class="row justify-content-center">
     {{ form_start(edit_form) }}
             <!-- traite -->
                 <div class="form text">
                     <div class="input-group">
-                        {{ form_label(edit_form.traite, 'Message Traité') }}
                         {{ form_errors(edit_form.traite) }}
                         {{ form_widget(edit_form.traite) }}
+                        {{ form_label(edit_form.traite, 'Message Traité') }}
                     </div>
                 </div>
                 <div class="form bouton">
                     <div class="row justify-content-center">
-                        <button class="btn btn-secondary btn-lg" type="submit" value="Edit">Enregistrer les modifications</button>
+                        <button class="btn btn-secondary" type="submit" value="Edit">Enregistrer les modifications</button>
                     {{ form_end(edit_form) }}
                     </div>
                     <div class="row justify-content-center text">
@@ -33,7 +33,7 @@
                     <div class="form bouton">
                         <div class="row justify-content-center">
                         {{ form_start(delete_form) }}
-                            <button type="submit" class="btn btn-small btn-lg">Supprimer</button>
+                            <button type="submit" class="btn btn-danger">Supprimer</button>
                         {{ form_end(delete_form) }}
                         </div>
                     </div>

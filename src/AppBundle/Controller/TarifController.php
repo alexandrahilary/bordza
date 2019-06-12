@@ -32,6 +32,32 @@ class TarifController extends Controller
     }
 
     /**
+     * Creates a new tarif entity.
+     *
+     * @Route("/new", name="admin_tarif_new")
+     * @Method({"GET", "POST"})
+     */
+    public function newAction(Request $request)
+    {
+        $tarif = new Tarif();
+        $form = $this->createForm('AppBundle\Form\TarifType', $tarif);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($tarif);
+            $em->flush();
+
+            return $this->redirectToRoute('admin_tarif_index');
+        }
+
+        return $this->render('tarif/new.html.twig', array(
+            'tarif' => $tarif,
+            'form' => $form->createView(),
+        ));
+    }
+
+    /**
      * Displays a form to edit an existing tarif entity.
      *
      * @Route("/{id}/edit", name="admin_tarif_edit")

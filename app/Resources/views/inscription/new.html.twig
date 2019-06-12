@@ -11,16 +11,58 @@
                 <h1 class="text-center">NOUVELLE INSCRIPTION</h1>
             </div>
         </div>
-        <div class="col-11 col-sm-11 col-md-11 col-lg-11 col-xl-3 border border-light top">
+        <div class="col-11 col-sm-11 col-md-11 col-lg-11 col-xl-5  top">
             <div class="row justify-content-center">
                 <div class="col-11">
     {{ form_start(form) }}
+            <!-- formule -->
+                <div class="form">
+                    <div class="">
+                        {{ form_label(form.formule, ' Choisir une formule ') }}
+                        {{ form_errors(form.formule) }}
+                        {{ form_widget(form.formule, {'attr': {'class':'custom-select'}}) }}
+                    </div>
+                </div>
             <!-- sessionId -->
                 <div class="form">
                     <div class="">
                         {{ form_label(form.sessionId, ' Choisir une session ') }}
                         {{ form_errors(form.sessionId) }}
                         {{ form_widget(form.sessionId, {'attr': {'class':'custom-select'}}) }}
+                    </div>
+                </div>
+            <!-- forfait -->         
+                <div class="form top hidden" id="forfaits">
+                    <label>Choisir un Forfait</label>
+                    <div class="row  col-12 justify-content-around">
+                        <div class="col-3">
+                            <div class="row caseacocher">
+                                {{ form_label(form.forfait1h, ' forfait 1H ') }}
+                                {{ form_errors(form.forfait1h) }}
+                                {{ form_widget(form.forfait1h) }}
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="row caseacocher">
+                                {{ form_label(form.forfait5h, ' forfait 5H ') }}
+                                {{ form_errors(form.forfait5h) }}
+                                {{ form_widget(form.forfait5h) }}
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="row caseacocher">
+                                {{ form_label(form.forfait10h, ' forfait 10H ') }}
+                                {{ form_errors(form.forfait10h) }}
+                                {{ form_widget(form.forfait10h) }}
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="row caseacocher">
+                                {{ form_label(form.forfaitAnnuel, ' forfait annuel ') }}
+                                {{ form_errors(form.forfaitAnnuel) }}
+                                {{ form_widget(form.forfaitAnnuel) }}
+                            </div>
+                        </div>
                     </div>
                 </div>
             <!-- nom -->
@@ -98,10 +140,11 @@
         </div>
         <div class="w-100"></div>
         <div class="row justify-content-center">
-        <button class="btn btn-secondary btn-lg bouton" type="submit" value="Créer" >Ajouter une Inscription</button>
+        <button class="btn btn-secondary bouton" type="submit" value="Créer" >Ajouter une Inscription<br/>
+                                                                                et prévenir l'Utilisateur par email</button>
         <div class="w-100"></div>
     {{ form_end(form) }}
-            <a href="{{ path('admin_inscription_index') }}" class="text"><- Retour aux d'Inscriptions</a>
+            <a href="{{ path('admin_inscription_index') }}" class="text"><- Retour aux inscriptions</a>
         
     </div>
     </div>
@@ -110,3 +153,61 @@
     </div>
 {% endblock %}
 {% block footer %}{% include 'footer.html.twig' %}{% endblock %}
+{% block javascripts %}
+<script>
+
+
+$(document).ready(function(){
+
+var forfaits = document.getElementById('forfaits');
+var $formule = $('#appbundle_inscription_formule');
+// When fomrule gets selected ...
+$formule.change(function() {
+
+    
+
+  // ... retrieve the corresponding form.
+  var $form = $(this).closest('form');
+  // Simulate form data, but only include the selected sport value.
+  var data = {};
+  data[$formule.attr('name')] = $formule.val();
+  // Submit data via AJAX to the form's action path.
+
+ $.ajax({
+    url : $form.attr('action'),
+    type: $form.attr('method'),
+    data : data,
+    success: function(html) {
+      // Replace current session field ...
+      $('#appbundle_inscription_sessionId').replaceWith(
+        // ... with the returned one from the AJAX response.
+        $(html).find('#appbundle_inscription_sessionId')
+      );
+      // Position field now displays the appropriate positions.
+    }
+  })
+})
+$formule.change(function(){
+    var newVal = $formule.val();
+    console.log(newVal);
+    if (newVal == 1){
+        $(forfaits).addClass("show");
+        $(forfaits).removeClass("hidden");
+    }
+    if (newVal == 2){
+        $(forfaits).addClass("hidden");
+        $(forfaits).removeClass("show")
+    }else{
+        return;
+    }
+;})
+
+  
+   
+} 
+
+);
+
+</script>
+
+{% endblock %}

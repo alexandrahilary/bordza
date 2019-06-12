@@ -5,12 +5,12 @@
 {% block body %}
 <div class="container-fluid bottom">
     <div class="row justify-content-center">
-        <h1 class="text-center">LES INSCRIPTIONS</h1>
+        <h2 class="text-center top">LES INSCRIPTIONS</h2>
     </div>
     <div class="row justify-content-center">
             <a href="{{ path('admin_inscription_new') }}" class="d-none d-sm-block">
                 <img class="img-class" src="{{ asset('assets/images/glyph/ajoute-rond.png') }}" style="margin-right:10px;">
-                <button class="btn btn-secondary btn-lg bouton " type="button">Ajouter une nouvelle Inscription</button>
+                <button class="btn btn-secondary bouton " type="button">Ajouter une nouvelle Inscription</button>
             </a>
             <a href="{{ path('admin_inscription_new') }}" class="d-block d-sm-none">
                 <img class="img-class" src="{{ asset('assets/images/glyph/ajoute-rond.png') }}" style="margin-right:10px;">
@@ -22,62 +22,168 @@
     <div class=" col-11 top">
         <div class="row justify-content-center">
         {% for inscription in inscriptions %}
-        
-            <div class="grey rounded padding col-11 col-sm-11 col-md-11 col-lg-3 col-xl-3">
-            <div class="card-body text-center">
-                <div class="bg-green text-light "><img src="{{ asset('/assets/images/glyph/glyphicons-635-teenager.png')}}">
-                <span class="left"> {{ inscription.nom | upper }} {{ inscription.prenom | title }}</span></div>
-                <div class="text">{{ inscription.age }}</div>
-                <div class="text">{{ inscription.tel }}</div>
-                
-                <div class="w-100"></div>
-                <div class="text">{{ inscription.sessionId.formules }} / {{ inscription.sessionId.disciplines }}</div>
-                <div class="w-100"></div>
-                <div class="text" style="color:#1abc9c">{{ inscription.sessionId.titreSession }}</div>
-                <div class="w-100"></div>
-                <div class="text" style="color:#1abc9c">{{ inscription.sessionId.dateSession }}</div>
-                <div class="w-100"></div>
-                <div class="text">{{ inscription.sessionId.prix }}</div>
-                <div class="w-100"></div>
-                <div class="text">Inscrit par : {{ inscription.userId }}</div>
-                <div class="w-100"></div>
-                <div class="text">E-mail : {{ inscription.userId.email }}</div>
-                <div class="w-100"></div>
-                <div class="text">Prêt de matériel : 
-                    {% if inscription.planche %}<i class="text-green">PLANCHE</i>
-                    {% endif %}
-                    {% if inscription.materiel %}<i class="text-green">PROTECTIONS</i>
-                    {% endif %}
-                    {% if (inscription.planche == 0) and (inscription.materiel == 0) %}<i class="text-green">non</i>
-                    {% endif %}
+            {% if inscription.valide %}
+            <div class="grey  padding col-11 col-sm-11 col-md-11 col-lg-3 col-xl-3">
+                <form action="{{ path('admin_inscription_delete', { 'id': inscription.id }) }}" method="post" class="row justify-content-end">
+                    <input type="hidden" name="_method" value="DELETE" />
+                    {{ form_widget(deleteForms[inscription.id]) }}
+                    <button type="submit" class=" btn-danger justify-content-end">
+                        X
+                    </button>
+                </form>
+                <div class="">
+                    <div class="bg-green text-light eleve row" onclick="montreDetails()">
+                        <div class="col-10">
+                            <img src="{{ asset('/assets/images/glyph/glyphicons-635-teenager.png')}}">
+                            <span class="left"> {{ inscription.nom | upper }} {{ inscription.prenom | title }}</span>
+                            <div class="age">Age : {{ inscription.age }}</div>
+                        </div>
+                        <span class="plus"><img src="{{ asset('/assets/images/glyph/ajoute-rond.png') }}"></span>
+                    </div>
 
-                </div>
-                <div class="text">Inscription : {% if inscription.valide %}<img src="{{ asset('assets/images/glyph/valide.png')}}">
-                    {% else %}<span style="font-weight:bold">EN ATTENTE</span>
-                    {% endif %}
-                </div>
-                <div>
-                    
-                            <a href="{{ path('admin_inscription_edit', { 'id': inscription.id }) }}">
-                            <button class="btn btn-small btn-lg bouton">Modifier</button>
-                            </a>
-                        
-                            <form action="{{ path('admin_inscription_delete', { 'id': inscription.id }) }}" method="post">
-                              <input type="hidden" name="_method" value="DELETE" />
-                              {{ form_widget(deleteForms[inscription.id]) }}
-                              <button type="submit" class="btn btn-small btn-lg bouton">
-                                  Supprimer
-                              </button>
-                            </form>
-                        </li>
-                    </ul>
+                    <span class="justify-content-center hidden details" >
+                        <div class="">{{ inscription.sessionId.formules }} / {{ inscription.sessionId.disciplines }}</div>
+                        <div class="w-100"></div>
+                        <div class="" style="color:#1abc9c">Session : <u>{{ inscription.sessionId.titreSession | capitalize}}</u></div>
+                        <div class="w-100"></div>
+                        <div class="" style="color:#1abc9c">Date : {{ inscription.sessionId.dateSession }}</div>
+                        <div class="w-100"></div>
+                        <div class="">{% if inscription.forfait1h %}Forfait 1h{% endif %} 
+                                        {% if inscription.forfait5h %}Forfait 5h{% endif %}
+                                        {% if inscription.forfait10h %}Forfait 10h{% endif %}
+                                        {% if inscription.forfaitAnnuel %}Forfait annuel{% endif %}</div>
+                        <div class="w-100"></div>
+                        <div class="">Prix : {{ inscription.sessionId.prix }}€</div>
+                        <div class="w-100"></div>
+
+
+                        <div class="btn-danger">Tel : {{ inscription.tel }}</div>
+
+                        <div class="w-100"></div>
+
+
+
+
+
+
+                        <div class="">Inscrit par : {{ inscription.userId }}</div>
+                        <div class="w-100"></div>
+                        <div class="">E-mail : {{ inscription.userId.email }}</div>
+                        <div class="w-100"></div>
+                        <div class="">Prêt de matériel : 
+                            {% if inscription.planche %}<i class="text-green">PLANCHE</i>
+                            {% endif %}
+                            {% if inscription.materiel %}<i class="text-green">PROTECTIONS</i>
+                            {% endif %}
+                            {% if (inscription.planche == 0) and (inscription.materiel == 0) %}<i class="text-green">non</i>
+                            {% endif %}
+                        </div>
+                    </span>
+                    <a href="{{ path('admin_inscription_edit', { 'id': inscription.id }) }}">
+                        <button class="btn bouton">Modifier</button>
+                    </a>
+                    <div class="text">Inscription : {% if inscription.valide %}<img src="{{ asset('assets/images/glyph/valide.png')}}">
+                        {% else %}<span style="font-weight:bold">EN ATTENTE</span>
+                        {% endif %}
+                    </div>
+                    <div>
+
+
+
+
+                            
+                    </div>
                 </div>
             </div>
+            {% else %}
+            <div class="grey padding col-11 col-sm-11 col-md-11 col-lg-3 col-xl-3" style="border:2px solid red">
+                <form action="{{ path('admin_inscription_delete', { 'id': inscription.id }) }}" method="post" class="row justify-content-end">
+                    <input type="hidden" name="_method" value="DELETE" />
+                    {{ form_widget(deleteForms[inscription.id]) }}
+                    <button type="submit" class=" btn-danger justify-content-end">
+                        X
+                    </button>
+                </form>
+                <div class="">
+                    <div class="bg-green text-light eleve row" onclick="montreDetails()">
+                        <div class="col-10">
+                            <img src="{{ asset('/assets/images/glyph/glyphicons-635-teenager.png')}}">
+                            <span class="left"> {{ inscription.nom | upper }} {{ inscription.prenom | title }}</span>
+                            <div class="age">Age : {{ inscription.age }}</div>
+                        </div>
+                        <span class="plus"><img src="{{ asset('/assets/images/glyph/ajoute-rond.png') }}"></span>
+                    </div>
+
+                    <span class="justify-content-center hidden details" >
+                        <div class="">{{ inscription.sessionId.formules }} / {{ inscription.sessionId.disciplines }}</div>
+                        <div class="w-100"></div>
+                        <div class="" style="color:#1abc9c">Session : <u>{{ inscription.sessionId.titreSession | capitalize}}</u></div>
+                        <div class="w-100"></div>
+                        <div class="" style="color:#1abc9c">Date : {{ inscription.sessionId.dateSession }}</div>
+                        <div class="w-100"></div>
+                        <div class="">{% if inscription.forfait1h %}Forfait 1h{% endif %} 
+                                        {% if inscription.forfait5h %}Forfait 5h{% endif %}
+                                        {% if inscription.forfait10h %}Forfait 10h{% endif %}
+                                        {% if inscription.forfaitAnnuel %}Forfait annuel{% endif %}</div>
+                        <div class="w-100"></div>
+                        <div class="">Prix : {{ inscription.sessionId.prix }}€</div>
+                        <div class="w-100"></div>
+
+
+                        <div class="btn-danger">Tel : {{ inscription.tel }}</div>
+
+                        <div class="w-100"></div>
+
+
+
+
+
+
+                        <div class="">Inscrit par : {{ inscription.userId }}</div>
+                        <div class="w-100"></div>
+                        <div class="">E-mail : {{ inscription.userId.email }}</div>
+                        <div class="w-100"></div>
+                        <div class="">Prêt de matériel : 
+                            {% if inscription.planche %}<i class="text-green">PLANCHE</i>
+                            {% endif %}
+                            {% if inscription.materiel %}<i class="text-green">PROTECTIONS</i>
+                            {% endif %}
+                            {% if (inscription.planche == 0) and (inscription.materiel == 0) %}<i class="text-green">non</i>
+                            {% endif %}
+
+                        </div>
+                    </span>
+                    <a href="{{ path('admin_inscription_edit', { 'id': inscription.id }) }}">
+                        <button class="btn bouton">Modifier</button>
+                    </a>
+                    <div class="text">Inscription : {% if inscription.valide %}<img src="{{ asset('assets/images/glyph/valide.png')}}">
+                        {% else %}<span class="btn-danger"style="font-weight:bold">EN ATTENTE</span>
+                        {% endif %}
+                    </div>
+                    <div>
+                    </div>
+                </div>
             </div>
-            
+            {% endif %}
         {% endfor %}
         </div>
     </div>
     </div>
 {% endblock %}
 {% block footer %}{% include 'footer.html.twig' %}{% endblock %}
+{% block javascripts %}
+<script>
+$(document).ready(function(){
+var details = document.getElementsByClassName('details');
+var eleve = document.getElementsByClassName('eleve');
+
+
+montreDetails = function(){
+    $(details).toggle('hidden');
+}
+
+})
+</script>
+
+
+{% endblock %}

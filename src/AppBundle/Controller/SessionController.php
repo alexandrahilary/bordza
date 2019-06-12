@@ -61,7 +61,6 @@ class SessionController extends Controller
      */
     public function newAction(Request $request, FileUploader $fileUploader)
     {
-        
         $session = new Session();
         $form = $this->createForm('AppBundle\Form\SessionType', $session);
         $form->handleRequest($request);

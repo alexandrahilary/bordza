@@ -1,4 +1,5 @@
 {% extends 'base.html.twig' %}
+{% block metadescription %}<meta name="Description" content="Bordza, marque de skateboards éthiques fabriqués à Bordeaux et école de skateboard, les contacts">{% endblock %}
 {% block connexion %}{% include 'connexion.html.twig' %}{% endblock %}
 {% block nav %}{% include 'nav.html.twig' %}{% endblock %}
 
@@ -8,17 +9,18 @@
     <div class="row justify-content-center">
         <div class="col-12">
             <div class="row justify-content-center">
-                <h1 class="categories"><b>- CONTACT -</b></h1>
+                <h3 class="categories top"><b>- CONTACT -</b></h3>
             </div>
         </div>
         <div class ="col-11 col-sm-11 col-md-11 col-lg-10 col-xl-10 top bottom">
             <div class="row justify-content-center align-items-end">
-                <div class="col-11 col-sm-11 col-md-11 col-lg-2 col-xl-2 text-right">
+                <div class="col-11 col-sm-11 col-md-11 col-lg-3 col-xl-3 text-right">
                     <h2 class="Titillium"><b>ÉRIC MOTARD</b></h2>
                     <h4 class="text-green">Moniteur diplômé</h4>
                     <h3 class="categories top"><b>06 10 66 02 46</b></h3>
                     <a href="mailto:contact@bordza.fr"><h4 class="top">contact@bordza.fr</h4></a>
                     <p class="">14A chemin de lescaussade,<br> 33450 St Loubès.</p>
+                    <p><a href="#formulaire-contact">Envoyez-nous un message.</a></p>
                 </div>
                 <div class="col-11 col-sm-11 col-md-11 col-lg-8 col-xl-8 image-contact"></div>
             </div>
@@ -43,7 +45,7 @@
         <!-- formulaire de contact -->
     <div class="row justify-content-center">
         <div class="col-11 col-sm-11 col-md-11 col-lg-10 col-xl-10 top">
-            <div class="row justify-content-center">
+            <div class="row justify-content-center" id="formulaire-contact">
             {% include 'formulaire_contact.html.twig' %}
             </div>
         </div>

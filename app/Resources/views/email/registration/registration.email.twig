@@ -1,27 +1,84 @@
-{% block subject %}Confirmation d'inscription{% endblock subject %}
-{% block body_text %}
-
-{% endblock body_text %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:v="urn:schemas-microsoft-com:vml">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
+</head>
+{% block subject %}Activation du compte Bordza{% endblock %}
+{% block body_text %}{% endblock %}
 {% block body_html %}
+{% autoescape false %}
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" bgcolor="grey">
+        <table bgcolor="black" width="100%" border="0" cellpadding="0" cellspacing="0">
+                <tbody>
+                        <tr>
+                                <td height="30" style="font-size:30px; line-height:30px" >
+                                        &nbsp;
+                                </td>
+                        </tr>
+                        <tr>
+                                <td style="font-size:2em; line-height:30px" >
+                                        <div style="color:white">
+                                                <div style="width:100%;text-align:center;justify-content:center;margin-bottom:20px">
+                                                        <div>
+                                                                <p><b>Bonjour {{ user.username | capitalize }}.</b></p>
+                                                                <p><b>Bienvenue sur le site de Bordza.</b></p>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </td>
+                        </tr>
+                </tbody>
+        </table>
+        <table bgcolor="white" width="100%" border="0" cellpadding="0" cellspacing="0">
+                <tbody>
+                        <tr>
+                                <td height="30" style="font-size:30px; line-height:30px" >
+                                        &nbsp;
+                                </td>
+                        </tr>
+                        <tr>
+                                <td style="font-size:1em; line-height:30px" >
+                                        <div style="color:black">
+                                                <div style="width:100%;text-align:center;justify-content:center;">
+                                                        <div>
+                                                                <p>Vous pourrez depuis ce compte inscrire un ou plusieurs élèves à des sessions, 
+                                                                stages ou cours que l'on propose, directement en ligne.</p>
+                                                                <p>Il ne reste plus qu'à valider la création de votre compte en cliquant
+                                                                sur le lien suivant : </p>
+                                                        </div><br/>
+                                            
+                                                </div>
+                                                <div style="width:100%;text-align:center;justify-content:center;">
+                                                        <a style="color:black;font-size:1.3em;"href="{{ confirmationUrl }}">-> Confirmer mon compte Bordza</a><br/>
+                                                </div>
+                                                <div style="width:100%;text-align:center;justify-content:center;margin-top:20px;">
+                                                        Cordialement.<br/>
+                                                        Éric de Bordza.
+                                                </div>       
+                                        </div>
+                                </td>
+                        </tr>
+                        <tr>
+                                <td height="30" style="font-size:30px; line-height:30px" >
+                                        &nbsp;
+                                </td>
+                        </tr>
+                        <tr>
+                                <td height="30" style="font-size:30px; line-height:30px" >
+                                        &nbsp;
+                                </td>
+                        </tr>
+                    
+                </tbody>
+                            
+        </table>
+    
+</body>
 
-<div style="background-color:black;color:white;border-radius:20px;justify-content:center;width:50vw">
-        <div style="width:100%;padding:30px;text-align:center;font-size:1.2em;justify-content:center;">
-        <div style="margin:10px;">Bonjour {{ user.username | capitalize }}.</div><br/>
-        <div style="margin:10px;">Ceci est un email de confirmation de ton inscription.</div> <br/>
-        <div style="margin:10px;">Afin de valider la création de ton compte, clique sur le lien suivant : </div><br/>
-        
-        </div>
-        <div style="width:100%;padding:30px;text-align:center;justify-content:center;">
-        <a style="color:white;font-size:1.3em;"href="{{ confirmationUrl }}">-> Confirmer mon compte</a><br/>
-        </div>
-        <div style="width:100%;padding:30px;text-align:center;justify-content:center;">
-        Cordialement.<br/>
-        L'équipe Bordza.
-        </div>
-        <div style="width:100%;padding:30px;text-align:center;justify-content:center;">
-        <img src="http://127.0.0.1:8000/assets/images/logo/bordza-blanc.png">
-        </div>
-        
-</div>
-{% endblock body_html %}
+{% endautoescape %}
+{% endblock %}
+</html>
+
    

@@ -1,10 +1,12 @@
 {% extends 'base.html.twig' %}
+{% block metadescription %}<meta name="Description" content="Bordza, marque de skateboards éthiques fabriqués à Bordeaux et école de skateboard, des articles qui parlent de skate dans la région Bordelaise.">{% endblock %}
+
 {% block connexion %}{% include 'connexion.html.twig' %}{% endblock %}
 {% block nav %}{% include 'nav.html.twig' %}{% endblock %}
 {% block body %}
 <div class="container-fluid bg-light text-dark">
     <div class="row justify-content-center">
-        <h1 class="categories"><b>- LES NEWS -</b></h1>
+        <h2 class="categories top"><b>- LES NEWS -</b></h2>
     </div>
     <div class="row justify-content-center">
     <div class="col-11">
@@ -20,7 +22,7 @@
                 <div class="row justify-content-center">    
                     <div class="resume col-11 text-dark top">{{ actu.resume | raw }} <i class="text-green">Lire l'article</i></div>
                     <div class="w-100"></div>
-                    <div><i>{% if actu.date %}{{ actu.date|date('d-m-Y') }}{% endif %}</i></div>
+                    <div class="text-dark"><i>{% if actu.date %}{{ actu.date|date('d-m-Y') }}{% endif %}</i></div>
                 </div>
                 
                 

@@ -1,60 +1,88 @@
+
 {% extends 'base.html.twig' %}
+{% block metadescription %}<meta name="Description" content="Bordza, marque de skateboards éthiques fabriqués à Bordeaux et école de skateboard.">{% endblock %}
 {% block connexion %}{% include 'connexion.html.twig' %}{% endblock %}
 {% block body %}
-              
-    <div class="container-fluid "  id="container-accueil">
-    <div class="row justify-content-center align-content-center" style="height:90vh;">
-        <div class="col-12 col-sm-12 col-md-11 col-lg-10 col-xl-10">
-    <span id="login"><img src="{{ asset('/assets/images/glyph/star.png') }}"></span>
-    
-    <div class="row justify-content-center align-items-center" style="height:80vh">
-        <div class="row col-12" style="height:70%">
+             
+<div class="container-fluid justify-content-center align-content-center" style="height:90vh;"  id="container-accueil">
+    <div class="col-12" style="height:90vh">
+        <div class="row" style="height:70%">
             <div class="col-12 col-sm-9 col-md-9 col-lg-9 col-xl-9">
                 <div class="row" style="height:40%">
-                    <a class="pages col-12" href="{{ path('catalogue') }}">
-                        <div class="col-12 catalogue-accueil">
+                    <a class="pages col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 " href="{{ path('skateschool') }}">
+                        <div class="col-12 skateschool-accueil">
+                            <p class="liens Titillium">|La Skateschool</p>
+                        </div>
+                    </a>
+                    <a class="pages col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6" href="{{ path('catalogue') }}">
+                        <div class="col-12  catalogue-accueil">
                             <p class="liens Titillium">|Notre Catalogue</p>
                         </div>
                     </a>
                 </div>
-                <div class="row" style="height:60%">
-                    <a class="pages col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4" href="{{ path('video') }}">
-                    <div class="col-12 video-accueil">
-                        <p class="liens Titillium">|Nos Vidéos</p>
-                    </div>
+                <div class="row" style="height:60%;">
+                    <a class="pages col-12 col-sm-5 col-md-5 col-lg-5 col-xl-5" href="{{ path('video') }}">
+                        <div class="col-12 video-accueil">
+                            <p class="liens Titillium">|Nos Vidéos</p>
+                        </div>
                     </a>
-                    <a class="pages col-12 col-sm-8 col-md-8 col-lg-8 col-xl-8" href="{{ path('skateschool') }}">
-                    <div class="col-12 skateschool-accueil">
-                        <p class="liens Titillium">|La Skateschool</p>
+                    <a class="pages col-12 col-sm-7 col-md-7 col-lg-7 col-xl-7 titre-accueil align-items-center" style="height:100%" href="{{ path('homepage') }}">
+                        <div class="row justify-content-center" style="height:100%">
+                        <div class="align-self-center ">
+                            <div class="row justify-content-center">
+                                <div class="col-12">
+                                    <p class="titre categories text-center text-light">Bordza Skateboard Factory</p>
+                                </div>
+                                <div class="col-12 slogan">
+                                    <p class="categories text-center text-light">"le skateboard Éthique et Technique"<br></p>
+                                </div>
+
+                                <img class="img-fluid" id="logo-bordza" src="{{ '/assets/images/logo/bordza-blanc.png' }}">
+                            </div>
+                        </div>  
+                        </div>
+                    </a>
+                </div>   
+            </div>
+            <div class="col-12 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                <div class="row" style="height:10%">
+                    <div class="col-12 reseaux-accueil">
+                        <span id="reseaux-sociaux" class="row justify-content-center align-items-center" style="height:100%">
+                            <a href="https://www.facebook.com/bordza.longboards/"><img id="facebook" src="{{ asset('/assets/images/glyph/glyphicons-social-31-facebook.png') }}"></a>
+                            <a href="https://www.instagram.com/bordzaskateboard/"><img id="instagram" src="{{ asset('/assets/images/glyph/glyphicons-social-33-instagram.png') }}"></a>
+                            <a href="https://vimeo.com/user5674470"><img id="vimeo" src="{{ asset('/assets/images/glyph/glyphicons-social-35-vimeo.png') }}"></a>
+                            <a href="https://www.youtube.com/user/nenethylik"><img id="youtube" src="{{ asset('/assets/images/glyph/youtube.png') }}"></a>
+                        </span>
                     </div>
+                </div>
+                <div class="row" style="height:90%">
+                    <a class="pages col-12" href="{{ path('actu') }}">
+                        <div class="col-12 news-accueil">
+                            <p class="liens Titillium">|Les News</p>
+                        </div>
                     </a>
                 </div>
             </div>
-            <a class="pages col-12 col-sm-3 col-md-3 col-lg-3 col-xl-3" href="{{ path('actu') }}">
-            <div class="col-12 news-accueil">
-                
-                <p class="liens Titillium">|Les News</p>
-            </div>
-            </a>
-            
+            <span id="login"><img src="{{ '/assets/images/logo/bordza-blanc.png' }}"></span>
         </div>
     
-        <div class="row col-12" style="height:30%">
-            <a class="pages col-12 col-sm-8 col-md-8 col-lg-8 col-xl-8" href="{{ path('serigraphie') }}">
-                <div class="col-12 serigraphie-accueil">
-                    <p class="liens Titillium">|La Sérigraphie</p>
-                </div>
-            </a>
-            <a class="pages col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4" href="{{ path('concept') }}">
-            <div class="col-12 valeur-accueil" style="">
-                <p class="liens Titillium">|Le Concept</p>
-            </div>
-            </a>
+        <div class="row" style="height:30%">
+                    <a class="pages col-12 col-sm-7 col-md-7 col-lg-7 col-xl-7" href="{{ path('serigraphie') }}">
+                        <div class="col-12 serigraphie-accueil">
+                            <p class="liens Titillium">|La Personnalisation</p>
+                        </div>
+                    </a>
+                    <a class="pages col-12 col-sm-5 col-md-5 col-lg-5 col-xl-5" href="{{ path('concept') }}">
+                        <div class="col-12 valeur-accueil" style="">
+                            <p class="liens Titillium">|Le Concept</p>
+                        </div>
+                    </a>
         </div>
+    
+        
     </div>
-    </div>
-    </div>
-    </div>
+    
+</div>
 {% endblock %}
 {% block footer %}{% include 'footer.html.twig' %}{% endblock %}
     
@@ -65,6 +93,60 @@
 
 
 <script>
+var facebook = document.getElementById('facebook');
+var instagram = document.getElementById('instagram');
+var vimeo = document.getElementById('vimeo');
+var youtube = document.getElementById('youtube');
+
+
+facebook.onmouseover = function(){
+    facebookGreen();
+};
+facebook.onmouseleave = function(){
+    facebookOld();
+};
+function facebookGreen(){
+    facebook.src="assets/images/glyph/facebook-hover.png";
+}
+function facebookOld(){
+    facebook.src="assets/images/glyph/glyphicons-social-31-facebook.png";
+}
+instagram.onmouseover = function(){
+    instagramGreen();
+};
+instagram.onmouseleave = function(){
+    instagramOld();
+};
+function instagramGreen(){
+    instagram.src="assets/images/glyph/instagram-hover.png";
+}
+function instagramOld(){
+    instagram.src="assets/images/glyph/glyphicons-social-33-instagram.png";
+}
+vimeo.onmouseover = function(){
+    vimeoGreen();
+};
+vimeo.onmouseleave = function(){
+    vimeoOld();
+};
+function vimeoGreen(){
+    vimeo.src="assets/images/glyph/vimeo-hover.png";
+}
+function vimeoOld(){
+    vimeo.src="assets/images/glyph/glyphicons-social-35-vimeo.png";
+}
+youtube.onmouseover = function(){
+    youtubeGreen();
+};
+youtube.onmouseleave = function(){
+    youtubeOld();
+};
+function youtubeGreen(){
+    youtube.src="assets/images/glyph/youtube-hover.png";
+}
+function youtubeOld(){
+    youtube.src="assets/images/glyph/youtube.png";
+}
 var navLogin = document.getElementById('identifiants');
 var login = document.getElementById('login');
 var liens = document.getElementsByClassName('liens');
@@ -99,12 +181,12 @@ policeResponsive();
         if (fenetre > 900) {
             if (fenetre < 1200){
                 for ( var i = 0 ; i < liens.length ; i ++){
-                    liens[i].setAttribute('style','font-size:35px')
+                    liens[i].setAttribute('style','font-size:31px')
                 }
             }
             if (fenetre > 1200){
                 for ( var i = 0 ; i < liens.length ; i ++){
-                    liens[i].setAttribute('style','font-size:38px')
+                    liens[i].setAttribute('style','font-size:33px')
                 }
             }
             
@@ -114,20 +196,20 @@ policeResponsive();
             var tailleFenetre = window.innerWidth;
             if (tailleFenetre < 900) {
                 for ( var i = 0 ; i < liens.length ; i ++){
-                liens[i].setAttribute('style','font-size:55px')
+                liens[i].setAttribute('style','font-size:30px')
                 }
                 
             }
             if (tailleFenetre > 900) {
                 if (tailleFenetre < 1200){
                     for ( var i = 0 ; i < liens.length ; i ++){
-                    liens[i].setAttribute('style','font-size:65px')
+                    liens[i].setAttribute('style','font-size:31px')
                     }
                     
                 }
                 if (tailleFenetre > 1200){
                     for ( var i = 0 ; i < liens.length ; i ++){
-                    liens[i].setAttribute('style','font-size:70px')
+                    liens[i].setAttribute('style','font-size:33px')
                     }
                     
                 }

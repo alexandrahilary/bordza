@@ -14,35 +14,36 @@
     <div class="row justify-content-center">
         <h1>MES IMAGES</h1>
     </div>
-      
+    <div class="row justify-content-center ligne">  
         {% for image in images %}
-        <div class="row justify-content-center ligne">
-        <div class="rounded grey padding col-10">
-        <div class="row justify-content-center">
-            <div class="col-4"><img class="img-fluid col-12" src="{{ asset('uploads/images/' ~ image.pathImage) }}"></div>
-            <div class="col-3">
-                <div class="text text-green">ATTRIBUTS : </div>
-                <div class="text">Description de l'image / Référencement : <br/><span class="text-green">{{ image.alt }}</span></div>
-                <div class="text">Crédit Photo : <br/><span class="text-green">{{ image.creditPhoto }}</span></div>
-            </div>
-            <div class="col-3">
-                <ul>
-                    <li>
-                        <a href="{{ path('admin_image_edit', { 'id': image.id }) }}">
-                        <button type="submit" class="btn btn-small btn-lg bouton">Modifier les attibuts</button>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ path('admin_image_edit_image', { 'id': image.id }) }}">
-                        <button type="submit" class="btn btn-small btn-lg bouton">Modifier l'Image</button>   
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>  
-        </div> 
-        </div>
+        
+            <div class="rounded grey padding col-3">
+                <div class="row justify-content-center">
+                    <div class="col-12"><img class="img-fluid col-12" src="{{ asset('uploads/images/' ~ image.pathImage) }}"></div>
+                    <div class="col-12">
+                        <div class="text text-green">ATTRIBUTS : </div>
+                        <div class="text">Description de l'image / Référencement : <br/><span class="text-green">{{ image.alt }}</span></div>
+                        <div class="text">Crédit Photo : <br/><span class="text-green">{{ image.creditPhoto }}</span></div>
+                    </div>
+                    <div class="col-12">
+                        <ul>
+                            <li>
+                                <a href="{{ path('admin_image_edit', { 'id': image.id }) }}">
+                                <button type="submit" class="btn btn-small bouton">Modifier les attibuts</button>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('admin_image_edit_image', { 'id': image.id }) }}">
+                                <button type="submit" class="btn btn-danger bouton">Modifier l'Image</button>   
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>  
+            </div> 
+        
         {% endfor %}
+        </div>
 </div>
 
 {% endblock %}

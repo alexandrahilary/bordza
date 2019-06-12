@@ -15,7 +15,7 @@ class CatalogueType2 extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('titre');
+        $builder->add('titre')->add('orderNumber');
     }/**
      * {@inheritdoc}
      */

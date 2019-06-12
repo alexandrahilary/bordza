@@ -1,34 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:v="urn:schemas-microsoft-com:vml">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
+</head>
+
 {% trans_default_domain 'FOSUserBundle' %}
 {% block subject %}
 {%- autoescape false -%}
 {{ 'resetting.email.subject'|trans({'%username%': user.username}) }}
 {%- endautoescape -%}
 {% endblock %}
-
 {% block body_text %}
-
 {% autoescape false %}
 {{ 'resetting.email.message'|trans({'%username%': user.username, '%confirmationUrl%': confirmationUrl}) }}
 {% endautoescape %}
 
+
+
 {% endblock %}
 {% block body_html %}
-<div style="background-color:black;color:white;border-radius:20px;justify-content:center;">
-        <div style="width:100%;padding:30px;text-align:center;font-size:1.2em;justify-content:center;">
-        <div style="margin:10px;">Bonjour {{ user.username | capitalize }}.</div><br/>
-        <div style="margin:10px;">Pour réinitialiser votre mot de passe, veuillez cliquer sur ce lien :</div><br/>
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" bgcolor="grey">
+        <table bgcolor="black" width="100%" border="0" cellpadding="10px" cellspacing="0">
+                <tbody>
+                        <tr>
+                                <td height="30" style="font-size:30px; line-height:30px" >
+                                        &nbsp;
+                                </td>
+                        </tr>
+                        <tr>
+                                <td style="font-size:1.8em; line-height:45px" >
+                                        <div style="color:white">
+                                                <div style="width:100%;text-align:center;justify-content:center;margin-bottom:20px">
+                                                        <div>
+                                                                <p><b>Bonjour {{ user.username | capitalize }} !</b></p>
+                                                                <p style="font-size:0.8em"><b>Modifiez votre mot de passe.</b></p>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </td>
+                        </tr>
+                </tbody>
+        </table>
         
-        </div>
-        <div style="width:100%;padding:30px;text-align:center;justify-content:center;">
-        <a style="color:white;font-size:1.3em;"href="{{ confirmationUrl }}">-> Changer mon mot de passe</a><br/>
-        </div>
-        <div style="width:100%;padding:30px;text-align:center;justify-content:center;">
-        Cordialement.<br/>
-        L'équipe Bordza.
-        </div>
-        <div style="width:100%;padding:30px;text-align:center;justify-content:center;">
-        <img src="http://127.0.0.1:8000/assets/images/logo/bordza-blanc.png">
-        </div>
+        <table bgcolor="white" width="100%" border="0" cellpadding="10px" cellspacing="0">
+            <tbody>
+                <tr>
+                    <td height="30" style="font-size:30px; line-height:30px" >
+                            &nbsp;
+                    </td>
+                </tr>
+                <tr>
+                    <td style="font-size:1em; line-height:30px">
+                        <div style="color:black">
+                                <div style="width:100%;justify-content:center;margin-bottom:20px">
+                                        <div>
+                                            
+                                                <p>Bonjour {{ user.username | capitalize }}.</p>
+                                                <p>Pour réinitialiser votre mot de passe, veuillez cliquer sur ce lien :</p>
         
-</div>
+                                                <a style="color:black;font-weight:bolder;font-size:1.3em;"href="{{ confirmationUrl }}">-> Changer mon mot de passe</a>
+                                                <p>Cordialement.</p>
+                                                <p>L'équipe Bordza.</p>
+                                        </div>
+                                </div>
+                        </div>
+                        
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+            
+            
+           
+            
+        
+    </body>
+</html>
 {% endblock %}

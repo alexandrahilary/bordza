@@ -5,7 +5,7 @@
 {% block body %}
 <div class="container-fluid">
     <div class="row justify-content-center">
-    <h1 class="text-green">MESSAGE DE {{ contact.nom | upper }} {{ contact.prenom | title }}</h1>
+    <h3 class="text-green top">MESSAGE DE {{ contact.nom | upper }} {{ contact.prenom | title }}</h3>
     <div class="w-100"></div>          
     <div class="text">{{ contact.mail }}</div>
     <div class="w-100"></div>
@@ -16,13 +16,13 @@
             <div class="col-10">    
                 <div class="row justify-content-start">
                     
-                    <div class="message-contenu">{{ contact.message | raw }}</div>
+                    <div class="message-contenu"><p>{{ contact.message | raw }}</p></div>
                     <div class="w-100"></div>
                      {% if contact.image != null %}
                          <div class="col-8 message-contenu"><img class="img-fluid" src="{{ asset('uploads/images/' ~ contact.image) }}"></div>
                      {% endif %}
                     <div class="w-100"></div>
-                    <div class="message">Message envoyé le : {{ contact.createdAt | date('d/m/Y H:i') }}</div>
+                    <div class="message"><p>Message envoyé le : {{ contact.createdAt | date('d/m/Y H:i') }}</p></div>
                 </div>
             </div>
         </div>
@@ -35,10 +35,10 @@
     {% endif %}
     <div class="w-100"></div>
         <a href="{{ path('admin_contact_edit', { 'id': contact.id }) }}">
-        <button class="btn btn-light btn-lg bouton">Traiter le message</button>
+        <button class="btn btn-light bouton">Traiter le message</button>
         </a>
         {{ form_start(delete_form) }}
-            <button class="btn btn-light btn-lg bouton" type="submit" value="Delete">Supprimer</button>
+            <button class="btn btn-danger bouton" type="submit" value="Delete">Supprimer</button>
         {{ form_end(delete_form) }}
         
         <div class="w-100"></div>

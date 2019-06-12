@@ -2,42 +2,42 @@
 
 
 <div id="container">
-    <div class="container-fluid" style="margin-bottom:7%;">
+    <div class="container-fluid" style="margin-bottom:7%;margin-top:7%">
         <div class="row justify-content-center">
             <div class="col-xl-3 col-lg-3 col-md-9 col-sm-9 col-11 " id="admin-profil" style="padding:20px;margin-right:10px;background-color:black;border-radius:20px;">
             {% if app.user %}
                 <h4 class="Titillium bottom">BIENVENUE SUR VOTRE COMPTE !</h4>
                 <div class="fos_user_user_show" style="margin-top:10px">
-                    <p >{{ 'profile.show.username'|trans }}: <b class="Titillium">{{ user.username | title }}</b></p>
-                    <p>{{ 'profile.show.email'|trans }}: <b class="Titillium">{{ user.email }}</b></p>
+                    <p><b class="Titillium">{{ user.username | title }}</b></p>
+                    <p><b class="Titillium">{{ user.email }}</b></p>
                     <a href="{{ path('fos_user_change_password') }}">Changer le mot de passe</a>
                 </div>
                 {% if app.user.hasRole('ROLE_ADMIN') %}
                 <div style="margin-top:50px" class="d-none d-sm-block">
-                    <p>VOUS POUVEZ ADMINISTRER VOTRE SITE :</p>
+                    <p>ADMINISTRATION DU SITE :</p>
                     <div>
-                        <a href="{{ path ('admin_user_index') }}"> -> Gérer les Utilisateurs</a>
+                        <a href="{{ path ('admin_user_index') }}"> -> Utilisateurs</a>
                     </div>
                     <div>
-                        <a href="{{ path ('admin_tarif_index') }}"> -> Gérer les Tarifs</a>
+                        <a href="{{ path ('admin_tarif_index') }}"> -> Tarifs</a>
                     </div>
                     <div>
-                        <a href="{{ path ('admin_session_index') }}"> -> Gérer les Sessions</a>
+                        <a href="{{ path ('admin_session_index') }}"> -> Sessions</a>
                     </div>
                     <div>
-                        <a href="{{ path ('admin_inscription_index') }}"> -> Gérer les Inscriptions</a>
+                        <a href="{{ path ('admin_inscription_index') }}"> -> Inscriptions</a>
                     </div>
                     <div>
-                        <a href="{{ path ('admin_actu_index') }}"> -> Gérer les Articles</a>
+                        <a href="{{ path ('admin_actu_index') }}"> -> Articles</a>
                     </div>
                     <div>
-                        <a href="{{ path ('admin_catalogue_index') }}"> -> Gérer le Catalogue</a>
+                        <a href="{{ path ('admin_catalogue_index') }}"> -> Catalogue</a>
                     </div>
                     <div>
-                        <a href="{{ path ('admin_video_index') }}"> -> Gérer les Vidéos</a>
+                        <a href="{{ path ('admin_video_index') }}"> -> Vidéos</a>
                     </div>
                     <div>
-                        <a href="{{ path ('admin_contact_index') }}"> -> Gérer les Messages</a>
+                        <a href="{{ path ('admin_contact_index') }}"> -> Messages</a>
                     </div>
                 </div>
                 {% endif %}
@@ -54,19 +54,32 @@
                         <img class="img-fluid" src="{{ asset('assets/images/logo/logo-bordza.png') }}">
                     </div>
                     <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
-                        <h3><span class="hidden-mobile">Nom de l'élève inscrit : </span>{{ inscription.nom | title }} {{ inscription.prenom | title }}</h3>
-                        <p>inscrit pour : {{ inscription.sessionId }}, Inscription {% if inscription.valide %}
+                        <p><span class="hidden-mobile">Nom de l'élève inscrit : </span><u>{{ inscription.nom | title }} {{ inscription.prenom | title }}</u><br/>
+                        inscrit pour : 
+                        {{ inscription.sessionId.titreSession }} /
+                        {{ inscription.sessionId.formules }} /
+                        {{ inscription.sessionId.disciplines }}<br/>
+                        prix : {{ inscription.sessionId.prix }}<br/>
+                        {{ inscription.sessionId.dateSession }}<br/>
+                        Inscription {% if inscription.valide %}
                         <span>VALIDÉE <img class="valide" src="{{ asset('assets/images/glyph/valide.png') }}"></span>
-                        {% else %}<span class="text-green">EN ATTENTE</span>{% endif %}</p>
+                        {% else %}<span class="text-green">EN ATTENTE</span>
+                        <a href="{{ path('inscription_edit', { 'id': inscription.id }) }}">
+                            <button class="btn bouton">Modifier</button>
+                        </a>
+                        {% endif %}</p>
                     </div>
+                    
+                     
                 </div>
                 {% endfor %}
                 
             {% endif %}
                 <div class="row justify-content-center">
-                    <p class="text-center text text-green bottom col-12">Pour modifier une inscription, veuillez nous contacter au minimum 24H à l'avance. Merci.</p>
+                    <p class="text-center text text-green bottom col-12">Vous pouvez modifier votre inscription tant que celle-ci n'est pas validée
+                    par le moniteur. <br/>Pour modifier une inscription déjà validée, veuillez nous contacter au minimum 24H à l'avance. Merci.</p>
                     <a href="{{ path('contact')}}">
-                        <button class="btn btn-secondary btn-lg bouton top">CONTACTEZ-NOUS</button>
+                        <button class="btn btn-secondary bouton top">CONTACTEZ-NOUS</button>
                     </a>
                 </div>
             </div>

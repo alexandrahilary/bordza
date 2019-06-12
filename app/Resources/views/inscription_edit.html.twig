@@ -1,0 +1,209 @@
+{% extends 'base.html.twig' %}
+{% block metadescription %}<meta name="Description" content="Bordza, modifiez vos inscriptions aux cours de skateboard en ligne">{% endblock %}
+{% block connexion %}{% include 'connexion.html.twig' %}{% endblock %}
+{% block nav %}{% include 'nav.html.twig' %}{% endblock %}
+{% block body %}
+<div class="container-fluid identifiant justify-content-center bottom">
+
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <div class="row justify-content-center">
+                <h1>INSCRIPTION</h1>
+            </div>
+        </div>
+        <div class="col-6"><img class="img-fluid padding" src="{{ asset('assets/images/skateschool/skate_andernos.jpg') }}"></div>
+        <div class="col-4 bottom top">
+            <div class="row justify-content-center">
+                <div class="col-11">
+    {{ form_start(edit_form) }}
+            <!-- formule -->
+                <div class="form">
+                    <p>Vous avez choisi la formule : {{ inscription.formule }}</p>
+                <div class="form" style="display:none">
+                    <div class="">
+                        {{ form_label(edit_form.formule, ' Modifier une formule ') }}
+                        {{ form_errors(edit_form.formule) }}
+                        {{ form_widget(edit_form.formule, {'attr': {'class':'custom-select'}}) }}
+                    </div>
+                </div>
+            <!-- sessionId -->
+                <div class="form">
+                    <div class="">
+                        {{ form_label(edit_form.sessionId, ' Modifier la session ') }}
+                        {{ form_errors(edit_form.sessionId) }}
+                        {{ form_widget(edit_form.sessionId, {'attr': {'class':'custom-select'}}) }}
+                    </div>
+                </div>
+            <!-- forfait --> 
+            {% if inscription.formule == 'COURS' %}        
+                <div class="form top " id="forfaits">
+                    <label>Choisir un Forfait</label>
+                    <div class="row  col-12">
+                        <div class="col">
+                            <div class="row caseacocher">
+                                {{ form_errors(edit_form.forfait1h) }}
+                                {{ form_widget(edit_form.forfait1h) }}
+                                {{ form_label(edit_form.forfait1h, ' forfait 1H ') }}
+                            </div>
+                        </div>
+                        <div class="w-100"></div>
+                        <div class="col">
+                            <div class="row caseacocher">
+                                {{ form_errors(edit_form.forfait5h) }}
+                                {{ form_widget(edit_form.forfait5h) }}
+                                {{ form_label(edit_form.forfait5h, ' forfait 5H ') }}
+                            </div>
+                        </div>
+                        <div class="w-100"></div>
+
+                        <div class="col">
+                            <div class="row caseacocher">
+                                {{ form_errors(edit_form.forfait10h) }}
+                                {{ form_widget(edit_form.forfait10h) }}
+                                {{ form_label(edit_form.forfait10h, ' forfait 10H ') }}
+                            </div>
+                        </div>
+                        <div class="w-100"></div>
+
+                        <div class="col">
+                            <div class="row caseacocher">
+                                {{ form_errors(edit_form.forfaitAnnuel) }}
+                                {{ form_widget(edit_form.forfaitAnnuel) }}
+                                {{ form_label(edit_form.forfaitAnnuel, ' forfait annuel ') }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+                
+            <!-- nom -->
+                <div class="form">
+                    <div class="">
+                        {{ form_label(edit_form.nom, 'Nom de l\'élève  ') }}
+                        {{ form_errors(edit_form.nom) }}
+                        {{ form_widget(edit_form.nom, {'attr': {'class':'form-control '}}) }}
+                    </div>
+                </div>
+
+            <!-- prenom -->
+                <div class="form">
+                    <div class="">
+                        {{ form_label(edit_form.prenom, ' Prénom de l\'élève ') }}
+                        {{ form_errors(edit_form.prenom) }}
+                        {{ form_widget(edit_form.prenom, {'attr': {'class':'form-control'}}) }}
+                    </div>
+                </div>
+
+            <!-- age -->
+                <div class="form">
+                    <div class="">
+                        {{ form_label(edit_form.age, ' Age de l\'élève ') }}
+                        {{ form_errors(edit_form.age) }}
+                        {{ form_widget(edit_form.age, {'attr': {'class':'form-control'}}) }}
+                    </div>
+                </div>
+
+            <!-- tel -->
+                <div class="form">
+                    <div class="bottom">
+                        {{ form_label(edit_form.tel, ' Téléphone de l\'élève ou du responsable légal ') }}
+                        {{ form_errors(edit_form.tel) }}
+                        {{ form_widget(edit_form.tel, {'attr': {'class':'form-control'}}) }}
+                    </div>
+                </div>
+
+            <!-- prêt de planche -->
+                <div class="form  top">
+                    <div class="row col-12 top caseacocher">
+                        {{ form_label(edit_form.planche, ' Prêt de planche ') }}
+                        {{ form_errors(edit_form.planche) }}
+                        {{ form_widget(edit_form.planche) }}
+                    </div>
+                </div>
+
+            <!-- prêt de matériel de protection -->
+                
+                    <div class="row col-12 caseacocher">
+                        {{ form_label(edit_form.materiel, ' Prêt d\'équipement de protection ') }}
+                        {{ form_errors(edit_form.materiel) }}
+                        {{ form_widget(edit_form.materiel) }}
+                    </div>
+                
+
+        <div class="row top">
+            <div class="col-12 text-center text-green">
+                Vous pourrez retrouver cette inscription à la rubrique "mon compte".
+            </div>
+        </div>
+         
+            
+        <div class="row justify-content-center" style="display:none">
+            <!-- valide -->
+                <div class="form">
+                    <div class="">
+                        {{ form_label(edit_form.valide, ' Résérvation Validée ') }}
+                        {{ form_errors(edit_form.valide) }}
+                        {{ form_widget(edit_form.valide) }}
+                    </div>
+                </div>
+        </div>
+        <div class="w-100"></div>
+        <div class="row top justify-content-center">
+        <button class="btn btn-secondary bouton" type="submit" value="Créer" >Enregistrer les modifications</button>
+        <div class="w-100"></div>
+    {{ form_end(edit_form) }}
+            
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+
+{% endblock %}
+{% block footer %}{% include 'footer.html.twig' %}{% endblock %}
+{% block javascripts %}
+<script>
+
+
+$(document).ready(function(){
+
+
+var $formule = $('#appbundle_inscription_formule');
+// When formule gets selected ...
+$formule.change(function() {
+
+    
+
+  // ... retrieve the corresponding form.
+  var $form = $(this).closest('form');
+  // Simulate form data, but only include the selected sport value.
+  var data = {};
+  data[$formule.attr('name')] = $formule.val();
+  // Submit data via AJAX to the form's action path.
+
+ $.ajax({
+    url : $form.attr('action'),
+    type: $form.attr('method'),
+    data : data,
+    success: function(html) {
+      // Replace current session field ...
+      $('#appbundle_inscription_sessionId').replaceWith(
+        // ... with the returned one from the AJAX response.
+        $(html).find('#appbundle_inscription_sessionId')
+      );
+      // Position field now displays the appropriate positions.
+    }
+  })
+})
+
+;})
+
+  
+   
+
+
+;
+
+</script>
+
+{% endblock %}

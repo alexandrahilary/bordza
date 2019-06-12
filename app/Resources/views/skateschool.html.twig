@@ -1,4 +1,5 @@
 {% extends 'base.html.twig' %}
+{% block metadescription %}<meta name="Description" content="Bordza, école de skate et de longboard à Bordeaux et dans la région, réservez vos cours en ligne.">{% endblock %}
 
 {% block connexion %}{% include 'connexion.html.twig' %}{% endblock %}
 {% block nav %}{% include 'nav.html.twig' %}{% endblock %}
@@ -40,9 +41,18 @@
 <div class="container-fluid bottom">
   <div class="row justify-content-center top bottom">
     <div class="col-11 col-sm-10 col-md-10 col-lg-6 col-xl-6 text-center">
-      <p class=" top">Dans le but de partager notre passion dévorante pour la planche à roulette, la Bordzkool propose différentes formules d'enseignements.<p>
+      <p ><h4 class="categories">La Bordzkool et ses cours " À la carte "</h4></p>
+      <p class=" top">Dans le but de partager notre passion dévorante pour la planche à roulette, 
+      la Bordzkool propose différentes formules d'enseignements. Nous dispensons des cours de skateboard et de longboard
+       toute l'année pour lesquels il est possible de s'y inscrire " à la carte " : à l'année, à l'heure, 
+       forfaits de 5H et 10H.</p>
+      <p>Les cours annuels sont organisés principalement sur 3 skateparks autour de Bordeaux : Darwin, Lormont et Saint-André-de-Cubzac.
+      Nous proposons également et de façon régulière des "stages" de découverte ou de perfectionnement sur les skateparks de la région.
+      Retrouvez ici tous les créneaux disponibles et les stages proposés que vous pouvez réserver en ligne directement. <p>
         <div class="w-100"></div>
-      <p class="">Tous nos cours sont encadrés par un moniteur diplômé.</p>
+      <p class="">Tous nos cours sont encadrés par Éric, moniteur diplômé qui s'attache à respecter le rythme de chacun
+      et qui aime transmettre ses valeurs : savoir s'amuser et progresser en respectant " le code des skateurs " :) .</p>
+      
         <div class="w-100"></div>
         <hr class="top">
     </div>
@@ -97,11 +107,12 @@
 <div class="container-fluid bottom">
   <div class="row justify-content-center">
     <a href="{{ path('inscription') }}">
-      <button class="btn btn-secondary btn-lg bottom" type="submit">M'INSCRIRE</button>
+      <button class="btn btn-secondary bottom" type="submit">M'INSCRIRE</button>
     </a>
   </div>
 </div>
   <hr class="top">
+
 <div class="container-fluid bottom">
   <div class="row justify-content-center top bottom">
     <div class="col-11">
@@ -109,12 +120,13 @@
         <p class="text-green col-12 bottom"><b><h3 class="categories">- LES STAGES BORDZA -</h3></b>
       </div>
       {% for session in sessions | number('orderNumber') %}
-        {% if session.formules == "STAGE" %}
+        {% if session.formules == "STAGES" %}
+        
             <div class="row rounded black top padding justify-content-start">
               <div class="titre-stage Titillium">- {{ session.titreSession | upper }} -</div>
               <div class="w-100"></div>
               <div class="col-11 col-sm-11 col-md-11 col-lg-5 col-xl-5">
-                <img class="img-fluid col-12 img-thumbnail" src ="{{ asset('uploads/images/' ~ session.image.pathImage)}}" 
+                <img class="img-fluid col-12" src ="{{ asset('uploads/images/' ~ session.image.pathImage)}}" 
                 alt="{{ session.image.alt }}">
               </div>
               <div class="col-11 col-sm-11 col-md-11 col-lg-6 col-xl-6">
@@ -138,25 +150,27 @@
 <div class="container-fluid bottom">
   <div class="row justify-content-center">
     <a href="{{ path('inscription') }}">
-      <button class="btn btn-secondary btn-lg" type="submit">M'INSCRIRE</button>
+      <button class="btn btn-secondary" type="submit">M'INSCRIRE</button>
     </a>
   </div>
 </div>
   <hr>
+
 <div class="container-fluid bottom">
   <div class="row justify-content-center top bottom">
     <div class="col-11">
       <div class="text-center bottom">
         <p class="text-green col-12 bottom"><b><h3 class="categories">- LES ÉVÉNEMENTS BORDZA -</h3></b>
       </div>
+  
   {% for session in sessions | number('orderNumber')  %}
-      {% if (session.formules != "COURS") and (session.formules != "STAGE") %}
-        
+      {% if (session.formules != "COURS") and (session.formules != "STAGES") %}
+        {{ session | length }}
             <div class="row rounded black top padding justify-content-start">
               <div class="titre-stage Titillium">- {{ session.titreSession | upper }} -</div>
               <div class="w-100"></div>
                 <div class="col-11 col-sm-11 col-md-11 col-lg-5 col-xl-5">
-                  <img class="img-fluid col-12 img-thumbnail" src ="{{ asset('uploads/images/' ~ session.image.pathImage)}}"
+                  <img class="img-fluid col-12" src ="{{ asset('uploads/images/' ~ session.image.pathImage)}}"
                    alt="{{ session.image.alt }}">
                 </div>
                 <div class="col-11 col-sm-11 col-md-11 col-lg-6 col-xl-6">
@@ -180,7 +194,7 @@
 <div class="container-fluid bottom">
   <div class="row justify-content-center">
     <a href="{{ path('inscription') }}">
-      <button class="btn btn-secondary btn-lg" type="submit">M'INSCRIRE</button>
+      <button class="btn btn-secondary" type="submit">M'INSCRIRE</button>
     </a>
   </div>
 </div>

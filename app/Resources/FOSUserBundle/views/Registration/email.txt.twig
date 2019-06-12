@@ -1,15 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:v="urn:schemas-microsoft-com:vml">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
+</head>
 {% trans_default_domain 'FOSUserBundle' %}
 {% block subject %}
 {%- autoescape false -%}
 {{ 'registration.email.subject'|trans({'%username%': user.username, '%confirmationUrl%': confirmationUrl}) }}
 {%- endautoescape -%}
 {% endblock %}
-
 {% block body_text %}
 
-{% autoescape false %}
-{{ 'registration.email.message'|trans({'%username%': user.username, '%confirmationUrl%': confirmationUrl}) }}
-{% endautoescape %}
+
+
+
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" bgcolor="grey">
+        <table bgcolor="black" width="100%" border="0" cellpadding="10px" cellspacing="0">
+                <tbody>
+                        <tr>
+                                <td height="30" style="font-size:30px; line-height:30px" >
+                                        &nbsp;
+                                </td>
+                        </tr>
+                        <tr>
+                                <td style="font-size:1.8em; line-height:45px" >
+                                        <div style="color:white">
+                                                <div style="width:100%;text-align:center;justify-content:center;margin-bottom:20px">
+                                                        <div>
+                                                                <p><b>Bonjour {{ user.username | capitalize }} !</b></p>
+                                                                <p style="font-size:0.8em"><b>Confirmez votre compte.</b></p>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </td>
+                        </tr>
+                </tbody>
+        </table>
+        
+        <table bgcolor="white" width="100%" border="0" cellpadding="10px" cellspacing="0">
+            <tbody>
+                <tr>
+                    <td height="30" style="font-size:30px; line-height:30px" >
+                            &nbsp;
+                    </td>
+                </tr>
+                <tr>
+                    <td style="font-size:1em; line-height:30px">
+                        <div style="color:black">
+                                <div style="width:100%;justify-content:center;margin-bottom:20px">
+                                        <div>
+                                            {% autoescape false %}
+                                            {{ 'registration.email.message'|trans({'%username%': user.username, '%confirmationUrl%': confirmationUrl}) }}
+                                            {% endautoescape %}
+                                            <p style="text-align:center">L'équipe Bordza</p>
+                                        </div>
+                                </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+            
+            
+           
+            
+        
+    </body>
+</html>
 
 {% endblock %}
 {% block body_html %}{% endblock %}
+
+

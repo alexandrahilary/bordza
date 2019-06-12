@@ -15,12 +15,23 @@ class FileUploader
 
     public function upload(UploadedFile $file)
     {
-        $fileName = md5(uniqid()).'.'.$file->guessExtension();
-        try {
-            $file->move($this->getTargetDirectory(), $fileName);
-        } catch (FileExcepetion $e) {
-            echo "pas d'upload";die();
         
+        $extension = $file->guessExtension();
+        /* ici verification extension */
+        $verifExtension = ['pdf','jpg','jpeg','png','gif'];
+        
+        if (!$extension){
+            echo "fichier non reconnu";
+        }
+        else{
+            $fileName = md5(uniqid()).'.'.$extension;
+        
+            try {
+                $file->move($this->getTargetDirectory(), $fileName);
+            } catch (FileExcepetion $e) {
+                echo "pas d'upload";die();
+        
+            }
         }
 
         return $fileName;

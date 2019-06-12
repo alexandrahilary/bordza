@@ -5,50 +5,54 @@
 {% block body %}
 <div class="container-fluid">
     <div class="row justify-content-center">
-        <h1>- LES UTILISATEURS -</h1>
+        <h2 class="top">- LES UTILISATEURS -</h2>
         <div class="w-100"></div>
-        <h3>Nombre d'utilisateurs <span class="font-weight-bold" style="color:#1abc9c"> [ {{ users | length }} ] </span> </h3>
+        <h4>Nombre d'utilisateurs <span class="font-weight-bold" style="color:#1abc9c"> [ {{ users | length }} ] </span> </h4>
         <div class="w-100"></div>
         <a href="{{ path('fos_user_registration_register') }}" class="top">
             <img class="img-class" src="{{ asset('assets/images/glyph/ajoute-rond.png') }}" style="margin-right:10px;">
-            <button class="btn btn-secondary btn-lg btn-secondary bouton" type="submit">Ajouter un Utilisateur</button>
+            <button class="btn btn-secondary bouton" type="submit">Ajouter un Utilisateur</button>
         </a>
     </div>
  
         {% for user in users %}
-            <div class="col-12 top">
-                <div class="row justify-content-center rounded grey">
+    <div class="row justify-content-center">   
+        <div class="col-11">  
+            <div class="row grey">      
                     
                 
-                <div class="bg-green Titillium">Utilisateur : <b>{{ user.username | upper }}</b></div>
-                <div class="w-100"></div>
-                <div class="text">Inscriptions en cours : 
-                    <span class="font-weight-bold" style="color:#1abc9c;font-size:1.4em;">[ {{ user.inscriptions | length }} ]</span>
-                </div>
-                <div class="w-100"></div>
-                <div class="text">{{ user.email }} </div>
-                <div class="w-100"></div> 
-                <a href="{{ path('admin_user_edit', { 'id': user.id }) }}">
-                    <button type="submit" class="btn btn-small btn-lg  bouton">Modifier</button>
-                </a>
-                <form action="{{ path('admin_user_delete', { 'id': user.id }) }}" method="post">
-                    <input type="hidden" name="_method" value="DELETE" />
-                    {{ form_widget(deleteForms[user.id]) }}
-                    <button type="submit" class="btn btn-small btn-lg  bouton">Supprimer</button>
-                </form>
-                
-                <div class="w-100"></div>
-                <div class="row justify-content-center">
-                {% if user.inscriptions | length > 0 %}
-                <h3 class="categories top">- INSCRIPTIONS -</h3>
-                {% endif %}
-                {% for inscription in user.inscriptions %}
-                <div class="border-card col-11">
-                    <div class="card-body text-center">
+                    <div class="col-2">
+                        <div class="row align-items-center  Titillium">
+                            <p class="bg-green col-12">Utilisateur :  {{ user.username | upper }}<br/>
+                            {{ user.email }}</p>
+                        </div>
+                    </div>
+
+                    <div class="col-2">
+                        <div class="row align-self-center">
+                            <a href="{{ path('admin_user_edit', { 'id': user.id }) }}">
+                                <button type="submit" class="btn bouton">Modifier</button>
+                            </a>
+                            <form action="{{ path('admin_user_delete', { 'id': user.id }) }}" method="post">
+                                <input type="hidden" name="_method" value="DELETE" />
+                                {{ form_widget(deleteForms[user.id]) }}
+                                <button type="submit" class="btn btn-danger bouton">Supprimer</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-8">
+                    
+                    <p class="categories ">- INSCRIPTIONS : <span class="" style="color:#1abc9c;font-size:1em;">[ {{ user.inscriptions | length }} ]</span></p>
+                    
+                    {% for inscription in user.inscriptions %}
+                    <div class=" col-12">
+                        <div class="">
                         
-                            <div><img src="{{ asset('assets/images/glyph/glyphicons-635-teenager.png') }}"> {{ inscription.nom | upper }}, {{ inscription.prenom | title }}, {{ inscription.age }}, </div>
-                            <div class="w-100"></div>
-                            <div class="text"> {{ inscription.sessionId }}</div>
+                            <div class="bg-green">
+                            <img src="{{ asset('assets/images/glyph/glyphicons-635-teenager.png') }}"> 
+                            {{ inscription.nom | upper }}, {{ inscription.prenom | title }}, age : {{ inscription.age }} /  
+                            {{ inscription.sessionId }}
+                            </div>
                             
                         
                     </div>
@@ -58,8 +62,9 @@
                 {% endfor %}
                 </div>
                 
-            </div>
-            </div>
+            </div>    
+        </div>
+        </div>  
         {% endfor %}
     
 {% endblock %}

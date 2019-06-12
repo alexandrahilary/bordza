@@ -35,6 +35,14 @@ class Inscription
     private $sessionId;
 
     /**
+     * @var \AppBundle\Entity\Formule
+     *
+     * @ORM\ManyToOne(targetEntity=\AppBundle\Entity\Formule::class)
+     * @ORM\JoinColumn(name="formule", referencedColumnName="id")
+     */
+    private $formule;
+
+    /**
      * @var \AppBundle\Entity\User
      *
      * @ORM\ManyToOne(targetEntity=\AppBundle\Entity\User::class, inversedBy="inscriptions")
@@ -91,7 +99,39 @@ class Inscription
      */
     private $valide;
 
-    
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="forfait1h", type="boolean")
+     */
+    private $forfait1h;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="forfait5h", type="boolean")
+     */
+    private $forfait5h;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="forfait10h", type="boolean")
+     */
+    private $forfait10h;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="forfaitAnnuel", type="boolean")
+     */
+    private $forfaitAnnuel;
+
+    public function __construct()
+    {
+        
+    }
+
     /**
      * Get id
      *
@@ -112,18 +152,42 @@ class Inscription
     public function setSessionId(Session $sessionId)
     {
         $this->sessionId = $sessionId;
-
         return $this;
     }
 
     /**
      * Get sessionId
+     * 
      *
      * @return \AppBundle\Entity\Session
      */
     public function getSessionId()
     {
         return $this->sessionId;
+    }
+
+     /**
+     * Set formule
+     *
+     * @param \AppBundle\Entity\Formule $formule
+     *
+     * @return Inscription
+     */
+    public function setFormule(Formule $formule)
+    {
+        $this->formule = $formule;
+
+        return $this;
+    }
+
+    /**
+     * Get formule
+     *
+     * @return \AppBundle\Entity\Formule
+     */
+    public function getFormule()
+    {
+        return $this->formule;
     }
 
     /**
@@ -316,6 +380,102 @@ class Inscription
     public function getMateriel()
     {
         return $this->materiel;
+    }
+
+    /**
+     * Set forfait1h
+     *
+     * @param boolean $forfait1h
+     *
+     * @return Inscription
+     */
+    public function setForfait1h($forfait1h)
+    {
+        $this->forfait1h = $forfait1h;
+
+        return $this;
+    }
+
+    /**
+     * Get forfait1h
+     *
+     * @return bool
+     */
+    public function getForfait1h()
+    {
+        return $this->forfait1h;
+    }
+
+    /**
+     * Set forfait2h
+     *
+     * @param boolean $forfait5h
+     *
+     * @return Inscription
+     */
+    public function setForfait5h($forfait5h)
+    {
+        $this->forfait5h = $forfait5h;
+
+        return $this;
+    }
+
+    /**
+     * Get forfait5h
+     *
+     * @return bool
+     */
+    public function getForfait5h()
+    {
+        return $this->forfait5h;
+    }
+
+    /**
+     * Set forfait10h
+     *
+     * @param boolean $forfait10h
+     *
+     * @return Inscription
+     */
+    public function setForfait10h($forfait10h)
+    {
+        $this->forfait10h = $forfait10h;
+
+        return $this;
+    }
+
+    /**
+     * Get forfait10h
+     *
+     * @return bool
+     */
+    public function getForfait10h()
+    {
+        return $this->forfait10h;
+    }
+
+    /**
+     * Set forfaitAnnuel
+     *
+     * @param boolean $forfaitAnnuel
+     *
+     * @return Inscription
+     */
+    public function setForfaitAnnuel($forfaitAnnuel)
+    {
+        $this->forfaitAnnuel = $forfaitAnnuel;
+
+        return $this;
+    }
+
+    /**
+     * Get forfaitAnnuel
+     *
+     * @return bool
+     */
+    public function getForfaitAnnuel()
+    {
+        return $this->forfaitAnnuel;
     }
 
     

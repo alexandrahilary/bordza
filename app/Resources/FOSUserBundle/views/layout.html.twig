@@ -1,21 +1,10 @@
 {% extends 'base.html.twig' %}
+{% block metadescription %}<meta name="Description" content="Votre compte Bordza pour vous inscrire aux cours de skateboards et retrouver toutes vos inscriptions en ligne aux sessions organisées par l'école de skate de Bordza">{% endblock %}
 {% block connexion %}{% include 'connexion.html.twig' %}{% endblock %}
 {% block nav %}{% include 'nav.html.twig' %}{% endblock %}
 {% block body %}
-<div class="container-fluid identifiant">
-    <div class="row justify-content-center">
-        <div class="col-xl-3 col-lg-3 col-md-9 col-sm-9 col-11" >
-            <div class="row justify-content-center">
-                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                    {{ 'layout.logged_in_as'|trans({'%username%': app.user.username | capitalize }, 'FOSUserBundle') }} |
-                    <a href="{{ path('fos_user_security_logout') }}">
-                        {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
-                    </a>
-                {% endif %}
-            </div>
-        </div>
-    </div>
-</div>
+
+
 
         {% if app.request.hasPreviousSession %}
             {% for type, messages in app.session.flashbag.all() %}

@@ -38,6 +38,7 @@ class Formule
      */
     private $sessions;
 
+
     public function __construct()
     {
         $this->sessions = new ArrayCollection();
@@ -93,6 +94,7 @@ class Formule
 
     /**
      * Get sessions
+     * 
      *
      * @return ArrayCollection
      */
@@ -100,6 +102,8 @@ class Formule
     {
         return $this->sessions;
     }
+
+    
 
     /**
      * @param \AppBundle\Entity\Session $session
@@ -117,11 +121,11 @@ class Formule
         $this->sessions->removeElement($session);
     }
 
-    
     public function __toString()
     {
-        $format = "%s";
-        return sprintf($format, $this->nomFormule);
+        $format = "%s"./*Sessions : %s*/"";
+    return sprintf($format, $this->nomFormule/*, $this->sessions*/);
     }
+    
 }
 

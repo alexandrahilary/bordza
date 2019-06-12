@@ -5,7 +5,7 @@
     
 <div class="container-fluid ">
     <div class="row justify-content-center">
-        <div class="col-xl-3 col-lg-3 col-md-9 col-sm-9 col-11 border border-light" >
+        <div class="col-xl-5 col-lg-5 col-md-9 col-sm-9 col-11 border-form identifiant" >
             <form action="{{ path("fos_user_security_check") }}" method="post">
                 {% if csrf_token %}
                     <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
@@ -23,13 +23,13 @@
                     
                 </div>
                 <div class="w-100"></div>
-                    <div class="form col-10">
+                    <div class="form col-12">
                         <input type="checkbox" id="remember_me" name="_remember_me" value="on" style="width:20px;height:20px;" />
                         <label for="remember_me" style="margin-left:3%">{{ 'mémoriser le mot de passe'|trans}}</label>
                     </div>
                 <div class="w-100"></div>
                 <div class="form">
-                        <button type="submit" class="btn btn-lg btn-block btn-secondary">Connexion</button>
+                        <button type="submit" class="btn btn-block btn-secondary">Connexion</button>
                     
                 </div>
                 </div>
@@ -38,13 +38,13 @@
         </div>
     </div>
     <div class="row justify-content-center">
-        <div class="col-xl-3 col-lg-3 col-md-9 col-sm-9 col-11 border border-light" style="padding:20px; margin-top:20px;">
-            <a href="{{ path('fos_user_resetting_request')}}">Mot de passe oublié</a>
+        <div class="col-xl-5 col-lg-5 col-md-9 col-sm-9 col-11 bottom" >
+            <a href="{{ path('fos_user_resetting_request')}}" class="text-secondary">-> Mot de passe oublié</a>
         </div>
     </div>
     <div class="row justify-content-center" style="margin-bottom:2%">
-        <div class="col-xl-3 col-lg-3 col-md-9 col-sm-9 col-11 border border-light" style="padding:20px; margin-top:20px;">
-            <a href="{{ path('fos_user_registration_register')}}">Créer mon compte</a>
+        <div class="col-xl-5 col-lg-5 col-md-9 col-sm-9 col-11" >
+            <a href="{{ path('fos_user_registration_register')}}"><button class="btn btn-block btn-secondary">Créer mon compte</button></a>
         </div>
     </div>
 </div>

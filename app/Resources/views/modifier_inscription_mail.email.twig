@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:v="urn:schemas-microsoft-com:vml">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
+</head>
+
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" bgcolor="grey">
+        <table bgcolor="black" width="100%" border="0" cellpadding="10px" cellspacing="0">
+                <tbody>
+                        <tr>
+                                <td height="30" style="font-size:30px; line-height:30px" >
+                                        &nbsp;
+                                </td>
+                        </tr>
+                        <tr>
+                                <td style="font-size:1.8em; line-height:45px" >
+                                        <div style="color:white">
+                                                <div style="width:100%;text-align:center;justify-content:center;margin-bottom:20px">
+                                                        <div>
+                                                                <p><b>Bonjour Bordza !</b></p>
+                                                                <p style="font-size:0.8em">
+                                                                    <b>L'inscription de 
+                                                                    {{ inscription.userId.username | title }}, 
+                                                                    pour {{ inscription.prenom | title }} {{ inscription.nom | upper }} 
+                                                                    a été modifiée.</b>
+                                                                </p>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </td>
+                        </tr>
+                </tbody>
+        </table>
+        
+        <table bgcolor="white" width="100%" border="0" cellpadding="10px" cellspacing="0">
+            <tbody>
+                <tr>
+                    <td height="30" style="font-size:30px; line-height:30px" >
+                            &nbsp;
+                    </td>
+                </tr>
+                <tr>
+                    <td style="font-size:1em; line-height:30px">
+                        <div style="color:black">
+                                <div style="width:100%;justify-content:center;margin-bottom:20px">
+                                        <div>
+                                            
+                                                <p>Détails : </p>
+
+                                                <p>AGE : {{ inscription.age }}</br>
+                                                TEL : {{ inscription.tel }}</br>
+                                                {{ inscription.sessionId.formules }} / {{ inscription.sessionId.disciplines }}</br>
+                                                Pour la session : "{{ inscription.sessionId.titreSession | capitalize }}"</br>
+                                                {{ inscription.sessionId.dateSession }} / {{ inscription.sessionId.prix }}</br>
+                                                {% if inscription.forfait1h %} / FORFAIT : 1H{% endif %}
+                                                {% if inscription.forfait5h %} / FORFAIT : 5H{% endif %}
+                                                {% if inscription.forfait10h %} / FORFAIT : 10H{% endif %}
+                                                {% if inscription.forfaitAnnuel %} / FORFAIT : annuel{% endif %}
+                                            
+                                                <br/>Prêt de matériel : 
+                                                {% if inscription.planche != true and  inscription.materiel != true %}
+                                                NON
+                                                {% endif %}
+                                                {% if inscription.planche or inscription.materiel %}
+                                                    {% if inscription.planche %}
+                                                        / PLANCHE 
+                                                    {% endif %}
+                                                    {% if inscription.materiel %}
+                                                       / PROTECTIONS 
+                                                    {% endif %}
+                                                {% endif %}
+                                                </p>
+                                            
+                                            <p>Inscription modifiée le : {{ 'now' | date('d-m-Y H:i','Europe/Paris') }}.</p>
+                                            
+                                            <p>Répondre à : <a  href="mailto:{{ inscription.userId.email }}">{{ inscription.userId.email }}</p>
+                                            <p><a href="https://www.bordza.fr" style="color:black;font-weight:bolder">Aller voir vos inscriptions</a></p>
+                                        </div>
+                                </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+            
+            
+           
+            
+        
+    </body>
+</html>
