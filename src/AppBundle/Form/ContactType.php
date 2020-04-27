@@ -9,6 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use AppBundle\Entity\Image;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 
 class ContactType extends AbstractType
 {
@@ -17,7 +18,7 @@ class ContactType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nom')->add('prenom')->add('mail')->add('objet')->add('message', CKEditorType::class )
+        $builder->add('nom')->add('prenom')->add('mail', EmailType::class )->add('objet')->add('message', CKEditorType::class )
         ->add('image', ImageType::class)->add('traite');
     }/**
      * {@inheritdoc}
