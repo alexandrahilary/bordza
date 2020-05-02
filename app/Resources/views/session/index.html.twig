@@ -3,103 +3,110 @@
 {% block nav %}{% include 'nav.html.twig' %}{% endblock %}
 
 {% block body %}
-<div class="container-fluid">
+<div class="container-fluid bg-black">
     <div class="row justify-content-center">
-        <h2 class="top">MES SESSIONS</h2>
-    </div>
-    <div class="row justify-content-center bouton">
-            <a href="{{ path('admin_session_new') }}">
-                <img class="img-class" src="{{ asset('assets/images/glyph/ajoute-rond.png') }}" style="margin-right:10px;">
-                <button class="btn btn-secondary " type="button">Ajouter une nouvelle Session</button>
-            </a>
-    </div> 
-    <div class="row justify-content-center top"> 
-        <h2>- COURS -</h2>
-    </div>
-        {% for session in sessions | number('orderNumber') %}
-        {% if session.formules == 'COURS' %}
-        <div class="col-12 top">
-        <div class="row justify-content-center rounded grey padding">
-                
-            <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2">
-                <div>Ordre d'affichage : <span class="text-green">{{ session.orderNumber }}</span></div>
-                <div class="w-100"></div>
-                {% if session.image != null %}<img class="img-fluid top" src="{{ asset('uploads/images/' ~ session.image.pathImage) }}">{% endif %}</div>
-                <div class="col-12 col-sm-12 col-md-12 col-lg-10 col-xl-10">
-                    <div class="row">
-                        <div class="col-12 col-sm-12 col-md-12 col-lg-5 col-xl-5"> / {{ session.formules }} / {{ session.disciplines }} / 
-                            <h3 class="categories">{{ session.titreSession | upper }}</h3>
-                            <div class="text-green">Dates : {{ session.dateSession }}</div>
-                            <div>Prix : {{ session.prix }}</div>
-                            <div class="description">{{ session.descriptionSession | raw }}</div>
-                            
-                            <div class="row">
-                                <a href="{{ path('admin_session_edit', { 'id': session.id }) }}">
-                                    <button type="submit" class="btn bouton">Modifier</button>
-                                </a>
-                                <form action="{{ path('admin_session_delete', { 'id': session.id }) }}" method="post">
-                                  <input type="hidden" name="_method" value="DELETE" />
-                                  {{ form_widget(deleteForms[session.id]) }}
-                                  <button type="submit" class="btn btn-danger bouton">
-                                      Supprimer
-                                  </button>
-                                </form>
-                            </div> 
-                        </div>  
-                        
-                        <div class="col-12 col-sm-12 col-md-12 col-lg-7 col-xl-7">
-                            <div class="row">
-                                
-                                <div class="col-12">
-                                    <p>NOMBRE D'INSCRITS : 
-                                        <span class="nombreInscrits text-green">
-                                            <b>{{ session.inscriptionCollection.snapshot | length }}</b>
-                                        </span>
-                                    </p>
-                                    {% for inscription in session.inscriptionCollection.snapshot %} 
-                                    <p class="bg-green">
-                                        <img src="{{ asset('assets/images/glyph/glyphicons-635-teenager.png') }}">
-                                    {{ inscription.prenom | title }} / <span class="age">Age : {{ inscription.age }}
-                                     / Tel : </span>{{ inscription.tel }}<span class="age"> / email : {{ inscription.userId.email }} 
-                                       / Forfait : {% if inscription.forfait1h %}1h{% endif %} 
-                                    {% if inscription.forfait5h %}5h{% endif %}
-                                    {% if inscription.forfait10h %}10h{% endif %}
-                                    {% if inscription.forfaitAnnuel %}annuel{% endif %}
-                                        </span>
-                                        
-                                    </p>
-                                    {% endfor %}
-                                </div>
-                                
-                            </div>
-                            <div>{{ session.nbPlace }} places / Reste : {{ (session.nbPlace)-(session.inscriptionCollection.snapshot | length) }} places</span></div>
-                            </div>
-                        </div>
-                    </div>
-                </div> 
-                </div>  
-        {% endif %}       
-        {% endfor %}
-        <div class="row justify-content-center top">
-            <h2>- STAGES -</h2>
+        <div class="col-12">
+
+
+
+        <div class="row justify-content-center">
+            <h2 class="top">MES SESSIONS</h2>
         </div>
-        {% for session in sessions | number('orderNumber') %}
-        {% if session.formules == 'STAGES' %}
-        <div class="col-12 top">
-        <div class="row justify-content-center rounded grey padding">
-                
-            <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2">
-                <div>Ordre d'affichage : <span class="text-green">{{ session.orderNumber }}</span></div>
-                <div class="w-100"></div>
-                {% if session.image != null %}<img class="img-fluid top" src="{{ asset('uploads/images/' ~ session.image.pathImage) }}">{% endif %}</div>
+        <div class="row justify-content-center bouton">
+                <a href="{{ path('admin_session_new') }}">
+                    <img class="img-class" src="{{ asset('assets/images/glyph/ajoute-rond.png') }}" style="margin-right:10px;">
+                    <button class="btn btn-secondary " type="button">Ajouter une nouvelle Session</button>
+                </a>
+        </div>
+        <div class="row justify-content-content top">
+            <h2>- COURS -</h2>
+        </div>
+            {% for session in sessions | number('orderNumber') %}
+        {#    -------------------------------------------------   COURS ---------------------------------------------------#}
+            {% if session.formules == 'COURS' %}
+            <div class="col-12 mt-1 text-black">
+                <div class="row justify-content-center rounded bg-secondary padding">
+
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2">
+                        <div class="text-light">{{ session.orderNumber }}</div>
+                        <div class="w-100"></div>
+                        {% if session.image != null %}<img class="img-fluid top" src="{{ asset('uploads/images/' ~ session.image.pathImage) }}">
+                        {% endif %}
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-10 col-xl-10">
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-5 col-xl-5"> / {{ session.formules }} / {{ session.disciplines }} /
+                                <h3 class="categories">{{ session.titreSession | upper }}</h3>
+                                <div class="text-green">Dates : {{ session.dateSession }}</div>
+                                <div>Prix : {{ session.prix }}</div>
+                                <div class="description">{{ session.descriptionSession | raw }}</div>
+                                <div class="row">
+                                    <a href="{{ path('admin_session_edit', { 'id': session.id }) }}">
+                                        <button type="submit" class="btn bouton">Modifier</button>
+                                    </a>
+                                    <form action="{{ path('admin_session_delete', { 'id': session.id }) }}" method="post">
+                                      <input type="hidden" name="_method" value="DELETE" />
+                                      {{ form_widget(deleteForms[session.id]) }}
+                                      <button type="submit" class="btn btn-danger bouton">
+                                          Supprimer
+                                      </button>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-7 col-xl-7">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p>NOMBRE D'INSCRITS :
+                                            <span class="nombreInscrits text-green">
+                                                <b>{{ session.inscriptionCollection.snapshot | length }}</b>
+                                            </span>
+                                        </p>
+                                        {% for inscription in session.inscriptionCollection.snapshot %}
+                                        <p class="bg-green">
+                                            <img src="{{ asset('assets/images/glyph/glyphicons-635-teenager.png') }}">
+                                        {{ inscription.prenom | title }} / <span class="age">Age : {{ inscription.age }}
+                                         / Tel : </span>{{ inscription.tel }}<span class="age"> / email : {{ inscription.userId.email }}
+                                           / Forfait : {% if inscription.forfait1h %}1h{% endif %}
+                                        {% if inscription.forfait5h %}5h{% endif %}
+                                        {% if inscription.forfait10h %}10h{% endif %}
+                                        {% if inscription.forfaitAnnuel %}annuel{% endif %}
+                                            </span>
+                                        </p>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                                <div>
+                                    {{ session.nbPlace }} places / Reste : {{ (session.nbPlace)-(session.inscriptionCollection.snapshot | length) }} places
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+            <div class="row justify-content-center top">
+                <h2>- STAGES -</h2>
+            </div>
+            {% for session in sessions | number('orderNumber') %}
+{#                ------------------------------------------------   STAGES --------------------------------------   #}
+            {% if session.formules == 'STAGES' %}
+            <div class="col-12 top">
+            <div class="row justify-content-center rounded grey padding">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2">
+                    <div>Ordre d'affichage : <span class="text-green">{{ session.orderNumber }}</span></div>
+                    <div class="w-100"></div>
+                    {% if session.image != null %}<img class="img-fluid top" src="{{ asset('uploads/images/' ~ session.image.pathImage) }}">{% endif %}
+                </div>
                 <div class="col-12 col-sm-12 col-md-12 col-lg-10 col-xl-10">
                     <div class="row">
-                        <div class="col-12 col-sm-12 col-md-12 col-lg-5 col-xl-5"> / {{ session.formules }} / {{ session.disciplines }} / 
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-5 col-xl-5"> / {{ session.formules }} / {{ session.disciplines }} /
                             <h3 class="categories">{{ session.titreSession | upper }}</h3>
                             <div class="text-green">Dates : {{ session.dateSession }}</div>
                             <div>Prix : {{ session.prix }}</div>
                             <div class="description">{{ session.descriptionSession | raw }}</div>
-                            
+
                             <div class="row">
                                 <a href="{{ path('admin_session_edit', { 'id': session.id }) }}">
                                     <button type="submit" class="btn bouton">Modifier</button>
@@ -111,37 +118,37 @@
                                       Supprimer
                                   </button>
                                 </form>
-                            </div> 
-                        </div>  
-                        
+                            </div>
+                        </div>
+
                         <div class="col-12 col-sm-12 col-md-12 col-lg-7 col-xl-7">
                             <div class="row">
-                                
                                 <div class="col-12">
-                                    <p>NOMBRE D'INSCRITS : 
+                                    <p>NOMBRE D'INSCRITS :
                                         <span class="nombreInscrits text-green">
                                             <b>{{ session.inscriptionCollection.snapshot | length }}</b>
                                         </span>
                                     </p>
-                                    {% for inscription in session.inscriptionCollection.snapshot %} 
+                                    {% for inscription in session.inscriptionCollection.snapshot %}
                                     <p class="bg-green">
                                         <img src="{{ asset('assets/images/glyph/glyphicons-635-teenager.png') }}">
                                     {{ inscription.prenom | title }} / <span class="age">Age : {{ inscription.age }}
-                                     / Tel : </span>{{ inscription.tel }}<span class="age"> / email : {{ inscription.userId.email }} 
+                                     / Tel : </span>{{ inscription.tel }}<span class="age"> / email : {{ inscription.userId.email }}
                                        </span>
-                                        
+
                                     </p>
                                     {% endfor %}
                                 </div>
-                                
-                            </div>
-                            <div>{{ session.nbPlace }} places / Reste : {{ (session.nbPlace)-(session.inscriptionCollection.snapshot | length) }} places</span></div>
-                            </div>
+                        </div>
+                        <div>
+                            {{ session.nbPlace }} places / Reste : {{ (session.nbPlace)-(session.inscriptionCollection.snapshot | length) }} places
                         </div>
                     </div>
-                </div> 
-                </div>  
-        {% endif %}       
+                </div>
+            </div>
+        </div>
+    </div>
+        {% endif %}
         {% endfor %}
         <div class="row justify-content-center top">
             <h2>- AUTRES ÉVÉNEMENTS -</h2>
@@ -150,19 +157,19 @@
         {% if (session.formules != "COURS") and (session.formules != "STAGES") %}
         <div class="col-12 top">
         <div class="row justify-content-center rounded grey padding">
-                
+
             <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2">
                 <div>Ordre d'affichage : <span class="text-green">{{ session.orderNumber }}</span></div>
                 <div class="w-100"></div>
                 {% if session.image != null %}<img class="img-fluid top" src="{{ asset('uploads/images/' ~ session.image.pathImage) }}">{% endif %}</div>
                 <div class="col-12 col-sm-12 col-md-12 col-lg-10 col-xl-10">
                     <div class="row">
-                        <div class="col-12 col-sm-12 col-md-12 col-lg-5 col-xl-5"> / {{ session.formules }} / {{ session.disciplines }} / 
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-5 col-xl-5"> / {{ session.formules }} / {{ session.disciplines }} /
                             <h3 class="categories">{{ session.titreSession | upper }}</h3>
                             <div class="text-green">Dates : {{ session.dateSession }}</div>
                             <div>Prix : {{ session.prix }}</div>
                             <div class="description">{{ session.descriptionSession | raw }}</div>
-                            
+
                             <div class="row">
                                 <a href="{{ path('admin_session_edit', { 'id': session.id }) }}">
                                     <button type="submit" class="btn bouton">Modifier</button>
@@ -174,38 +181,38 @@
                                       Supprimer
                                   </button>
                                 </form>
-                            </div> 
-                        </div>  
-                        
+                            </div>
+                        </div>
+
                         <div class="col-12 col-sm-12 col-md-12 col-lg-7 col-xl-7">
                             <div class="row">
-                                
                                 <div class="col-12">
-                                    <p>NOMBRE D'INSCRITS : 
+                                    <p>NOMBRE D'INSCRITS :
                                         <span class="nombreInscrits text-green">
                                             <b>{{ session.inscriptionCollection.snapshot | length }}</b>
                                         </span>
                                     </p>
-                                    {% for inscription in session.inscriptionCollection.snapshot %} 
+                                    {% for inscription in session.inscriptionCollection.snapshot %}
                                     <p class="bg-green">
                                         <img src="{{ asset('assets/images/glyph/glyphicons-635-teenager.png') }}">
                                     {{ inscription.prenom | title }} / <span class="age">Age : {{ inscription.age }}
-                                     / Tel : </span>{{ inscription.tel }}<span class="age"> / email : {{ inscription.userId.email }} 
+                                     / Tel : </span>{{ inscription.tel }}<span class="age"> / email : {{ inscription.userId.email }}
                                      </span>
-                                        
+
                                     </p>
                                     {% endfor %}
                                 </div>
-                                
                             </div>
                             <div>{{ session.nbPlace }} places / Reste : {{ (session.nbPlace)-(session.inscriptionCollection.snapshot | length) }} places</span></div>
-                            </div>
                         </div>
                     </div>
-                </div> 
-                </div>  
-        {% endif %}       
+                </div>
+            </div>
+        </div>
+        {% endif %}
         {% endfor %}
-</div>   
+        </div>
+    </div>
+</div>
 {% endblock %}
 {% block footer %}{% include 'footer.html.twig' %}{% endblock %}

@@ -2,11 +2,11 @@
 parameters:
     database_host: 127.0.0.1
     database_port: 3306
-    database_name: bordza
+    database_name: bordza-skateschool
     database_user: root
-    database_password: kdonoel16
+    database_password: root
     mailer_transport: mail
     mailer_host: bordza.fr
-    mailer_user: 
-    mailer_password: 
+    mailer_user: null
+    mailer_password: null
     secret: 4d6409210356933d38f8f5ee75255e700e018ecd

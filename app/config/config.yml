@@ -82,6 +82,22 @@ twig:
     form_themes:
         - '@FOSCKEditor/Form/ckeditor_widget.html.twig'
 
+# FOS CKEditor
+fos_ck_editor:
+    configs:
+        my_config_1:
+            toolbar: "my_toolbar_1"
+            uiColor: "#cccccc"
+
+    toolbars:
+        configs:
+            my_toolbar_1: [ [ "Cut", "-", "Copy", "-", "Paste", "-", "Undo", "-", "Redo"  ],
+                            [ "Format", "-", "FontSize", "-", "TextColor", "-"],
+                            [ "Link", "-", "Unlink", "-", "Table", "-", "HorizontalRule", "-", "Smiley", "-", "SpecialChar" ], "/",
+                            [ "Bold", "-", "Italic", "-", "Underline", "-", "Strike", "-", "Subscript", "-", "Superscript", "-", "RemoveFormat" ],
+                            [ "Outdent", "-", "Indent", "-", "JustifyLeft", "-", "JustifyCenter", "-", "JustifyRight", "-", "JustifyBlock", "-", "Maximize" ],]
+
+
 # Doctrine Configuration
 doctrine:
     dbal:

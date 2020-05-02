@@ -44,13 +44,11 @@ class SessionController extends Controller
             $deleteForms[$session->getId()] = $this->createDeleteForm($session)->createView();
         }
 
-        return $this->render('session/index.html.twig', array(
+        return $this->render('session/index.html.twig', [
             'sessions' => $sessions,
             'inscriptions' => $inscriptions,
-            'session' => $session,
             'deleteForms' => $deleteForms
-            
-        ));
+        ]);
     }
 
     /**

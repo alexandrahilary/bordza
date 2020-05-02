@@ -1,71 +1,67 @@
-          <div class="container-fluid" id="identifiants">
-            <div class="row justify-content-center">
-              <nav class="col-12 navbar navbar-expand-lg navbar-dark bg-dark justify-content-center" style="background-color:black !important;" id="navbarNav">
-                <div   class="row justify-content-center col-12">
-                    
-                {% if app.user %}  
-                <div class="row col-12 justify-content-center d-none d-sm-block">
-                  <div class="compte col-12 row justify-content-end">
-                      
-                    <a class="identifiants" href="{{ path('fos_user_profile_show') }}">Mon Compte : {{ app.user.userName | capitalize }}</a>
-        
-                    <a class="identifiants" href="{{ path('fos_user_security_logout') }}">Deconnexion</a>
-                       
-                  </div>
-                </div>
-                <div class="row col-12 justify-content-center d-block d-sm-none">
-                  <div class="compte row justify-content-center">
-                      
-                    <a class="identifiants text-center" href="{{ path('fos_user_profile_show') }}">Mon Compte : {{ app.user.userName | capitalize }}</a>
-        
-                    <a class="identifiants text-center" href="{{ path('fos_user_security_logout') }}">Deconnexion</a>
-                       
-                  </div>
-                </div>
-                  {% if app.user.hasRole('ROLE_ADMIN')%}
-                       
-                  <div class="w-100"></div>
+          <div class="container-fluid" id="identifiants" style="display: flex">
+            <div class="col-12">
+                <div class="row justify-content-center">
+                  <nav class="col-12 navbar navbar-expand-lg navbar-dark bg-dark justify-content-center" style="background-color:black !important;" id="navbarNav">
+                    <div class="row justify-content-center">
+                        {% if app.user %}
+                        <div class="compte col-12 justify-content-end d-none d-sm-block">
+                            <a class="identifiants" href="{{ path('fos_user_profile_show') }}">Mon Compte : {{ app.user.userName | capitalize }}</a>
 
-                  <div class="d-block d-sm-none" id="menu-admin">ADMIN</div>
-                  
-                  <div class="row justify-content-center col-12 d-none d-sm-block" id="nav-admin">
-                    <div class="navbar-nav col-12 row justify-content-around ">
-                      
-                        <a class="nav-item text-center nav-admin col admin align-center" href="{{ path ('admin_user_index') }}">UTILISATEURS</a>
-                      
-                        <a class="nav-item text-center nav-admin col admin" href="{{ path ('admin_tarif_index') }}">TARIFS</a>
-                      
-                        <a class="nav-item text-center nav-admin col admin" href="{{ path ('admin_session_index') }}">SESSIONS</a>
-                      
-                        <a class="nav-item text-center nav-admin col admin" href="{{ path ('admin_inscription_index') }}">INSCRIPTIONS</a>
-                      
-                        <a class="nav-item text-center nav-admin col admin" href="{{ path ('admin_actu_index') }}">ARTICLES</a>
-                      
-                        <a class="nav-item text-center nav-admin col admin" href="{{ path ('admin_catalogue_index') }}">CATALOGUE</a>
-                      
-                        <a class="nav-item text-center nav-admin col admin" href="{{ path ('admin_video_index') }}">VIDÉOS</a>
-                      
-                        <a class="nav-item text-center nav-admin col admin" href="{{ path ('admin_contact_index') }}">MESSAGES</a>
-                      
+                            <a class="identifiants" href="{{ path('fos_user_security_logout') }}">Deconnexion</a>
+                        </div>
+                        <div class="compte col-12 justify-content-center d-block d-sm-none">
+
+
+                            <a class="identifiants text-center" href="{{ path('fos_user_profile_show') }}">Mon Compte : {{ app.user.userName | capitalize }}</a>
+
+                            <a class="identifiants text-center" href="{{ path('fos_user_security_logout') }}">Deconnexion</a>
+
+                        </div>
+                        {% if app.user.hasRole('ROLE_ADMIN')%}
+
+                        <div class="w-100"></div>
+
+                        <div class="d-block d-sm-none" id="menu-admin">ADMIN</div>
+
+                          <div class="row justify-content-center col-12 d-none d-sm-block" id="nav-admin">
+                            <div class="navbar-nav col-12 row justify-content-around ">
+
+                                <a class="nav-item text-center nav-admin col admin align-center" href="{{ path ('admin_user_index') }}">UTILISATEURS</a>
+
+                                <a class="nav-item text-center nav-admin col admin" href="{{ path ('admin_tarif_index') }}">TARIFS</a>
+
+                                <a class="nav-item text-center nav-admin col admin" href="{{ path ('admin_session_index') }}">SESSIONS</a>
+
+                                <a class="nav-item text-center nav-admin col admin" href="{{ path ('admin_inscription_index') }}">INSCRIPTIONS</a>
+
+                                <a class="nav-item text-center nav-admin col admin" href="{{ path ('admin_actu_index') }}">ARTICLES</a>
+
+                                <a class="nav-item text-center nav-admin col admin" href="{{ path ('admin_catalogue_index') }}">CATALOGUE</a>
+
+                                <a class="nav-item text-center nav-admin col admin" href="{{ path ('admin_video_index') }}">VIDÉOS</a>
+
+                                <a class="nav-item text-center nav-admin col admin" href="{{ path ('admin_contact_index') }}">MESSAGES</a>
+
+                            </div>
+                          </div>
+                          <script>
+                            var menuAdmin = document.getElementById('menu-admin');
+                            var navAdmin = document.getElementById('nav-admin');
+                            menuAdmin.onclick = function(){
+                              navAdmin.classList.toggle('d-none');
+                            }
+                          </script>
+                          {% endif %}
+                          {% else %}
+                          <div class="compte col-12 row justify-content-end">
+                            <li class="nav-item">
+                              <a class="nav-link" href="{{ path('fos_user_security_login') }}">Connexion</a>
+                            </li>
+                          </div>
+                        {% endif %}
                     </div>
-                  </div>
-                  <script>
-                    var menuAdmin = document.getElementById('menu-admin');
-                    var navAdmin = document.getElementById('nav-admin');
-                    menuAdmin.onclick = function(){
-                      navAdmin.classList.toggle('d-none');
-                    }
-                  </script>
-                  {% endif %}
-                  {% else %}
-                  <div class="compte col-12 row justify-content-end">
-                    <li class="nav-item">
-                      <a class="nav-link" href="{{ path('fos_user_security_login') }}">Connexion</a>
-                    </li>
-                  </div>
-                  {% endif %}
-                </div>
-              </nav>
+                  </nav>
             </div>
-          </div>
+        </div>
+      </div>
                   
