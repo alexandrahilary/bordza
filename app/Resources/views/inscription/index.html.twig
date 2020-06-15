@@ -3,27 +3,29 @@
 {% block nav %}{% include 'nav.html.twig' %}{% endblock %}
 
 {% block body %}
-<div class="container-fluid bottom">
+
+<div class="container-fluid bg-green m-0">
+<div class="col-12">
     <div class="row justify-content-center">
         <h2 class="text-center top">LES INSCRIPTIONS</h2>
     </div>
     <div class="row justify-content-center">
             <a href="{{ path('admin_inscription_new') }}" class="d-none d-sm-block">
                 <img class="img-class" src="{{ asset('assets/images/glyph/ajoute-rond.png') }}" style="margin-right:10px;">
-                <button class="btn btn-secondary bouton " type="button">Ajouter une nouvelle Inscription</button>
+                <button class="btn btn-dark btn-sm " type="button">Ajouter une nouvelle Inscription</button>
             </a>
             <a href="{{ path('admin_inscription_new') }}" class="d-block d-sm-none">
                 <img class="img-class" src="{{ asset('assets/images/glyph/ajoute-rond.png') }}" style="margin-right:10px;">
-                <button class="btn btn-secondary btn-lg bouton " type="button">Nouvelle Inscription</button>
+                <button class="btn btn-dark btn-sm bouton " type="button">Nouvelle Inscription</button>
             </a>
-            
     </div>   
     <div class="row justify-content-center">
+
     <div class=" col-11 top">
         <div class="row justify-content-center">
         {% for inscription in inscriptions %}
             {% if inscription.valide %}
-            <div class="grey  padding col-11 col-sm-11 col-md-11 col-lg-3 col-xl-3">
+            <div class="bg-black m-1 padding col-11 col-sm-11 col-md-11 col-lg-3 col-xl-3">
                 <form action="{{ path('admin_inscription_delete', { 'id': inscription.id }) }}" method="post" class="row justify-content-end">
                     <input type="hidden" name="_method" value="DELETE" />
                     {{ form_widget(deleteForms[inscription.id]) }}
@@ -32,7 +34,7 @@
                     </button>
                 </form>
                 <div class="">
-                    <div class="bg-green text-light eleve row" onclick="montreDetails()">
+                    <div class="bg-secondary mt-2 p-1 text-light eleve row" onclick="montreDetails({{ inscription.id }})">
                         <div class="col-10">
                             <img src="{{ asset('/assets/images/glyph/glyphicons-635-teenager.png')}}">
                             <span class="left"> {{ inscription.nom | upper }} {{ inscription.prenom | title }}</span>
@@ -40,8 +42,7 @@
                         </div>
                         <span class="plus"><img src="{{ asset('/assets/images/glyph/ajoute-rond.png') }}"></span>
                     </div>
-
-                    <span class="justify-content-center hidden details" >
+                    <span class="justify-content-center hidden details" id="{{ 'details' ~ inscription.id }}">
                         <div class="">{{ inscription.sessionId.formules }} / {{ inscription.sessionId.disciplines }}</div>
                         <div class="w-100"></div>
                         <div class="" style="color:#1abc9c">Session : <u>{{ inscription.sessionId.titreSession | capitalize}}</u></div>
@@ -55,17 +56,8 @@
                         <div class="w-100"></div>
                         <div class="">Prix : {{ inscription.sessionId.prix }}€</div>
                         <div class="w-100"></div>
-
-
                         <div class="btn-danger">Tel : {{ inscription.tel }}</div>
-
                         <div class="w-100"></div>
-
-
-
-
-
-
                         <div class="">Inscrit par : {{ inscription.userId }}</div>
                         <div class="w-100"></div>
                         <div class="">E-mail : {{ inscription.userId.email }}</div>
@@ -80,23 +72,18 @@
                         </div>
                     </span>
                     <a href="{{ path('admin_inscription_edit', { 'id': inscription.id }) }}">
-                        <button class="btn bouton">Modifier</button>
+                        <button class="btn btn-dark btn-sm mt-3">Modifier</button>
                     </a>
                     <div class="text">Inscription : {% if inscription.valide %}<img src="{{ asset('assets/images/glyph/valide.png')}}">
                         {% else %}<span style="font-weight:bold">EN ATTENTE</span>
                         {% endif %}
                     </div>
                     <div>
-
-
-
-
-                            
                     </div>
                 </div>
             </div>
             {% else %}
-            <div class="grey padding col-11 col-sm-11 col-md-11 col-lg-3 col-xl-3" style="border:2px solid red">
+            <div class="bg-black m-1 padding col-11 col-sm-11 col-md-11 col-lg-3 col-xl-3" >
                 <form action="{{ path('admin_inscription_delete', { 'id': inscription.id }) }}" method="post" class="row justify-content-end">
                     <input type="hidden" name="_method" value="DELETE" />
                     {{ form_widget(deleteForms[inscription.id]) }}
@@ -105,7 +92,7 @@
                     </button>
                 </form>
                 <div class="">
-                    <div class="bg-green text-light eleve row" onclick="montreDetails()">
+                    <div class="bg-secondary mt-2 p-1 text-light eleve row" onclick="montreDetails({{ inscription.id }})">
                         <div class="col-10">
                             <img src="{{ asset('/assets/images/glyph/glyphicons-635-teenager.png')}}">
                             <span class="left"> {{ inscription.nom | upper }} {{ inscription.prenom | title }}</span>
@@ -114,7 +101,7 @@
                         <span class="plus"><img src="{{ asset('/assets/images/glyph/ajoute-rond.png') }}"></span>
                     </div>
 
-                    <span class="justify-content-center hidden details" >
+                    <span class="justify-content-center hidden details" id="{{ 'details' ~ inscription.id }}">
                         <div class="">{{ inscription.sessionId.formules }} / {{ inscription.sessionId.disciplines }}</div>
                         <div class="w-100"></div>
                         <div class="" style="color:#1abc9c">Session : <u>{{ inscription.sessionId.titreSession | capitalize}}</u></div>
@@ -129,15 +116,9 @@
                         <div class="">Prix : {{ inscription.sessionId.prix }}€</div>
                         <div class="w-100"></div>
 
-
-                        <div class="btn-danger">Tel : {{ inscription.tel }}</div>
+                        <div class="btn-danger">Tel : <a href="tel:{{ inscription.tel }}" {{ inscription.tel }}</a></div>
 
                         <div class="w-100"></div>
-
-
-
-
-
 
                         <div class="">Inscrit par : {{ inscription.userId }}</div>
                         <div class="w-100"></div>
@@ -154,7 +135,7 @@
                         </div>
                     </span>
                     <a href="{{ path('admin_inscription_edit', { 'id': inscription.id }) }}">
-                        <button class="btn bouton">Modifier</button>
+                        <button class="btn btn-dark btn-sm mt-3">Modifier</button>
                     </a>
                     <div class="text">Inscription : {% if inscription.valide %}<img src="{{ asset('assets/images/glyph/valide.png')}}">
                         {% else %}<span class="btn-danger"style="font-weight:bold">EN ATTENTE</span>
@@ -165,25 +146,23 @@
                 </div>
             </div>
             {% endif %}
+            <script>
+                function montreDetails(id) {
+                    var details = document.getElementById( 'details' + id);
+                    $(details).toggle('hidden');
+                }
+            </script>
         {% endfor %}
         </div>
+    </div>
     </div>
     </div>
 {% endblock %}
 {% block footer %}{% include 'footer.html.twig' %}{% endblock %}
 {% block javascripts %}
+
 <script>
-$(document).ready(function(){
-var details = document.getElementsByClassName('details');
-var eleve = document.getElementsByClassName('eleve');
 
-
-montreDetails = function(){
-    $(details).toggle('hidden');
-}
-
-})
 </script>
-
 
 {% endblock %}

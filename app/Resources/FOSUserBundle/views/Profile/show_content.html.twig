@@ -2,85 +2,88 @@
 
 
 <div id="container">
-    <div class="container-fluid" style="margin-bottom:7%;margin-top:7%">
-        <div class="row justify-content-center">
-            <div class="col-xl-3 col-lg-3 col-md-9 col-sm-9 col-11 " id="admin-profil" style="padding:20px;margin-right:10px;background-color:black;border-radius:20px;">
-            {% if app.user %}
-                <h4 class="Titillium bottom">BIENVENUE SUR VOTRE COMPTE !</h4>
-                <div class="fos_user_user_show" style="margin-top:10px">
-                    <p><b class="Titillium">{{ user.username | title }}</b></p>
-                    <p><b class="Titillium">{{ user.email }}</b></p>
-                    <a href="{{ path('fos_user_change_password') }}">Changer le mot de passe</a>
+    <div class="container-fluid">
+        <div class="col-12">
+            <div class="row justify-content-center">
+                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-12 bg-black p-4" id="admin-profil">
+                {% if app.user %}
+                    <h4 class="Titillium bottom">BIENVENUE SUR VOTRE COMPTE !</h4>
+                    <div class="fos_user_user_show" style="margin-top:10px">
+                        <p><b class="Titillium">{{ user.username | title }}</b></p>
+                        <p><b class="Titillium">{{ user.email }}</b></p>
+                        <a href="{{ path('fos_user_change_password') }}">Changer le mot de passe</a><br/>
+                        <a href="{{ path('fos_user_profile_edit') }}">Modifier mes informations</a>
+                    </div>
+                    {% if app.user.hasRole('ROLE_ADMIN') %}
+                    <div style="margin-top:50px" class="d-none d-sm-block">
+                        <p>ADMINISTRATION DU SITE :</p>
+                        <div>
+                            <a href="{{ path ('admin_user_index') }}"> -> Utilisateurs</a>
+                        </div>
+                        <div>
+                            <a href="{{ path ('admin_tarif_index') }}"> -> Tarifs</a>
+                        </div>
+                        <div>
+                            <a href="{{ path ('admin_session_index') }}"> -> Sessions</a>
+                        </div>
+                        <div>
+                            <a href="{{ path ('admin_inscription_index') }}"> -> Inscriptions</a>
+                        </div>
+                        <div>
+                            <a href="{{ path ('admin_actu_index') }}"> -> Articles</a>
+                        </div>
+                        <div>
+                            <a href="{{ path ('admin_catalogue_index') }}"> -> Catalogue</a>
+                        </div>
+                        <div>
+                            <a href="{{ path ('admin_video_index') }}"> -> Vidéos</a>
+                        </div>
+                        <div>
+                            <a href="{{ path ('admin_contact_index') }}"> -> Messages</a>
+                        </div>
+                    </div>
+                    {% endif %}
+
                 </div>
-                {% if app.user.hasRole('ROLE_ADMIN') %}
-                <div style="margin-top:50px" class="d-none d-sm-block">
-                    <p>ADMINISTRATION DU SITE :</p>
-                    <div>
-                        <a href="{{ path ('admin_user_index') }}"> -> Utilisateurs</a>
+                <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9 col-12">
+                    <div class="row justify-content-center" style="background-image:url('{{ asset('assets/images/skateschool/inscription.png') }}');height:27vh;background-repeat: no-repeat;background-size:cover;background-position: center;" >
+                    <h3 class="align-self-center Titillium inscriptions-titre">MES INSCRIPTIONS : </h3>
                     </div>
-                    <div>
-                        <a href="{{ path ('admin_tarif_index') }}"> -> Tarifs</a>
+
+                    {% for inscription in user.inscriptions %}
+                    <div class="row align-items-center bg-light justify-content-center profil-inscriptions mt-2">
+                        <div class="col-xl-2 col-lg-2 col-md-5 col-sm-5 col-5">
+                            <img class="img-fluid" src="{{ asset('assets/images/logo/logo-bordza.png') }}">
+                        </div>
+                        <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+                            <p><span class="hidden-mobile">Nom de l'élève inscrit : </span><u>{{ inscription.nom | title }} {{ inscription.prenom | title }}</u><br/>
+                            inscrit pour :
+                            {{ inscription.sessionId.titreSession }} /
+                            {{ inscription.sessionId.formules }} /
+                            {{ inscription.sessionId.disciplines }}<br/>
+                            prix : {{ inscription.sessionId.prix }}<br/>
+                            {{ inscription.sessionId.dateSession }}<br/>
+                            Inscription {% if inscription.valide %}
+                            <span class="text-green">VALIDÉE</span>
+                            {% else %}<span class="text-green">EN ATTENTE</span>
+                            <a href="{{ path('inscription_edit', { 'id': inscription.id }) }}">
+                                <button class="btn btn-sm btn-dark bouton">Modifier</button>
+                            </a>
+                            {% endif %}</p>
+                        </div>
+
+
                     </div>
-                    <div>
-                        <a href="{{ path ('admin_session_index') }}"> -> Sessions</a>
-                    </div>
-                    <div>
-                        <a href="{{ path ('admin_inscription_index') }}"> -> Inscriptions</a>
-                    </div>
-                    <div>
-                        <a href="{{ path ('admin_actu_index') }}"> -> Articles</a>
-                    </div>
-                    <div>
-                        <a href="{{ path ('admin_catalogue_index') }}"> -> Catalogue</a>
-                    </div>
-                    <div>
-                        <a href="{{ path ('admin_video_index') }}"> -> Vidéos</a>
-                    </div>
-                    <div>
-                        <a href="{{ path ('admin_contact_index') }}"> -> Messages</a>
-                    </div>
-                </div>
+                    {% endfor %}
+
                 {% endif %}
-                
-            </div>
-            <div class="col-xl-6 col-lg-6 col-md-9 col-sm-9 col-11">
-                <div class="row justify-content-center" style="background-image:url('{{ asset('assets/images/skateschool/inscription.png') }}');height:27vh;background-repeat: no-repeat;background-size:cover;background-position: center;" >
-                <h3 class="align-self-center Titillium inscriptions-titre">MES INSCRIPTIONS : </h3>
-                </div>
-                
-                {% for inscription in user.inscriptions %} 
-                <div class="row align-items-center justify-content-center profil-inscriptions" style="margin-top:50px">
-                    <div class="col-xl-2 col-lg-2 col-md-5 col-sm-5 col-5">
-                        <img class="img-fluid" src="{{ asset('assets/images/logo/logo-bordza.png') }}">
-                    </div>
-                    <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
-                        <p><span class="hidden-mobile">Nom de l'élève inscrit : </span><u>{{ inscription.nom | title }} {{ inscription.prenom | title }}</u><br/>
-                        inscrit pour : 
-                        {{ inscription.sessionId.titreSession }} /
-                        {{ inscription.sessionId.formules }} /
-                        {{ inscription.sessionId.disciplines }}<br/>
-                        prix : {{ inscription.sessionId.prix }}<br/>
-                        {{ inscription.sessionId.dateSession }}<br/>
-                        Inscription {% if inscription.valide %}
-                        <span>VALIDÉE <img class="valide" src="{{ asset('assets/images/glyph/valide.png') }}"></span>
-                        {% else %}<span class="text-green">EN ATTENTE</span>
-                        <a href="{{ path('inscription_edit', { 'id': inscription.id }) }}">
-                            <button class="btn bouton">Modifier</button>
+                    <div class="row justify-content-center bg-black pt-3 pb-4 mt-4">
+                        <p class="text-center text text-green bottom col-12">Vous pouvez modifier votre inscription tant que celle-ci n'est pas validée
+                        par le moniteur. <br/>Pour modifier une inscription déjà validée, veuillez nous contacter au minimum 24H à l'avance. Merci.</p>
+                        <a href="{{ path('contact')}}">
+                            <button class="btn btn-dark btn-sm bouton mt-2">CONTACTEZ-NOUS</button>
                         </a>
-                        {% endif %}</p>
                     </div>
-                    
-                     
-                </div>
-                {% endfor %}
-                
-            {% endif %}
-                <div class="row justify-content-center">
-                    <p class="text-center text text-green bottom col-12">Vous pouvez modifier votre inscription tant que celle-ci n'est pas validée
-                    par le moniteur. <br/>Pour modifier une inscription déjà validée, veuillez nous contacter au minimum 24H à l'avance. Merci.</p>
-                    <a href="{{ path('contact')}}">
-                        <button class="btn btn-secondary bouton top">CONTACTEZ-NOUS</button>
-                    </a>
                 </div>
             </div>
         </div>

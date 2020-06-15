@@ -2,42 +2,47 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
 
-<div class="container-fluid identifiant">
-    <div class="row justify-content-center">
-        <div class="col-11 col-sm-11 col-md-11 col-lg- col-xl-3 " style="padding:20px">
+<div class="container-fluid register">
+    <div class="col-12">
+        <div class="row justify-content-center pt-4">
+            <div class="col-11 col-sm-4 col-md-4 col-lg-4 col-xl-4 p-2 mt-5">
 
-{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
-
-    
-    <div class="form">
-    {{ form_label(form.username, 'Nom d\'utilisateur' ) }}
-    {{ form_errors(form.username) }}
-    {{ form_widget(form.username, {'attr': {'class':'form-control'}}) }}
-    </div>
-    <div class="form">
-    {{ form_label(form.email, 'Email') }}
-    {{ form_errors(form.email) }}
-    {{ form_widget(form.email, {'attr': {'class':'form-control'}}) }}
-    </div>
-    <div class="form">
-    {{ form_label(form.plainPassword.first, 'Choisissez le mot de passe') }}
-    {{ form_errors(form.plainPassword.first) }}
-    {{ form_widget(form.plainPassword.first, {'attr': {'class':'form-control'}}) }}
-    </div>
-    <div class="form">
-    {{ form_label(form.plainPassword.second, 'Confirmer le mot de passe' ) }}
-    {{ form_errors(form.plainPassword.second) }}
-    {{ form_widget(form.plainPassword.second, {'attr': {'class':'form-control'}}) }}
-    </div>
-
-    
-    <div class="row justify-content-center">
-        <div class="identifiant">
-            <button type="submit" class="btn btn-secondary btn-block">Enregistrer</button>
+                {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+                <div class="form">
+                {{ form_label(form.username, 'Nom d\'utilisateur' ) }}
+                {{ form_errors(form.username) }}
+                {{ form_widget(form.username, {'attr': {'class':'form-control'}}) }}
+                </div>
+                <div class="form">
+                {{ form_label(form.email, 'Email') }}
+                {{ form_errors(form.email) }}
+                {{ form_widget(form.email, {'attr': {'class':'form-control'}}) }}
+                </div>
+                <div class="form">
+                {{ form_label(form.plainPassword.first, 'Choisissez le mot de passe') }}
+                {{ form_errors(form.plainPassword.first) }}
+                {{ form_widget(form.plainPassword.first, {'attr': {'class':'form-control'}}) }}
+                </div>
+                <div class="form">
+                {{ form_label(form.plainPassword.second, 'Confirmer le mot de passe' ) }}
+                {{ form_errors(form.plainPassword.second) }}
+                {{ form_widget(form.plainPassword.second, {'attr': {'class':'form-control'}}) }}
+                </div>
+                <div class="row justify-content-center">
+                    <div class="">
+                        <button type="submit" class="btn btn-sm btn-light btn-block mt-5">Enregistrer</button>
+                    </div>
+                </div>
+                {{ form_end(form) }}
+                {% if app.user %}
+                {% if app.user.hasRole('ROLE_ADMIN')%}
+                <div class="row justify-content-center">
+                    <a class="identifiants text-center" href="{{ path('fos_user_profile_show') }}"><- Retour vers ma page profile</a>
+                </div>
+                {% endif %}
+                {% endif %}
+            </div>
         </div>
     </div>
-{{ form_end(form) }}
-</div>
-</div>
 </div>
 

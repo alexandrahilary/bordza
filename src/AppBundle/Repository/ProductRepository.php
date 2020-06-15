@@ -4,7 +4,9 @@
 namespace AppBundle\Repository;
 
 
-class ProductRepository
+use Doctrine\ORM\EntityRepository;
+
+class ProductRepository extends EntityRepository
 {
 
 }

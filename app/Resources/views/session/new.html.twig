@@ -4,12 +4,12 @@
 
 {% block body %}
 
-<div class="container-fluid identifiant justify-content-center bottom">
-
+<div class="container-fluid pt-5 bg-light justify-content-center">
+<div class="col-12">
     <div class="row justify-content-center">
         <div class="col-12">
             <div class="row justify-content-center">
-                <h1>NOUVELLE SESSION</h1>
+                <h3 class="text-green">NOUVELLE SESSION</h3>
             </div>
         </div>
         <div class="col-11 col-sm-11 col-md-11 col-lg-9 col-xl-9 top" style="padding:20px">
@@ -33,12 +33,12 @@
                     </div>
                 </div>
                 <div class="mt-2">
-                    <a class="ml-2" href="{{ path('admin/formule_new') }}"><i>+ Ajouter une formule</i></a>
+                    <a  style="color:#1abc9c !important" class="ml-2" href="{{ path('admin/formule_new') }}"><i>+ Ajouter une formule</i></a>
 
                 </div>
 
             <!-- disciplines -->
-                <div class="form mt-3">
+                <div class="form">
                     <div class="">
                         {{ form_label(form.disciplines, 'Choisir une discipline  ') }}
                         {{ form_errors(form.disciplines) }}
@@ -46,11 +46,11 @@
                     </div>
                 </div>
                 <div class="mt-2">
-                    <a class="ml-2 " href="{{ path('admin_discipline_new') }}"><i>+ Ajouter une discipline </i></a>
+                    <a  style="color:#1abc9c !important" class="ml-2 " href="{{ path('admin_discipline_new') }}"><i>+ Ajouter une discipline </i></a>
                 </div>
 
             <!-- titre -->
-                <div class="form mt-3">
+                <div class="form">
                     <div class="">
                         {{ form_label(form.titreSession, 'Titre de la Session  ') }}
                         {{ form_errors(form.titreSession) }}
@@ -59,7 +59,7 @@
                 </div>
 
             <!-- dates -->
-                <div class="form mt-3">
+                <div class="form">
                     <div class="">
                         {{ form_label(form.dateSession, 'Dates de la Session  ') }}
                         {{ form_errors(form.dateSession) }}
@@ -68,7 +68,7 @@
                 </div>
 
             <!-- description -->
-                <div class="form mt-3">
+                <div class="form">
                     <div class="">
                         {{ form_label(form.descriptionSession, 'Description de la session ') }}
                         {{ form_errors(form.descriptionSession) }}
@@ -77,7 +77,7 @@
                 </div>
 
             <!-- nbPlace -->
-                <div class="form mt-3">
+                <div class="form">
                     <div class="">
                         {{ form_label(form.nbPlace, 'Nombre de places  ') }}
                         {{ form_errors(form.nbPlace) }}
@@ -86,7 +86,7 @@
                 </div>
 
             <!-- prix -->
-                <div class="form mt-3">
+                <div class="form">
                     <div class="">
                         {{ form_label(form.prix, 'Prix ') }}
                         {{ form_errors(form.prix) }}
@@ -96,7 +96,7 @@
 
             <!-- image -->
                 <!-- pathimage -->
-                <div class="form top">
+                <div class="form">
                     <div class="input-group ">
                         {{ form_label(form.image.pathimage, 'Choisir une image') }}
                         {{ form_errors(form.image.pathimage) }}
@@ -104,7 +104,7 @@
                     </div>
                 </div>
                 <!-- alt -->
-                <div class="form top">
+                <div class="form">
                     <div class="">
                         {{ form_label(form.image.alt, 'Description de l\'image / Référencement ') }}
                         {{ form_errors(form.image.alt) }}
@@ -112,7 +112,7 @@
                     </div>
                 </div>
                 <!-- credit photo -->
-                <div class="form mt-3">
+                <div class="form">
                     <div class="">
                         {{ form_label(form.image.creditPhoto, 'Crédit Photo') }}
                         {{ form_errors(form.image.creditPhoto) }}
@@ -122,14 +122,14 @@
 
         <div class="form bouton">
             <div class="row justify-content-center">
-                <button type="submit" class="btn btn-secondary bouton top">Enregistrer cette Session</button>
+                <button type="submit" class="btn btn-secondary btn-dark btn-sm bouton top">Enregistrer cette Session</button>
             </div>
             <div class="row justify-content-center text">
-                <a href="{{ path('admin_session_index') }}"><i><- Revenir aux Sessions</i></a>
+                <a style="color:#1abc9c !important" href="{{ path('admin_session_index') }}"><i><- Revenir aux Sessions</i></a>
             </div>
         </div>
         {{ form_end(form) }}
-
+        </div>
     </div>
 </div>
 

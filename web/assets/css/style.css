@@ -32,7 +32,6 @@ body{
     padding: 0 !important;
 }
 .identifiants{
-    margin-left:30px;
     padding-top:10px !important;
     padding-bottom:10px !important;
     font-size: 1em;
@@ -548,6 +547,18 @@ iframe p a{
 }
 .titre-accueil:hover{
     font-size:2em;
+}
+.register{
+    background-image: url('../images/valeur/bois-issue-de-foret-maitrisees.jpg');
+    background-repeat: no-repeat;
+    background-size:cover;
+    filter: grayscale(100%);
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    -ms-filter: grayscale(100%);
+    -o-filter: grayscale(100%);
+    color: white;
+    height: 70vh;
 }
 
 footer{

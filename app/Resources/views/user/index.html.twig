@@ -3,69 +3,66 @@
 {% block nav %}{% include 'nav.html.twig' %}{% endblock %}
 
 {% block body %}
-<div class="container-fluid">
-    <div class="row justify-content-center">
-        <h2 class="top">- LES UTILISATEURS -</h2>
-        <div class="w-100"></div>
-        <h4>Nombre d'utilisateurs <span class="font-weight-bold" style="color:#1abc9c"> [ {{ users | length }} ] </span> </h4>
-        <div class="w-100"></div>
-        <a href="{{ path('fos_user_registration_register') }}" class="top">
-            <img class="img-class" src="{{ asset('assets/images/glyph/ajoute-rond.png') }}" style="margin-right:10px;">
-            <button class="btn btn-secondary bouton" type="submit">Ajouter un Utilisateur</button>
-        </a>
-    </div>
- 
-        {% for user in users %}
-    <div class="row justify-content-center">   
-        <div class="col-11">  
-            <div class="row grey">      
-                    
-                
-                    <div class="col-2">
-                        <div class="row align-items-center  Titillium">
-                            <p class="bg-green col-12">Utilisateur :  {{ user.username | upper }}<br/>
-                            {{ user.email }}</p>
+<div class="container-fluid bg-black pb-3">
+    <div class="col-12">
+        <div class="row justify-content-center mb-3">
+            <h2 class="top">- LES UTILISATEURS -</h2>
+            <div class="w-100"></div>
+            <p>Nombre d'utilisateurs <span class="font-weight-bold" style="color:#1abc9c"> [ {{ users | length }} ] </span> </p>
+            <div class="w-100"></div>
+            <a href="{{ path('fos_user_registration_register') }}" class="">
+                <img class="img-class" src="{{ asset('assets/images/glyph/ajoute-rond.png') }}" style="margin-right:10px;">
+                <button class="btn btn-sm btn-secondary bouton" type="submit">Ajouter un Utilisateur</button>
+            </a>
+        </div>
+
+            {% for user in users %}
+        <div class="row bg-secondary text-black justify-content-center p-2 mb-1">
+            <div class="col-12">
+                <div class="row">
+                        <div class="col-2">
+                            <div class="row align-items-center  Titillium">
+                                <p class="p-2 col-12 text-white">Utilisateur :  {{ user.username | upper }}<br/>
+                                {{ user.email }}</p>
+                            </div>
                         </div>
+
+                        <div class="col-2">
+                            <div class="row align-self-center p-2">
+                                <a href="{{ path('admin_user_edit', { 'id': user.id }) }}">
+                                    <button type="submit" class="btn btn-sm btn-dark mr-2 ml-2">Modifier</button>
+                                </a>
+                                <form action="{{ path('admin_user_delete', { 'id': user.id }) }}" method="post">
+                                    <input type="hidden" name="_method" value="DELETE" />
+                                    {{ form_widget(deleteForms[user.id]) }}
+                                    <button type="submit" class="btn btn-sm btn-danger">Supprimer</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-8">
+
+                            <p class="categories text-white">- INSCRIPTIONS : [ {{ user.inscriptions | length }} ]</p>
+
+                            {% for inscription in user.inscriptions %}
+                            <div class="col-12">
+                                <div class="row">
+                                    <img class="mt-1" style="height: 30px" src="{{ asset('assets/images/glyph/glyphicons-635-teenager.png') }}">
+                                    <div class="col-11 text-white bg-dark p-1 m-1">
+                                    {{ inscription.nom | upper }}, {{ inscription.prenom | title }}, age : {{ inscription.age }} /
+                                    {{ inscription.sessionId }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="w-100"></div>
+                             {% endfor %}
                     </div>
 
-                    <div class="col-2">
-                        <div class="row align-self-center">
-                            <a href="{{ path('admin_user_edit', { 'id': user.id }) }}">
-                                <button type="submit" class="btn bouton">Modifier</button>
-                            </a>
-                            <form action="{{ path('admin_user_delete', { 'id': user.id }) }}" method="post">
-                                <input type="hidden" name="_method" value="DELETE" />
-                                {{ form_widget(deleteForms[user.id]) }}
-                                <button type="submit" class="btn btn-danger bouton">Supprimer</button>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="col-8">
-                    
-                    <p class="categories ">- INSCRIPTIONS : <span class="" style="color:#1abc9c;font-size:1em;">[ {{ user.inscriptions | length }} ]</span></p>
-                    
-                    {% for inscription in user.inscriptions %}
-                    <div class=" col-12">
-                        <div class="">
-                        
-                            <div class="bg-green">
-                            <img src="{{ asset('assets/images/glyph/glyphicons-635-teenager.png') }}"> 
-                            {{ inscription.nom | upper }}, {{ inscription.prenom | title }}, age : {{ inscription.age }} /  
-                            {{ inscription.sessionId }}
-                            </div>
-                            
-                        
-                    </div>
-                    
                 </div>
-                <div class="w-100"></div>
-                {% endfor %}
-                </div>
-                
-            </div>    
-        </div>
+            </div>
         </div>  
         {% endfor %}
+    </div>
+</div>
     
 {% endblock %}
 {% block footer %}{% include 'footer.html.twig' %}{% endblock %}

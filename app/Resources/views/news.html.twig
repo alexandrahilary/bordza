@@ -5,52 +5,49 @@
 {% block nav %}{% include 'nav.html.twig' %}{% endblock %}
 {% block body %}
 <div class="container-fluid bg-light text-dark">
-    <div class="row justify-content-center">
-        <h2 class="categories top"><b>- LES NEWS -</b></h2>
-    </div>
-    <div class="row justify-content-center">
-    <div class="col-11">
-    <div class="row justify-content-center text-dark">
-        {% for actu in actus %}
-        <a href="{{ path ('actu_show', { 'id': actu.id} )}}">
-            <div class="col-11 col-sm-11 col-md-11 col-lg-10 col-xl-10 justify-content-center top bottom">
-               
-                <div class=" text-dark"><h3 class="article-titre"><b>{{ actu.titre | upper }}</b></h3></div>
-                <div class="w-100"></div>
-                <div class="img-actu" style="background-image:url('{{ asset('uploads/images/' ~ actu.imageId) }}');"></div>
-                <div class="w-100"></div>
-                <div class="row justify-content-center">    
-                    <div class="resume col-11 text-dark top">{{ actu.resume | raw }} <i class="text-green">Lire l'article</i></div>
-                    <div class="w-100"></div>
-                    <div class="text-dark"><i>{% if actu.date %}{{ actu.date|date('d-m-Y') }}{% endif %}</i></div>
+    <div class="col-12">
+        <div class="row justify-content-center">
+            <h2 class="categories top"><b>- LES NEWS -</b></h2>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-11">
+                <div class="row justify-content-center text-dark">
+                    {% for actu in actus %}
+                    <a href="{{ path ('actu_show', { 'id': actu.id} )}}">
+                        <div class="col-11 col-sm-11 col-md-11 col-lg-10 col-xl-10 justify-content-center top bottom">
+
+                            <div class=" text-dark"><h3 class="article-titre"><b>{{ actu.titre | upper }}</b></h3></div>
+                            <div class="w-100"></div>
+                            <div class="img-actu" style="background-image:url('{{ asset('uploads/images/' ~ actu.imageId) }}');"></div>
+                            <div class="w-100"></div>
+                            <div class="row justify-content-center">
+                                <div class="resume col-11 text-dark top">{{ actu.resume | raw }} <i class="text-green">Lire l'article</i></div>
+                                <div class="w-100"></div>
+                                <div class="text-dark"><i>{% if actu.date %}{{ actu.date|date('d-m-Y') }}{% endif %}</i></div>
+                            </div>
+                        <!--{% if app.user %}
+                                {% if app.user.hasRole('ROLE_ADMIN')  %}
+                                <div class="col-3">
+                                    <div class="row">
+                                        <a href="{{ path('admin_actu_edit', { 'id': actu.id }) }}">
+                                            <button class="btn btn-small bouton">Modifier</button>
+                                        </a>
+
+                                            <form action="{{ path('admin_actu_delete', { 'id': actu.id }) }}" method="post">
+                                                <input type="hidden" name="_method" value="DELETE" />
+                                                {{ form_widget(deleteForms[actu.id]) }}
+                                                <button type="submit" class=" btn btn-small bouton">Supprimer</button>
+                                            </form>
+                                    </div>
+                                </div>
+                                {% endif %}
+                            {% endif %} -->
+                        </div>
+                    </a>
+                    {% endfor %}
                 </div>
-                
-                
-                
-            <!--{% if app.user %}
-                {% if app.user.hasRole('ROLE_ADMIN')  %}   
-                <div class="col-3">
-                    <div class="row">
-                        <a href="{{ path('admin_actu_edit', { 'id': actu.id }) }}">
-                            <button class="btn btn-small bouton">Modifier</button>
-                        </a>
-                           
-                            <form action="{{ path('admin_actu_delete', { 'id': actu.id }) }}" method="post">
-                                <input type="hidden" name="_method" value="DELETE" />
-                                {{ form_widget(deleteForms[actu.id]) }}
-                                <button type="submit" class=" btn btn-small bouton">Supprimer</button>
-                            </form>            
-                    </div>
-                </div>
-                {% endif %}
-            {% endif %} -->
             </div>
-        </a>
-        
-            
-        {% endfor %}
-    </div>
-    </div>
+        </div>
     </div>
 </div>
 

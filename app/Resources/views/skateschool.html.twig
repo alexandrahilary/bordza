@@ -38,7 +38,7 @@
     </a>
   </div>
 </div>
-<div class="container-fluid">
+<div class="container-fluid justify-content-center">
   <div class="col-12">
   <div class="row justify-content-center">
     <div class="col-11 col-sm-8 col-md-8 col-lg-8 col-xl-8 text-center p-5">
@@ -75,45 +75,47 @@
 
 {#  ----------- LES COURS ------------------#}
   <div class="col-12">
-  <div class="row justify-content-center bg-green-no-marging">
-    <div class="col-11 col-sm-10 col-md-6 col-lg-6 col-xl-6 text-center">   
-      <p><b><h3 class="categories">- LES COURS -</h3></b></p>
-        <div class="row justify-content-center top">
-          {% for session in sessions | number('orderNumber') %}
-            {% if session.formules == "COURS" %}
-             
-                <div class="rounded black padding  col-11 col-sm-11 col-md-11 col-lg-5 col-xl-5">
-                  <div class="mt-3"><b>- {{ session.disciplines | upper }} -</b></div>
-                  <div class="w-100"></div>
-                  <div class="Titillium"> {{ session.titreSession | upper }} </div>
-                  <div class="w-100"></div>
-                  <div class="text-green">{{ session.dateSession }}</div>
-                  <div class="w-100"></div>
-                  <hr class="top">
-                  <div>Groupe de {{ session.nbPlace }} élèves.</div>
-                  <span class="nombrePlacesRestantes text-green">
-                  {% if (session.nbPlace)==(session.inscriptionCollection.snapshot | length) %}<i> [ COMPLET ]</i>
-                  {% else %}<i> [ Il reste de la place ] </i>{% endif %}
-                  </span>
-                  
-                  <div class="w-100"></div>
-                  <p>{{ session.descriptionSession | raw }}</p>
-                  <div class="w-100"></div>
-                  <p class="top"><i>{{ session.prix }}</i></p>
-                </div>
-            {% endif %}
-          {% endfor %}
-          <div class="w-100"></div>
+    <div class="row justify-content-center bg-green-no-marging">
+      <div class="col-11 col-sm-10 col-md-6 col-lg-6 col-xl-6 text-center">
+        <p><b><h3 class="categories">- LES COURS -</h3></b></p>
+          <div class="row justify-content-center top">
+            {% for session in sessions | number('orderNumber') %}
+              {% if session.formules == "COURS" %}
+
+                  <div class="rounded black padding  col-11 col-sm-11 col-md-11 col-lg-5 col-xl-5">
+                    <div class="mt-3"><b>- {{ session.disciplines | upper }} -</b></div>
+                    <div class="w-100"></div>
+                    <div class="Titillium"> {{ session.titreSession | upper }} </div>
+                    <div class="w-100"></div>
+                    <div class="text-green">{{ session.dateSession }}</div>
+                    <div class="w-100"></div>
+                    <hr class="top">
+                    <div>Groupe de {{ session.nbPlace }} élèves.</div>
+                    <span class="nombrePlacesRestantes text-green">
+                    {% if (session.nbPlace)==(session.inscriptionCollection.snapshot | length) %}<i> [ COMPLET ]</i>
+                    {% else %}<i> [ Il reste de la place ] </i>{% endif %}
+                    </span>
+
+                    <div class="w-100"></div>
+                    <p>{{ session.descriptionSession | raw }}</p>
+                    <div class="w-100"></div>
+                    <p class="top"><i>{{ session.prix }}</i></p>
+                  </div>
+              {% endif %}
+            {% endfor %}
+            <div class="w-100"></div>
+          </div>
+      </div>
+      <div class="container-fluid bottom top">
+        <div class="col-12">
+          <div class="row justify-content-center">
+            <a href="{{ path('inscription') }}">
+              <button class="btn btn-secondary bottom" type="submit">JE M'INSCRIS</button>
+            </a>
+          </div>
         </div>
-    </div>
-    <div class="container-fluid bottom top">
-      <div class="row justify-content-center">
-        <a href="{{ path('inscription') }}">
-          <button class="btn btn-secondary bottom" type="submit">JE M'INSCRIS</button>
-        </a>
       </div>
     </div>
-  </div>
   </div>
 </div>
 
@@ -123,51 +125,55 @@
 
   {#  ----------- LES STAGES ------------------#}
 
-  <div id="stages" class="container-fluid bottom bg-light">
-  <div class="row justify-content-center bottom">
-    <div class="col-12">
-      <div class="text-center top">
-        <p class="text-green col-12"><b><h2 class="categories">- LES STAGES -</h2></b>
-      </div>
-      <script>
-        var stage = 0;
-        var listStage = [];
-      </script>
-      {% for session in sessions | number('orderNumber') %}
-        {% if session.formules == "STAGES" %}
-          <script>
-            stage += 1;
-                if (stage % 2 == 0){
-                  listStage.push({{ session.id }});
-            }
-          </script>
+<div id="stages" class="container-fluid bottom bg-light">
+  <div class="col-12">
+    <div class="row justify-content-center bottom">
+      <div class="col-12">
+        <div class="text-center top">
+          <p class="text-green col-12"><b><h2 class="categories">- LES STAGES -</h2></b>
+        </div>
+        <script>
+          var stage = 0;
+          var listStage = [];
+        </script>
+        {% for session in sessions | number('orderNumber') %}
+          {% if session.formules == "STAGES" %}
+            <script>
+              stage += 1;
+              if (stage % 2 == 0){
+                listStage.push({{ session.id }});
+              }
+            </script>
             <div id="{{ 'stage' ~ session.id }}"  class="stage row padding justify-content-start p-5">
               <div class="titre-stage Titillium">- {{ session.titreSession | upper }} -</div>
               <div class="w-100"></div>
               <div class="col-11 col-sm-11 col-md-11 col-lg-5 col-xl-5">
-                <img class="img-fluid col-12" src ="{{ asset('uploads/images/' ~ session.image.pathImage)}}" 
-                alt="{{ session.image.alt }}">
+                <img class="img-fluid col-12" src ="{{ asset('uploads/images/' ~ session.image.pathImage)}}"
+                     alt="{{ session.image.alt }}">
               </div>
               <div class="col-11 col-sm-11 col-md-11 col-lg-6 col-xl-6">
                 <div class="text text-green"><i>STAGE DE {{ session.disciplines }}</i></div>
                 <div class="text">Dates : {{ session.dateSession }}</div>
                 <div class="text">Nombre d'élève maximum : {{ session.nbPlace }}
                   <span class="nombrePlacesRestantes text-green">
-                  {% if (session.nbPlace)==(session.inscriptionCollection.snapshot | length) %}<i> [ COMPLET ]</i>
-                  {% else %}<i> [ Il reste de la place ] </i>{% endif %}
-                  </span>
+                    {% if (session.nbPlace)==(session.inscriptionCollection.snapshot | length) %}<i> [ COMPLET ]</i>
+                    {% else %}<i> [ Il reste de la place ] </i>{% endif %}
+                    </span>
                 </div>
                 <div class="text">{{ session.descriptionSession | raw }}</div>
                 <div class="text text-green">Prix du stage : {{ session.prix }}</div>
               </div>
             </div>
           {% endif %}
-      {% endfor %}
-      <div class="container-fluid bottom">
-        <div class="row justify-content-center">
-          <a href="{{ path('inscription') }}">
-            <button class="btn btn-secondary" type="submit">JE M'INSCRIS</button>
-          </a>
+        {% endfor %}
+        <div class="container-fluid bottom">
+          <div class="col-12">
+            <div class="row justify-content-center">
+              <a href="{{ path('inscription') }}">
+                <button class="btn btn-secondary" type="submit">JE M'INSCRIS</button>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -186,50 +192,54 @@
 {# ---------------- evenements ------------------------#}
 <div id="evenements" class="container-fluid bottom">
   <hr>
-  <div class="row justify-content-center top bottom">
-    <div class="col-12">
-      <div class="text-center bottom">
-        <p class="text-green col-12 bottom"><b><h3 class="categories">- LES ÉVÉNEMENTS BORDZA -</h3></b>
-      </div>
-      <script>
-        var evenements = 0;
-        var listEvenements = [];
-      </script>
-      {% for session in sessions | number('orderNumber')  %}
-          {% if (session.formules != "COURS") and (session.formules != "STAGES") %}
-            <script>
-              evenements += 1;
-              if (evenements % 2 == 0){
-                listEvenements.push({{ session.id }});
-              }
-            </script>
-                <div id="{{ 'evenement' ~ session.id }}" class="row p-5 justify-content-start">
-                  <div class="titre-stage Titillium">- {{ session.titreSession | upper }} -</div>
-                  <div class="w-100"></div>
-                    <div class="col-11 col-sm-11 col-md-11 col-lg-5 col-xl-5">
-                      <img class="img-fluid col-12" src ="{{ asset('uploads/images/' ~ session.image.pathImage)}}"
-                       alt="{{ session.image.alt }}">
-                    </div>
-                    <div class="col-11 col-sm-11 col-md-11 col-lg-6 col-xl-6">
-                      <div class="text text-green"><i>{{ session.disciplines }}</i></div>
-                      <div class="text">Dates de la Session : {{ session.dateSession }}</div>
-                      <div class="text">Nombre d'élève maximum : {{ session.nbPlace }}
-                        <span class="nombrePlacesRestantes text-green">
-                        {% if (session.nbPlace)==(session.inscriptionCollection.snapshot | length) %}<i> [ COMPLET ]</i>
-                        {% else %}<i> [ Il reste de la place ] </i>{% endif %}
-                        </span>
+  <div class="col-12">
+    <div class="row justify-content-center top bottom">
+      <div class="col-12">
+        <div class="text-center bottom">
+          <p class="text-green col-12 bottom"><b><h3 class="categories">- LES ÉVÉNEMENTS BORDZA -</h3></b>
+        </div>
+        <script>
+          var evenements = 0;
+          var listEvenements = [];
+        </script>
+        {% for session in sessions | number('orderNumber')  %}
+            {% if (session.formules != "COURS") and (session.formules != "STAGES") %}
+              <script>
+                evenements += 1;
+                if (evenements % 2 == 0){
+                  listEvenements.push({{ session.id }});
+                }
+              </script>
+                  <div id="{{ 'evenement' ~ session.id }}" class="row p-5 justify-content-start">
+                    <div class="titre-stage Titillium">- {{ session.titreSession | upper }} -</div>
+                    <div class="w-100"></div>
+                      <div class="col-11 col-sm-11 col-md-11 col-lg-5 col-xl-5">
+                        <img class="img-fluid col-12" src ="{{ asset('uploads/images/' ~ session.image.pathImage)}}"
+                         alt="{{ session.image.alt }}">
                       </div>
-                      <div class="text">{{ session.descriptionSession | raw }}</div>
-                      <div class="text text-green">Prix de la session : {{ session.prix }}</div>
+                      <div class="col-11 col-sm-11 col-md-11 col-lg-6 col-xl-6">
+                        <div class="text text-green"><i>{{ session.disciplines }}</i></div>
+                        <div class="text">Dates de la Session : {{ session.dateSession }}</div>
+                        <div class="text">Nombre d'élève maximum : {{ session.nbPlace }}
+                          <span class="nombrePlacesRestantes text-green">
+                          {% if (session.nbPlace)==(session.inscriptionCollection.snapshot | length) %}<i> [ COMPLET ]</i>
+                          {% else %}<i> [ Il reste de la place ] </i>{% endif %}
+                          </span>
+                        </div>
+                        <div class="text">{{ session.descriptionSession | raw }}</div>
+                        <div class="text text-green">Prix de la session : {{ session.prix }}</div>
+                      </div>
                     </div>
-                  </div>
-          {% endif %}
-      {% endfor %}
-      <div class="container-fluid bottom">
-        <div class="row justify-content-center">
-          <a href="{{ path('inscription') }}">
-            <button class="btn btn-secondary" type="submit">JE M'INSCRIS</button>
-          </a>
+            {% endif %}
+        {% endfor %}
+        <div class="container-fluid bottom">
+          <div class="col-12">
+            <div class="row justify-content-center">
+              <a href="{{ path('inscription') }}">
+                <button class="btn btn-secondary" type="submit">JE M'INSCRIS</button>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </div>

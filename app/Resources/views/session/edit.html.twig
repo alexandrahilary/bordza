@@ -3,15 +3,15 @@
 {% block nav %}{% include 'nav.html.twig' %}{% endblock %}
 
 {% block body %}
-<div class="container-fluid identifiant justify-content-center bottom">
-
+<div class="container-fluid justify-content-center bg-light pt-5">
+<div class="col-12">
     <div class="row justify-content-center">
         <div class="col-12">
             <div class="row justify-content-center">
-                <h1 class="text-center">MODIFIER LA SESSION</h1>
+                <h4 class="text-center text-green">MODIFIER LA SESSION</h4>
             </div>
         </div>
-        <div class="col-11 col-sm-11 col-md-11 col-lg-9 col-xl-9 border border-light top" style="padding:20px">
+        <div class="col-11 col-sm-9 col-md-9 col-lg-9 col-xl-9 border border-light top" style="padding:20px">
             <div class="col">
             {% if session.image != null %}
                 <img class="img-fluid col-12" src="{{ asset('uploads/images/' ~ session.image ) }}">
@@ -36,7 +36,7 @@
                         {{ form_widget(edit_form.formules, {'attr': {'class':'custom-select btn-dark'}}) }}
                     </div>
                 </div>
-                <a href="{{ path('admin/formule_new') }}">-> Ajouter une formule</a>
+            <a style="color:#1abc9c !important" href="{{ path('admin/formule_new') }}"><i>+ Ajouter une formule</i></a>
 
             <!-- disciplines -->
                 <div class="form">
@@ -46,7 +46,7 @@
                         {{ form_widget(edit_form.disciplines, {'attr': {'class':'custom-select btn-dark'}}) }}
                     </div>
                 </div>
-                <a href="{{ path('admin_discipline_new') }}">-> Ajouter une discipline</a>
+            <a style="color:#1abc9c !important" href="{{ path('admin_discipline_new') }}"><i>+ Ajouter une discipline</i></a>
 
             <!-- titre -->
                 <div class="form">
@@ -85,7 +85,7 @@
                 </div>
 
             <!-- prix -->
-                <div class="form">
+                <div class="form mb-4">
                     <div class="">
                         {{ form_label(edit_form.prix, 'Prix ') }}
                         {{ form_errors(edit_form.prix) }}
@@ -93,25 +93,26 @@
                     </div>
                 </div>
 
-            <div class="form bouton">
+            <div class="form mt-3">
                 <div class="row justify-content-center">
                     {{ form_widget(edit_form) }}
-                    <button class="btn btn-secondary btn-lg bouton" type="submit" value="Edit">Enregistrer les modifications</button>
+                    <button class="btn btn-dark btn-sm bouton" type="submit" value="Edit">Enregistrer les modifications</button>
                     {{ form_end(edit_form) }}
                 </div>
-            <div class="row justify-content-center text">
-                <a href="{{ path('admin_session_index') }}"><- Revenir aux Sessions</a>
+            <div class="row justify-content-center">
+                <a style="color:#1abc9c !important" href="{{ path('admin_session_index') }}"><i><- Revenir aux Sessions</i></a>
             </div>
-            <div class="form bouton">
+            <div class="form mt-3">
                 <div class="row justify-content-center">
                     {{ form_start(delete_form) }}
-                        <button type="submit" class="btn btn-light btn-lg bouton">Supprimer</button>
+                        <button type="submit" class="btn btn-danger btn-sm">Supprimer</button>
                     {{ form_end(delete_form) }}
                 </div>
             </div>
         </div>
     </div>
     </div>
+</div>
             
 {% endblock %}
 {% block footer %}{% include 'footer.html.twig' %}{% endblock %}
