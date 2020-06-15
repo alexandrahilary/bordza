@@ -401,6 +401,7 @@ iframe p a{
 }
 .serigraphie-accueil:hover{
     background-size:110%;
+    filter: sepia(40%);
 }
 .news-accueil{
     position:relative; 
@@ -422,6 +423,7 @@ iframe p a{
 }
 .news-accueil:hover{
     background-size:190%;
+    filter: sepia(40%);
 }
 .reseaux-accueil{
     position:relative; 
@@ -458,6 +460,7 @@ iframe p a{
 }
 .skateschool-accueil:hover {
     background-size:110%;
+    filter: sepia(40%);
 }
 .video-accueil{
     position:relative; 
@@ -481,6 +484,7 @@ iframe p a{
 }
 .video-accueil:hover{
     background-size:110%;
+    filter: sepia(40%);
 }
 
 
@@ -504,6 +508,7 @@ iframe p a{
 }
 .valeur-accueil:hover{
     background-size:110%;
+    filter: sepia(40%);
 }
 .catalogue-accueil{
     position:relative; 
@@ -524,6 +529,7 @@ iframe p a{
 }
 .catalogue-accueil:hover{
     background-size:110%;
+    filter: sepia(40%);
 }
 .titre-accueil{
     font-size: 1.5em;
@@ -547,6 +553,7 @@ iframe p a{
 }
 .titre-accueil:hover{
     font-size:2em;
+    filter: sepia(100%);
 }
 .register{
     background-image: url('../images/valeur/bois-issue-de-foret-maitrisees.jpg');
