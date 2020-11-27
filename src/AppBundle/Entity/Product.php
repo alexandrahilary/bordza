@@ -4,6 +4,7 @@
 namespace AppBundle\Entity;
 
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Serializer\Tests\Model;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -63,10 +64,15 @@ class Product extends Model
 
     /**
      * @var ProductSize
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\ProductSize", cascade= {"persist", "remove"}, mappedBy="product_id"))
+     * @ORM\OneToMany(targetEntity=\AppBundle\Entity\ProductSize::class, cascade= {"persist", "remove"}, mappedBy="product_id")
      * @ORM\JoinColumn(name="product_id")
      */
     private $sizes;
+
+    public function __construct()
+    {
+        $this->sizes = new ArrayCollection();
+    }
 
 
     /**

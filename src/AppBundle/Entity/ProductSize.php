@@ -43,4 +43,71 @@ class ProductSize extends Entity
      */
     private $title;
 
+
+    /**
+     * @return Product
+     */
+    public function getProductId()
+    {
+        return $this->product_id;
+    }
+
+    /**
+     * @param Product $product_id
+     */
+    public function setProductId($product_id)
+    {
+        $this->product_id = $product_id;
+    }
+
+    /**
+     * @return float
+     */
+    public function getWidth()
+    {
+        return $this->width;
+    }
+
+    /**
+     * @param float $width
+     */
+    public function setWidth($width)
+    {
+        $this->width = $width;
+    }
+
+    /**
+     * @return float
+     */
+    public function getHeight()
+    {
+        return $this->height;
+    }
+
+    /**
+     * @param float $height
+     */
+    public function setHeight($height)
+    {
+        $this->height = $height;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * @param string $title
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    }
+
+
+
 }

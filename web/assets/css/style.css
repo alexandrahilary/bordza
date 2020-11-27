@@ -463,8 +463,8 @@ iframe p a{
     filter: sepia(40%);
 }
 .video-accueil{
-    position:relative; 
-    display:flex; 
+    position:relative;
+    display:flex;
     align-items:flex-end;
     justify-content: flex-end;
     border:solid  rgb(36, 36, 36) 5px;
